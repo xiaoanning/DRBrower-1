@@ -1,0 +1,592 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		557DC0671E08DF8100ECFFDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 557DC0661E08DF8100ECFFDE /* main.m */; };
+		557DC06D1E08DF8100ECFFDE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 557DC06C1E08DF8100ECFFDE /* ViewController.m */; };
+		557DC0701E08DF8100ECFFDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 557DC06E1E08DF8100ECFFDE /* Main.storyboard */; };
+		557DC0721E08DF8100ECFFDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 557DC0711E08DF8100ECFFDE /* Assets.xcassets */; };
+		557DC0751E08DF8100ECFFDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 557DC0731E08DF8100ECFFDE /* LaunchScreen.storyboard */; };
+		557DC08B1E08E08400ECFFDE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 557DC07F1E08E08400ECFFDE /* AppDelegate.m */; };
+		557DC08D1E08E08400ECFFDE /* OnePicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 557DC0891E08E08400ECFFDE /* OnePicCell.m */; };
+		557DC08E1E08E08400ECFFDE /* OnePicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 557DC08A1E08E08400ECFFDE /* OnePicCell.xib */; };
+		557DC0911E08E0B700ECFFDE /* DRDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 557DC0901E08E0B700ECFFDE /* DRDataService.m */; };
+		557DC0971E08E3A500ECFFDE /* DRHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 557DC0961E08E3A500ECFFDE /* DRHomeVC.m */; };
+		557DC09A1E08E91E00ECFFDE /* HomeTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 557DC0991E08E91E00ECFFDE /* HomeTopView.m */; };
+		557DC09E1E0A22D000ECFFDE /* NewsTagListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 557DC09D1E0A22D000ECFFDE /* NewsTagListModel.m */; };
+		557DC0A11E0A234100ECFFDE /* NewsTagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 557DC0A01E0A234100ECFFDE /* NewsTagModel.m */; };
+		557DC0A71E0A64D500ECFFDE /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 557DC0A61E0A64D500ECFFDE /* NewsModel.m */; };
+		557DC0AA1E0A64E900ECFFDE /* NewsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 557DC0A91E0A64E900ECFFDE /* NewsListModel.m */; };
+		557DC0AD1E0A685100ECFFDE /* ImgsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 557DC0AC1E0A685100ECFFDE /* ImgsModel.m */; };
+		557DC0B11E0B658300ECFFDE /* ThreePicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 557DC0AF1E0B658300ECFFDE /* ThreePicCell.m */; };
+		557DC0B21E0B658300ECFFDE /* ThreePicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 557DC0B01E0B658300ECFFDE /* ThreePicCell.xib */; };
+		557DC0B91E0BC03300ECFFDE /* TagsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 557DC0B81E0BC03300ECFFDE /* TagsView.m */; };
+		557DC0BD1E0CB7F900ECFFDE /* ZeroPicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 557DC0BB1E0CB7F900ECFFDE /* ZeroPicCell.m */; };
+		557DC0C31E0CC4B100ECFFDE /* NewsDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 557DC0C21E0CC4B100ECFFDE /* NewsDetail.storyboard */; };
+		557DC0C61E0CCA4B00ECFFDE /* NewsDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 557DC0C51E0CCA4B00ECFFDE /* NewsDetailVC.m */; };
+		558ADF5C1E0D115600035716 /* ZYImagesPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 558ADF5A1E0D115600035716 /* ZYImagesPlayer.m */; };
+		558ADF5F1E0E2B4F00035716 /* HomeToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 558ADF5E1E0E2B4F00035716 /* HomeToolBar.m */; };
+		558ADF991E13CE5F00035716 /* DRImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 558ADF981E13CE5F00035716 /* DRImageView.m */; };
+		558ADF9B1E13CE8700035716 /* ZeroPicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 558ADF9A1E13CE8700035716 /* ZeroPicCell.xib */; };
+		9BE04A8F1B3DBEC809D38AB3 /* libPods-DRBrower.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F11504C0C2CE3CA596CDA98C /* libPods-DRBrower.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D4B44C20B272556E4C01B53 /* Pods-DRBrower.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRBrower.release.xcconfig"; path = "Pods/Target Support Files/Pods-DRBrower/Pods-DRBrower.release.xcconfig"; sourceTree = "<group>"; };
+		557DC0621E08DF8100ECFFDE /* DRBrower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DRBrower.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		557DC0661E08DF8100ECFFDE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		557DC06B1E08DF8100ECFFDE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		557DC06C1E08DF8100ECFFDE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		557DC06F1E08DF8100ECFFDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		557DC0711E08DF8100ECFFDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		557DC0741E08DF8100ECFFDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		557DC0761E08DF8100ECFFDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		557DC07E1E08E08400ECFFDE /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		557DC07F1E08E08400ECFFDE /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		557DC0881E08E08400ECFFDE /* OnePicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePicCell.h; sourceTree = "<group>"; };
+		557DC0891E08E08400ECFFDE /* OnePicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePicCell.m; sourceTree = "<group>"; };
+		557DC08A1E08E08400ECFFDE /* OnePicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnePicCell.xib; sourceTree = "<group>"; };
+		557DC08F1E08E0B700ECFFDE /* DRDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRDataService.h; sourceTree = "<group>"; };
+		557DC0901E08E0B700ECFFDE /* DRDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRDataService.m; sourceTree = "<group>"; };
+		557DC0951E08E3A500ECFFDE /* DRHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRHomeVC.h; sourceTree = "<group>"; };
+		557DC0961E08E3A500ECFFDE /* DRHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRHomeVC.m; sourceTree = "<group>"; };
+		557DC0981E08E91E00ECFFDE /* HomeTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTopView.h; sourceTree = "<group>"; };
+		557DC0991E08E91E00ECFFDE /* HomeTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTopView.m; sourceTree = "<group>"; };
+		557DC09C1E0A22D000ECFFDE /* NewsTagListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTagListModel.h; sourceTree = "<group>"; };
+		557DC09D1E0A22D000ECFFDE /* NewsTagListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTagListModel.m; sourceTree = "<group>"; };
+		557DC09F1E0A234100ECFFDE /* NewsTagModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTagModel.h; sourceTree = "<group>"; };
+		557DC0A01E0A234100ECFFDE /* NewsTagModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTagModel.m; sourceTree = "<group>"; };
+		557DC0A31E0A262300ECFFDE /* DRBrowser-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DRBrowser-Prefix.pch"; sourceTree = "<group>"; };
+		557DC0A41E0A394400ECFFDE /* AllUrls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllUrls.h; sourceTree = "<group>"; };
+		557DC0A51E0A64D500ECFFDE /* NewsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsModel.h; sourceTree = "<group>"; };
+		557DC0A61E0A64D500ECFFDE /* NewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsModel.m; sourceTree = "<group>"; };
+		557DC0A81E0A64E900ECFFDE /* NewsListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListModel.h; sourceTree = "<group>"; };
+		557DC0A91E0A64E900ECFFDE /* NewsListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsListModel.m; sourceTree = "<group>"; };
+		557DC0AC1E0A685100ECFFDE /* ImgsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImgsModel.m; sourceTree = "<group>"; };
+		557DC0AE1E0B658300ECFFDE /* ThreePicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreePicCell.h; sourceTree = "<group>"; };
+		557DC0AF1E0B658300ECFFDE /* ThreePicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreePicCell.m; sourceTree = "<group>"; };
+		557DC0B01E0B658300ECFFDE /* ThreePicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThreePicCell.xib; sourceTree = "<group>"; };
+		557DC0B71E0BC03300ECFFDE /* TagsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagsView.h; sourceTree = "<group>"; };
+		557DC0B81E0BC03300ECFFDE /* TagsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagsView.m; sourceTree = "<group>"; };
+		557DC0BA1E0CB7F900ECFFDE /* ZeroPicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZeroPicCell.h; sourceTree = "<group>"; };
+		557DC0BB1E0CB7F900ECFFDE /* ZeroPicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZeroPicCell.m; sourceTree = "<group>"; };
+		557DC0C21E0CC4B100ECFFDE /* NewsDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewsDetail.storyboard; sourceTree = "<group>"; };
+		557DC0C41E0CCA4B00ECFFDE /* NewsDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDetailVC.h; sourceTree = "<group>"; };
+		557DC0C51E0CCA4B00ECFFDE /* NewsDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDetailVC.m; sourceTree = "<group>"; };
+		558ADF571E0D115600035716 /* DRImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRImageView.h; sourceTree = "<group>"; };
+		558ADF591E0D115600035716 /* ZYImagesPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYImagesPlayer.h; sourceTree = "<group>"; };
+		558ADF5A1E0D115600035716 /* ZYImagesPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYImagesPlayer.m; sourceTree = "<group>"; };
+		558ADF5D1E0E2B4F00035716 /* HomeToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeToolBar.h; sourceTree = "<group>"; };
+		558ADF5E1E0E2B4F00035716 /* HomeToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeToolBar.m; sourceTree = "<group>"; };
+		558ADF601E111A7B00035716 /* ImgsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImgsModel.h; sourceTree = "<group>"; };
+		558ADF981E13CE5F00035716 /* DRImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRImageView.m; sourceTree = "<group>"; };
+		558ADF9A1E13CE8700035716 /* ZeroPicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZeroPicCell.xib; sourceTree = "<group>"; };
+		7488FCDE566523736ED083EB /* Pods-DRBrower.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRBrower.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DRBrower/Pods-DRBrower.debug.xcconfig"; sourceTree = "<group>"; };
+		F11504C0C2CE3CA596CDA98C /* libPods-DRBrower.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DRBrower.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		557DC05F1E08DF8100ECFFDE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BE04A8F1B3DBEC809D38AB3 /* libPods-DRBrower.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1E30203B5C1DB66000836CAB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7488FCDE566523736ED083EB /* Pods-DRBrower.debug.xcconfig */,
+				1D4B44C20B272556E4C01B53 /* Pods-DRBrower.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		557DC0591E08DF8100ECFFDE = {
+			isa = PBXGroup;
+			children = (
+				557DC0641E08DF8100ECFFDE /* DRBrower */,
+				557DC0631E08DF8100ECFFDE /* Products */,
+				1E30203B5C1DB66000836CAB /* Pods */,
+				5C2C92254BB705D5D4190F62 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		557DC0631E08DF8100ECFFDE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				557DC0621E08DF8100ECFFDE /* DRBrower.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		557DC0641E08DF8100ECFFDE /* DRBrower */ = {
+			isa = PBXGroup;
+			children = (
+				557DC07C1E08E08400ECFFDE /* Class */,
+				557DC06B1E08DF8100ECFFDE /* ViewController.h */,
+				557DC06C1E08DF8100ECFFDE /* ViewController.m */,
+				557DC06E1E08DF8100ECFFDE /* Main.storyboard */,
+				557DC0C21E0CC4B100ECFFDE /* NewsDetail.storyboard */,
+				557DC0711E08DF8100ECFFDE /* Assets.xcassets */,
+				557DC0731E08DF8100ECFFDE /* LaunchScreen.storyboard */,
+				557DC0761E08DF8100ECFFDE /* Info.plist */,
+				557DC0651E08DF8100ECFFDE /* Supporting Files */,
+			);
+			path = DRBrower;
+			sourceTree = "<group>";
+		};
+		557DC0651E08DF8100ECFFDE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				557DC0661E08DF8100ECFFDE /* main.m */,
+				557DC0A31E0A262300ECFFDE /* DRBrowser-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		557DC07C1E08E08400ECFFDE /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				557DC07D1E08E08400ECFFDE /* App */,
+				557DC0801E08E08400ECFFDE /* DataSource */,
+				557DC0831E08E08400ECFFDE /* Public */,
+				557DC0841E08E08400ECFFDE /* scene */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		557DC07D1E08E08400ECFFDE /* App */ = {
+			isa = PBXGroup;
+			children = (
+				557DC07E1E08E08400ECFFDE /* AppDelegate.h */,
+				557DC07F1E08E08400ECFFDE /* AppDelegate.m */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		557DC0801E08E08400ECFFDE /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				557DC08F1E08E0B700ECFFDE /* DRDataService.h */,
+				557DC0901E08E0B700ECFFDE /* DRDataService.m */,
+				557DC0A41E0A394400ECFFDE /* AllUrls.h */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		557DC0831E08E08400ECFFDE /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				558ADF571E0D115600035716 /* DRImageView.h */,
+				558ADF981E13CE5F00035716 /* DRImageView.m */,
+				558ADF5A1E0D115600035716 /* ZYImagesPlayer.m */,
+				558ADF591E0D115600035716 /* ZYImagesPlayer.h */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		557DC0841E08E08400ECFFDE /* scene */ = {
+			isa = PBXGroup;
+			children = (
+				557DC0851E08E08400ECFFDE /* HomePage */,
+			);
+			path = scene;
+			sourceTree = "<group>";
+		};
+		557DC0851E08E08400ECFFDE /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				557DC09B1E0A21B500ECFFDE /* Model */,
+				557DC0861E08E08400ECFFDE /* Controller */,
+				557DC0871E08E08400ECFFDE /* View */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		557DC0861E08E08400ECFFDE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				557DC0951E08E3A500ECFFDE /* DRHomeVC.h */,
+				557DC0961E08E3A500ECFFDE /* DRHomeVC.m */,
+				557DC0C41E0CCA4B00ECFFDE /* NewsDetailVC.h */,
+				557DC0C51E0CCA4B00ECFFDE /* NewsDetailVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		557DC0871E08E08400ECFFDE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				557DC0BA1E0CB7F900ECFFDE /* ZeroPicCell.h */,
+				557DC0BB1E0CB7F900ECFFDE /* ZeroPicCell.m */,
+				558ADF9A1E13CE8700035716 /* ZeroPicCell.xib */,
+				557DC0881E08E08400ECFFDE /* OnePicCell.h */,
+				557DC0891E08E08400ECFFDE /* OnePicCell.m */,
+				557DC08A1E08E08400ECFFDE /* OnePicCell.xib */,
+				557DC0AE1E0B658300ECFFDE /* ThreePicCell.h */,
+				557DC0AF1E0B658300ECFFDE /* ThreePicCell.m */,
+				557DC0B01E0B658300ECFFDE /* ThreePicCell.xib */,
+				557DC0981E08E91E00ECFFDE /* HomeTopView.h */,
+				557DC0991E08E91E00ECFFDE /* HomeTopView.m */,
+				557DC0B71E0BC03300ECFFDE /* TagsView.h */,
+				557DC0B81E0BC03300ECFFDE /* TagsView.m */,
+				558ADF5D1E0E2B4F00035716 /* HomeToolBar.h */,
+				558ADF5E1E0E2B4F00035716 /* HomeToolBar.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		557DC09B1E0A21B500ECFFDE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				557DC09F1E0A234100ECFFDE /* NewsTagModel.h */,
+				557DC0A01E0A234100ECFFDE /* NewsTagModel.m */,
+				557DC09C1E0A22D000ECFFDE /* NewsTagListModel.h */,
+				557DC09D1E0A22D000ECFFDE /* NewsTagListModel.m */,
+				557DC0A51E0A64D500ECFFDE /* NewsModel.h */,
+				557DC0A61E0A64D500ECFFDE /* NewsModel.m */,
+				557DC0A81E0A64E900ECFFDE /* NewsListModel.h */,
+				557DC0A91E0A64E900ECFFDE /* NewsListModel.m */,
+				558ADF601E111A7B00035716 /* ImgsModel.h */,
+				557DC0AC1E0A685100ECFFDE /* ImgsModel.m */,
+			);
+			name = Model;
+			path = DRBrower/Class/scene/HomePage/Model;
+			sourceTree = SOURCE_ROOT;
+		};
+		5C2C92254BB705D5D4190F62 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F11504C0C2CE3CA596CDA98C /* libPods-DRBrower.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		557DC0611E08DF8100ECFFDE /* DRBrower */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 557DC0791E08DF8100ECFFDE /* Build configuration list for PBXNativeTarget "DRBrower" */;
+			buildPhases = (
+				70B6BBAA38B41CC6221AC1A9 /* [CP] Check Pods Manifest.lock */,
+				557DC05E1E08DF8100ECFFDE /* Sources */,
+				557DC05F1E08DF8100ECFFDE /* Frameworks */,
+				557DC0601E08DF8100ECFFDE /* Resources */,
+				2EF38A3533C7081B9FC2E404 /* [CP] Embed Pods Frameworks */,
+				77FC012778C8F9D1F2CE718C /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DRBrower;
+			productName = DRBrower;
+			productReference = 557DC0621E08DF8100ECFFDE /* DRBrower.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		557DC05A1E08DF8100ECFFDE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = QiQi;
+				TargetAttributes = {
+					557DC0611E08DF8100ECFFDE = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = J7LGQHZ8DG;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 557DC05D1E08DF8100ECFFDE /* Build configuration list for PBXProject "DRBrower" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 557DC0591E08DF8100ECFFDE;
+			productRefGroup = 557DC0631E08DF8100ECFFDE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				557DC0611E08DF8100ECFFDE /* DRBrower */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		557DC0601E08DF8100ECFFDE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				557DC0C31E0CC4B100ECFFDE /* NewsDetail.storyboard in Resources */,
+				557DC0751E08DF8100ECFFDE /* LaunchScreen.storyboard in Resources */,
+				557DC08E1E08E08400ECFFDE /* OnePicCell.xib in Resources */,
+				557DC0721E08DF8100ECFFDE /* Assets.xcassets in Resources */,
+				558ADF9B1E13CE8700035716 /* ZeroPicCell.xib in Resources */,
+				557DC0B21E0B658300ECFFDE /* ThreePicCell.xib in Resources */,
+				557DC0701E08DF8100ECFFDE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2EF38A3533C7081B9FC2E404 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DRBrower/Pods-DRBrower-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		70B6BBAA38B41CC6221AC1A9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		77FC012778C8F9D1F2CE718C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DRBrower/Pods-DRBrower-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		557DC05E1E08DF8100ECFFDE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				557DC0A71E0A64D500ECFFDE /* NewsModel.m in Sources */,
+				557DC06D1E08DF8100ECFFDE /* ViewController.m in Sources */,
+				558ADF5C1E0D115600035716 /* ZYImagesPlayer.m in Sources */,
+				557DC0971E08E3A500ECFFDE /* DRHomeVC.m in Sources */,
+				557DC0AD1E0A685100ECFFDE /* ImgsModel.m in Sources */,
+				557DC0BD1E0CB7F900ECFFDE /* ZeroPicCell.m in Sources */,
+				557DC0AA1E0A64E900ECFFDE /* NewsListModel.m in Sources */,
+				558ADF991E13CE5F00035716 /* DRImageView.m in Sources */,
+				557DC0C61E0CCA4B00ECFFDE /* NewsDetailVC.m in Sources */,
+				557DC0671E08DF8100ECFFDE /* main.m in Sources */,
+				557DC08D1E08E08400ECFFDE /* OnePicCell.m in Sources */,
+				557DC08B1E08E08400ECFFDE /* AppDelegate.m in Sources */,
+				557DC0911E08E0B700ECFFDE /* DRDataService.m in Sources */,
+				557DC09A1E08E91E00ECFFDE /* HomeTopView.m in Sources */,
+				557DC0B11E0B658300ECFFDE /* ThreePicCell.m in Sources */,
+				557DC09E1E0A22D000ECFFDE /* NewsTagListModel.m in Sources */,
+				558ADF5F1E0E2B4F00035716 /* HomeToolBar.m in Sources */,
+				557DC0B91E0BC03300ECFFDE /* TagsView.m in Sources */,
+				557DC0A11E0A234100ECFFDE /* NewsTagModel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		557DC06E1E08DF8100ECFFDE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				557DC06F1E08DF8100ECFFDE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		557DC0731E08DF8100ECFFDE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				557DC0741E08DF8100ECFFDE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		557DC0771E08DF8100ECFFDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		557DC0781E08DF8100ECFFDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		557DC07A1E08DF8100ECFFDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7488FCDE566523736ED083EB /* Pods-DRBrower.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = J7LGQHZ8DG;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/DRBrower/DRBrowser-Prefix.pch";
+				INFOPLIST_FILE = DRBrower/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhangyoukeji.DRBrower;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		557DC07B1E08DF8100ECFFDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D4B44C20B272556E4C01B53 /* Pods-DRBrower.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = J7LGQHZ8DG;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/DRBrower/DRBrowser-Prefix.pch";
+				INFOPLIST_FILE = DRBrower/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhangyoukeji.DRBrower;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		557DC05D1E08DF8100ECFFDE /* Build configuration list for PBXProject "DRBrower" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				557DC0771E08DF8100ECFFDE /* Debug */,
+				557DC0781E08DF8100ECFFDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		557DC0791E08DF8100ECFFDE /* Build configuration list for PBXNativeTarget "DRBrower" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				557DC07A1E08DF8100ECFFDE /* Debug */,
+				557DC07B1E08DF8100ECFFDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 557DC05A1E08DF8100ECFFDE /* Project object */;
+}

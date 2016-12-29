@@ -1,0 +1,27 @@
+//
+//  DRBrowser-Prefix.pch
+//  DRBrower
+//
+//  Created by QiQi on 2016/12/21.
+//  Copyright © 2016年 QiQi. All rights reserved.
+//
+
+#ifndef DRBrowser_Prefix_pch
+#define DRBrowser_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#pragma mark - 头文件
+#import <Mantle/Mantle.h>
+#import "DRDataService.h"
+#import "AllUrls.h"
+#import "UIImageView+WebCache.h"
+#import "DRImageView.h"
+#import "MJRefresh.h"
+
+#pragma mark - 常量
+#define TAG_ID_RECOMMEND @"100"
+#define SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height
+#define SCREEN_WIDTH [[UIScreen mainScreen]bounds].size.width
+
+#endif /* DRBrowser_Prefix_pch */

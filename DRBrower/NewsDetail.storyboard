@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--News DetailVC-->
+        <scene sceneID="Sjw-A9-jpC">
+            <objects>
+                <viewController storyboardIdentifier="NewsDetailVC" id="XcN-nb-MQ5" customClass="NewsDetailVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="825-yD-vMv"/>
+                        <viewControllerLayoutGuide type="bottom" id="ADC-Kw-n5d"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yhZ-Pe-YRP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EYG-4g-Bfb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XhS-tD-cB2">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem image="toolBar_back" style="plain" id="lM8-Rm-iXk">
+                                        <connections>
+                                            <action selector="BackButtonItemInToolBarActon:" destination="XcN-nb-MQ5" id="6Jo-AO-EjX"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Item" width="182" id="X6r-gl-Lhj"/>
+                                    <barButtonItem title="Item" id="BS8-Ia-yeZ"/>
+                                    <barButtonItem title="Item" id="xMr-xC-P5C"/>
+                                    <barButtonItem title="Item" id="krn-aQ-XnY"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="EYG-4g-Bfb" secondAttribute="trailing" id="3L7-X8-qfj"/>
+                            <constraint firstAttribute="trailing" secondItem="XhS-tD-cB2" secondAttribute="trailing" id="KcP-Bh-bVL"/>
+                            <constraint firstItem="ADC-Kw-n5d" firstAttribute="top" secondItem="XhS-tD-cB2" secondAttribute="bottom" id="dOf-d7-0pe"/>
+                            <constraint firstItem="EYG-4g-Bfb" firstAttribute="leading" secondItem="yhZ-Pe-YRP" secondAttribute="leading" id="eZM-tJ-ftB"/>
+                            <constraint firstItem="XhS-tD-cB2" firstAttribute="leading" secondItem="yhZ-Pe-YRP" secondAttribute="leading" id="hZU-gD-lSp"/>
+                            <constraint firstItem="EYG-4g-Bfb" firstAttribute="top" secondItem="yhZ-Pe-YRP" secondAttribute="top" id="mYm-pc-fPi"/>
+                            <constraint firstItem="XhS-tD-cB2" firstAttribute="top" secondItem="EYG-4g-Bfb" secondAttribute="bottom" id="r20-4F-YWk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="newsDetailWV" destination="EYG-4g-Bfb" id="1zf-Ne-i8T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mek-OT-Mle" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-298.39999999999998" y="95.802098950524751"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="toolBar_back" width="30" height="30"/>
+    </resources>
+</document>
