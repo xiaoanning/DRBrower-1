@@ -11,6 +11,14 @@
 
 @implementation NewsModel
 
+- (NSMutableArray *)imgs {
+    if ([_imgs count] > 3) {
+        NSInteger len = [_imgs count] - 3;
+        [_imgs removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(3, len)]];
+    }
+    return _imgs;
+}
+
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{};
 }

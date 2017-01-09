@@ -7,12 +7,17 @@
 //
 
 #import "DRHomeVC.h"
+#import "SearchVC.h"
+#import "NewsDetailVC.h"
+
 #import "NewsTagModel.h"
 #import "NewsModel.h"
+#import "WebsiteModel.h"
+
 #import "ZeroPicCell.h"
 #import "OnePicCell.h"
 #import "ThreePicCell.h"
-#import "NewsDetailVC.h"
+
 #import "HomeToolBar.h"
 
 static NSString *const onePicCellIdentifier = @"OnePicCell";
@@ -30,47 +35,49 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tagsViewHeightConstraint;
 @property (strong, nonatomic) NSArray *tagListArray;
 @property (strong, nonatomic) NSMutableArray *newsListArray;
-@property (strong, nonatomic) UIPanGestureRecognizer *panGP;
 @property (strong, nonatomic) NewsTagModel *newsTag;
+@property (assign, nonatomic) BOOL isHeight;
 
 @end
 
 @implementation DRHomeVC
 
+- (void)viewWillAppear:(BOOL)animated {
+    self.navigationController.navigationBarHidden = YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupPanGP];
     [self.view bringSubviewToFront:self.homeTableView];
-    self.tagsViewHeightConstraint.constant = 0;
     self.tagsView.delegate = self;
     self.homeToolBar.delegate = self;
-    [self getTagdata];
+    self.isHeight = YES;
+    
+    [self getTagData];
     [self getNewsByTag:nil type:nil];
     [self setupTableView];
     
     self.newsListArray = [NSMutableArray arrayWithCapacity:5];
     self.navigationController.navigationBarHidden = YES;
-    
-    [self headerRereshing];
+    self.homeTableView.bounces = NO;
     [self fooderRereshing];
+    [self headerRereshing];
+
+    
+    [self.homeTableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
     // Do any additional setup after loading the view.
 }
 
-- (void)setupPanGP {
-    self.panGP = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)];
-    [self.view addGestureRecognizer:self.panGP];
-}
-
 - (void)setupTableView {
-    self.homeTableView.scrollEnabled = NO;
+
     [self.homeTableView registerNib:[UINib nibWithNibName:@"OnePicCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:onePicCellIdentifier];
     [self.homeTableView registerNib:[UINib nibWithNibName:@"ThreePicCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:threePicCellIdentifier];
     [self.homeTableView registerNib:[UINib nibWithNibName:@"ZeroPicCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:zeroPicCellIdentifier];
 
 }
 
-///请求新闻分类标签
-- (void)getTagdata {
+//请求新闻分类标签
+- (void)getTagData {
     [NewsTagModel getNewsTagUrl:[NSString stringWithFormat:@"%@%@",BASE_URL,URL_GETTABS]
                      parameters:@{}
                           block:^(NewsTagListModel *tagList, NSError *error) {
@@ -103,50 +110,10 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
                     }];
 }
 
-///平移手势的回调方法
-- (void)panAction:(UIPanGestureRecognizer*)gesture{
-    //得到当前手势所在视图
-    //得到我们在视图上移动的偏移量
-    CGPoint currentPoint = [gesture translationInView:self.homeTableView.superview];
-    //通过2D仿射变换函数中与位移有关的函数实现视图位置变化
-    
-//    self.homeView.transform = CGAffineTransformTranslate(self.homeView.transform, 0, currentPoint.y);
-    NSLog(@"%f",currentPoint.y);
-    
-    if (currentPoint.y <0&&self.listTopConstraint.constant > 52&&self.listTopConstraint.constant <= 465) {
-        self.listTopConstraint.constant = self.listTopConstraint.constant-7;
-        self.topView.alpha = self.topView.alpha-0.01;
-    }
-    if (currentPoint.y >0&&self.listTopConstraint.constant <465) {
-        self.listTopConstraint.constant = self.listTopConstraint.constant+7;
-        self.topView.alpha = self.topView.alpha+0.01;
-    }
-    if (self.listTopConstraint.constant == 52 || self.listTopConstraint.constant < 100) {
-        [self showList];
-        
-    }
-    
-    NSLog(@"%f",self.listTopConstraint.constant);
-    //复原 每次都是从00点开始
-    [gesture setTranslation:CGPointZero inView:self.homeTableView.superview];
-}
 
-- (void)showList {
-    self.tagsViewHeightConstraint.constant = 52;
-    self.listTopConstraint.constant = 52;
-    self.homeTableView.scrollEnabled = YES;
-    [self.view removeGestureRecognizer:self.panGP];
-}
-
-- (void)showTopView {
-    self.tagsViewHeightConstraint.constant = 0;
-    self.listTopConstraint.constant = 465;
-    self.homeTableView.scrollEnabled = NO;
-    self.topView.alpha = 1;
-    [self setupPanGP];
-}
 
 #pragma mark - 上下拉刷新
+//下拉
 - (void)headerRereshing {
     
     __unsafe_unretained __typeof(self) weakSelf = self;
@@ -157,6 +124,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     }];
 }
 
+//上拉
 - (void)fooderRereshing {
     
     [self headerRereshing];
@@ -218,6 +186,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
     NewsModel *news = self.newsListArray[indexPath.row];
+    
     switch ([news.imgs count]) {
         case 0:{
             ZeroPicCell *cell = [tableView dequeueReusableCellWithIdentifier:zeroPicCellIdentifier];
@@ -251,12 +220,36 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self showList];
     NewsModel *news = self.newsListArray[indexPath.row];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"NewsDetail" bundle:[NSBundle mainBundle]];
     NewsDetailVC *newsDetailVC = (NewsDetailVC *)[storyboard instantiateViewControllerWithIdentifier:@"NewsDetailVC"];
     newsDetailVC.newsModel = news;
     [self.navigationController showViewController:newsDetailVC sender:nil];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+
+    if (self.isHeight == YES) {
+        return 435;
+    }
+    return 1;
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 1;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (self.isHeight == YES) {
+        NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"HomeTopView" owner:nil options:nil];
+        HomeTopView *top = [views lastObject];
+        top.delegate = self;
+        return top;
+    }
+    return nil;
+
+    
 }
 
 #pragma mark - custom delegate
@@ -268,11 +261,129 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 }
 
 - (void)touchUpHomeButtonAction {
-    [self showTopView];
+    self.listTopConstraint.constant = 0;
+    self.isHeight = YES;
+    self.homeTableView.bounces = NO;
+    self.homeTableView.contentOffset =  CGPointMake(0, 0);
+    [self.homeTableView reloadData];
+
 }
 
 - (void)touchUpMenuButtonAction {
     //TODO:longin menu
+}
+
+- (void)touchUpSearchButtonAction {
+    // 1.创建热门搜索
+//    NSArray *hotSeaches = nil;
+    // 2. 创建控制器
+    PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:nil searchBarPlaceholder:@"搜索或输入网址" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
+        // 开始搜索执行以下代码
+        // 如：跳转到指定控制器
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
+        SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
+        
+        [searchViewController.navigationController pushViewController:searchVC animated:YES];
+    }];
+    // 3. 设置风格
+    searchViewController.searchHistoryStyle = PYHotSearchStyleDefault; // 搜索历史风格为default
+//    searchViewController.hotSearchStyle = PYHotSearchStyleDefault; // 热门搜索风格为默认
+    // 4. 设置代理
+    searchViewController.delegate = self;
+    // 5. 跳转到搜索控制器
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchViewController];
+    [self presentViewController:nav  animated:NO completion:nil];
+//    [self.navigationController showViewController:nav sender:nil];
+}
+
+- (void)websiteViewSelectWithWebsite:(WebsiteModel *)website {
+    //TODO: website点击
+    if (website.icon&&website.name) {
+        
+        //
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
+        SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
+        searchVC.searchText = website.url;
+
+        [self.navigationController pushViewController:searchVC animated:YES];
+        NSLog(@"我被点击了 %@",website.name);
+
+    }else {
+        NSLog(@"添加网页");
+
+    }
+}
+
+#pragma mark - 监听
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+   
+    if ([keyPath isEqualToString:@"contentOffset"]) {
+        
+        CGPoint offset = [change[NSKeyValueChangeNewKey] CGPointValue];
+        
+        if (offset.y > 410) {
+            NSLog(@"%@",NSStringFromCGPoint(offset));
+            
+            self.isHeight = NO;
+            self.listTopConstraint.constant = 52;
+            self.homeTableView.bounces = YES;
+            [self.homeTableView reloadData];
+        }
+        
+    }
+
+    
+}
+
+#pragma mark - search
+- (void)searchViewController:(PYSearchViewController *)searchViewController searchTextDidChange:(UISearchBar *)seachBar searchText:(NSString *)searchText {
+    
+    
+    if (searchText.length) { // 与搜索条件再搜索
+        
+            //TODO: 搜索
+        if ([Tools urlValidation:searchText] != nil) {
+            //TODO: 跳转网页
+            searchText = [Tools urlValidation:searchText];
+
+        }else if([Tools urlValidation:searchText] == nil){
+            //TODO: 跳转百度搜索
+        }
+        
+        // 根据条件发送查询（这里模拟搜索）
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ // 搜索完毕
+//            // 显示建议搜索结果
+//            NSMutableArray *searchSuggestionsM = [NSMutableArray array];
+//            for (int i = 0; i < arc4random_uniform(5) + 10; i++) {
+//                NSString *searchSuggestion = [NSString stringWithFormat:@"搜索建议 %d", i];
+//                [searchSuggestionsM addObject:searchSuggestion];
+//            }
+//            // 返回
+//            searchViewController.searchSuggestions = searchSuggestionsM;
+//        });
+    }
+}
+
+- (void)searchViewController:(PYSearchViewController *)searchViewController didSearchWithsearchBar:(UISearchBar *)searchBar searchText:(NSString *)searchText {
+    NSLog(@"%@",searchText);
+    if (searchText.length) { // 与搜索条件再搜索
+
+    //TODO: 搜索
+//    if ([Tools urlValidation:searchText] != nil) {
+//        //TODO: 跳转网页
+//        searchText = [Tools urlValidation:searchText];
+//        
+//    }else if([Tools urlValidation:searchText] == nil){
+//        //TODO: 跳转百度搜索
+//    }
+//    
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
+        SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
+        searchVC.searchText = searchText;
+        searchVC.searchViewController = searchViewController;
+        [searchViewController.navigationController pushViewController:searchVC animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

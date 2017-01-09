@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--SearchVC-->
+        <scene sceneID="Eag-m2-0Ak">
+            <objects>
+                <viewController storyboardIdentifier="SearchVC" id="ged-YR-UaG" customClass="SearchVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Nx6-ng-zl0"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xv9-zT-Hg7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qMC-h6-QBA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="58d-7l-nbo">
+                                <rect key="frame" x="0.0" y="44" width="375" height="579"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ggf-ss-5p1" customClass="HomeToolBar">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z0O-FG-icD">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3iR-3W-idr">
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="44"/>
+                                                <state key="normal" image="toolBar_back"/>
+                                                <connections>
+                                                    <action selector="didclickBackButtonAction:" destination="Ggf-ss-5p1" eventType="touchUpInside" id="Q6h-iK-Iwu"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lui-eE-tv9">
+                                                <rect key="frame" x="75" y="0.0" width="75" height="44"/>
+                                                <state key="normal" image="toolBar_go"/>
+                                                <connections>
+                                                    <action selector="didclickGoButtonAction:" destination="Ggf-ss-5p1" eventType="touchUpInside" id="JRE-22-jmO"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hqw-fB-aW2">
+                                                <rect key="frame" x="150" y="0.0" width="75" height="44"/>
+                                                <state key="normal" image="toolBar_menu"/>
+                                                <connections>
+                                                    <action selector="didclickMenuButtonAction:" destination="Ggf-ss-5p1" eventType="touchUpInside" id="eEl-cO-q5X"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8I-ej-bal">
+                                                <rect key="frame" x="225" y="0.0" width="75" height="44"/>
+                                                <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="didclickPageButtonAction:" destination="Ggf-ss-5p1" eventType="touchUpInside" id="15v-YU-wXa"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VeR-pv-j63">
+                                                <rect key="frame" x="300" y="0.0" width="75" height="44"/>
+                                                <state key="normal" image="toolbar_home"/>
+                                                <connections>
+                                                    <action selector="didclickHomeButtonAction:" destination="Ggf-ss-5p1" eventType="touchUpInside" id="Pei-DS-VIQ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="lui-eE-tv9" firstAttribute="width" secondItem="V8I-ej-bal" secondAttribute="width" id="5fh-2B-MxG"/>
+                                            <constraint firstItem="3iR-3W-idr" firstAttribute="width" secondItem="lui-eE-tv9" secondAttribute="width" id="9Ud-En-bhL"/>
+                                            <constraint firstItem="V8I-ej-bal" firstAttribute="width" secondItem="Hqw-fB-aW2" secondAttribute="width" id="fyK-Bf-oa7"/>
+                                            <constraint firstItem="Hqw-fB-aW2" firstAttribute="width" secondItem="VeR-pv-j63" secondAttribute="width" id="n6B-gt-kea"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92931067940000001" green="0.92946994299999997" blue="0.92930072549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="z0O-FG-icD" firstAttribute="top" secondItem="Ggf-ss-5p1" secondAttribute="top" id="4GG-Xa-R8y"/>
+                                    <constraint firstAttribute="trailing" secondItem="z0O-FG-icD" secondAttribute="trailing" id="A7E-OF-fL7"/>
+                                    <constraint firstItem="z0O-FG-icD" firstAttribute="leading" secondItem="Ggf-ss-5p1" secondAttribute="leading" id="Xd9-62-4oV"/>
+                                    <constraint firstAttribute="height" constant="44" id="Zn2-7R-bkp"/>
+                                    <constraint firstAttribute="bottom" secondItem="z0O-FG-icD" secondAttribute="bottom" id="vzj-ZX-DIg"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="backBtn" destination="3iR-3W-idr" id="Dg8-Hy-jsK"/>
+                                    <outlet property="goBtn" destination="lui-eE-tv9" id="hWR-Go-q1V"/>
+                                    <outlet property="homeBtn" destination="VeR-pv-j63" id="FtV-Gp-3ZU"/>
+                                    <outlet property="menuBtn" destination="Hqw-fB-aW2" id="QGv-WG-d2d"/>
+                                    <outlet property="pageBtn" destination="V8I-ej-bal" id="9gk-cP-Sfg"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TfI-L2-82x">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7b5-fN-d6k">
+                                        <rect key="frame" x="8" y="20" width="359" height="36"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwg-aa-aPI">
+                                                <rect key="frame" x="36" y="0.0" width="287" height="36"/>
+                                                <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="17"/>
+                                                <state key="normal" title="搜索或输入网址">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didClickTitleButtonAction:" destination="ged-YR-UaG" eventType="touchUpInside" id="6CY-6l-8oU"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKu-Nd-Bs2">
+                                                <rect key="frame" x="323" y="0.0" width="36" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="n51-BY-2FR"/>
+                                                    <constraint firstAttribute="width" constant="36" id="tZO-h7-66O"/>
+                                                </constraints>
+                                                <state key="normal" image="search_reload"/>
+                                                <connections>
+                                                    <action selector="didClickReloadButtonAction:" destination="ged-YR-UaG" eventType="touchUpInside" id="bcN-1Y-Gcq"/>
+                                                </connections>
+                                            </button>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_fangdajing" translatesAutoresizingMaskIntoConstraints="NO" id="aJ6-Kx-4mR">
+                                                <rect key="frame" x="8" y="8" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="eyP-T9-7BV"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.10772746598639456" green="1" blue="1" alpha="0.21413590604026847" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="fwg-aa-aPI" firstAttribute="top" secondItem="7b5-fN-d6k" secondAttribute="top" id="RvW-Kz-53o"/>
+                                            <constraint firstAttribute="bottom" secondItem="fwg-aa-aPI" secondAttribute="bottom" id="SLH-VF-8q8"/>
+                                            <constraint firstItem="cKu-Nd-Bs2" firstAttribute="leading" secondItem="fwg-aa-aPI" secondAttribute="trailing" id="Uy6-qP-yAl"/>
+                                            <constraint firstAttribute="bottom" secondItem="aJ6-Kx-4mR" secondAttribute="bottom" constant="8" id="WEp-Oo-dMj"/>
+                                            <constraint firstItem="aJ6-Kx-4mR" firstAttribute="leading" secondItem="7b5-fN-d6k" secondAttribute="leading" constant="8" id="hhB-LJ-7dF"/>
+                                            <constraint firstItem="fwg-aa-aPI" firstAttribute="leading" secondItem="aJ6-Kx-4mR" secondAttribute="trailing" constant="8" id="kgd-TS-1u8"/>
+                                            <constraint firstItem="cKu-Nd-Bs2" firstAttribute="top" secondItem="7b5-fN-d6k" secondAttribute="top" id="vTk-2P-zCf"/>
+                                            <constraint firstItem="aJ6-Kx-4mR" firstAttribute="top" secondItem="7b5-fN-d6k" secondAttribute="top" constant="8" id="xUN-6r-dht"/>
+                                            <constraint firstAttribute="trailing" secondItem="cKu-Nd-Bs2" secondAttribute="trailing" id="y1a-E0-Ipz"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="7b5-fN-d6k" secondAttribute="trailing" constant="8" id="5wE-c8-ZtS"/>
+                                    <constraint firstItem="7b5-fN-d6k" firstAttribute="leading" secondItem="TfI-L2-82x" secondAttribute="leading" constant="8" id="ALw-F3-gLi"/>
+                                    <constraint firstItem="7b5-fN-d6k" firstAttribute="top" secondItem="TfI-L2-82x" secondAttribute="top" constant="20" id="b39-nV-Rap"/>
+                                    <constraint firstAttribute="bottom" secondItem="7b5-fN-d6k" secondAttribute="bottom" constant="8" id="n7D-i2-AEl"/>
+                                    <constraint firstAttribute="height" constant="64" id="sXf-lY-Ynr"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ggf-ss-5p1" firstAttribute="top" secondItem="58d-7l-nbo" secondAttribute="bottom" id="M4Y-fR-Gj5"/>
+                            <constraint firstItem="58d-7l-nbo" firstAttribute="leading" secondItem="qMC-h6-QBA" secondAttribute="leading" id="Qnx-kj-r4J"/>
+                            <constraint firstItem="Ggf-ss-5p1" firstAttribute="leading" secondItem="qMC-h6-QBA" secondAttribute="leading" id="Xld-mj-Wm9"/>
+                            <constraint firstAttribute="trailing" secondItem="Ggf-ss-5p1" secondAttribute="trailing" id="Y1O-KS-McF"/>
+                            <constraint firstItem="TfI-L2-82x" firstAttribute="leading" secondItem="qMC-h6-QBA" secondAttribute="leading" id="bWF-R0-6xy"/>
+                            <constraint firstItem="Xv9-zT-Hg7" firstAttribute="top" secondItem="Ggf-ss-5p1" secondAttribute="bottom" id="dlc-eJ-IbX"/>
+                            <constraint firstItem="58d-7l-nbo" firstAttribute="top" secondItem="TfI-L2-82x" secondAttribute="bottom" constant="-20" id="fHu-Ok-ocf"/>
+                            <constraint firstAttribute="trailing" secondItem="58d-7l-nbo" secondAttribute="trailing" id="mMC-Sj-TQR"/>
+                            <constraint firstAttribute="trailing" secondItem="TfI-L2-82x" secondAttribute="trailing" id="xUl-Wh-aR4"/>
+                            <constraint firstItem="TfI-L2-82x" firstAttribute="top" secondItem="qMC-h6-QBA" secondAttribute="top" id="yOt-Hl-tr0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="homeToolBar" destination="Ggf-ss-5p1" id="aCU-PF-dwI"/>
+                        <outlet property="searchWV" destination="58d-7l-nbo" id="Z88-aQ-LuQ"/>
+                        <outlet property="titleBtn" destination="fwg-aa-aPI" id="FSa-qs-eC9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FA1-ad-uu2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-817" y="72"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="search_fangdajing" width="20" height="20"/>
+        <image name="search_reload" width="20" height="20"/>
+        <image name="toolBar_back" width="30" height="30"/>
+        <image name="toolBar_go" width="30" height="30"/>
+        <image name="toolBar_menu" width="30" height="30"/>
+        <image name="toolbar_home" width="30" height="30"/>
+    </resources>
+</document>

@@ -17,10 +17,14 @@
     // Drawing code
 }
 */
-
+- (CGSize)drImageViewSize {
+    _drImageViewSize = self.frame.size;
+    return _drImageViewSize;
+}
 
 - (void)cutImage:(UIImage*)image
 {
+
     //压缩图片
     CGSize newSize;
     CGImageRef imageRef = nil;
