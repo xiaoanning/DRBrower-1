@@ -13,18 +13,35 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+        UILongPressGestureRecognizer * longPressGesture =[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(handleLongPressGesture:)];
+        longPressGesture.minimumPressDuration=0.5f;//设置长按 时间
+        [self.contentView addGestureRecognizer:longPressGesture];
+        
+    
     // Initialization code
 }
 
 - (void)websiteCell:(WebsiteCell *)cell model:(WebsiteModel *)model {
-    if (!model.icon&&!model.name) {
-        self.iconView.image = [UIImage imageNamed:@"add"];
-        self.nameLabel.text = NSLocalizedString(@"添加", nil);
-    }else {
+    if (model.icon&&model.name) {
         self.nameLabel.text = model.name;
-        [self.iconView sd_setImageWithURL:[NSURL URLWithString:model.icon]
-                         placeholderImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[[NSURL URLWithString:model.icon] absoluteString]]completed:nil];
+        if ([model.icon isEqualToString:@"add"]) {
+            self.iconView.image = [UIImage imageNamed:model.icon];
+        }else {
+            
+            [self.iconView sd_setImageWithURL:[NSURL URLWithString:model.icon]
+                             placeholderImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[[NSURL URLWithString:model.icon] absoluteString]]completed:nil];
+        }
 
+    } else {
+        self.nameLabel.text = @"";
+        self.iconView.image = nil;
+    }
+}
+
+- (void)handleLongPressGesture:(UIGestureRecognizer *)gesture {
+    if(_delegate && [_delegate respondsToSelector:@selector(longPressGesture:)]){
+        [_delegate longPressGesture:self.model];
     }
 }
 

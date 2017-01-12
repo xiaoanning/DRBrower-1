@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WebsiteRecommendVC : UIViewController
+@interface WebsiteRecommendVC : UIViewController<UITableViewDelegate, UITableViewDataSource,AXStretchableSubViewControllerViewSource>
+
+@property (strong, nonatomic) NSMutableArray *websiteArray;
 
 @end

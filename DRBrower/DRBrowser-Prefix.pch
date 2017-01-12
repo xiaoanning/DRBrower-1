@@ -14,6 +14,7 @@
 #pragma mark - 头文件
 #import <Mantle/Mantle.h>
 #import "DRDataService.h"
+#import "DRLocaldData.h"
 #import "AllUrls.h"
 #import "AXStretchableHeaderTabViewController.h"
 #import "UIImageView+WebCache.h"

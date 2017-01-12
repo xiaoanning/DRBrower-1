@@ -1,21 +1,23 @@
 //
-//  WebCollectVC.m
+//  WebsiteCollectVC.m
 //  DRBrower
 //
 //  Created by QiQi on 2017/1/9.
 //  Copyright © 2017年 QiQi. All rights reserved.
 //
 
-#import "WebCollectVC.h"
+#import "WebsiteCollectVC.h"
 
-@interface WebCollectVC ()
+@interface WebsiteCollectVC ()
 
 @end
 
-@implementation WebCollectVC
+@implementation WebsiteCollectVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"收藏" image:nil tag:0];
+
     // Do any additional setup after loading the view.
 }
 

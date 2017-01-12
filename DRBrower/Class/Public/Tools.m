@@ -13,6 +13,7 @@
 
 @implementation Tools
 
+#pragma mark - 正则表达式判断网址合法
 + (NSString *)urlValidation:(NSString *)string {
     
     if ([[string lowercaseString] hasPrefix:@"http://"] || [[string lowercaseString] hasPrefix:@"https://"] ) {
@@ -70,6 +71,18 @@
     return string;
 }
 
+#pragma 判断数组元素个数 决定pageControl的高度个页数
++ (BOOL)isRemainder:(NSArray *)array {
+    if ([array count] <= 10) {
+        return NO;
+    }
+    if([array count]%10 > 0 || [array count]%10 == 0) {
+        return YES;
+    }
+    else {
+        return NO;
+    }
+}
 
 
 @end

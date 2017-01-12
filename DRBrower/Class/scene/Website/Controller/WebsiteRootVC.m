@@ -8,7 +8,7 @@
 
 #import "WebsiteRootVC.h"
 #import "WebsiteRecommendVC.h"
-#import "WebCollectVC.h"
+#import "WebsiteCollectVC.h"
 #import "WebsiteCustomVC.h"
 
 @interface WebsiteRootVC ()
@@ -19,7 +19,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBarHidden = NO;
+    [self setupSubVC];
     // Do any additional setup after loading the view.
+}
+
+- (void)setupSubVC {
+    WebsiteRecommendVC *recommendVC =
+    [[WebsiteRecommendVC alloc] initWithNibName:@"WebsiteRecommendVC"
+                                         bundle:nil];
+    recommendVC.websiteArray = self.websiteArray;
+    WebsiteCollectVC *collectVC = [[WebsiteCollectVC alloc] init];
+    WebsiteCustomVC *customVC = [[WebsiteCustomVC alloc] init];
+    
+    NSArray *viewControllers = @[recommendVC, collectVC, customVC];
+    self.viewControllers = viewControllers;
 }
 
 - (void)didReceiveMemoryWarning {

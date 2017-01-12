@@ -1,5 +1,5 @@
 //
-//  WebCollectVC.h
+//  WebsiteCollectVC.h
 //  DRBrower
 //
 //  Created by QiQi on 2017/1/9.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WebCollectVC : UIViewController
+@interface WebsiteCollectVC : UIViewController
 
 @end

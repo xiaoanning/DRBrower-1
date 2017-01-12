@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,9 +12,12 @@
         <scene sceneID="3Xz-j9-WBh">
             <objects>
                 <navigationController id="2Kh-V4-s1Q" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0T9-Nb-VoK">
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="0T9-Nb-VoK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="04D-dB-9AP"/>
@@ -34,7 +36,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="75G-ne-0gh" customClass="TagsView">
@@ -56,44 +58,38 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tYS-3i-TPg" customClass="HomeToolBar">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="559" width="375" height="44"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="coj-CL-Hum">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="coj-CL-Hum">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltY-JM-FZY">
-                                                <rect key="frame" x="0.0" y="0.0" width="74.5" height="44"/>
+                                                <rect key="frame" x="0.0" y="7" width="75" height="30"/>
                                                 <state key="normal" image="toolBar_back"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9TX-ID-RtS">
-                                                <rect key="frame" x="74.5" y="0.0" width="75" height="44"/>
+                                                <rect key="frame" x="75" y="7" width="75" height="30"/>
                                                 <state key="normal" image="toolBar_go"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6Z-PD-Qa6">
-                                                <rect key="frame" x="149.5" y="0.0" width="75" height="44"/>
+                                                <rect key="frame" x="150" y="7" width="75" height="30"/>
                                                 <state key="normal" image="toolBar_menu"/>
                                                 <connections>
                                                     <action selector="didclickMenuButtonAction:" destination="tYS-3i-TPg" eventType="touchUpInside" id="gBi-EM-FJs"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LaJ-rD-TbH">
-                                                <rect key="frame" x="224.5" y="0.0" width="75" height="44"/>
+                                                <rect key="frame" x="225" y="7" width="75" height="30"/>
                                                 <state key="normal" title="Button"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fK-Qx-AkB">
-                                                <rect key="frame" x="299.5" y="0.0" width="75.5" height="44"/>
+                                                <rect key="frame" x="300" y="7" width="75" height="30"/>
                                                 <state key="normal" image="toolbar_home"/>
                                                 <connections>
                                                     <action selector="didclickHomeButtonAction:" destination="tYS-3i-TPg" eventType="touchUpInside" id="4wI-YR-jy5"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="9TX-ID-RtS" firstAttribute="width" secondItem="LaJ-rD-TbH" secondAttribute="width" id="6QO-EE-dcj"/>
-                                            <constraint firstItem="ltY-JM-FZY" firstAttribute="width" secondItem="9TX-ID-RtS" secondAttribute="width" id="OPM-RV-Wqn"/>
-                                            <constraint firstItem="a6Z-PD-Qa6" firstAttribute="width" secondItem="1fK-Qx-AkB" secondAttribute="width" id="h2Q-8F-Mwm"/>
-                                            <constraint firstItem="LaJ-rD-TbH" firstAttribute="width" secondItem="a6Z-PD-Qa6" secondAttribute="width" id="psK-FB-Zzu"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.92931067940000001" green="0.92946994299999997" blue="0.92930072549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -113,7 +109,7 @@
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="enE-2o-eXQ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="EVA-6a-bPO"/>

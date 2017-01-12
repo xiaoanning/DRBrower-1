@@ -9,6 +9,7 @@
 #import "DRHomeVC.h"
 #import "SearchVC.h"
 #import "NewsDetailVC.h"
+#import "WebsiteRootVC.h"
 
 #import "NewsTagModel.h"
 #import "NewsModel.h"
@@ -31,10 +32,15 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 
 @property (weak, nonatomic) IBOutlet HomeToolBar *homeToolBar;
 @property (weak, nonatomic) IBOutlet TagsView *tagsView;
+@property (strong, nonatomic) HomeTopView *top;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *listTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tagsViewHeightConstraint;
+
 @property (strong, nonatomic) NSArray *tagListArray;
 @property (strong, nonatomic) NSMutableArray *newsListArray;
+@property (strong, nonatomic) NSMutableArray *websiteArray;
+
 @property (strong, nonatomic) NewsTagModel *newsTag;
 @property (assign, nonatomic) BOOL isHeight;
 
@@ -44,6 +50,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
+    [self.homeTableView reloadData];
 }
 
 - (void)viewDidLoad {
@@ -55,11 +62,12 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     
     [self getTagData];
     [self getNewsByTag:nil type:nil];
+    [self getWebsiteData];
+    
     [self setupTableView];
     
     self.newsListArray = [NSMutableArray arrayWithCapacity:5];
     self.navigationController.navigationBarHidden = YES;
-    self.homeTableView.bounces = NO;
     [self fooderRereshing];
     [self headerRereshing];
 
@@ -69,13 +77,14 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 }
 
 - (void)setupTableView {
-
+    self.homeTableView.bounces = NO;
     [self.homeTableView registerNib:[UINib nibWithNibName:@"OnePicCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:onePicCellIdentifier];
     [self.homeTableView registerNib:[UINib nibWithNibName:@"ThreePicCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:threePicCellIdentifier];
     [self.homeTableView registerNib:[UINib nibWithNibName:@"ZeroPicCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:zeroPicCellIdentifier];
 
 }
 
+#pragma mark - 数据请求
 //请求新闻分类标签
 - (void)getTagData {
     [NewsTagModel getNewsTagUrl:[NSString stringWithFormat:@"%@%@",BASE_URL,URL_GETTABS]
@@ -99,9 +108,6 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
                             if ([type isEqualToString:DOWN_LOAD]) {
                                 [self.newsListArray insertObjects:newsList.data
                                                         atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [newsList.data count])]];
-                            }else if ([type isEqualToString:UP_LOAD]) {
-                                [self.newsListArray insertObjects:newsList.data
-                                                        atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange([self.newsListArray count], [newsList.data count])]];
                             }else {
                                 [self.newsListArray addObjectsFromArray:newsList.data];
                             }
@@ -110,7 +116,30 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
                     }];
 }
 
+//获取网站
+- (void)getWebsiteData {
+    [WebsiteModel getWebsiteUrl:[NSString stringWithFormat:@"%@%@",BASE_URL,URL_GETWEBSITE]
+                     parameters:@{}
+                          block:^(WebsiteListModel *websiteList, NSError *error) {
 
+                              self.websiteArray = websiteList.data;
+                              
+                              if ([DRLocaldData achieveWebsiteData] == nil) {
+                                 
+                                  NSMutableArray *array = [NSMutableArray arrayWithArray:websiteList.data];
+                                  [array removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(9, [array count]-9)]];
+                                  
+                                  WebsiteModel *addWebsite = [[WebsiteModel alloc] init];
+                                  addWebsite.name = NSLocalizedString(@"添加", nil);
+                                  addWebsite.icon = @"add";
+                                  [array addObject:addWebsite];
+                                  
+                                  [DRLocaldData saveWebsiteData:array];
+                                  NSLog(@"%@",array);
+                              }
+                          }];
+    
+}
 
 #pragma mark - 上下拉刷新
 //下拉
@@ -230,7 +259,14 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
 
     if (self.isHeight == YES) {
-        return 435;
+        
+        if ([Tools isRemainder:[DRLocaldData achieveWebsiteData]] == YES) {
+
+            return 435;
+
+        }else {
+            return 435-37;
+        }
     }
     return 1;
     
@@ -243,9 +279,9 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (self.isHeight == YES) {
         NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"HomeTopView" owner:nil options:nil];
-        HomeTopView *top = [views lastObject];
-        top.delegate = self;
-        return top;
+        self.top = [views lastObject];
+        self.top.delegate = self;
+        return self.top;
     }
     return nil;
 
@@ -253,12 +289,15 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 }
 
 #pragma mark - custom delegate
+//频道
 - (void)touchUpChannelButtonAction:(NSInteger)buttonTags {
     [self.newsListArray removeAllObjects];
     NewsTagModel *newstag = self.tagListArray[buttonTags];
     [self getNewsByTag:newstag type:nil];
     self.newsTag = newstag;
 }
+
+//homeToolBar
 
 - (void)touchUpHomeButtonAction {
     self.listTopConstraint.constant = 0;
@@ -270,9 +309,10 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 }
 
 - (void)touchUpMenuButtonAction {
-    //TODO:longin menu
+    //TODO:login menu
 }
 
+//搜索
 - (void)touchUpSearchButtonAction {
     // 1.创建热门搜索
 //    NSArray *hotSeaches = nil;
@@ -280,7 +320,6 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:nil searchBarPlaceholder:@"搜索或输入网址" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
         // 开始搜索执行以下代码
         // 如：跳转到指定控制器
-        
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
         SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
         
@@ -294,14 +333,13 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     // 5. 跳转到搜索控制器
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchViewController];
     [self presentViewController:nav  animated:NO completion:nil];
-//    [self.navigationController showViewController:nav sender:nil];
 }
 
+//website collection 点击事件
 - (void)websiteViewSelectWithWebsite:(WebsiteModel *)website {
-    //TODO: website点击
-    if (website.icon&&website.name) {
+    
+    if (website.icon&&website.url) {
         
-        //
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
         SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
         searchVC.searchText = website.url;
@@ -309,9 +347,52 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
         [self.navigationController pushViewController:searchVC animated:YES];
         NSLog(@"我被点击了 %@",website.name);
 
-    }else {
+    }else if([website.icon isEqualToString:@"add"]){
+        
+        WebsiteRootVC *websiteRootVC = [[WebsiteRootVC alloc] init];
+        websiteRootVC.websiteArray = self.websiteArray;
+        [self.navigationController showViewController:websiteRootVC sender:nil];
+        
         NSLog(@"添加网页");
 
+    }
+}
+
+//弹窗 
+- (void)homeTopViewpresentView:(WebsiteModel *)model {
+    
+    
+    if (model.name && model.url) {
+        
+        UIAlertController *alert =
+        [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"确定要删除 %@ 吗？",model.name]
+                                            message:nil
+                                     preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancelAction =
+        [UIAlertAction actionWithTitle:@"取消"
+                                 style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * _Nonnull action) {
+                                   
+                               }];
+        
+        UIAlertAction *confirmAction =
+        [UIAlertAction actionWithTitle:@"确定"
+                                 style:UIAlertActionStyleDestructive
+                               handler:^(UIAlertAction * _Nonnull action) {
+                                   NSMutableArray *array = [DRLocaldData achieveWebsiteData];
+                                   if ([array containsObject:model]) {
+                                       [array removeObject:model];
+                                       [DRLocaldData saveWebsiteData:array];
+                                       [self.homeTableView reloadData];
+                                   }
+                                   
+                               }];
+        
+        [alert addAction:confirmAction];
+        [alert addAction:cancelAction];
+
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 
@@ -338,19 +419,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 
 #pragma mark - search
 - (void)searchViewController:(PYSearchViewController *)searchViewController searchTextDidChange:(UISearchBar *)seachBar searchText:(NSString *)searchText {
-    
-    
     if (searchText.length) { // 与搜索条件再搜索
-        
-            //TODO: 搜索
-        if ([Tools urlValidation:searchText] != nil) {
-            //TODO: 跳转网页
-            searchText = [Tools urlValidation:searchText];
-
-        }else if([Tools urlValidation:searchText] == nil){
-            //TODO: 跳转百度搜索
-        }
-        
         // 根据条件发送查询（这里模拟搜索）
 //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ // 搜索完毕
 //            // 显示建议搜索结果
@@ -368,16 +437,6 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 - (void)searchViewController:(PYSearchViewController *)searchViewController didSearchWithsearchBar:(UISearchBar *)searchBar searchText:(NSString *)searchText {
     NSLog(@"%@",searchText);
     if (searchText.length) { // 与搜索条件再搜索
-
-    //TODO: 搜索
-//    if ([Tools urlValidation:searchText] != nil) {
-//        //TODO: 跳转网页
-//        searchText = [Tools urlValidation:searchText];
-//        
-//    }else if([Tools urlValidation:searchText] == nil){
-//        //TODO: 跳转百度搜索
-//    }
-//    
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
         SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
         searchVC.searchText = searchText;

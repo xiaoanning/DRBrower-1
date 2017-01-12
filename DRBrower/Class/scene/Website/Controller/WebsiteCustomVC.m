@@ -16,6 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"自定义" image:nil tag:0];
+
     // Do any additional setup after loading the view.
 }
 

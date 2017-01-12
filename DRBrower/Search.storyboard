@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,51 +27,45 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ggf-ss-5p1" customClass="HomeToolBar">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z0O-FG-icD">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="z0O-FG-icD">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3iR-3W-idr">
-                                                <rect key="frame" x="0.0" y="0.0" width="75" height="44"/>
+                                                <rect key="frame" x="0.0" y="7" width="75" height="30"/>
                                                 <state key="normal" image="toolBar_back"/>
                                                 <connections>
                                                     <action selector="didclickBackButtonAction:" destination="Ggf-ss-5p1" eventType="touchUpInside" id="Q6h-iK-Iwu"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lui-eE-tv9">
-                                                <rect key="frame" x="75" y="0.0" width="75" height="44"/>
+                                                <rect key="frame" x="75" y="7" width="75" height="30"/>
                                                 <state key="normal" image="toolBar_go"/>
                                                 <connections>
                                                     <action selector="didclickGoButtonAction:" destination="Ggf-ss-5p1" eventType="touchUpInside" id="JRE-22-jmO"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hqw-fB-aW2">
-                                                <rect key="frame" x="150" y="0.0" width="75" height="44"/>
+                                                <rect key="frame" x="150" y="7" width="75" height="30"/>
                                                 <state key="normal" image="toolBar_menu"/>
                                                 <connections>
                                                     <action selector="didclickMenuButtonAction:" destination="Ggf-ss-5p1" eventType="touchUpInside" id="eEl-cO-q5X"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8I-ej-bal">
-                                                <rect key="frame" x="225" y="0.0" width="75" height="44"/>
+                                                <rect key="frame" x="225" y="7" width="75" height="30"/>
                                                 <state key="normal" title="Button"/>
                                                 <connections>
                                                     <action selector="didclickPageButtonAction:" destination="Ggf-ss-5p1" eventType="touchUpInside" id="15v-YU-wXa"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VeR-pv-j63">
-                                                <rect key="frame" x="300" y="0.0" width="75" height="44"/>
+                                                <rect key="frame" x="300" y="7" width="75" height="30"/>
                                                 <state key="normal" image="toolbar_home"/>
                                                 <connections>
                                                     <action selector="didclickHomeButtonAction:" destination="Ggf-ss-5p1" eventType="touchUpInside" id="Pei-DS-VIQ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="lui-eE-tv9" firstAttribute="width" secondItem="V8I-ej-bal" secondAttribute="width" id="5fh-2B-MxG"/>
-                                            <constraint firstItem="3iR-3W-idr" firstAttribute="width" secondItem="lui-eE-tv9" secondAttribute="width" id="9Ud-En-bhL"/>
-                                            <constraint firstItem="V8I-ej-bal" firstAttribute="width" secondItem="Hqw-fB-aW2" secondAttribute="width" id="fyK-Bf-oa7"/>
-                                            <constraint firstItem="Hqw-fB-aW2" firstAttribute="width" secondItem="VeR-pv-j63" secondAttribute="width" id="n6B-gt-kea"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.92931067940000001" green="0.92946994299999997" blue="0.92930072549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

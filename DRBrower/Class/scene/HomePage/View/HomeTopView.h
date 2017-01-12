@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WebsiteCell.h"
 @class WebsiteModel;
 
 @protocol HomeTopViewDelegate <NSObject>
@@ -14,12 +15,12 @@
 - (void)touchUpSearchButtonAction;
 - (void)touchUpQRcodeButtonAction;
 
--(void)websiteViewSelectWithWebsite:(WebsiteModel *)website;
-
+- (void)websiteViewSelectWithWebsite:(WebsiteModel *)website;
+- (void)homeTopViewpresentView:(WebsiteModel *)model;
 
 @end
 
-@interface HomeTopView : UIView
+@interface HomeTopView : UIView<WebsiteCellDelegate>
 
 @property (nonatomic, assign)id<HomeTopViewDelegate>delegate;
 @property (weak, nonatomic) IBOutlet UICollectionView *websiteCollectionView;

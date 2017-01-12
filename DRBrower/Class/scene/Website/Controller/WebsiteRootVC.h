@@ -10,4 +10,8 @@
 
 @interface WebsiteRootVC : AXStretchableHeaderTabViewController
 
+@property (strong, nonatomic) NSMutableArray *websiteArray;
+
+
+
 @end

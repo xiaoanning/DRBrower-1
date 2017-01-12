@@ -33,31 +33,36 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
     self.websiteCollectionView.delegate = self;
     
     [self.websiteCollectionView registerNib:[UINib nibWithNibName:@"WebsiteCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:websiteCellIdentifier];
-    [self getWebsiteData];
+    [self data];
+    [self reloadPageControl];
 }
 
-//获取网站
-- (void)getWebsiteData {
-    [WebsiteModel getWebsiteUrl:[NSString stringWithFormat:@"%@%@",BASE_URL,URL_GETWEBSITE]
-                     parameters:@{}
-                          block:^(WebsiteListModel *websiteList, NSError *error) {
-                              //                              self.websiteArray
-                              self.websiteArray = websiteList.data;
-
-                              WebsiteModel *addWebsite = [[WebsiteModel alloc] init];
-                              [self.websiteArray addObject:addWebsite];
-                              
-                              if ([self isRemainder] == YES) {
-                                  self.websitePageControl.numberOfPages = [self.websiteArray count]/10 + 1;
-                              }else {
-                                  self.websitePageControl.numberOfPages = [self.websiteArray count]/10;
-                              }
-                              
-                              [self.websiteCollectionView reloadData];
-                              
-                              NSLog(@"websiteList = %@",websiteList);
-                          }];
+- (void)data {
+    self.websiteArray = [DRLocaldData achieveWebsiteData];
+    if ([self.websiteArray count]>10) {
+        NSInteger num = 10 - [self.websiteArray count]%10;
+        for (int i = 0; i < num; i++) {
+            WebsiteModel *model = [[WebsiteModel alloc] init];
+            [self.websiteArray addObject:model];
+        }
+        [self reloadPageControl];
+    }
     
+}
+
+- (void)reloadPageControl {
+    if ([Tools isRemainder:self.websiteArray] == YES) {
+        NSInteger num = [self.websiteArray count]/10;
+        if([self.websiteArray count]%10 > 0) {
+            self.websitePageControl.numberOfPages = num + 1;
+        }
+        else{
+            self.websitePageControl.numberOfPages = num;
+        }
+        
+    }else {
+        self.websitePageControlHeight.constant = 0;
+    }
 }
 
 #pragma mark UICollectionView
@@ -73,6 +78,8 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     WebsiteCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:websiteCellIdentifier forIndexPath:indexPath];
     WebsiteModel *website = self.websiteArray[indexPath.row];
+    cell.model = website;
+    cell.delegate = self;
     [cell websiteCell:cell model:website];
 
     return cell;
@@ -122,12 +129,14 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
     }
 }
 
-- (BOOL)isRemainder {
-    if ([self.websiteArray count]%10 > 0) {
-        return YES;
-    }else {
-        return NO;
-    }
+- (void)longPressGesture:(WebsiteModel *)model {
+
+        if(_delegate && [_delegate respondsToSelector:@selector(homeTopViewpresentView:)]){
+            [_delegate homeTopViewpresentView:model];
+        }
+
 }
+
+
 
 @end

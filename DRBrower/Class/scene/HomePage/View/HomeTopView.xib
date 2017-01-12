@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -102,12 +101,12 @@
                     <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="0.098495176170000004" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="NR9-VU-WlF" secondAttribute="bottom" id="1B5-vm-Ax6"/>
-                        <constraint firstItem="NR9-VU-WlF" firstAttribute="top" secondItem="2JD-LG-cit" secondAttribute="bottom" id="7bP-ap-Gnm"/>
                         <constraint firstAttribute="trailing" secondItem="NR9-VU-WlF" secondAttribute="trailing" id="CGq-xD-Er9"/>
                         <constraint firstItem="ghX-Ym-T8H" firstAttribute="top" secondItem="zhp-Px-y7L" secondAttribute="top" id="CiI-Dv-iX4"/>
                         <constraint firstAttribute="trailing" secondItem="ghX-Ym-T8H" secondAttribute="trailing" id="H3Z-Y7-6Ij"/>
                         <constraint firstItem="ghX-Ym-T8H" firstAttribute="leading" secondItem="zhp-Px-y7L" secondAttribute="leading" id="IZY-ej-qwy"/>
                         <constraint firstItem="NR9-VU-WlF" firstAttribute="leading" secondItem="zhp-Px-y7L" secondAttribute="leading" id="JUt-0W-GwE"/>
+                        <constraint firstItem="2JD-LG-cit" firstAttribute="top" secondItem="ghX-Ym-T8H" secondAttribute="bottom" id="dM2-ef-iBl"/>
                         <constraint firstAttribute="trailing" secondItem="2JD-LG-cit" secondAttribute="trailing" id="g0I-Zs-5aE"/>
                         <constraint firstItem="2JD-LG-cit" firstAttribute="leading" secondItem="zhp-Px-y7L" secondAttribute="leading" id="wQl-HB-GwB"/>
                     </constraints>
