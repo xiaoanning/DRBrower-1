@@ -10,6 +10,7 @@
 #import "SearchVC.h"
 #import "NewsDetailVC.h"
 #import "WebsiteRootVC.h"
+#import "MenuVC.h"
 
 #import "NewsTagModel.h"
 #import "NewsModel.h"
@@ -298,7 +299,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 }
 
 //homeToolBar
-
+//主页按钮
 - (void)touchUpHomeButtonAction {
     self.listTopConstraint.constant = 0;
     self.isHeight = YES;
@@ -308,8 +309,22 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 
 }
 
+//菜单按钮
 - (void)touchUpMenuButtonAction {
-    //TODO:login menu
+    //TODO:菜单
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    MenuVC *menuVC = (MenuVC *)[storyboard instantiateViewControllerWithIdentifier:@"MenuVC"];
+    MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:menuVC];
+    formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
+
+    formSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height - 240;
+    
+    formSheetController.presentationController.contentViewSize = [UIScreen mainScreen].bounds.size;
+    
+    
+    formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideAndBounceFromBottom;
+    
+    [self presentViewController:formSheetController animated:YES completion:nil];
 }
 
 //搜索

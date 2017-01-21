@@ -50,6 +50,7 @@
 		558ADF5F1E0E2B4F00035716 /* HomeToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 558ADF5E1E0E2B4F00035716 /* HomeToolBar.m */; };
 		558ADF991E13CE5F00035716 /* DRImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 558ADF981E13CE5F00035716 /* DRImageView.m */; };
 		558ADF9B1E13CE8700035716 /* ZeroPicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 558ADF9A1E13CE8700035716 /* ZeroPicCell.xib */; };
+		55F623811E2DB0B5003536CC /* MenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F623801E2DB0B5003536CC /* MenuVC.m */; };
 		A507DADB85FCF25ACECBB659 /* libPods-DRBrower.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DBFF56AA0AED9BFE627FB1A /* libPods-DRBrower.a */; };
 /* End PBXBuildFile section */
 
@@ -131,6 +132,8 @@
 		558ADF601E111A7B00035716 /* ImgsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImgsModel.h; sourceTree = "<group>"; };
 		558ADF981E13CE5F00035716 /* DRImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRImageView.m; sourceTree = "<group>"; };
 		558ADF9A1E13CE8700035716 /* ZeroPicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZeroPicCell.xib; sourceTree = "<group>"; };
+		55F6237F1E2DB0B5003536CC /* MenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuVC.h; sourceTree = "<group>"; };
+		55F623801E2DB0B5003536CC /* MenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuVC.m; sourceTree = "<group>"; };
 		7488FCDE566523736ED083EB /* Pods-DRBrower.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRBrower.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DRBrower/Pods-DRBrower.debug.xcconfig"; sourceTree = "<group>"; };
 		7DBFF56AA0AED9BFE627FB1A /* libPods-DRBrower.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DRBrower.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -325,9 +328,10 @@
 		557DC0841E08E08400ECFFDE /* scene */ = {
 			isa = PBXGroup;
 			children = (
+				557DC0851E08E08400ECFFDE /* HomePage */,
+				55F6237B1E2DB021003536CC /* Menu */,
 				551661631E236AB700909A11 /* Website */,
 				552375831E1CEAC000214ECB /* Search */,
-				557DC0851E08E08400ECFFDE /* HomePage */,
 			);
 			path = scene;
 			sourceTree = "<group>";
@@ -400,6 +404,39 @@
 			name = Model;
 			path = DRBrower/Class/scene/HomePage/Model;
 			sourceTree = SOURCE_ROOT;
+		};
+		55F6237B1E2DB021003536CC /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				55F6237C1E2DB021003536CC /* Controller */,
+				55F6237D1E2DB021003536CC /* Model */,
+				55F6237E1E2DB021003536CC /* View */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		55F6237C1E2DB021003536CC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				55F6237F1E2DB0B5003536CC /* MenuVC.h */,
+				55F623801E2DB0B5003536CC /* MenuVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		55F6237D1E2DB021003536CC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		55F6237E1E2DB021003536CC /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
 		};
 		5C2C92254BB705D5D4190F62 /* Frameworks */ = {
 			isa = PBXGroup;
@@ -544,6 +581,7 @@
 			files = (
 				5523758C1E1D03BF00214ECB /* Tools.m in Sources */,
 				557DC0A71E0A64D500ECFFDE /* NewsModel.m in Sources */,
+				55F623811E2DB0B5003536CC /* MenuVC.m in Sources */,
 				557DC06D1E08DF8100ECFFDE /* ViewController.m in Sources */,
 				55075A4F1E20814A009A025A /* WebsiteModel.m in Sources */,
 				558ADF5C1E0D115600035716 /* ZYImagesPlayer.m in Sources */,
@@ -694,6 +732,7 @@
 			baseConfigurationReference = 7488FCDE566523736ED083EB /* Pods-DRBrower.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = J7LGQHZ8DG;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DRBrower/DRBrowser-Prefix.pch";
@@ -710,6 +749,7 @@
 			baseConfigurationReference = 1D4B44C20B272556E4C01B53 /* Pods-DRBrower.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = J7LGQHZ8DG;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DRBrower/DRBrowser-Prefix.pch";

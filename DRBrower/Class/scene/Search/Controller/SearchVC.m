@@ -8,6 +8,7 @@
 
 #import "SearchVC.h"
 #import "HomeToolBar.h"
+#import "MenuVC.h"
 
 @interface SearchVC ()<HomeToolBarDelegate,UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *searchWV;
@@ -80,7 +81,20 @@
 }
 
 - (void)touchUpMenuButtonAction {
+    //TODO:菜单
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    MenuVC *menuVC = (MenuVC *)[storyboard instantiateViewControllerWithIdentifier:@"MenuVC"];
+    MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:menuVC];
+    formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
     
+    formSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height - 240;
+    
+    formSheetController.presentationController.contentViewSize = [UIScreen mainScreen].bounds.size;
+    
+    
+    formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideAndBounceFromBottom;
+    
+    [self presentViewController:formSheetController animated:YES completion:nil];
 }
 
 - (void)touchUpPageButtonAction {

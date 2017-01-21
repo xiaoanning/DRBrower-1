@@ -8,5 +8,5 @@ target 'DRBrower' do
   pod 'MJRefresh', '~> 3.1.12'
   pod 'PYSearch', '~> 0.3.4'
   pod 'CSStickyHeaderFlowLayout', '~> 0.2.11'
-
+  pod 'MZFormSheetPresentationController', '~> 2.4.2'
 end

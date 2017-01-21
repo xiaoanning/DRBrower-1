@@ -20,6 +20,9 @@ PODS:
     - Mantle/extobjc (= 1.5.8)
   - Mantle/extobjc (1.5.8)
   - MJRefresh (3.1.12)
+  - MZAppearance (1.1.6)
+  - MZFormSheetPresentationController (2.4.2):
+    - MZAppearance
   - PYSearch (0.3.4)
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
@@ -31,6 +34,7 @@ DEPENDENCIES:
   - CSStickyHeaderFlowLayout (~> 0.2.11)
   - Mantle (~> 1.5.4)
   - MJRefresh (~> 3.1.12)
+  - MZFormSheetPresentationController (~> 2.4.2)
   - PYSearch (~> 0.3.4)
   - SDWebImage (~> 3.7.3)
 
@@ -40,9 +44,11 @@ SPEC CHECKSUMS:
   CSStickyHeaderFlowLayout: e9bcb1762413f49d7d09e5bd0ae5efd1100116b7
   Mantle: f03b2b606c3f0cabd80214ad8a2fed6b464a7359
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
+  MZFormSheetPresentationController: c1dc3bce639d2393b3cc416fcb6e050eb5bca062
   PYSearch: d7d89a358545f4f8ef3700197724162d1e0e2029
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
 
-PODFILE CHECKSUM: c1ff0f8cc0a1887948645f8c872ba38fab413dab
+PODFILE CHECKSUM: 99c13d9c27d44cf64b576272a8369861bf5ca49b
 
 COCOAPODS: 1.1.1
