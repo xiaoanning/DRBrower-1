@@ -7,8 +7,10 @@
 //
 
 #import "MenuVC.h"
+#import "HistoryVC.h"
 
 @interface MenuVC ()
+
 
 @end
 
@@ -27,6 +29,22 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
 
+}
+
+- (IBAction)historyButtonAction:(id)sender {
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Menu" bundle:[NSBundle mainBundle]];
+//    HistoryVC *historyVC = (HistoryVC *)[storyboard instantiateViewControllerWithIdentifier:@"HistoryVC"];
+//
+////    [self.navigationController pushViewController:menuVC animated:YES];
+//    historyVC.menuVC = self;
+//    [self presentViewController:historyVC animated:YES completion:nil];
+}
+
+- (IBAction)collectButtonAction:(id)sender {
+    if(_delegate && [_delegate respondsToSelector:@selector(touchUpCollectButtonAction)]){
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [_delegate touchUpCollectButtonAction];
+    }
 }
 
 

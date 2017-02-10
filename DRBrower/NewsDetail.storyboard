@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,33 +24,71 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XhS-tD-cB2">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3RG-48-vQv" customClass="HomeToolBar">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <items>
-                                    <barButtonItem image="toolBar_back" style="plain" id="lM8-Rm-iXk">
-                                        <connections>
-                                            <action selector="BackButtonItemInToolBarActon:" destination="XcN-nb-MQ5" id="6Jo-AO-EjX"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="Item" width="182" id="X6r-gl-Lhj"/>
-                                    <barButtonItem title="Item" id="BS8-Ia-yeZ"/>
-                                    <barButtonItem title="Item" id="xMr-xC-P5C"/>
-                                    <barButtonItem title="Item" id="krn-aQ-XnY"/>
-                                </items>
-                            </toolbar>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V9K-SC-lCh">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUB-Sn-1Hj">
+                                                <rect key="frame" x="0.0" y="7" width="75" height="30"/>
+                                                <state key="normal" image="toolBar_back"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8j-24-V0r">
+                                                <rect key="frame" x="75" y="7" width="75" height="30"/>
+                                                <state key="normal" image="toolBar_go"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sb4-dq-ahW">
+                                                <rect key="frame" x="150" y="7" width="75" height="30"/>
+                                                <state key="normal" image="toolBar_menu"/>
+                                                <connections>
+                                                    <action selector="didclickMenuButtonAction:" destination="3RG-48-vQv" eventType="touchUpInside" id="Qz2-Mr-TJG"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BbL-WV-2SA">
+                                                <rect key="frame" x="225" y="7" width="75" height="30"/>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypX-aB-7NA">
+                                                <rect key="frame" x="300" y="7" width="75" height="30"/>
+                                                <state key="normal" image="toolbar_home"/>
+                                                <connections>
+                                                    <action selector="didclickHomeButtonAction:" destination="3RG-48-vQv" eventType="touchUpInside" id="5Y2-hl-T5b"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92931067940000001" green="0.92946994299999997" blue="0.92930072549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Rq9-Vw-V4q"/>
+                                    <constraint firstAttribute="trailing" secondItem="V9K-SC-lCh" secondAttribute="trailing" id="ccY-n5-bMm"/>
+                                    <constraint firstItem="V9K-SC-lCh" firstAttribute="leading" secondItem="3RG-48-vQv" secondAttribute="leading" id="dmD-75-9IT"/>
+                                    <constraint firstItem="V9K-SC-lCh" firstAttribute="top" secondItem="3RG-48-vQv" secondAttribute="top" id="joo-kS-bEF"/>
+                                    <constraint firstAttribute="bottom" secondItem="V9K-SC-lCh" secondAttribute="bottom" id="tVd-Ev-hc6"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="backBtn" destination="XUB-Sn-1Hj" id="XK4-nb-JZT"/>
+                                    <outlet property="goBtn" destination="g8j-24-V0r" id="CHL-we-rwP"/>
+                                    <outlet property="homeBtn" destination="ypX-aB-7NA" id="0Tv-6E-CbH"/>
+                                    <outlet property="menuBtn" destination="Sb4-dq-ahW" id="04R-Yq-7x9"/>
+                                    <outlet property="pageBtn" destination="BbL-WV-2SA" id="WRN-Ur-ZQH"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="EYG-4g-Bfb" secondAttribute="trailing" id="3L7-X8-qfj"/>
-                            <constraint firstAttribute="trailing" secondItem="XhS-tD-cB2" secondAttribute="trailing" id="KcP-Bh-bVL"/>
-                            <constraint firstItem="ADC-Kw-n5d" firstAttribute="top" secondItem="XhS-tD-cB2" secondAttribute="bottom" id="dOf-d7-0pe"/>
+                            <constraint firstAttribute="trailing" secondItem="3RG-48-vQv" secondAttribute="trailing" id="KSe-VF-xdo"/>
+                            <constraint firstAttribute="bottom" secondItem="3RG-48-vQv" secondAttribute="bottom" id="b2l-88-wrd"/>
                             <constraint firstItem="EYG-4g-Bfb" firstAttribute="leading" secondItem="yhZ-Pe-YRP" secondAttribute="leading" id="eZM-tJ-ftB"/>
-                            <constraint firstItem="XhS-tD-cB2" firstAttribute="leading" secondItem="yhZ-Pe-YRP" secondAttribute="leading" id="hZU-gD-lSp"/>
                             <constraint firstItem="EYG-4g-Bfb" firstAttribute="top" secondItem="yhZ-Pe-YRP" secondAttribute="top" id="mYm-pc-fPi"/>
-                            <constraint firstItem="XhS-tD-cB2" firstAttribute="top" secondItem="EYG-4g-Bfb" secondAttribute="bottom" id="r20-4F-YWk"/>
+                            <constraint firstItem="3RG-48-vQv" firstAttribute="top" secondItem="EYG-4g-Bfb" secondAttribute="bottom" id="tkB-QF-z9b"/>
+                            <constraint firstItem="3RG-48-vQv" firstAttribute="leading" secondItem="yhZ-Pe-YRP" secondAttribute="leading" id="uwO-y1-mOJ"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="homeToolBar" destination="3RG-48-vQv" id="D7N-Bq-3hv"/>
                         <outlet property="newsDetailWV" destination="EYG-4g-Bfb" id="1zf-Ne-i8T"/>
                     </connections>
                 </viewController>
@@ -62,5 +99,8 @@
     </scenes>
     <resources>
         <image name="toolBar_back" width="30" height="30"/>
+        <image name="toolBar_go" width="30" height="30"/>
+        <image name="toolBar_menu" width="30" height="30"/>
+        <image name="toolbar_home" width="30" height="30"/>
     </resources>
 </document>

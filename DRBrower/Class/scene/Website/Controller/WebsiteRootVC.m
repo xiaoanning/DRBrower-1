@@ -10,6 +10,7 @@
 #import "WebsiteRecommendVC.h"
 #import "WebsiteCollectVC.h"
 #import "WebsiteCustomVC.h"
+#import "CollectVC.h"
 
 @interface WebsiteRootVC ()
 
@@ -29,7 +30,12 @@
     [[WebsiteRecommendVC alloc] initWithNibName:@"WebsiteRecommendVC"
                                          bundle:nil];
     recommendVC.websiteArray = self.websiteArray;
-    WebsiteCollectVC *collectVC = [[WebsiteCollectVC alloc] init];
+//    WebsiteCollectVC *collectVC = [[WebsiteCollectVC alloc] init];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Menu" bundle:[NSBundle mainBundle]];
+    CollectVC *collectVC = (CollectVC *)[storyboard instantiateViewControllerWithIdentifier:@"CollectVC"];
+    
+    
     WebsiteCustomVC *customVC = [[WebsiteCustomVC alloc] init];
     
     NSArray *viewControllers = @[recommendVC, collectVC, customVC];

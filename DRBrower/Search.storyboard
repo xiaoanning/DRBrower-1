@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,10 +20,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="58d-7l-nbo">
-                                <rect key="frame" x="0.0" y="44" width="375" height="579"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ggf-ss-5p1" customClass="HomeToolBar">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <subviews>
@@ -142,29 +138,24 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.85753160340000001" green="0.83474170930000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Ggf-ss-5p1" firstAttribute="top" secondItem="58d-7l-nbo" secondAttribute="bottom" id="M4Y-fR-Gj5"/>
-                            <constraint firstItem="58d-7l-nbo" firstAttribute="leading" secondItem="qMC-h6-QBA" secondAttribute="leading" id="Qnx-kj-r4J"/>
                             <constraint firstItem="Ggf-ss-5p1" firstAttribute="leading" secondItem="qMC-h6-QBA" secondAttribute="leading" id="Xld-mj-Wm9"/>
                             <constraint firstAttribute="trailing" secondItem="Ggf-ss-5p1" secondAttribute="trailing" id="Y1O-KS-McF"/>
                             <constraint firstItem="TfI-L2-82x" firstAttribute="leading" secondItem="qMC-h6-QBA" secondAttribute="leading" id="bWF-R0-6xy"/>
                             <constraint firstItem="Xv9-zT-Hg7" firstAttribute="top" secondItem="Ggf-ss-5p1" secondAttribute="bottom" id="dlc-eJ-IbX"/>
-                            <constraint firstItem="58d-7l-nbo" firstAttribute="top" secondItem="TfI-L2-82x" secondAttribute="bottom" constant="-20" id="fHu-Ok-ocf"/>
-                            <constraint firstAttribute="trailing" secondItem="58d-7l-nbo" secondAttribute="trailing" id="mMC-Sj-TQR"/>
                             <constraint firstAttribute="trailing" secondItem="TfI-L2-82x" secondAttribute="trailing" id="xUl-Wh-aR4"/>
                             <constraint firstItem="TfI-L2-82x" firstAttribute="top" secondItem="qMC-h6-QBA" secondAttribute="top" id="yOt-Hl-tr0"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="homeToolBar" destination="Ggf-ss-5p1" id="aCU-PF-dwI"/>
-                        <outlet property="searchWV" destination="58d-7l-nbo" id="Z88-aQ-LuQ"/>
                         <outlet property="titleBtn" destination="fwg-aa-aPI" id="FSa-qs-eC9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FA1-ad-uu2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-817" y="72"/>
+            <point key="canvasLocation" x="-818.39999999999998" y="71.514242878560722"/>
         </scene>
     </scenes>
     <resources>

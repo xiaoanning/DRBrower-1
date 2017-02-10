@@ -24,12 +24,18 @@
 #import "UIImageView+WebCache.h"
 #import "MZFormSheetPresentationViewControllerSegue.h"
 #import "MJRefresh.h"
-
-
+#import "SWTableViewCell.h"
+#import "UIScrollView+EmptyDataSet.h"
+#import <Colours.h>
+#import <MBProgressHUD.h>
 
 #pragma mark - 常量
 #define TAG_ID_RECOMMEND @"100"
 #define SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height
 #define SCREEN_WIDTH [[UIScreen mainScreen]bounds].size.width
+
+#define COLLECT_SUCCESS @"收藏成功"
+#define COLLECT_FAILED @"已收藏"
+
 
 #endif /* DRBrowser_Prefix_pch */

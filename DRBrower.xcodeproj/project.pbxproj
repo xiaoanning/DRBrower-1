@@ -50,6 +50,15 @@
 		558ADF5F1E0E2B4F00035716 /* HomeToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 558ADF5E1E0E2B4F00035716 /* HomeToolBar.m */; };
 		558ADF991E13CE5F00035716 /* DRImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 558ADF981E13CE5F00035716 /* DRImageView.m */; };
 		558ADF9B1E13CE8700035716 /* ZeroPicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 558ADF9A1E13CE8700035716 /* ZeroPicCell.xib */; };
+		55BC1AFD1E48661A00A64375 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55BC1AFC1E48661A00A64375 /* WebKit.framework */; };
+		55BC1B001E4957CE00A64375 /* UIButton+ImageTitleSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BC1AFF1E4957CE00A64375 /* UIButton+ImageTitleSpacing.m */; };
+		55BC1B061E49A23700A64375 /* RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BC1B051E49A23700A64375 /* RecordModel.m */; };
+		55BC1B091E49A25000A64375 /* RecordListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BC1B081E49A25000A64375 /* RecordListModel.m */; };
+		55BC1B0B1E49BE6A00A64375 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55BC1B0A1E49BE6A00A64375 /* Menu.storyboard */; };
+		55BC1B0E1E49C8F300A64375 /* HistoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BC1B0D1E49C8F300A64375 /* HistoryVC.m */; };
+		55BC1B121E49D3EF00A64375 /* RecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BC1B101E49D3EF00A64375 /* RecordCell.m */; };
+		55BC1B131E49D3EF00A64375 /* RecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55BC1B111E49D3EF00A64375 /* RecordCell.xib */; };
+		55BC1B161E4AF1A800A64375 /* CollectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BC1B151E4AF1A800A64375 /* CollectVC.m */; };
 		55F623811E2DB0B5003536CC /* MenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F623801E2DB0B5003536CC /* MenuVC.m */; };
 		A507DADB85FCF25ACECBB659 /* libPods-DRBrower.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DBFF56AA0AED9BFE627FB1A /* libPods-DRBrower.a */; };
 /* End PBXBuildFile section */
@@ -132,6 +141,21 @@
 		558ADF601E111A7B00035716 /* ImgsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImgsModel.h; sourceTree = "<group>"; };
 		558ADF981E13CE5F00035716 /* DRImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRImageView.m; sourceTree = "<group>"; };
 		558ADF9A1E13CE8700035716 /* ZeroPicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZeroPicCell.xib; sourceTree = "<group>"; };
+		55BC1AFC1E48661A00A64375 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		55BC1AFE1E4957CE00A64375 /* UIButton+ImageTitleSpacing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ImageTitleSpacing.h"; sourceTree = "<group>"; };
+		55BC1AFF1E4957CE00A64375 /* UIButton+ImageTitleSpacing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ImageTitleSpacing.m"; sourceTree = "<group>"; };
+		55BC1B041E49A23700A64375 /* RecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordModel.h; sourceTree = "<group>"; };
+		55BC1B051E49A23700A64375 /* RecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordModel.m; sourceTree = "<group>"; };
+		55BC1B071E49A25000A64375 /* RecordListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordListModel.h; sourceTree = "<group>"; };
+		55BC1B081E49A25000A64375 /* RecordListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordListModel.m; sourceTree = "<group>"; };
+		55BC1B0A1E49BE6A00A64375 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
+		55BC1B0C1E49C8F300A64375 /* HistoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryVC.h; sourceTree = "<group>"; };
+		55BC1B0D1E49C8F300A64375 /* HistoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryVC.m; sourceTree = "<group>"; };
+		55BC1B0F1E49D3EF00A64375 /* RecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordCell.h; sourceTree = "<group>"; };
+		55BC1B101E49D3EF00A64375 /* RecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordCell.m; sourceTree = "<group>"; };
+		55BC1B111E49D3EF00A64375 /* RecordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordCell.xib; sourceTree = "<group>"; };
+		55BC1B141E4AF1A800A64375 /* CollectVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectVC.h; sourceTree = "<group>"; };
+		55BC1B151E4AF1A800A64375 /* CollectVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectVC.m; sourceTree = "<group>"; };
 		55F6237F1E2DB0B5003536CC /* MenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuVC.h; sourceTree = "<group>"; };
 		55F623801E2DB0B5003536CC /* MenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuVC.m; sourceTree = "<group>"; };
 		7488FCDE566523736ED083EB /* Pods-DRBrower.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRBrower.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DRBrower/Pods-DRBrower.debug.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +167,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55BC1AFD1E48661A00A64375 /* WebKit.framework in Frameworks */,
 				A507DADB85FCF25ACECBB659 /* libPods-DRBrower.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,6 +249,10 @@
 		552375851E1CEAC000214ECB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				55BC1B041E49A23700A64375 /* RecordModel.h */,
+				55BC1B051E49A23700A64375 /* RecordModel.m */,
+				55BC1B071E49A25000A64375 /* RecordListModel.h */,
+				55BC1B081E49A25000A64375 /* RecordListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -263,6 +292,7 @@
 				551661731E23936600909A11 /* Website.storyboard */,
 				557DC0C21E0CC4B100ECFFDE /* NewsDetail.storyboard */,
 				5523758D1E1E4E1F00214ECB /* Search.storyboard */,
+				55BC1B0A1E49BE6A00A64375 /* Menu.storyboard */,
 				557DC0711E08DF8100ECFFDE /* Assets.xcassets */,
 				557DC0731E08DF8100ECFFDE /* LaunchScreen.storyboard */,
 				557DC0761E08DF8100ECFFDE /* Info.plist */,
@@ -317,10 +347,12 @@
 			children = (
 				558ADF571E0D115600035716 /* DRImageView.h */,
 				558ADF981E13CE5F00035716 /* DRImageView.m */,
-				558ADF5A1E0D115600035716 /* ZYImagesPlayer.m */,
 				558ADF591E0D115600035716 /* ZYImagesPlayer.h */,
+				558ADF5A1E0D115600035716 /* ZYImagesPlayer.m */,
 				5523758A1E1D03BF00214ECB /* Tools.h */,
 				5523758B1E1D03BF00214ECB /* Tools.m */,
+				55BC1AFE1E4957CE00A64375 /* UIButton+ImageTitleSpacing.h */,
+				55BC1AFF1E4957CE00A64375 /* UIButton+ImageTitleSpacing.m */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -420,6 +452,10 @@
 			children = (
 				55F6237F1E2DB0B5003536CC /* MenuVC.h */,
 				55F623801E2DB0B5003536CC /* MenuVC.m */,
+				55BC1B0C1E49C8F300A64375 /* HistoryVC.h */,
+				55BC1B0D1E49C8F300A64375 /* HistoryVC.m */,
+				55BC1B141E4AF1A800A64375 /* CollectVC.h */,
+				55BC1B151E4AF1A800A64375 /* CollectVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -434,6 +470,9 @@
 		55F6237E1E2DB021003536CC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				55BC1B0F1E49D3EF00A64375 /* RecordCell.h */,
+				55BC1B101E49D3EF00A64375 /* RecordCell.m */,
+				55BC1B111E49D3EF00A64375 /* RecordCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -441,6 +480,7 @@
 		5C2C92254BB705D5D4190F62 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				55BC1AFC1E48661A00A64375 /* WebKit.framework */,
 				7DBFF56AA0AED9BFE627FB1A /* libPods-DRBrower.a */,
 			);
 			name = Frameworks;
@@ -517,7 +557,9 @@
 				5523758E1E1E4E1F00214ECB /* Search.storyboard in Resources */,
 				552ADBD21E249189007036CA /* WebsiteRecommendCell.xib in Resources */,
 				551661621E222CF900909A11 /* WebsiteCell.xib in Resources */,
+				55BC1B131E49D3EF00A64375 /* RecordCell.xib in Resources */,
 				558ADF9B1E13CE8700035716 /* ZeroPicCell.xib in Resources */,
+				55BC1B0B1E49BE6A00A64375 /* Menu.storyboard in Resources */,
 				557DC0B21E0B658300ECFFDE /* ThreePicCell.xib in Resources */,
 				557DC0701E08DF8100ECFFDE /* Main.storyboard in Resources */,
 				5517EAB91E1C8AE1008B3853 /* HomeTopView.xib in Resources */,
@@ -579,18 +621,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55BC1B0E1E49C8F300A64375 /* HistoryVC.m in Sources */,
 				5523758C1E1D03BF00214ECB /* Tools.m in Sources */,
 				557DC0A71E0A64D500ECFFDE /* NewsModel.m in Sources */,
 				55F623811E2DB0B5003536CC /* MenuVC.m in Sources */,
 				557DC06D1E08DF8100ECFFDE /* ViewController.m in Sources */,
 				55075A4F1E20814A009A025A /* WebsiteModel.m in Sources */,
 				558ADF5C1E0D115600035716 /* ZYImagesPlayer.m in Sources */,
+				55BC1B001E4957CE00A64375 /* UIButton+ImageTitleSpacing.m in Sources */,
 				557DC0971E08E3A500ECFFDE /* DRHomeVC.m in Sources */,
 				552ADBD11E249189007036CA /* WebsiteRecommendCell.m in Sources */,
 				557DC0AD1E0A685100ECFFDE /* ImgsModel.m in Sources */,
 				557DC0BD1E0CB7F900ECFFDE /* ZeroPicCell.m in Sources */,
 				557DC0AA1E0A64E900ECFFDE /* NewsListModel.m in Sources */,
 				558ADF991E13CE5F00035716 /* DRImageView.m in Sources */,
+				55BC1B121E49D3EF00A64375 /* RecordCell.m in Sources */,
 				551661691E236AEF00909A11 /* WebsiteRootVC.m in Sources */,
 				552375891E1CEAF000214ECB /* SearchVC.m in Sources */,
 				551661611E222CF900909A11 /* WebsiteCell.m in Sources */,
@@ -600,15 +645,18 @@
 				557DC08B1E08E08400ECFFDE /* AppDelegate.m in Sources */,
 				55075A521E2081E1009A025A /* WebsiteListModel.m in Sources */,
 				557DC0911E08E0B700ECFFDE /* DRDataService.m in Sources */,
+				55BC1B091E49A25000A64375 /* RecordListModel.m in Sources */,
 				557DC09A1E08E91E00ECFFDE /* HomeTopView.m in Sources */,
 				557DC0B11E0B658300ECFFDE /* ThreePicCell.m in Sources */,
 				557DC09E1E0A22D000ECFFDE /* NewsTagListModel.m in Sources */,
+				55BC1B061E49A23700A64375 /* RecordModel.m in Sources */,
 				552ADBD51E24EEB5007036CA /* DRLocaldData.m in Sources */,
 				551661721E23701D00909A11 /* WebsiteCustomVC.m in Sources */,
 				558ADF5F1E0E2B4F00035716 /* HomeToolBar.m in Sources */,
 				557DC0B91E0BC03300ECFFDE /* TagsView.m in Sources */,
 				552ADBDB1E25E579007036CA /* WebsiteRecommendVC.m in Sources */,
 				557DC0A11E0A234100ECFFDE /* NewsTagModel.m in Sources */,
+				55BC1B161E4AF1A800A64375 /* CollectVC.m in Sources */,
 				551661771E23942E00909A11 /* WebsiteCollectVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
