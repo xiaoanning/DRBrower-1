@@ -28,6 +28,7 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import <Colours.h>
 #import <MBProgressHUD.h>
+#import <Realm/Realm.h>
 
 #pragma mark - 常量
 #define TAG_ID_RECOMMEND @"100"

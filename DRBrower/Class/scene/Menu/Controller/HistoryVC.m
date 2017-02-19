@@ -31,11 +31,11 @@ static NSString *const recordCellIdentifier = @"RecordCell";
     self.navigationController.navigationBarHidden = NO;
     // Do any additional setup after loading the view.
     [self setupTableView];
-    self.historyArray = [NSMutableArray arrayWithArray:[DRLocaldData achieveHistoryData]];
+    self.historyArray = [NSMutableArray arrayWithArray:[RecordModel realmSelectAllRecord]];//[DRLocaldData achieveHistoryData]];
+    [self setupEmptyView];
 
     if ([self.historyArray count] == 0) {
         self.navigationItem.rightBarButtonItem = nil;
-        [self setupEmptyView];
     }
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -52,7 +52,8 @@ static NSString *const recordCellIdentifier = @"RecordCell";
 }
 
 - (IBAction)deleteAllHistoryButtonAction:(id)sender {
-    [DRLocaldData deleteAllHistoryData];
+//    [DRLocaldData deleteAllHistoryData];
+    [RecordModel realmDeleteAllRecord];
     [self.historyArray removeAllObjects];
     [self.tableView reloadData];
     self.navigationItem.rightBarButtonItem = nil;
@@ -91,7 +92,8 @@ static NSString *const recordCellIdentifier = @"RecordCell";
 didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
     NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
     RecordModel *model = self.historyArray[cellIndexPath.row];
-    [DRLocaldData deleteOneHistoryData:model];
+//    [DRLocaldData deleteOneHistoryData:model];
+    [RecordModel realmDeleteOneRecord:model];
     [self.historyArray removeObjectAtIndex:(NSUInteger)index];
     [self.tableView deleteRowsAtIndexPaths:@[ cellIndexPath ]
                           withRowAnimation:UITableViewRowAnimationLeft];

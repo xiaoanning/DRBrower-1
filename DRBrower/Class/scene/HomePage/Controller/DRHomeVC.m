@@ -128,7 +128,10 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
                               if ([DRLocaldData achieveWebsiteData] == nil) {
                                  
                                   NSMutableArray *array = [NSMutableArray arrayWithArray:websiteList.data];
-                                  [array removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(9, [array count]-9)]];
+                                  if ([array count]>9) {
+                                      [array removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(9, [array count]-9)]];
+                                  }
+                                  
                                   
                                   WebsiteModel *addWebsite = [[WebsiteModel alloc] init];
                                   addWebsite.name = NSLocalizedString(@"添加", nil);

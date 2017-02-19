@@ -27,10 +27,10 @@
                      placeholderImage:[[SDImageCache sharedImageCache]
                                        imageFromDiskCacheForKey:[[NSURL URLWithString:img.url] absoluteString]]
                             completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-//            [imageView cutImage:image];
-                                image = [image stretchableImageWithLeftCapWidth:0.5 topCapHeight:0.5];
-                                
-                                imageView.image = image;
+            [imageView cutImage:image];
+//                                image = [image stretchableImageWithLeftCapWidth:0.5 topCapHeight:0.5];
+//                                
+//                                imageView.image = image;
         }];
     }
 }

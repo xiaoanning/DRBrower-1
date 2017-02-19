@@ -13,4 +13,7 @@ target 'DRBrower' do
   pod 'Colours', '~> 5.13.0'
   pod 'SWTableViewCell', '~> 0.3.7'
   pod 'DZNEmptyDataSet', '~> 1.8.1'
+  pod 'Realm', '~> 2.0.4'
+  pod 'UMengSocialCOM', '~> 5.2.1'
+
 end

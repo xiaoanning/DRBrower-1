@@ -22,6 +22,10 @@
 @property (strong, nonatomic) WKWebView *searchWV;
 @property (strong, nonatomic) RecordModel *record;
 @property (strong, nonatomic) NSMutableArray *historyArray;
+//MZFormSheetPresentationViewController *formSheetController
+@property (strong, nonatomic) MZFormSheetPresentationViewController *formSheetController;
+
+
 
 @end
 
@@ -46,7 +50,6 @@
     self.navigationController.navigationBarHidden = NO;
     NSLog(@"historyArray = %@",self.historyArray);
     
-    [DRLocaldData saveHistoryData:self.historyArray];
 }
 
 - (void)setupSubviews {
@@ -84,9 +87,11 @@
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     NSString *title = webView.title;
+    NSString *url = webView.URL.absoluteString;
     [self.titleBtn setTitle:title forState:UIControlStateNormal];
-    
-    [self newOneRecordWithUrl:webView.URL.absoluteString title:webView.title];
+    if (![title isEqualToString:@""] && ![url isEqualToString:@""]) {
+        [self newOneRecordWithUrl:url title:title];
+    }
 }
 
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
@@ -97,7 +102,11 @@
     self.record = [[RecordModel alloc] init];
     self.record.url = url;
     self.record.title = title;
-    [self.historyArray insertObject:self.record atIndex:0];
+    self.record.time = [Tools atPresentTimestamp];
+    [self.record realmAddRecord];
+//    [self.historyArray insertObject:self.record atIndex:0];
+//    [DRLocaldData saveHistoryData:self.historyArray];
+
 }
 
 #pragma mark - custom delegate
@@ -121,23 +130,28 @@
     //TODO:菜单
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Menu" bundle:[NSBundle mainBundle]];
     MenuVC *menuVC = (MenuVC *)[storyboard instantiateViewControllerWithIdentifier:@"MenuVC"];
-    MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:menuVC];
-    formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
+    self.formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:menuVC];
+    self.formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
     
-    formSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height - 240;
+    self.formSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height - 240;
     
-    formSheetController.presentationController.contentViewSize = [UIScreen mainScreen].bounds.size;
+    self.formSheetController.presentationController.contentViewSize = [UIScreen mainScreen].bounds.size;
     
     
-    formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideAndBounceFromBottom;
+    self.formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideAndBounceFromBottom;
     
     menuVC.delegate = self;
     
-    [self presentViewController:formSheetController animated:YES completion:nil];
+    [self presentViewController:self.formSheetController animated:YES completion:nil];
+    
+    
+    
 }
 
+
+
 - (void)touchUpPageButtonAction {
-    
+    NSLog(@"分享");
 }
 
 - (void)touchUpHomeButtonAction {

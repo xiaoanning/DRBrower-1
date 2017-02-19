@@ -14,7 +14,7 @@
 
 static NSString *const recordCellIdentifier = @"RecordCell";
 
-@interface CollectVC ()<SWTableViewCellDelegate>
+@interface CollectVC ()<SWTableViewCellDelegate,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong)NSMutableArray *collectArray;
@@ -31,6 +31,10 @@ static NSString *const recordCellIdentifier = @"RecordCell";
     self.tableView.delegate = self;
     
     self.collectArray = [NSMutableArray arrayWithArray:[DRLocaldData achieveCollectData]];
+    if ([self.collectArray count] == 0) {
+        self.navigationItem.rightBarButtonItem = nil;
+        [self setupEmptyView];
+    }
     
 }
 
@@ -40,6 +44,9 @@ static NSString *const recordCellIdentifier = @"RecordCell";
 
 - (IBAction)backBarButtonAction:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^{
+        
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"12345" object:nil];
     }];
 }
 
@@ -93,6 +100,46 @@ didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
 - (UIScrollView *)stretchableSubViewInSubViewController:(id)subViewController
 {
     return self.tableView;
+}
+
+#pragma mark - 空白页
+- (void)setupEmptyView {
+    
+    self.tableView.emptyDataSetDelegate = self;
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.tableFooterView = [UIView new];
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *text = @"还没有收藏记录哦！";
+    
+    NSDictionary *attributes = @{
+                                 NSFontAttributeName : [UIFont boldSystemFontOfSize:18.0f],
+                                 NSForegroundColorAttributeName : [UIColor darkGrayColor]
+                                 };
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
+    
+    NSString *text = @"";
+    
+    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraph.alignment = NSTextAlignmentCenter;
+    
+    NSDictionary *attributes = @{
+                                 NSFontAttributeName : [UIFont systemFontOfSize:14.0f],
+                                 NSForegroundColorAttributeName : [UIColor lightGrayColor],
+                                 NSParagraphStyleAttributeName : paragraph
+                                 };
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -22,7 +22,19 @@
     
     NSLog(@"%@",self.str);
     
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(asdf) name:@"12345" object:nil];
+    
     // Do any additional setup after loading the view.
+}
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"12345" object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+
+}
+-(void)asdf{
+    [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 - (IBAction)didClickBackButtonAction:(id)sender {
@@ -53,14 +65,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+
 }
-*/
+
 
 @end

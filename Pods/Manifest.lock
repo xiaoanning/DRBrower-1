@@ -29,10 +29,14 @@ PODS:
   - MZFormSheetPresentationController (2.4.2):
     - MZAppearance
   - PYSearch (0.3.4)
+  - Realm (2.0.4):
+    - Realm/Headers (= 2.0.4)
+  - Realm/Headers (2.0.4)
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
   - SWTableViewCell (0.3.7)
+  - UMengSocialCOM (5.2.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
@@ -45,8 +49,10 @@ DEPENDENCIES:
   - MJRefresh (~> 3.1.12)
   - MZFormSheetPresentationController (~> 2.4.2)
   - PYSearch (~> 0.3.4)
+  - Realm (~> 2.0.4)
   - SDWebImage (~> 3.7.3)
   - SWTableViewCell (~> 0.3.7)
+  - UMengSocialCOM (~> 5.2.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -60,9 +66,11 @@ SPEC CHECKSUMS:
   MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
   MZFormSheetPresentationController: c1dc3bce639d2393b3cc416fcb6e050eb5bca062
   PYSearch: d7d89a358545f4f8ef3700197724162d1e0e2029
+  Realm: 9da97f48365f8b99dd95c28d45ad8222d62e1775
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
+  UMengSocialCOM: 074c135ce349aa4c8848d3fb8458757bcb6ffb67
 
-PODFILE CHECKSUM: e4cf2bfb047074c3da98c4703199be1fb23d6c80
+PODFILE CHECKSUM: 6fc81bb6b1d9014bc2955fa3305a6c8c2e99c237
 
 COCOAPODS: 1.1.1

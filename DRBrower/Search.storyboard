@@ -47,9 +47,9 @@
                                                     <action selector="didclickMenuButtonAction:" destination="Ggf-ss-5p1" eventType="touchUpInside" id="eEl-cO-q5X"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8I-ej-bal">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8I-ej-bal">
                                                 <rect key="frame" x="225" y="7" width="75" height="30"/>
-                                                <state key="normal" title="Button"/>
+                                                <state key="normal" image="toolBar_share"/>
                                                 <connections>
                                                     <action selector="didclickPageButtonAction:" destination="Ggf-ss-5p1" eventType="touchUpInside" id="15v-YU-wXa"/>
                                                 </connections>
@@ -164,6 +164,7 @@
         <image name="toolBar_back" width="30" height="30"/>
         <image name="toolBar_go" width="30" height="30"/>
         <image name="toolBar_menu" width="30" height="30"/>
+        <image name="toolBar_share" width="30" height="30"/>
         <image name="toolbar_home" width="30" height="30"/>
     </resources>
 </document>

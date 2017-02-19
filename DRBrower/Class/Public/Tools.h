@@ -12,7 +12,9 @@
 
 #pragma mark - 正则表达式判断网址合法
 + (NSString *)urlValidation:(NSString *)string;
-#pragma 判断数组元素个数 决定pageControl的高度个页数
+#pragma mark - 判断数组元素个数 决定pageControl的高度个页数
 + (BOOL)isRemainder:(NSArray *)array;
+#pragma mark - 当前时间戳
++ (NSInteger)atPresentTimestamp;
 
 @end
