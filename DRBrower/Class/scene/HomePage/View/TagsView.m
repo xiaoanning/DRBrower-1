@@ -36,12 +36,13 @@
     }
 }
 
-- (void)didClickSwitchChannel:(UIButton *)button {
+- (void)changeButtonWhenPageViewScroll:(UIButton *)button withRefresh:(BOOL)refresh
+{
     for (UIButton *btn in [self.tagsSV subviews]) {
         [self buttonStyle:btn];
     }
     [self buttonHighLightStyle:button];
-    if(_delegate && [_delegate respondsToSelector:@selector(touchUpChannelButtonAction:)]){
+    if( refresh && _delegate && [_delegate respondsToSelector:@selector(touchUpChannelButtonAction:)]){
         [_delegate touchUpChannelButtonAction:button.tag];
     }
     
@@ -55,9 +56,8 @@
     }else if ((contentSizeX - buttonCenterX) < SCREEN_WIDTH/2) {
         [self.tagsSV setContentOffset:CGPointMake(contentSizeX - SCREEN_WIDTH, contentOffsetY) animated:YES];
     }
-
+    
 }
-
 //button未选中
 - (void)buttonStyle:(UIButton *)button{
     button.titleLabel.font = [UIFont systemFontOfSize:16.0];

@@ -23,5 +23,6 @@
 
 - (void)createSubViewsByTagArray:(NSArray *)tagArray;
 
+- (void)changeButtonWhenPageViewScroll:(UIButton *)button withRefresh:(BOOL)refresh;
 
 @end

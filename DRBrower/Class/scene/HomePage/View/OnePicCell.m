@@ -18,14 +18,21 @@
 }
 
 - (void)onePicCell:(OnePicCell *)cell model:(NewsModel *)model {
-   
+    
     self.titleLabel.text = model.title;
     ImgsModel *img = model.imgs[0];
+    
     [self.imgImageView sd_setImageWithURL:[NSURL URLWithString:img.url]
                          placeholderImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[[NSURL URLWithString:img.url] absoluteString]]completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                             [self.imgImageView cutImage:image];
+                             
+                             //                             [self.imgImageView cutImage:image scale:scale];
+                             UIImage *resultImage = [self.imgImageView imageCompressForSize:image targetSize:CGSizeMake(CGRectGetWidth(self.imgImageView.frame), CGRectGetHeight(self.imgImageView.frame))];
+                             self.imgImageView.image = resultImage;
+                             
                          }];
+    
 }
+
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

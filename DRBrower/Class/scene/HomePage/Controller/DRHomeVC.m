@@ -21,6 +21,8 @@
 
 #import "HomeToolBar.h"
 
+#import "NewsListViewController.h"
+
 static NSString *const onePicCellIdentifier = @"OnePicCell";
 static NSString *const threePicCellIdentifier = @"ThreePicCell";
 static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
@@ -28,7 +30,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 #define UP_LOAD @"上拉"
 #define DOWN_LOAD @"下拉"
 
-@interface DRHomeVC ()
+@interface DRHomeVC ()<UIPageViewControllerDelegate , UIPageViewControllerDataSource>
 
 @property (weak, nonatomic) IBOutlet HomeToolBar *homeToolBar;
 @property (weak, nonatomic) IBOutlet TagsView *tagsView;
@@ -43,6 +45,8 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 
 @property (strong, nonatomic) NewsTagModel *newsTag;
 @property (assign, nonatomic) BOOL isHeight;
+
+@property ( nonatomic , strong ) UIPageViewController * pageVC ;
 
 @end
 
@@ -83,6 +87,83 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     [self.homeTableView registerNib:[UINib nibWithNibName:@"ZeroPicCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:zeroPicCellIdentifier];
 
 }
+#pragma mark - UIPageViewController
+-(void)createPageVCUI
+{
+    
+    CGFloat topSpace = 52.0f ;
+    
+    _pageVC = [[UIPageViewController alloc]initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+    _pageVC.delegate = self ;
+    _pageVC.dataSource = self ;
+    _pageVC.view.frame = CGRectMake(0, topSpace, SCREEN_WIDTH, SCREEN_HEIGHT - 49 - topSpace);
+    
+    [self.view addSubview:_pageVC.view];
+    [self.view bringSubviewToFront:_pageVC.view];
+    self.homeTableView.hidden = YES ;
+    
+    NewsListViewController * vc = [[NewsListViewController alloc]init] ;
+    vc.navigationController = self.navigationController ;
+    vc.index = 0 ;
+    vc.model = self.tagListArray[vc.index];
+    
+    [_pageVC setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
+        
+    }];
+    
+    [self.tagsView changeButtonWhenPageViewScroll:[self.tagsView.tagsSV viewWithTag:1 + vc.index]  withRefresh:NO];
+    
+    
+    
+}
+
+#pragma mark <UIPageViewControllerDelegate,UIPageViewControllerDataSource>
+- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
+{
+    NewsListViewController * currentVC = pageViewController.viewControllers[0];
+    if (currentVC.index == 0)
+    {
+        return nil ;
+    }else
+    {
+        NewsListViewController * vc  = [[NewsListViewController alloc]init];
+        vc.navigationController = self.navigationController ;
+        vc.index = currentVC.index-1 ;
+        vc.model = self.tagListArray[vc.index];
+        
+        return vc;
+    }
+}
+- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
+{
+    NewsListViewController * currentVC = pageViewController.viewControllers[0];
+    if (currentVC.index == self.tagListArray.count-1)
+    {
+        return nil ;
+    }else
+    {
+        NewsListViewController * vc  = [[NewsListViewController alloc]init];
+        vc.navigationController = self.navigationController ;
+        vc.index = currentVC.index+1 ;
+        vc.model = self.tagListArray[vc.index];
+        
+        return vc;
+    }
+    
+}
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers
+{
+    
+}
+
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed
+{
+    NewsListViewController * currentVC = pageViewController.viewControllers[0];
+    
+    [self.tagsView changeButtonWhenPageViewScroll:[self.tagsView.tagsSV viewWithTag:1 + currentVC.index]  withRefresh:NO];
+    
+}
+
 
 #pragma mark - 数据请求
 //请求新闻分类标签
@@ -187,7 +268,10 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.newsListArray.count;
+    if (self.newsListArray) {
+        return self.newsListArray.count;
+    }
+    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -300,12 +384,17 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 //homeToolBar
 
 - (void)touchUpHomeButtonAction {
+    _pageVC = nil;
+    self.pageVC.view.hidden = YES ;
+    [self.pageVC.view removeFromSuperview];
+    self.homeTableView.hidden = NO ;
+    [self.view bringSubviewToFront:self.homeTableView];
+    
     self.listTopConstraint.constant = 0;
     self.isHeight = YES;
     self.homeTableView.bounces = NO;
     self.homeTableView.contentOffset =  CGPointMake(0, 0);
     [self.homeTableView reloadData];
-
 }
 
 - (void)touchUpMenuButtonAction {
@@ -410,6 +499,11 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
             self.listTopConstraint.constant = 52;
             self.homeTableView.bounces = YES;
             [self.homeTableView reloadData];
+            
+            if (_pageVC == nil) {
+                [self createPageVCUI];
+            }
+
         }
         
     }
