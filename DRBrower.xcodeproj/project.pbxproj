@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1866D49F1E5BD11700BDB5DB /* HomeTopViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866D49D1E5BD11700BDB5DB /* HomeTopViewLayout.m */; };
 		55075A4F1E20814A009A025A /* WebsiteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55075A4E1E20814A009A025A /* WebsiteModel.m */; };
 		55075A521E2081E1009A025A /* WebsiteListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55075A511E2081E1009A025A /* WebsiteListModel.m */; };
 		551661611E222CF900909A11 /* WebsiteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5516615F1E222CF900909A11 /* WebsiteCell.m */; };
@@ -54,6 +55,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1866D49D1E5BD11700BDB5DB /* HomeTopViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTopViewLayout.m; sourceTree = "<group>"; };
+		1866D49E1E5BD11700BDB5DB /* HomeTopViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTopViewLayout.h; sourceTree = "<group>"; };
 		1D4B44C20B272556E4C01B53 /* Pods-DRBrower.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRBrower.release.xcconfig"; path = "Pods/Target Support Files/Pods-DRBrower/Pods-DRBrower.release.xcconfig"; sourceTree = "<group>"; };
 		55075A4D1E20814A009A025A /* WebsiteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebsiteModel.h; sourceTree = "<group>"; };
 		55075A4E1E20814A009A025A /* WebsiteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebsiteModel.m; sourceTree = "<group>"; };
@@ -356,6 +359,8 @@
 		557DC0871E08E08400ECFFDE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1866D49D1E5BD11700BDB5DB /* HomeTopViewLayout.m */,
+				1866D49E1E5BD11700BDB5DB /* HomeTopViewLayout.h */,
 				557DC0BA1E0CB7F900ECFFDE /* ZeroPicCell.h */,
 				557DC0BB1E0CB7F900ECFFDE /* ZeroPicCell.m */,
 				558ADF9A1E13CE8700035716 /* ZeroPicCell.xib */,
@@ -567,6 +572,7 @@
 				557DC09E1E0A22D000ECFFDE /* NewsTagListModel.m in Sources */,
 				552ADBD51E24EEB5007036CA /* DRLocaldData.m in Sources */,
 				551661721E23701D00909A11 /* WebsiteCustomVC.m in Sources */,
+				1866D49F1E5BD11700BDB5DB /* HomeTopViewLayout.m in Sources */,
 				558ADF5F1E0E2B4F00035716 /* HomeToolBar.m in Sources */,
 				557DC0B91E0BC03300ECFFDE /* TagsView.m in Sources */,
 				552ADBDB1E25E579007036CA /* WebsiteRecommendVC.m in Sources */,

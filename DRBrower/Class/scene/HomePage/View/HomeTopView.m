@@ -10,6 +10,7 @@
 #include "CSStickyHeaderFlowLayout.h"
 #import "WebsiteCell.h"
 #import "WebsiteModel.h"
+#import "HomeTopViewLayout.h"
 
 static NSString *const websiteCellIdentifier = @"WebsiteCell";
 @interface HomeTopView()<UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate>{
@@ -39,14 +40,17 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
 
 - (void)data {
     self.websiteArray = [DRLocaldData achieveWebsiteData];
-    if ([self.websiteArray count]>10) {
-        NSInteger num = 10 - [self.websiteArray count]%10;
-        for (int i = 0; i < num; i++) {
-            WebsiteModel *model = [[WebsiteModel alloc] init];
-            [self.websiteArray addObject:model];
-        }
-        [self reloadPageControl];
-    }
+    [(HomeTopViewLayout *)self.websiteCollectionView.collectionViewLayout setDefectListModel:self.websiteArray] ;
+    [self reloadPageControl];
+
+//    if ([self.websiteArray count]>10) {
+//        NSInteger num = 10 - [self.websiteArray count]%10;
+//        for (int i = 0; i < num; i++) {
+//            WebsiteModel *model = [[WebsiteModel alloc] init];
+//            [self.websiteArray addObject:model];
+//        }
+//        [self reloadPageControl];
+//    }
     
 }
 

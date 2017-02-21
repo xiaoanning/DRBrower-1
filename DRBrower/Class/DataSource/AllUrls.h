@@ -15,7 +15,8 @@
  Base Url
  @return Base Url
  */
-#define BASE_URL @"http://112.84.188.42:9999/DRBrower/"
+//#define BASE_URL @"http://112.84.188.42:9999/DRBrower/"
+#define BASE_URL @"http://61.160.250.174:8080/dr/"
 
 ///获取新闻分类标签
 #define URL_GETTABS @"news/getTabs"
