@@ -25,6 +25,7 @@ PODS:
   - Mantle/extobjc (1.5.8)
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.12)
+  - MOBFoundation (2.2.3)
   - MZAppearance (1.1.6)
   - MZFormSheetPresentationController (2.4.2):
     - MZAppearance
@@ -35,8 +36,12 @@ PODS:
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
+  - ShareSDK3 (3.5.2):
+    - ShareSDK3/ShareSDK (= 3.5.2)
+  - ShareSDK3/ShareSDK (3.5.2)
+  - ShareSDK3/ShareSDKPlatforms/QQ (3.5.2)
+  - ShareSDK3/ShareSDKPlatforms/WeChat (3.5.2)
   - SWTableViewCell (0.3.7)
-  - UMengSocialCOM (5.2.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
@@ -47,12 +52,15 @@ DEPENDENCIES:
   - Mantle (~> 1.5.4)
   - MBProgressHUD (~> 1.0.0)
   - MJRefresh (~> 3.1.12)
+  - MOBFoundation
   - MZFormSheetPresentationController (~> 2.4.2)
   - PYSearch (~> 0.3.4)
   - Realm (~> 2.0.4)
   - SDWebImage (~> 3.7.3)
+  - ShareSDK3
+  - ShareSDK3/ShareSDKPlatforms/QQ
+  - ShareSDK3/ShareSDKPlatforms/WeChat
   - SWTableViewCell (~> 0.3.7)
-  - UMengSocialCOM (~> 5.2.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -63,14 +71,15 @@ SPEC CHECKSUMS:
   Mantle: f03b2b606c3f0cabd80214ad8a2fed6b464a7359
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  MOBFoundation: 2bc5cd7011a2db75cf2b3ceacb7f4227eec88f3e
   MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
   MZFormSheetPresentationController: c1dc3bce639d2393b3cc416fcb6e050eb5bca062
   PYSearch: d7d89a358545f4f8ef3700197724162d1e0e2029
   Realm: 9da97f48365f8b99dd95c28d45ad8222d62e1775
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  ShareSDK3: 08ed714e2bbdcd97ab60f58cb398227341dfc20a
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
-  UMengSocialCOM: 074c135ce349aa4c8848d3fb8458757bcb6ffb67
 
-PODFILE CHECKSUM: 6fc81bb6b1d9014bc2955fa3305a6c8c2e99c237
+PODFILE CHECKSUM: 178daa4833ea6686a92ff0afdf288d4d040d6ec9
 
 COCOAPODS: 1.1.1

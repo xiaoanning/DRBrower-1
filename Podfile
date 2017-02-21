@@ -14,6 +14,8 @@ target 'DRBrower' do
   pod 'SWTableViewCell', '~> 0.3.7'
   pod 'DZNEmptyDataSet', '~> 1.8.1'
   pod 'Realm', '~> 2.0.4'
-  pod 'UMengSocialCOM', '~> 5.2.1'
+  pod 'ShareSDK3'
+  pod 'MOBFoundation'
+
 
 end

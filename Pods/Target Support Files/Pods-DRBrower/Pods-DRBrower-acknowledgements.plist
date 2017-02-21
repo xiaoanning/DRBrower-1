@@ -207,6 +207,16 @@ THE SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
+			<string>Copyright © 2012-2015 mob</string>
+			<key>License</key>
+			<string>Copyright © 2012-2016 mob.com</string>
+			<key>Title</key>
+			<string>MOBFoundation</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
 			<string>The MIT License (MIT)
 
 Copyright (c) 2013 Michał Zaborowski
@@ -643,12 +653,12 @@ THE SOFTWARE.</string>
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright 2011 - 2016 UMeng.com. All rights reserved.
+			<string>Copyright © 2012-2016 mob
 </string>
 			<key>License</key>
-			<string>Copyright</string>
+			<string>MIT</string>
 			<key>Title</key>
-			<string>UMengSocialCOM</string>
+			<string>ShareSDK3</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

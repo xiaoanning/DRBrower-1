@@ -9,10 +9,12 @@
 
 #import "SearchVC.h"
 #import "MenuVC.h"
+#import "ShareVC.h"
 
 #import "HomeToolBar.h"
 
 #import "RecordModel.h"
+#import "ShareModel.h"
 
 @interface SearchVC ()<HomeToolBarDelegate,UIWebViewDelegate,WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler,MenuVCDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *titleBtn;
@@ -21,10 +23,11 @@
 @property (strong, nonatomic) MBProgressHUD *hud;
 @property (strong, nonatomic) WKWebView *searchWV;
 @property (strong, nonatomic) RecordModel *record;
+@property (strong, nonatomic) ShareModel *shareModel;
 @property (strong, nonatomic) NSMutableArray *historyArray;
-//MZFormSheetPresentationViewController *formSheetController
 @property (strong, nonatomic) MZFormSheetPresentationViewController *formSheetController;
 
+@property (strong, nonatomic) MZFormSheetPresentationViewController *shareFormSheetController;
 
 
 @end
@@ -104,9 +107,12 @@
     self.record.title = title;
     self.record.time = [Tools atPresentTimestamp];
     [self.record realmAddRecord];
-//    [self.historyArray insertObject:self.record atIndex:0];
-//    [DRLocaldData saveHistoryData:self.historyArray];
 
+    self.shareModel = [ShareModel shareModelWithShareUrl:url
+                                                   title:title
+                                                    desc:[NSString stringWithFormat:@"快来看看我分享给你的网站：%@",title]
+                                                 content:[NSString stringWithFormat:@"快来看看我分享给你的网站：%@",title]
+                                                  image:nil];
 }
 
 #pragma mark - custom delegate
@@ -144,14 +150,22 @@
     
     [self presentViewController:self.formSheetController animated:YES completion:nil];
     
-    
-    
 }
 
-
-
 - (void)touchUpPageButtonAction {
-    NSLog(@"分享");
+    [self snapshotScreen];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
+    ShareVC *shareVC = (ShareVC *)[storyboard instantiateViewControllerWithIdentifier:@"ShareVC"];
+    self.shareFormSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:shareVC];
+    self.shareFormSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
+    
+    self.shareFormSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height - 240;
+    self.shareFormSheetController.presentationController.contentViewSize = [UIScreen mainScreen].bounds.size;
+    self.shareFormSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideAndBounceFromBottom;
+    
+    shareVC.shareModel = self.shareModel;
+    [self presentViewController:self.shareFormSheetController animated:YES completion:nil];
+
 }
 
 - (void)touchUpHomeButtonAction {
@@ -178,15 +192,38 @@
     
 }
 
+/**
+ *  截取当前屏幕的内容
+ */
+- (void)snapshotScreen
+{
+    // 判断是否为retina屏, 即retina屏绘图时有放大因子
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]){
+        UIGraphicsBeginImageContextWithOptions(self.view.window.bounds.size, NO, [UIScreen mainScreen].scale);
+    } else {
+        UIGraphicsBeginImageContext(self.view.window.bounds.size);
+    }
+    [self.view.window.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    self.shareModel.image = image;
+    // 保存到相册
+//    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
+#pragma mark - Navigation
+//- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(nullable id){
+
+ // Invoked immediately prior to initiating a segue. Return NO to prevent the segue from firing. The default implementation returns YES. This method is not invoked when -performSegueWithIdentifier:sender: is used.
+
+/*
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].

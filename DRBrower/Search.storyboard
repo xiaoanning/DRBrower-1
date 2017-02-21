@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -156,6 +157,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FA1-ad-uu2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-818.39999999999998" y="71.514242878560722"/>
+        </scene>
+        <!--ShareVC-->
+        <scene sceneID="heH-33-VcM">
+            <objects>
+                <viewController storyboardIdentifier="ShareVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KgZ-dn-6in" customClass="ShareVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="psO-vo-WKj"/>
+                        <viewControllerLayoutGuide type="bottom" id="G9k-GY-4KK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hON-TV-JmG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VBk-v5-EKs">
+                                <rect key="frame" x="38" y="78" width="272" height="148"/>
+                                <color key="backgroundColor" red="0.85753160340000001" green="0.83474170930000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="VBk-v5-EKs" secondAttribute="bottom" constant="-6" id="Jda-Pc-G2H"/>
+                            <constraint firstAttribute="trailing" secondItem="VBk-v5-EKs" secondAttribute="trailing" constant="65" id="e2L-FK-26D"/>
+                            <constraint firstItem="VBk-v5-EKs" firstAttribute="top" secondItem="psO-vo-WKj" secondAttribute="bottom" constant="78" id="pTZ-sl-rKR"/>
+                            <constraint firstItem="VBk-v5-EKs" firstAttribute="leading" secondItem="hON-TV-JmG" secondAttribute="leading" constant="38" id="wWY-4v-9Bv"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="220"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tBE-jE-YuP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-818" y="860"/>
         </scene>
     </scenes>
     <resources>
