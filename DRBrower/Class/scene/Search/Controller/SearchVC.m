@@ -26,7 +26,6 @@
 @property (strong, nonatomic) ShareModel *shareModel;
 @property (strong, nonatomic) NSMutableArray *historyArray;
 @property (strong, nonatomic) MZFormSheetPresentationViewController *formSheetController;
-
 @property (strong, nonatomic) MZFormSheetPresentationViewController *shareFormSheetController;
 
 

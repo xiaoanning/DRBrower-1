@@ -24,24 +24,35 @@
     [self.shareView.titleLabel.superview bringSubviewToFront:self.shareView.titleLabel];
     self.shareView.frame = CGRectMake(0, 0, self.view.frame.size.width, 245);
     [self.view addSubview:self.shareView];
-    
+    [self verifyShareModel];
 
     [self.shareView shareButtonClick:^(SSDKPlatformType type) {
-        
         [self shareSDK:type];
     }];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dismissView) name:DISMISS_VIEW object:nil];
     
     // Do any additional setup after loading the view.
 }
+
 -(void)dealloc{
     
     [[NSNotificationCenter defaultCenter]removeObserver:self];
     
 }
+
 -(void)dismissView{
     [self dismissViewControllerAnimated:YES completion:nil];
     
+}
+
+- (void)verifyShareModel {
+    if (self.shareModel == nil) {
+        self.shareModel = [ShareModel shareModelWithShareUrl:URL_SHARE
+                                                         title:NSLocalizedString(@"直通车", nil)
+                                                          desc:NSLocalizedString(@"下载DR浏览器，查看最新动态资讯，更多使用功能等你来体验", nil)
+                                                       content:NSLocalizedString(@"下载DR浏览器，查看最新动态资讯，更多使用功能等你来体验", nil)
+                                                         image:[UIImage imageNamed:@"share_logo"]];
+    }
 }
 
 - (void)shareSDK:(SSDKPlatformType)shareType  {

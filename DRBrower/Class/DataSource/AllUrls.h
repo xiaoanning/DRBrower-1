@@ -26,4 +26,7 @@
 //百度搜索关键字
 #define URL_BAIDU_SEARCH @"https://m.baidu.com/from=2001a/s?word="
 
+//分享下载链接
+#define URL_SHARE @"http://www.drliulanqi.com/dr/index.html"
+
 #endif /* AllUrls_h */
