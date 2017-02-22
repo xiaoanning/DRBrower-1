@@ -30,13 +30,23 @@
         
         [self shareSDK:type];
     }];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shareSuccess) name:@"ShareCirclesSuccess" object:nil];
-   
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dismissView) name:DISMISS_VIEW object:nil];
+    
+    // Do any additional setup after loading the view.
+}
+-(void)dealloc{
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    
+}
+-(void)dismissView{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 - (void)shareSDK:(SSDKPlatformType)shareType  {
     
-    UIImage *image = [UIImage imageCompressForWidth:self.shareModel.image targetWidth:100];
+    UIImage *image = [UIImage imageCompressForWidth:self.shareModel.image targetWidth:50];
     
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     [shareParams SSDKSetupShareParamsByText:self.shareModel.content
@@ -66,10 +76,8 @@
                  break;
              }
          }
-         
+         [[NSNotificationCenter defaultCenter]postNotificationName:DISMISS_VIEW object:nil];
      }];
-
-    
 }
 
 -(void)showView:(NSString *)title{

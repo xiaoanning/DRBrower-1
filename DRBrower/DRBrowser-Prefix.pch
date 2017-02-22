@@ -51,4 +51,8 @@
 #define QQ_APPID @"1105997278"
 #define QQ_APPKEY @"0IpJBDsSAVxLXHC0"
 
+#pragma mark - 通知
+#define DISMISS_VIEW @"dissmissView"
+
+
 #endif /* DRBrowser_Prefix_pch */

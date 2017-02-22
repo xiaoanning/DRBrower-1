@@ -184,7 +184,7 @@
 
 -(void)showView:(NSString *)title{
     
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
     hud.mode = MBProgressHUDModeText;
     hud.label.text = NSLocalizedString(title, @"HUD message title");
     hud.tintColor = [UIColor whiteColor];
