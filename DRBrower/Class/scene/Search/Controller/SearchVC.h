@@ -9,10 +9,17 @@
 #import <UIKit/UIKit.h>
 
 #import "PYSearch.h"
+#import "NewsModel.h"
+#import "RecordModel.h"
 
 @interface SearchVC : UIViewController
 
 @property (nonatomic, strong)NSString *searchText;
 @property (nonatomic, strong)PYSearchViewController *searchViewController;
+
+@property (nonatomic, strong)NewsModel *newsModel;
+@property (nonatomic, strong)RecordModel *recordModel;
+
+
 
 @end

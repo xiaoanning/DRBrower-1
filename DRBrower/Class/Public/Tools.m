@@ -71,7 +71,7 @@
     return string;
 }
 
-#pragma 判断数组元素个数 决定pageControl的高度个页数
+#pragma mark - 判断数组元素个数 决定pageControl的高度个页数
 + (BOOL)isRemainder:(NSArray *)array {
     if ([array count] <= 10) {
         return NO;
@@ -92,4 +92,28 @@
     NSString* string=[dateFormat stringFromDate:confromTimesp];
     return string;
 }
+#pragma mark - 当前时间戳
++ (NSInteger)atPresentTimestamp {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
+    
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"]; // ----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制
+    
+    //设置时区,这个对于时间的处理有时很重要
+    
+    NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/beijing"];
+    
+    [formatter setTimeZone:timeZone];
+    
+    NSDate *datenow = [NSDate date];//现在时间,你可以输出来看下是什么格式
+    
+    NSInteger timeSp = (long)[datenow timeIntervalSince1970];
+    
+    return timeSp;
+}
+
+
 @end

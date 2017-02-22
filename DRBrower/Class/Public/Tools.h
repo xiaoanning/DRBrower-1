@@ -12,9 +12,11 @@
 
 #pragma mark - 正则表达式判断网址合法
 + (NSString *)urlValidation:(NSString *)string;
-#pragma 判断数组元素个数 决定pageControl的高度个页数
+#pragma mark - 判断数组元素个数 决定pageControl的高度个页数
 + (BOOL)isRemainder:(NSArray *)array;
 #pragma 将时间戳转换为北京时间
 +(NSString *)getDateString:(NSString *)spString;
+#pragma mark - 当前时间戳
++ (NSInteger)atPresentTimestamp;
 
 @end

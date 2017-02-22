@@ -77,11 +77,15 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "AXStretchableHeaderTabViewController/Classes/AXStretchableHeaderTabViewController.xib"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "PYSearch/PYSearch/PYSearch.bundle"
+  install_resource "ShareSDK3/ShareSDK/Support/Required/ShareSDK.bundle"
+  install_resource "ShareSDK3/ShareSDK/Support/PlatformSDK/QQSDK/TencentOpenApi_IOS_Bundle.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "AXStretchableHeaderTabViewController/Classes/AXStretchableHeaderTabViewController.xib"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "PYSearch/PYSearch/PYSearch.bundle"
+  install_resource "ShareSDK3/ShareSDK/Support/Required/ShareSDK.bundle"
+  install_resource "ShareSDK3/ShareSDK/Support/PlatformSDK/QQSDK/TencentOpenApi_IOS_Bundle.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

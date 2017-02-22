@@ -19,13 +19,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DRBrower/Class/scene/HomePage/Controller/DRHomeVC.m"
-            timestampString = "505895872.211049"
+            filePath = "DRBrower/Class/scene/Menu/Controller/HistoryVC.m"
+            timestampString = "508993714.75177"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322"
-            landmarkName = "-touchUpSearchButtonAction"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "-titleForEmptyDataSet:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,13 +35,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DRBrower/Class/scene/HomePage/Controller/DRHomeVC.m"
-            timestampString = "505895872.211049"
+            filePath = "DRBrower/Class/scene/Search/Controller/SearchVC.m"
+            timestampString = "509283684.133153"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "319"
-            endingLineNumber = "319"
-            landmarkName = "-touchUpSearchButtonAction"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "-webView:didFinishNavigation:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -51,13 +51,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DRBrower/Class/Public/Tools.m"
-            timestampString = "505819932.837871"
+            filePath = "DRBrower/Class/scene/Search/Controller/SearchVC.m"
+            timestampString = "509283684.133153"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "+urlValidation:"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "-newOneRecordWithUrl:title:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -67,13 +67,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DRBrower/Class/Public/Tools.m"
-            timestampString = "505819932.837871"
+            filePath = "DRBrower/Class/scene/Search/Controller/SearchVC.m"
+            timestampString = "509283684.133153"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "+urlValidation:"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "-webView:didFinishNavigation:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -83,13 +83,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DRBrower/Class/scene/Website/Controller/WebsiteRecommendVC.m"
-            timestampString = "505816674.648077"
+            filePath = "DRBrower/Class/scene/Search/Controller/SearchVC.m"
+            timestampString = "509283684.133153"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "-stretchableSubViewInSubViewController:"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "-newOneRecordWithUrl:title:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -99,13 +99,61 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DRBrower/Class/scene/HomePage/Controller/DRHomeVC.m"
-            timestampString = "505821355.498896"
+            filePath = "DRBrower/Class/scene/Search/Model/RecordModel.m"
+            timestampString = "508935743.186924"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "-viewWillAppear:"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "-realmAddRecord"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DRBrower/Class/scene/Search/Model/RecordModel.h"
+            timestampString = "508993393.13588"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "@interface RecordModel"
+            landmarkType = "2">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DRBrower/Class/scene/Search/Model/RecordModel.m"
+            timestampString = "509015700.207399"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "+realmDeleteOneRecord:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DRBrower/Class/scene/Search/Model/RecordModel.m"
+            timestampString = "509018784.185506"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "-realmAddRecord"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -115,13 +163,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DRBrower/Class/scene/HomePage/Controller/DRHomeVC.m"
-            timestampString = "505887262.717783"
+            filePath = "DRBrower/Class/scene/Search/Model/RecordModel.m"
+            timestampString = "509020522.801564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "-getWebsiteData"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "+realmSelectAllRecord"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -131,13 +179,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DRBrower/Class/scene/HomePage/View/HomeTopView.m"
-            timestampString = "505888136.031499"
+            filePath = "DRBrower/Class/scene/Search/View/ShareView.m"
+            timestampString = "509334034.909129"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "-data"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "-qqButtonAction:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -147,13 +195,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DRBrower/Class/scene/HomePage/View/HomeTopView.m"
-            timestampString = "505895609.042924"
+            filePath = "DRBrower/Class/scene/Search/View/ShareView.m"
+            timestampString = "509294593.77921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "-reloadPageControl"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "-weiChatButtonAction:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -163,13 +211,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DRBrower/Class/scene/HomePage/Controller/DRHomeVC.m"
-            timestampString = "505896008.818737"
+            filePath = "DRBrower/Class/scene/Search/Controller/ShareVC.m"
+            timestampString = "509420539.381342"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "263"
-            endingLineNumber = "263"
-            landmarkName = "-tableView:heightForHeaderInSection:"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "-shareSDK:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -179,13 +227,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DRBrower/Class/Public/Tools.m"
-            timestampString = "505896228.139363"
+            filePath = "DRBrower/Class/scene/Search/Controller/ShareVC.m"
+            timestampString = "509420539.381342"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "+isRemainder:"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-shareSDK:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DRBrower/Class/scene/Search/Controller/ShareVC.m"
+            timestampString = "509420539.381342"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "-shareSDK:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DRBrower/Class/scene/Search/Controller/SearchVC.m"
+            timestampString = "509340758.220728"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "-touchUpPageButtonAction"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DRBrower/Class/scene/Search/Controller/SearchVC.m"
+            timestampString = "509340879.464924"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "-touchUpPageButtonAction"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

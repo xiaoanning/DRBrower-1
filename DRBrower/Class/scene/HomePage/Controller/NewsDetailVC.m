@@ -7,11 +7,13 @@
 //
 
 #import "NewsDetailVC.h"
-
-@interface NewsDetailVC ()
+#import "HomeToolBar.h"
+#import "MenuVC.h"
+@interface NewsDetailVC ()<HomeToolBarDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIWebView *newsDetailWV;
+@property (weak, nonatomic) IBOutlet HomeToolBar *homeToolBar;
 
 @end
 
@@ -19,6 +21,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.homeToolBar.delegate = self;
+    
     self.newsDetailWV.backgroundColor = [UIColor whiteColor];
     
     if (self.sortModel && ![self.sortModel.url isEqualToString:@""]) {
@@ -27,12 +32,38 @@
         [self.newsDetailWV loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.newsModel.url]]];
     }
 }
-- (IBAction)BackButtonItemInToolBarActon:(id)sender {
+
+- (void)touchUpBackButtonAction {
+    
     if ([self.newsDetailWV canGoBack]) {
         [self.newsDetailWV goBack];
     }else {
         [self.navigationController popViewControllerAnimated:YES];
     }    
+    }
+}
+
+- (void)touchUpGoButtonActionr {
+    if ([self.newsDetailWV canGoForward]) {
+        [self.newsDetailWV goForward];
+    }
+}
+
+- (void)touchUpMenuButtonAction {
+    //菜单
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Menu" bundle:[NSBundle mainBundle]];
+    MenuVC *menuVC = (MenuVC *)[storyboard instantiateViewControllerWithIdentifier:@"MenuVC"];
+    MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:menuVC];
+    formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
+    
+    formSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height - 240;
+    
+    formSheetController.presentationController.contentViewSize = [UIScreen mainScreen].bounds.size;
+    
+    
+    formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideAndBounceFromBottom;
+    
+    [self presentViewController:formSheetController animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

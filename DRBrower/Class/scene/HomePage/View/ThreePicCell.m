@@ -34,6 +34,7 @@
                                 
                                 imageView.image = resultImage;
                             }];
+
     }
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

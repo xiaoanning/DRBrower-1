@@ -15,16 +15,40 @@
 #import <Mantle/Mantle.h>
 #import "DRDataService.h"
 #import "DRLocaldData.h"
+#import "DRImageView.h"
+#import "UIImage+DRImageClip.h"
+#import "Tools.h"
 #import "AllUrls.h"
+
 #import "AXStretchableHeaderTabViewController.h"
 #import "UIImageView+WebCache.h"
-#import "DRImageView.h"
+#import "MZFormSheetPresentationViewControllerSegue.h"
 #import "MJRefresh.h"
-#import "Tools.h"
+#import "SWTableViewCell.h"
+#import "UIScrollView+EmptyDataSet.h"
+#import <Colours.h>
+#import <MBProgressHUD.h>
+#import <Realm/Realm.h>
+
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+//腾讯开放平台（对应QQ和QQ空间）SDK头文件
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+//微信SDK头文件
+#import "WXApi.h"
 
 #pragma mark - 常量
 #define TAG_ID_RECOMMEND @"100"
 #define SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height
 #define SCREEN_WIDTH [[UIScreen mainScreen]bounds].size.width
+
+#define COLLECT_SUCCESS @"收藏成功"
+#define COLLECT_FAILED @"已收藏"
+
+#define WEIXIN_APPID @"wxdc03861e4dfb37c0"
+#define WEIXIN_APPKEY @"8e3efff34eb34066e21362df582d1a58"
+#define QQ_APPID @"1105997278"
+#define QQ_APPKEY @"0IpJBDsSAVxLXHC0"
 
 #endif /* DRBrowser_Prefix_pch */

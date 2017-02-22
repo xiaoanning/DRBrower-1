@@ -10,7 +10,7 @@
 @class WebsiteModel;
 
 @protocol WebsiteCellDelegate <NSObject>
-
+@optional
 - (void)longPressGesture:(WebsiteModel *)model;
 
 @end

@@ -11,7 +11,7 @@
 @class WebsiteModel;
 
 @protocol HomeTopViewDelegate <NSObject>
-
+@optional
 - (void)touchUpSearchButtonAction;
 - (void)touchUpQRcodeButtonAction;
 

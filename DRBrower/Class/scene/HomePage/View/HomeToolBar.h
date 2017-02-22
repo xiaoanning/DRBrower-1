@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol HomeToolBarDelegate <NSObject>
-
+@optional
 - (void)touchUpHomeButtonAction;
 - (void)touchUpMenuButtonAction;
 - (void)touchUpBackButtonAction;
