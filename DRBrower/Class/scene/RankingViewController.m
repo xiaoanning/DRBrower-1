@@ -48,7 +48,7 @@
 }
 -(void)creaetRightButtonItem {
     UIButton *rightBar = [UIButton buttonWithType:UIButtonTypeCustom];
-    [rightBar setImage:[UIImage imageNamed:@"icon_switch"] forState:UIControlStateNormal];
+    [rightBar setImage:[UIImage imageNamed:@"sort_switch"] forState:UIControlStateNormal];
     rightBar.frame = CGRectMake(0, 0, 30, 30);
     [rightBar addTarget:self action:@selector(touchUpInsideRightButton:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightBar];
@@ -86,7 +86,7 @@
         titleButton.titleLabel.font = [UIFont boldSystemFontOfSize:18.0];
         [titleButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [bottomView addSubview:titleButton];
-        titleButton.tag = 100+i;
+        titleButton.tag = i+1;
         [titleButton addTarget:self action:@selector(touchUpTopButton:) forControlEvents:UIControlEventTouchUpInside];
     }
     [self buttonHighLightStyle:[[bottomView subviews] firstObject]];
@@ -109,9 +109,9 @@
     }
     [self buttonHighLightStyle:button];
     
-    NSInteger currentIndex = button.tag-100;
+    NSInteger currentIndex = button.tag;
     
-    SortTagModel *sortTagModel = self.sortTagArray[currentIndex];
+    SortTagModel *sortTagModel = self.sortTagArray[currentIndex-1];
 
     UIPageViewControllerNavigationDirection direction ;
     if ([self.sortTagArray indexOfObject:sortTagModel] == [self.sortTagArray indexOfObject:self.tagModel] )
@@ -126,7 +126,8 @@
     }
     
     RankingListVC * vc = [[RankingListVC alloc]init] ;
-    vc.index = currentIndex;
+    vc.navigationController = self.navigationController;
+    vc.index = currentIndex-1;
     vc.tagModel = self.sortTagArray[vc.index];
     [_pageVC setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
     
@@ -200,10 +201,10 @@
         UIButton *button = bottomView.subviews[i];
         [self buttonStyle:button];
     }
-    UIButton *button = [bottomView viewWithTag:100+currentVC.index];
+    UIButton *button = [bottomView viewWithTag:currentVC.index+1];
     [self buttonHighLightStyle:button];
 }
-
+#pragma mark-----------------------------自定义气泡
 -(void)createTableView {
     self.bgView = [[UIView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:_bgView];
@@ -212,16 +213,15 @@
     tapGesture.delegate = self;
     [self.bgView addGestureRecognizer:tapGesture];
     
-    self.bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-160, 5, 145, 158)];
+    self.bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-140, 0, 130, 150)];
     self.bgImageView.userInteractionEnabled = YES;
     self.bgImageView.image = [UIImage imageNamed:@"x_cishu_ditu.png"];
     [self.bgView addSubview:self.bgImageView];
     
     self.sTitleArray = @[@"访问次数",@"点赞次数",@"时间"];
-    self.smallTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 5, CGRectGetWidth(self.bgImageView.frame), 155) style:UITableViewStylePlain];
+    self.smallTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 5, CGRectGetWidth(self.bgImageView.frame), CGRectGetHeight(self.bgImageView.frame)-5) style:UITableViewStylePlain];
     self.smallTableView.dataSource = self;
     self.smallTableView.delegate = self;
-//    self.smallTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.bgImageView addSubview:self.smallTableView];
     self.smallTableView.scrollEnabled = NO;
 }
@@ -259,31 +259,70 @@
     }
     
     if ([self.selectedIndexPath isEqual:indexPath]) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+
+        cell.accessoryView= [self returnButtonByIsSelected:YES];
     }else{
-        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.accessoryView= [self returnButtonByIsSelected:NO];
     }
+
     cell.textLabel.text = self.sTitleArray[indexPath.row];
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    
     if (self.selectedIndexPath) {
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:self.selectedIndexPath];
-        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.accessoryView= [self returnButtonByIsSelected:NO];
     }
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    self.selectedIndexPath = indexPath;
+    cell.accessoryView= [self returnButtonByIsSelected:YES];
     
+    self.selectedIndexPath = indexPath;
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"sortType" object:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
     [self.bgView removeFromSuperview];
 
 }
 
+- (void)btnClicked:(id)sender event:(id)event
+{
+    NSSet *touches =[event allTouches];
+    UITouch *touch =[touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self.smallTableView];
+    NSIndexPath *indexPath= [self.smallTableView indexPathForRowAtPoint:currentTouchPosition];
+    if (indexPath!= nil)
+    {
+        [self tableView: self.smallTableView accessoryButtonTappedForRowWithIndexPath:indexPath];
+    }
+}
+-(void)tableView:(UITableView*)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath*)indexPath{
+    if (self.selectedIndexPath) {
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:self.selectedIndexPath];
+        cell.accessoryView= [self returnButtonByIsSelected:NO];
+    }
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.accessoryView= [self returnButtonByIsSelected:YES];
+    
+    self.selectedIndexPath = indexPath;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"sortType" object:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+    [self.bgView removeFromSuperview];
 
+}
+-(UIButton *)returnButtonByIsSelected:(BOOL)isSelected {
+    UIImage *image;
+    if (isSelected) {
+        image= [UIImage imageNamed:@"sort_circleSelected"];
+    }else {
+        image= [UIImage imageNamed:@"sort_circle"];
+    }
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0.0, 0.0, image.size.width/2, image.size.height/2);;
+    [button setBackgroundImage:image forState:UIControlStateNormal];
+    button.backgroundColor= [UIColor clearColor];
+    [button addTarget:self action:@selector(btnClicked:event:)  forControlEvents:UIControlEventTouchUpInside];
+    return button;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

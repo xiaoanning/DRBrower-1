@@ -18,13 +18,17 @@
 
 @interface RankingCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *adressLabel;
-@property (weak, nonatomic) IBOutlet UIButton *praiseButton;
+@property (weak, nonatomic) IBOutlet UIButton *zanButton;
+@property (weak, nonatomic) IBOutlet UILabel *zanLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *informButton;
+@property (weak, nonatomic) IBOutlet UILabel *informLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
+
+
 @property (weak, nonatomic) IBOutlet UIButton *userButton;
+@property (weak, nonatomic) IBOutlet UILabel *userLabel;
 
 @property (nonatomic,weak) id<RankingButtonDelegate>delegate;
 
