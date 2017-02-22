@@ -12,6 +12,8 @@
 
 @property (nonatomic, assign)CGSize drImageViewSize;
 
-- (void)cutImage:(UIImage*)image;
+//- (void)cutImage:(UIImage*)image scale:(CGFloat)scale;
+//等比压缩裁剪
+-(UIImage *) imageCompressForSize:(UIImage *)sourceImage targetSize:(CGSize)size;
 
 @end

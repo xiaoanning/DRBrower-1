@@ -27,14 +27,16 @@
                      placeholderImage:[[SDImageCache sharedImageCache]
                                        imageFromDiskCacheForKey:[[NSURL URLWithString:img.url] absoluteString]]
                             completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-            [imageView cutImage:image];
-//                                image = [image stretchableImageWithLeftCapWidth:0.5 topCapHeight:0.5];
-//                                
-//                                imageView.image = image;
-        }];
+                                
+                                UIImage *resultImage = [imageView imageCompressForSize:image targetSize:CGSizeMake(CGRectGetWidth(imageView.frame), CGRectGetHeight(imageView.frame))];
+                                
+                                //                                image = [image stretchableImageWithLeftCapWidth:0.5 topCapHeight:0.5];
+                                
+                                imageView.image = resultImage;
+                            }];
+
     }
 }
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
