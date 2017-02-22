@@ -52,12 +52,12 @@
              case SSDKResponseStateBegin:
                  break;
              case SSDKResponseStateSuccess: {
-//                 [self showView:@"分享成功"];
+                 [self showView:@"分享成功"];
                  NSLog(@"分享成功");
                  break;
              }
              case SSDKResponseStateFail: {
-//                 [self showView:@"分享失败"];
+                 [self showView:@"分享失败"];
                  NSLog(@"分享失败");
                  break;
              }
@@ -69,15 +69,19 @@
          
      }];
 
+    
 }
 
 -(void)showView:(NSString *)title{
     
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
+    hud.frame = CGRectMake(SCREEN_WIDTH*0.5-100, SCREEN_HEIGHT*0.5-50, 200, 100);
     hud.mode = MBProgressHUDModeText;
     hud.label.text = NSLocalizedString(title, @"HUD message title");
     hud.tintColor = [UIColor whiteColor];
     [hud hideAnimated:YES afterDelay:2.f];
+    
+    
     
 }
 
