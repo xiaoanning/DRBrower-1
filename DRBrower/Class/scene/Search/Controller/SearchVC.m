@@ -133,7 +133,7 @@
     self.formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:menuVC];
     self.formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
     
-    self.formSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height - 240;
+    self.formSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height - 20 - MENU_HEIGHT;
     
     self.formSheetController.presentationController.contentViewSize = [UIScreen mainScreen].bounds.size;
     
