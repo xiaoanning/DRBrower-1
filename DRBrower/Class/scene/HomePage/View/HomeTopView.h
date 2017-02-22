@@ -18,6 +18,8 @@
 - (void)websiteViewSelectWithWebsite:(WebsiteModel *)website;
 - (void)homeTopViewpresentView:(WebsiteModel *)model;
 
+- (void)touchUpSortButtonAction;
+
 @end
 
 @interface HomeTopView : UIView<WebsiteCellDelegate>

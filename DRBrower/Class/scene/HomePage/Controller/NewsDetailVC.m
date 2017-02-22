@@ -24,9 +24,13 @@
     
     self.homeToolBar.delegate = self;
     
-    [self.newsDetailWV loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.newsModel.url]]];
     self.newsDetailWV.backgroundColor = [UIColor whiteColor];
-    // Do any additional setup after loading the view.
+    
+    if (self.sortModel && ![self.sortModel.url isEqualToString:@""]) {
+        [self.newsDetailWV loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.sortModel.url]]];
+    }else if(self.newsModel && ![self.newsModel.url isEqualToString:@""]){
+        [self.newsDetailWV loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.newsModel.url]]];
+    }
 }
 
 - (void)touchUpBackButtonAction {
@@ -35,6 +39,7 @@
         [self.newsDetailWV goBack];
     }else {
         [self.navigationController popViewControllerAnimated:YES];
+    }    
     }
 }
 

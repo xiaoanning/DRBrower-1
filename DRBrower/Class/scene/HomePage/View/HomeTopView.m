@@ -140,6 +140,11 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
         }
 
 }
+- (IBAction)touchUpSortButton:(id)sender {
+    if (_delegate && [_delegate respondsToSelector:@selector(touchUpSortButtonAction)]) {
+        [_delegate touchUpSortButtonAction];
+    }
+}
 
 
 

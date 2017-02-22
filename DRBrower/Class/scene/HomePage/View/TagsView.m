@@ -31,9 +31,15 @@
         [channelButton setTitle:newsTag.name forState:UIControlStateNormal];
         [self.tagsSV addSubview:channelButton];
 
-        [self buttonHighLightStyle:[[self.tagsSV subviews] firstObject]];
-
     }
+    UIButton *button = [[self.tagsSV subviews] firstObject];
+    NSLog(@"tag=====%ld",(long)button.tag);
+    [self buttonHighLightStyle:button];
+
+}
+- (void)didClickSwitchChannel:(UIButton *)button {
+    
+    [self changeButtonWhenPageViewScroll:button withRefresh:YES];
 }
 
 - (void)changeButtonWhenPageViewScroll:(UIButton *)button withRefresh:(BOOL)refresh
