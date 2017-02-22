@@ -41,7 +41,11 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "96"
             endingLineNumber = "96"
+<<<<<<< HEAD
             landmarkName = "-webView:didFinishNavigation:"
+=======
+            landmarkName = "-userContentController:didReceiveScriptMessage:"
+>>>>>>> feature/菜单栏布局
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -160,7 +164,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DRBrower/Class/scene/Search/Model/RecordModel.m"

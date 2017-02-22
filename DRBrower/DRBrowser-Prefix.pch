@@ -51,4 +51,7 @@
 #define QQ_APPID @"1105997278"
 #define QQ_APPKEY @"0IpJBDsSAVxLXHC0"
 
+#define MENU_HEIGHT 280
+
+
 #endif /* DRBrowser_Prefix_pch */
