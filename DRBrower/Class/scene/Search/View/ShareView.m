@@ -30,13 +30,9 @@
 }
 
 - (IBAction)weiChatButtonAction:(id)sender {
-    
     if (_shareBlock) {
         _shareBlock(SSDKPlatformSubTypeWechatSession);
     }
-    
-
-
 }
 
 - (IBAction)qqButtonAction:(id)sender {

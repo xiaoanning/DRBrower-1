@@ -32,5 +32,7 @@
 #define URL_GETSORTLIST @"sort/getList?page_num=1&site_type="
 //http://61.160.250.174:8080/dr/sort/getList?page_num=1&site_type=3&sort=visit_num
 
+//分享下载链接
+#define URL_SHARE @"http://www.drliulanqi.com/dr/index.html"
 
 #endif /* AllUrls_h */

@@ -24,19 +24,40 @@
     [self.shareView.titleLabel.superview bringSubviewToFront:self.shareView.titleLabel];
     self.shareView.frame = CGRectMake(0, 0, self.view.frame.size.width, 245);
     [self.view addSubview:self.shareView];
-    
+    [self verifyShareModel];
 
     [self.shareView shareButtonClick:^(SSDKPlatformType type) {
-        
         [self shareSDK:type];
     }];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shareSuccess) name:@"ShareCirclesSuccess" object:nil];
-   
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dismissView) name:DISMISS_VIEW object:nil];
+    
+    // Do any additional setup after loading the view.
+}
+
+-(void)dealloc{
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    
+}
+
+-(void)dismissView{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+- (void)verifyShareModel {
+    if (self.shareModel == nil) {
+        self.shareModel = [ShareModel shareModelWithShareUrl:URL_SHARE
+                                                         title:NSLocalizedString(@"直通车", nil)
+                                                          desc:NSLocalizedString(@"下载DR浏览器，查看最新动态资讯，更多使用功能等你来体验", nil)
+                                                       content:NSLocalizedString(@"下载DR浏览器，查看最新动态资讯，更多使用功能等你来体验", nil)
+                                                         image:[UIImage imageNamed:@"share_logo"]];
+    }
 }
 
 - (void)shareSDK:(SSDKPlatformType)shareType  {
     
-    UIImage *image = [UIImage imageCompressForWidth:self.shareModel.image targetWidth:100];
+    UIImage *image = [UIImage imageCompressForWidth:self.shareModel.image targetWidth:50];
     
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     [shareParams SSDKSetupShareParamsByText:self.shareModel.content
@@ -52,12 +73,12 @@
              case SSDKResponseStateBegin:
                  break;
              case SSDKResponseStateSuccess: {
-//                 [self showView:@"分享成功"];
+                 [self showView:@"分享成功"];
                  NSLog(@"分享成功");
                  break;
              }
              case SSDKResponseStateFail: {
-//                 [self showView:@"分享失败"];
+                 [self showView:@"分享失败"];
                  NSLog(@"分享失败");
                  break;
              }
@@ -66,18 +87,20 @@
                  break;
              }
          }
-         
+         [[NSNotificationCenter defaultCenter]postNotificationName:DISMISS_VIEW object:nil];
      }];
-
 }
 
 -(void)showView:(NSString *)title{
     
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
+    hud.frame = CGRectMake(SCREEN_WIDTH*0.5-100, SCREEN_HEIGHT*0.5-50, 200, 100);
     hud.mode = MBProgressHUDModeText;
     hud.label.text = NSLocalizedString(title, @"HUD message title");
     hud.tintColor = [UIColor whiteColor];
     [hud hideAnimated:YES afterDelay:2.f];
+    
+    
     
 }
 
