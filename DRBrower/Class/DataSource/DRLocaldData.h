@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RecordModel.h"
+#import "WebsiteModel.h"
 
 @interface DRLocaldData : NSObject
 
@@ -14,5 +16,22 @@
 + (void)saveWebsiteData:(NSMutableArray *)websiteArray;
 //获取web
 + (NSMutableArray *)achieveWebsiteData;
+
+//浏览历史 保存
++ (void)saveHistoryData:(NSMutableArray *)historyArray;
+//获取浏览历史
++ (NSMutableArray *)achieveHistoryData;
+//删除历史
++ (void)deleteOneHistoryData:(RecordModel *)record;
+//清空历史
++ (void)deleteAllHistoryData;
+
+//收藏
+- (BOOL)saveCollectData:(RecordModel *)record;
+//获取收藏
++ (NSMutableArray *)achieveCollectData;
+//取消收藏
++ (void)deleteOneCollectData:(RecordModel *)record;
+
 
 @end

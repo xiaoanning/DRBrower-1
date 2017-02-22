@@ -10,7 +10,7 @@
 #import "NewsTagModel.h"
 
 @protocol TagsViewChannelButtonDelegate <NSObject>
-
+@optional
 - (void)touchUpChannelButtonAction:(NSInteger)buttonTags;
 
 @end

@@ -10,6 +10,7 @@
 #import "SearchVC.h"
 #import "NewsDetailVC.h"
 #import "WebsiteRootVC.h"
+#import "MenuVC.h"
 
 #import "NewsTagModel.h"
 #import "NewsModel.h"
@@ -208,7 +209,10 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
                               if ([DRLocaldData achieveWebsiteData] == nil) {
                                  
                                   NSMutableArray *array = [NSMutableArray arrayWithArray:websiteList.data];
-                                  [array removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(9, [array count]-9)]];
+                                  if ([array count]>9) {
+                                      [array removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(9, [array count]-9)]];
+                                  }
+                                  
                                   
                                   WebsiteModel *addWebsite = [[WebsiteModel alloc] init];
                                   addWebsite.name = NSLocalizedString(@"添加", nil);
@@ -334,10 +338,14 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NewsModel *news = self.newsListArray[indexPath.row];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"NewsDetail" bundle:[NSBundle mainBundle]];
-    NewsDetailVC *newsDetailVC = (NewsDetailVC *)[storyboard instantiateViewControllerWithIdentifier:@"NewsDetailVC"];
-    newsDetailVC.newsModel = news;
-    [self.navigationController showViewController:newsDetailVC sender:nil];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"NewsDetail" bundle:[NSBundle mainBundle]];
+//    NewsDetailVC *newsDetailVC = (NewsDetailVC *)[storyboard instantiateViewControllerWithIdentifier:@"NewsDetailVC"];
+//    newsDetailVC.newsModel = news;
+//    [self.navigationController showViewController:newsDetailVC sender:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
+    SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
+    searchVC.newsModel = news;
+    [self.navigationController pushViewController:searchVC animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -382,7 +390,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 }
 
 //homeToolBar
-
+//主页按钮
 - (void)touchUpHomeButtonAction {
     _pageVC = nil;
     self.pageVC.view.hidden = YES ;
@@ -397,8 +405,22 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     [self.homeTableView reloadData];
 }
 
+//菜单按钮
 - (void)touchUpMenuButtonAction {
-    //TODO:login menu
+    //菜单
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Menu" bundle:[NSBundle mainBundle]];
+    MenuVC *menuVC = (MenuVC *)[storyboard instantiateViewControllerWithIdentifier:@"MenuVC"];
+    MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:menuVC];
+    formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
+
+    formSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height - 240;
+    
+    formSheetController.presentationController.contentViewSize = [UIScreen mainScreen].bounds.size;
+    
+    
+    formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideAndBounceFromBottom;
+    
+    [self presentViewController:formSheetController animated:YES completion:nil];
 }
 
 //搜索
