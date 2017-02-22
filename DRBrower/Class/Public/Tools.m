@@ -84,5 +84,12 @@
     }
 }
 
-
++(NSString *)getDateString:(NSString *)spString
+{
+    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:[spString intValue]];
+    NSDateFormatter *dateFormat=[[NSDateFormatter alloc]init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm"];
+    NSString* string=[dateFormat stringFromDate:confromTimesp];
+    return string;
+}
 @end

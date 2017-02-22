@@ -22,6 +22,7 @@
 #import "HomeToolBar.h"
 
 #import "NewsListViewController.h"
+#import "RankingViewController.h"
 
 static NSString *const onePicCellIdentifier = @"OnePicCell";
 static NSString *const threePicCellIdentifier = @"ThreePicCell";
@@ -105,16 +106,16 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     NewsListViewController * vc = [[NewsListViewController alloc]init] ;
     vc.navigationController = self.navigationController ;
     vc.index = 0 ;
+    NSLog(@"index====%ld",(long)vc.index);
     vc.model = self.tagListArray[vc.index];
     
     [_pageVC setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
         
     }];
     
-    [self.tagsView changeButtonWhenPageViewScroll:[self.tagsView.tagsSV viewWithTag:1 + vc.index]  withRefresh:NO];
+    [self.tagsView changeButtonWhenPageViewScroll:[self.tagsView.tagsSV viewWithTag:1+vc.index]  withRefresh:NO];
     
-    
-    
+        
 }
 
 #pragma mark <UIPageViewControllerDelegate,UIPageViewControllerDataSource>
@@ -373,13 +374,39 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 }
 
 #pragma mark - custom delegate
+//排行
+-(void)touchUpSortButtonAction {
+    RankingViewController *rankingVC = [[RankingViewController alloc] init];
+    [self.navigationController pushViewController:rankingVC animated:YES];
+}
+
 //频道
 - (void)touchUpChannelButtonAction:(NSInteger)buttonTags {
     [self.newsListArray removeAllObjects];
     NewsTagModel *newstag = self.tagListArray[buttonTags];
-    [self getNewsByTag:newstag type:nil];
+    
+    UIPageViewControllerNavigationDirection direction ;
+    if ([self.tagListArray indexOfObject:newstag] == [self.tagListArray indexOfObject:self.newsTag] )
+    {
+        return ;
+    }else if ([self.tagListArray indexOfObject:newstag] > [self.tagListArray indexOfObject:self.newsTag])
+    {
+        direction = UIPageViewControllerNavigationDirectionForward ;
+    }else
+    {
+        direction = UIPageViewControllerNavigationDirectionReverse ;
+    }
+    
+    NewsListViewController * vc = [[NewsListViewController alloc]init] ;
+    vc.index = buttonTags ;
+    vc.model = self.tagListArray[vc.index];
+    
+    [_pageVC setViewControllers:@[vc] direction:direction animated:YES completion:nil];
+    
     self.newsTag = newstag;
 }
+
+
 
 //homeToolBar
 
