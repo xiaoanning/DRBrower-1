@@ -40,7 +40,7 @@
     }else {
         [self.navigationController popViewControllerAnimated:YES];
     }    
-    }
+    
 }
 
 - (void)touchUpGoButtonActionr {

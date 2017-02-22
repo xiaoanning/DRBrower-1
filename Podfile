@@ -16,6 +16,8 @@ target 'DRBrower' do
   pod 'Realm', '~> 2.0.4'
   pod 'ShareSDK3'
   pod 'MOBFoundation'
+  pod 'ShareSDK3/ShareSDKPlatforms/QQ'
+  pod 'ShareSDK3/ShareSDKPlatforms/WeChat'
 
 
 end

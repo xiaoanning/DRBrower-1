@@ -13,11 +13,6 @@
 
 @property (strong, nonatomic) ShareModel *shareModel;
 
-- (void)shareSDK:(SSDKPlatformType)shareType
-         content:(NSString *)content
-          image:(UIImage *)image
-           title:(NSString *)title
-        shareURL:(NSString *)shareURL
-     description:(NSString *)description;
+- (void)shareSDK:(SSDKPlatformType)shareType;
 
 @end
