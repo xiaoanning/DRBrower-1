@@ -28,26 +28,22 @@
 
     [self.shareView shareButtonClick:^(SSDKPlatformType type) {
         
-        [self shareSDK:type
-               content:self.shareModel.content
-                 image:self.shareModel.image
-                 title:self.shareModel.title
-              shareURL:self.shareModel.shareUrl
-           description:self.shareModel.desc];
+        [self shareSDK:type];
     }];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shareSuccess) name:@"ShareCirclesSuccess" object:nil];
    
 }
 
-- (void)shareSDK:(SSDKPlatformType)shareType
-         content:(NSString *)content
-           image:(UIImage *)image
-           title:(NSString *)title
-        shareURL:(NSString *)shareURL
-     description:(NSString *)description {
+- (void)shareSDK:(SSDKPlatformType)shareType  {
+    
+    UIImage *image = [UIImage imageCompressForWidth:self.shareModel.image targetWidth:100];
     
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-    [shareParams SSDKSetupShareParamsByText:content images:image url:[NSURL URLWithString:shareURL] title:title type:SSDKContentTypeAuto];
+    [shareParams SSDKSetupShareParamsByText:self.shareModel.content
+                                     images:image
+                                        url:[NSURL URLWithString:self.shareModel.shareUrl]
+                                      title:self.shareModel.title
+                                       type:SSDKContentTypeAuto];
     
     [ShareSDK share:shareType
          parameters:shareParams
@@ -56,12 +52,12 @@
              case SSDKResponseStateBegin:
                  break;
              case SSDKResponseStateSuccess: {
-                 [self showView:@"分享成功"];
+//                 [self showView:@"分享成功"];
                  NSLog(@"分享成功");
                  break;
              }
              case SSDKResponseStateFail: {
-                 [self showView:@"分享失败"];
+//                 [self showView:@"分享失败"];
                  NSLog(@"分享失败");
                  break;
              }

@@ -16,7 +16,7 @@
 #import "DRDataService.h"
 #import "DRLocaldData.h"
 #import "DRImageView.h"
-
+#import "UIImage+DRImageClip.h"
 #import "Tools.h"
 #import "AllUrls.h"
 

@@ -34,6 +34,7 @@
 		55421AC11E5ACE7D00389B86 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 55421AC01E5ACE7D00389B86 /* libstdc++.tbd */; };
 		55421AC31E5ACE8B00389B86 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55421AC21E5ACE8B00389B86 /* JavaScriptCore.framework */; };
 		55421AC61E5AD45800389B86 /* ShareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55421AC51E5AD45800389B86 /* ShareModel.m */; };
+		55421AE01E5D22D400389B86 /* UIImage+DRImageClip.m in Sources */ = {isa = PBXBuildFile; fileRef = 55421ADF1E5D22D400389B86 /* UIImage+DRImageClip.m */; };
 		557DC0671E08DF8100ECFFDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 557DC0661E08DF8100ECFFDE /* main.m */; };
 		557DC06D1E08DF8100ECFFDE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 557DC06C1E08DF8100ECFFDE /* ViewController.m */; };
 		557DC0701E08DF8100ECFFDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 557DC06E1E08DF8100ECFFDE /* Main.storyboard */; };
@@ -122,6 +123,8 @@
 		55421AC21E5ACE8B00389B86 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		55421AC41E5AD45800389B86 /* ShareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareModel.h; sourceTree = "<group>"; };
 		55421AC51E5AD45800389B86 /* ShareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareModel.m; sourceTree = "<group>"; };
+		55421ADE1E5D22D400389B86 /* UIImage+DRImageClip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+DRImageClip.h"; sourceTree = "<group>"; };
+		55421ADF1E5D22D400389B86 /* UIImage+DRImageClip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+DRImageClip.m"; sourceTree = "<group>"; };
 		557DC0621E08DF8100ECFFDE /* DRBrower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DRBrower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		557DC0661E08DF8100ECFFDE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		557DC06B1E08DF8100ECFFDE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -388,6 +391,8 @@
 		557DC0831E08E08400ECFFDE /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				55421ADE1E5D22D400389B86 /* UIImage+DRImageClip.h */,
+				55421ADF1E5D22D400389B86 /* UIImage+DRImageClip.m */,
 				558ADF571E0D115600035716 /* DRImageView.h */,
 				558ADF981E13CE5F00035716 /* DRImageView.m */,
 				558ADF591E0D115600035716 /* ZYImagesPlayer.h */,
@@ -690,6 +695,7 @@
 				55421AA91E599A6E00389B86 /* ShareView.m in Sources */,
 				557DC0AA1E0A64E900ECFFDE /* NewsListModel.m in Sources */,
 				558ADF991E13CE5F00035716 /* DRImageView.m in Sources */,
+				55421AE01E5D22D400389B86 /* UIImage+DRImageClip.m in Sources */,
 				55BC1B121E49D3EF00A64375 /* RecordCell.m in Sources */,
 				551661691E236AEF00909A11 /* WebsiteRootVC.m in Sources */,
 				552375891E1CEAF000214ECB /* SearchVC.m in Sources */,
