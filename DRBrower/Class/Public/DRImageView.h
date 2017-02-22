@@ -10,6 +10,8 @@
 
 @interface DRImageView : UIImageView
 
+@property (nonatomic, assign)CGSize drImageViewSize;
+
 - (void)cutImage:(UIImage*)image;
 
 @end

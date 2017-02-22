@@ -7,7 +7,16 @@
 //
 
 #import "HomeTopView.h"
+#include "CSStickyHeaderFlowLayout.h"
+#import "WebsiteCell.h"
+#import "WebsiteModel.h"
+#import "HomeTopViewLayout.h"
 
+static NSString *const websiteCellIdentifier = @"WebsiteCell";
+@interface HomeTopView()<UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate>{
+    
+}
+@end
 @implementation HomeTopView
 
 /*
@@ -17,5 +26,121 @@
     // Drawing code
 }
 */
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    self.websiteCollectionView.dataSource = self;
+    self.websiteCollectionView.delegate = self;
+    
+    [self.websiteCollectionView registerNib:[UINib nibWithNibName:@"WebsiteCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:websiteCellIdentifier];
+    [self data];
+    [self reloadPageControl];
+}
+
+- (void)data {
+    self.websiteArray = [DRLocaldData achieveWebsiteData];
+    [(HomeTopViewLayout *)self.websiteCollectionView.collectionViewLayout setDefectListModel:self.websiteArray] ;
+    [self reloadPageControl];
+
+//    if ([self.websiteArray count]>10) {
+//        NSInteger num = 10 - [self.websiteArray count]%10;
+//        for (int i = 0; i < num; i++) {
+//            WebsiteModel *model = [[WebsiteModel alloc] init];
+//            [self.websiteArray addObject:model];
+//        }
+//        [self reloadPageControl];
+//    }
+    
+}
+
+- (void)reloadPageControl {
+    if ([Tools isRemainder:self.websiteArray] == YES) {
+        NSInteger num = [self.websiteArray count]/10;
+        if([self.websiteArray count]%10 > 0) {
+            self.websitePageControl.numberOfPages = num + 1;
+        }
+        else{
+            self.websitePageControl.numberOfPages = num;
+        }
+        
+    }else {
+        self.websitePageControlHeight.constant = 0;
+    }
+}
+
+#pragma mark UICollectionView
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+        return self.websiteArray.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    WebsiteCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:websiteCellIdentifier forIndexPath:indexPath];
+    WebsiteModel *website = self.websiteArray[indexPath.row];
+    cell.model = website;
+    cell.delegate = self;
+    [cell websiteCell:cell model:website];
+
+    return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    WebsiteModel *website = self.websiteArray[indexPath.row];
+    if (_delegate && [_delegate respondsToSelector:@selector(websiteViewSelectWithWebsite:)]) {
+        [_delegate websiteViewSelectWithWebsite:website];
+    }
+}
+
+#pragma  mark UICollectionViewDelegateFlowLayout
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    return CGSizeMake(SCREEN_WIDTH/5.0, (self.websiteCollectionViewHeight.constant-20)/2);
+}
+
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+    return UIEdgeInsetsMake(20, 0, 0, 0);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 0;
+}
+
+//两个cell之间的间距（同一行的cell的间距）
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 0;
+}
+
+#pragma mark - UIScrollViewDelegate
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGFloat offsetX = scrollView.contentOffset.x;
+    self.websitePageControl.currentPage=(NSInteger)(offsetX/SCREEN_WIDTH);
+}
+
+- (IBAction)didclickSearchButtonAction:(id)sender {
+    if(_delegate && [_delegate respondsToSelector:@selector(touchUpSearchButtonAction)]){
+        [_delegate touchUpSearchButtonAction];
+    }
+}
+
+- (IBAction)didClickQRcodeButtonAction:(id)sender {
+    if(_delegate && [_delegate respondsToSelector:@selector(touchUpQRcodeButtonAction)]){
+        [_delegate touchUpQRcodeButtonAction];
+    }
+}
+
+- (void)longPressGesture:(WebsiteModel *)model {
+
+        if(_delegate && [_delegate respondsToSelector:@selector(homeTopViewpresentView:)]){
+            [_delegate homeTopViewpresentView:model];
+        }
+
+}
+
+
 
 @end

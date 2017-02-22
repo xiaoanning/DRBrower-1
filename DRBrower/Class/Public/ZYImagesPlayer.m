@@ -324,7 +324,7 @@ static NSString * const reuseIdentifier = @"ImagesPlayerCell";
 
 @end
 
-@implementation UIImageView (WebCache)
+@implementation UIImageView (WebCaches)
 
 - (void)setImageWithURL:(NSString *)url placeholderImage:(UIImage *)placeholder
 {

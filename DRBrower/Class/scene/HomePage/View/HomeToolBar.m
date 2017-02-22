@@ -29,4 +29,22 @@
     }
 }
 
+- (IBAction)didclickBackButtonAction:(id)sender {
+    if(_delegate && [_delegate respondsToSelector:@selector(touchUpBackButtonAction)]){
+        [_delegate touchUpBackButtonAction];
+    }
+}
+
+- (IBAction)didclickGoButtonAction:(id)sender {
+    if(_delegate && [_delegate respondsToSelector:@selector(touchUpGoButtonActionr)]){
+        [_delegate touchUpGoButtonActionr];
+    }
+}
+
+- (IBAction)didclickPageButtonAction:(id)sender {
+    if(_delegate && [_delegate respondsToSelector:@selector(touchUpPageButtonAction)]){
+        [_delegate touchUpPageButtonAction];
+    }
+}
+
 @end

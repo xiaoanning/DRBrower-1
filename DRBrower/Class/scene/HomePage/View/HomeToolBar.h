@@ -12,12 +12,19 @@
 
 - (void)touchUpHomeButtonAction;
 - (void)touchUpMenuButtonAction;
+- (void)touchUpBackButtonAction;
+- (void)touchUpGoButtonActionr;
+- (void)touchUpPageButtonAction;
+
 @end
 
 @interface HomeToolBar : UIView
 
-@property (weak, nonatomic) IBOutlet UIButton *homrButton;
-@property (weak, nonatomic) IBOutlet UIButton *menu;
+@property (weak, nonatomic) IBOutlet UIButton *homeBtn;
+@property (weak, nonatomic) IBOutlet UIButton *menuBtn;
+@property (weak, nonatomic) IBOutlet UIButton *backBtn;
+@property (weak, nonatomic) IBOutlet UIButton *goBtn;
+@property (weak, nonatomic) IBOutlet UIButton *pageBtn;
 
 @property (assign, nonatomic)id<HomeToolBarDelegate>delegate;
 

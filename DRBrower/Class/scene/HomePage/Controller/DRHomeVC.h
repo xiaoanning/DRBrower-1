@@ -11,8 +11,9 @@
 #import "TagsView.h"
 #import "HomeToolBar.h"
 
-@interface DRHomeVC : UIViewController<UITableViewDelegate,UITableViewDataSource,TagsViewChannelButtonDelegate,HomeToolBarDelegate>
-@property (weak, nonatomic) IBOutlet HomeTopView *topView;
+#import "PYSearch.h"
+
+@interface DRHomeVC : UIViewController<UITableViewDelegate,UITableViewDataSource,TagsViewChannelButtonDelegate,HomeToolBarDelegate,PYSearchViewControllerDelegate,HomeTopViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *homeTableView;
 

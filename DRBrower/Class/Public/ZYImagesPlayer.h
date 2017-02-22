@@ -91,7 +91,7 @@
 
 @end
 
-@interface UIImageView (WebCache)
+@interface UIImageView (WebCaches)
 
 - (void)setImageWithURL:(NSString *)url placeholderImage:(UIImage *)placeholder;
 
