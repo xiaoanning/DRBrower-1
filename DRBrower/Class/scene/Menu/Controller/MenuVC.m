@@ -9,6 +9,7 @@
 #import "MenuVC.h"
 #import "HistoryVC.h"
 
+
 @interface MenuVC ()
 
 
@@ -23,16 +24,16 @@
     NSLog(@"%@",self.str);
     
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(asdf) name:@"12345" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dismissView) name:DISMISS_VIEW object:nil];
     
     // Do any additional setup after loading the view.
 }
 -(void)dealloc{
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"12345" object:nil];
+   
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 
 }
--(void)asdf{
+-(void)dismissView{
     [self dismissViewControllerAnimated:YES completion:nil];
 
 }

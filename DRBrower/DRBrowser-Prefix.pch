@@ -52,6 +52,8 @@
 #define QQ_APPKEY @"0IpJBDsSAVxLXHC0"
 
 #define MENU_HEIGHT 280
+#pragma mark - 通知
+#define DISMISS_VIEW @"dissmissView"
 
 
 #endif /* DRBrowser_Prefix_pch */
