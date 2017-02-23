@@ -324,6 +324,9 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="280"/>
+                    <connections>
+                        <outlet property="fullScreenLabel" destination="MYG-aL-9aJ" id="qeg-W9-WY6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6aI-55-Hsy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

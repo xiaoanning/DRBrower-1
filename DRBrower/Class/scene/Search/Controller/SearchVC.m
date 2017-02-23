@@ -18,7 +18,7 @@
 
 #define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 
-@interface SearchVC ()<HomeToolBarDelegate,UIWebViewDelegate,WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler,MenuVCDelegate>
+@interface SearchVC ()<HomeToolBarDelegate,UIWebViewDelegate,WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler,MenuVCDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *titleBtn;
 @property (weak, nonatomic) IBOutlet HomeToolBar *homeToolBar;
 @property (weak, nonatomic) IBOutlet UIView *navBar;
@@ -56,6 +56,18 @@
     
 }
 
+- (void)isFullScreen {
+    BOOL isFullScreen = [[NSUserDefaults standardUserDefaults] boolForKey:kFullScreen];
+    if (isFullScreen == NO) {
+        
+        self.searchWV.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-44);
+    }else {
+        [self setupExitFullScreenButton];
+        self.searchWV.frame = self.view.bounds;
+    }
+    
+}
+
 - (void)setupSubviews {
     self.homeToolBar.delegate = self;
 
@@ -63,20 +75,10 @@
     self.searchWV.backgroundColor = [UIColor whiteColor];
     self.searchWV.navigationDelegate = self;
     self.searchWV.UIDelegate = self;
+    self.searchWV.scrollView.delegate = self;
+    [self isFullScreen];
     [self.view addSubview:self.searchWV];
-    [self layoutWV];
     
-}
-
-- (void)layoutWV {
-    WS(ws);
-    [self.searchWV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(ws.navBar.mas_bottom).offset(0); //with with
-        make.left.equalTo(ws.view.mas_left).offset(0); //without with
-        make.bottom.equalTo(ws.homeToolBar.mas_top).offset(0);
-        make.right.equalTo(ws.view.mas_right).offset(0);
-        
-    }];
 }
 
 - (void)setupExitFullScreenButton {
@@ -219,19 +221,29 @@
     }
 }
 
-- (void)touchUpFullScreenButtonAction {
-
+- (void)touchUpFullScreenButtonAction:(BOOL)isfull {
+    
     [UIView animateWithDuration:0.5//动画持续时间
                          delay:0.0//动画延迟执行的时间
                        options:UIViewAnimationOptionCurveEaseInOut//动画的过渡效果
                     animations:^{
-                        //执行的动画
-                        self.navBar.center = CGPointMake(SCREEN_WIDTH*0.5, -32);
-                        self.homeToolBar.center = CGPointMake(SCREEN_WIDTH*0.5, SCREEN_HEIGHT+22);
-                        self.searchWV.frame = self.view.bounds;
+                        if (isfull == YES) {
+                            //执行的动画
+                            self.navBar.center = CGPointMake(SCREEN_WIDTH*0.5, 32);
+                            self.homeToolBar.center = CGPointMake(SCREEN_WIDTH*0.5, SCREEN_HEIGHT-22);
+                            self.searchWV.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-44);
+                        }else {
+                            self.navBar.center = CGPointMake(SCREEN_WIDTH*0.5, -32);
+                            self.homeToolBar.center = CGPointMake(SCREEN_WIDTH*0.5, SCREEN_HEIGHT+22);
+                            self.searchWV.frame = self.view.bounds;
+                        }
+
                     }completion:^(BOOL finished){
                         //动画执行完毕后的操作
-                        [self setupExitFullScreenButton];
+                        if (isfull == NO) {
+                            [self setupExitFullScreenButton];
+
+                        }
 
                     }];
     
@@ -245,6 +257,31 @@
     hud.tintColor = [UIColor whiteColor];
     [hud hideAnimated:YES afterDelay:2.f];
     
+}
+
+#pragma mark -scrollView 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+
+    BOOL isFullScreen = [[NSUserDefaults standardUserDefaults] boolForKey:kFullScreen];
+    
+    if (isFullScreen == YES) {
+        [UIView animateWithDuration:0.5//动画持续时间
+                              delay:0.0//动画延迟执行的时间
+                            options:UIViewAnimationOptionCurveEaseInOut//动画的过渡效果
+                         animations:^{
+                        
+                                 self.navBar.center = CGPointMake(SCREEN_WIDTH*0.5, -32);
+                                 self.homeToolBar.center = CGPointMake(SCREEN_WIDTH*0.5, SCREEN_HEIGHT+22);
+                                 self.searchWV.frame = self.view.bounds;
+                             
+                         }completion:^(BOOL finished){
+                             //动画执行完毕后的操作
+                                 [self.exitFullScreenButton removeFromSuperview];
+                                 [self setupExitFullScreenButton];
+                             
+                         }];
+    }
+
 }
 
 /**
