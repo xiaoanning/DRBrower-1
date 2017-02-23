@@ -246,6 +246,9 @@
                                                             <constraint firstAttribute="width" secondItem="uyK-yf-KLc" secondAttribute="height" multiplier="3:1" id="UQQ-H6-anX"/>
                                                         </constraints>
                                                         <state key="normal" image="menu_full screen"/>
+                                                        <connections>
+                                                            <action selector="fullScreenButtonAction:" destination="yPR-D9-az7" eventType="touchUpInside" id="NOB-YA-xMt"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全屏" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYG-aL-9aJ">
                                                         <rect key="frame" x="32" y="47.5" width="29" height="17"/>

@@ -60,6 +60,12 @@
     }
 }
 
+- (IBAction)fullScreenButtonAction:(id)sender {
+    if(_delegate && [_delegate respondsToSelector:@selector(touchUpFullScreenButtonAction)]){
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [_delegate touchUpFullScreenButtonAction];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

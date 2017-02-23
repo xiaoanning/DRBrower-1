@@ -16,12 +16,14 @@
 #import "RecordModel.h"
 #import "ShareModel.h"
 
+#define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+
 @interface SearchVC ()<HomeToolBarDelegate,UIWebViewDelegate,WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler,MenuVCDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *titleBtn;
 @property (weak, nonatomic) IBOutlet HomeToolBar *homeToolBar;
-
-@property (strong, nonatomic) MBProgressHUD *hud;
+@property (weak, nonatomic) IBOutlet UIView *navBar;
 @property (strong, nonatomic) WKWebView *searchWV;
+@property (strong, nonatomic) UIButton *exitFullScreenButton;
 @property (strong, nonatomic) RecordModel *record;
 @property (strong, nonatomic) ShareModel *shareModel;
 @property (strong, nonatomic) NSMutableArray *historyArray;
@@ -57,12 +59,48 @@
 - (void)setupSubviews {
     self.homeToolBar.delegate = self;
 
-    self.searchWV = [[WKWebView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-44-64)];
+    self.searchWV = [WKWebView new];
     self.searchWV.backgroundColor = [UIColor whiteColor];
     self.searchWV.navigationDelegate = self;
     self.searchWV.UIDelegate = self;
     [self.view addSubview:self.searchWV];
+    [self layoutWV];
+    
+}
 
+- (void)layoutWV {
+    WS(ws);
+    [self.searchWV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(ws.navBar.mas_bottom).offset(0); //with with
+        make.left.equalTo(ws.view.mas_left).offset(0); //without with
+        make.bottom.equalTo(ws.homeToolBar.mas_top).offset(0);
+        make.right.equalTo(ws.view.mas_right).offset(0);
+        
+    }];
+}
+
+- (void)setupExitFullScreenButton {
+    self.exitFullScreenButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.exitFullScreenButton setImage:[UIImage imageNamed:@"btn_exit_full_screen"] forState:UIControlStateNormal];
+    [self.exitFullScreenButton addTarget:self action:@selector(exitFullScreenButtonAciton:) forControlEvents:UIControlEventTouchUpInside];
+    self.exitFullScreenButton.frame = CGRectMake(SCREEN_WIDTH-80, SCREEN_HEIGHT-150, 50, 50);
+    [self.searchWV addSubview:self.exitFullScreenButton];
+
+}
+
+- (void)exitFullScreenButtonAciton:(UIButton *)button {
+
+    [UIView animateWithDuration:0.2//动画持续时间
+                    animations:^{
+                        //执行的动画
+                        self.navBar.center = CGPointMake(SCREEN_WIDTH*0.5, 32);
+                        self.homeToolBar.center = CGPointMake(SCREEN_WIDTH*0.5, SCREEN_HEIGHT-22);
+                        self.searchWV.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-44);
+                    }completion:^(BOOL finished){
+                        //动画执行完毕后的操作
+                        [self.exitFullScreenButton removeFromSuperview];
+
+                    }];
 }
 
 - (void)webViewData {
@@ -179,6 +217,24 @@
     }else {
         [self showView:COLLECT_FAILED];
     }
+}
+
+- (void)touchUpFullScreenButtonAction {
+
+    [UIView animateWithDuration:0.5//动画持续时间
+                         delay:0.0//动画延迟执行的时间
+                       options:UIViewAnimationOptionCurveEaseInOut//动画的过渡效果
+                    animations:^{
+                        //执行的动画
+                        self.navBar.center = CGPointMake(SCREEN_WIDTH*0.5, -32);
+                        self.homeToolBar.center = CGPointMake(SCREEN_WIDTH*0.5, SCREEN_HEIGHT+22);
+                        self.searchWV.frame = self.view.bounds;
+                    }completion:^(BOOL finished){
+                        //动画执行完毕后的操作
+                        [self setupExitFullScreenButton];
+
+                    }];
+    
 }
 
 -(void)showView:(NSString *)title{

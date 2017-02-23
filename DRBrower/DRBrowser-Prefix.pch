@@ -29,6 +29,7 @@
 #import <Colours.h>
 #import <MBProgressHUD.h>
 #import <Realm/Realm.h>
+#import "Masonry.h"
 
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKConnector/ShareSDKConnector.h>

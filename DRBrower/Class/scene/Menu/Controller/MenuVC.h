@@ -11,6 +11,7 @@
 @protocol MenuVCDelegate <NSObject>
 @optional
 - (void)touchUpCollectButtonAction;
+- (void)touchUpFullScreenButtonAction;
 
 @end
 

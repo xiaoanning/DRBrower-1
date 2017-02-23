@@ -36,21 +36,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DRBrower/Class/scene/Search/Controller/SearchVC.m"
-            timestampString = "509446796.762585"
+            timestampString = "509513917.405248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-<<<<<<< HEAD
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-<<<<<<< HEAD
-=======
-            startingLineNumber = "95"
-            endingLineNumber = "95"
->>>>>>> feature/分享
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "-webView:didFinishNavigation:"
-=======
-            landmarkName = "-userContentController:didReceiveScriptMessage:"
->>>>>>> feature/菜单栏布局
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -61,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DRBrower/Class/scene/Search/Controller/SearchVC.m"
-            timestampString = "509446796.762585"
+            timestampString = "509513917.405248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "-newOneRecordWithUrl:title:"
             landmarkType = "7">
          </BreakpointContent>
@@ -77,11 +68,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DRBrower/Class/scene/Search/Controller/SearchVC.m"
-            timestampString = "509446796.762585"
+            timestampString = "509513917.405248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "-webView:didFinishNavigation:"
             landmarkType = "7">
          </BreakpointContent>
@@ -93,11 +84,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DRBrower/Class/scene/Search/Controller/SearchVC.m"
-            timestampString = "509446796.762585"
+            timestampString = "509513917.405248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "-newOneRecordWithUrl:title:"
             landmarkType = "7">
          </BreakpointContent>
