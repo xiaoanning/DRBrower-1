@@ -88,6 +88,14 @@
     }
 }
 
+- (IBAction)refreshDataButtonAction:(id)sender {
+    if(_delegate && [_delegate respondsToSelector:@selector(touchUpRefreshDataButtonAction)]){
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [_delegate touchUpRefreshDataButtonAction];
+    }
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

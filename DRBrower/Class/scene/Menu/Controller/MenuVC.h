@@ -12,6 +12,7 @@
 @optional
 - (void)touchUpCollectButtonAction;
 - (void)touchUpFullScreenButtonAction:(BOOL)isfull;
+- (void)touchUpRefreshDataButtonAction;
 
 @end
 

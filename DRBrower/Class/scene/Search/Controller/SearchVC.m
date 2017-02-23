@@ -249,7 +249,12 @@
     
 }
 
--(void)showView:(NSString *)title{
+- (void)touchUpRefreshDataButtonAction {
+    [self.searchWV reload];
+    
+}
+
+- (void)showView:(NSString *)title{
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
     hud.mode = MBProgressHUDModeText;
