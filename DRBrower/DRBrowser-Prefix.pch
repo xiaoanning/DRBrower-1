@@ -29,6 +29,7 @@
 #import <Colours.h>
 #import <MBProgressHUD.h>
 #import <Realm/Realm.h>
+#import "Masonry.h"
 
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKConnector/ShareSDKConnector.h>
@@ -52,8 +53,12 @@
 #define QQ_APPKEY @"0IpJBDsSAVxLXHC0"
 
 #define MENU_HEIGHT 280
+
 #pragma mark - 通知
 #define DISMISS_VIEW @"dissmissView"
+
+#pragma mare - defaults
+#define kFullScreen @"isFullScreen"//是否全屏
 
 
 #endif /* DRBrowser_Prefix_pch */
