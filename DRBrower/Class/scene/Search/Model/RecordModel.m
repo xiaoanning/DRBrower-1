@@ -67,7 +67,7 @@
 //查询所有并按时间排序 结果
 + (RLMResults *)selectAllResultsFromRealm:(NSString *)realmName {
         RLMResults<RecordRealm *> *record = [[RecordRealm allObjectsInRealm:[DRRealmPublic createRealmWithName:realmName]] sortedResultsUsingProperty:@"time" ascending:NO];
-    NSLog(@"历史记录 条数 %d",record.count);
+    NSLog(@"历史记录 条数 %lu",(unsigned long)record.count);
     return record;
 }
 

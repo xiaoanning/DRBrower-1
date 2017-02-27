@@ -17,6 +17,7 @@
 		1866D4B81E5BE1FC00BDB5DB /* SortTagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866D4B41E5BE1FC00BDB5DB /* SortTagModel.m */; };
 		1866D4BC1E5BE22700BDB5DB /* RankingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866D4BA1E5BE22700BDB5DB /* RankingCell.m */; };
 		1866D4BD1E5BE22700BDB5DB /* RankingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1866D4BB1E5BE22700BDB5DB /* RankingCell.xib */; };
+		49F0A3869EDB806CA3050A19 /* libPods-DRBrower.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DFB1C3A7BC244DD9034D74 /* libPods-DRBrower.a */; };
 		55075A4F1E20814A009A025A /* WebsiteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55075A4E1E20814A009A025A /* WebsiteModel.m */; };
 		55075A521E2081E1009A025A /* WebsiteListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55075A511E2081E1009A025A /* WebsiteListModel.m */; };
 		551661611E222CF900909A11 /* WebsiteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5516615F1E222CF900909A11 /* WebsiteCell.m */; };
@@ -82,7 +83,6 @@
 		55BC1B131E49D3EF00A64375 /* RecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55BC1B111E49D3EF00A64375 /* RecordCell.xib */; };
 		55BC1B161E4AF1A800A64375 /* CollectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BC1B151E4AF1A800A64375 /* CollectVC.m */; };
 		55F623811E2DB0B5003536CC /* MenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F623801E2DB0B5003536CC /* MenuVC.m */; };
-		A507DADB85FCF25ACECBB659 /* libPods-DRBrower.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DBFF56AA0AED9BFE627FB1A /* libPods-DRBrower.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,7 +105,7 @@
 		1866D4B91E5BE22700BDB5DB /* RankingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankingCell.h; sourceTree = "<group>"; };
 		1866D4BA1E5BE22700BDB5DB /* RankingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingCell.m; sourceTree = "<group>"; };
 		1866D4BB1E5BE22700BDB5DB /* RankingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingCell.xib; sourceTree = "<group>"; };
-		1D4B44C20B272556E4C01B53 /* Pods-DRBrower.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRBrower.release.xcconfig"; path = "Pods/Target Support Files/Pods-DRBrower/Pods-DRBrower.release.xcconfig"; sourceTree = "<group>"; };
+		29F564DE35D2B47EC672A7BD /* Pods-DRBrower.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRBrower.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DRBrower/Pods-DRBrower.debug.xcconfig"; sourceTree = "<group>"; };
 		55075A4D1E20814A009A025A /* WebsiteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebsiteModel.h; sourceTree = "<group>"; };
 		55075A4E1E20814A009A025A /* WebsiteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebsiteModel.m; sourceTree = "<group>"; };
 		55075A501E2081E1009A025A /* WebsiteListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebsiteListModel.h; sourceTree = "<group>"; };
@@ -222,8 +222,8 @@
 		55BC1B151E4AF1A800A64375 /* CollectVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectVC.m; sourceTree = "<group>"; };
 		55F6237F1E2DB0B5003536CC /* MenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuVC.h; sourceTree = "<group>"; };
 		55F623801E2DB0B5003536CC /* MenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuVC.m; sourceTree = "<group>"; };
-		7488FCDE566523736ED083EB /* Pods-DRBrower.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRBrower.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DRBrower/Pods-DRBrower.debug.xcconfig"; sourceTree = "<group>"; };
-		7DBFF56AA0AED9BFE627FB1A /* libPods-DRBrower.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DRBrower.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C213DBDC31A50F8A62F488B7 /* Pods-DRBrower.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRBrower.release.xcconfig"; path = "Pods/Target Support Files/Pods-DRBrower/Pods-DRBrower.release.xcconfig"; sourceTree = "<group>"; };
+		D4DFB1C3A7BC244DD9034D74 /* libPods-DRBrower.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DRBrower.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,7 +237,7 @@
 				55421AB91E59A59C00389B86 /* libz.tbd in Frameworks */,
 				55421ABF1E5ACE4500389B86 /* libicucore.tbd in Frameworks */,
 				55BC1AFD1E48661A00A64375 /* WebKit.framework in Frameworks */,
-				A507DADB85FCF25ACECBB659 /* libPods-DRBrower.a in Frameworks */,
+				49F0A3869EDB806CA3050A19 /* libPods-DRBrower.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,15 +288,6 @@
 				1866D4A91E5BE1AB00BDB5DB /* RankingListVC.m */,
 			);
 			name = Controller;
-			sourceTree = "<group>";
-		};
-		1E30203B5C1DB66000836CAB /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7488FCDE566523736ED083EB /* Pods-DRBrower.debug.xcconfig */,
-				1D4B44C20B272556E4C01B53 /* Pods-DRBrower.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		551661631E236AB700909A11 /* Website */ = {
@@ -385,8 +376,8 @@
 			children = (
 				557DC0641E08DF8100ECFFDE /* DRBrower */,
 				557DC0631E08DF8100ECFFDE /* Products */,
-				1E30203B5C1DB66000836CAB /* Pods */,
 				5C2C92254BB705D5D4190F62 /* Frameworks */,
+				F2E840DCD12715BDCDFAD2F2 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -624,9 +615,18 @@
 				55421AAE1E59A50900389B86 /* CoreGraphics.framework */,
 				55421AAC1E59A4F500389B86 /* libsqlite3.0.tbd */,
 				55BC1AFC1E48661A00A64375 /* WebKit.framework */,
-				7DBFF56AA0AED9BFE627FB1A /* libPods-DRBrower.a */,
+				D4DFB1C3A7BC244DD9034D74 /* libPods-DRBrower.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F2E840DCD12715BDCDFAD2F2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				29F564DE35D2B47EC672A7BD /* Pods-DRBrower.debug.xcconfig */,
+				C213DBDC31A50F8A62F488B7 /* Pods-DRBrower.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -636,12 +636,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 557DC0791E08DF8100ECFFDE /* Build configuration list for PBXNativeTarget "DRBrower" */;
 			buildPhases = (
-				70B6BBAA38B41CC6221AC1A9 /* [CP] Check Pods Manifest.lock */,
+				920F8BFBEB451B202A899B97 /* [CP] Check Pods Manifest.lock */,
 				557DC05E1E08DF8100ECFFDE /* Sources */,
 				557DC05F1E08DF8100ECFFDE /* Frameworks */,
 				557DC0601E08DF8100ECFFDE /* Resources */,
 				2EF38A3533C7081B9FC2E404 /* [CP] Embed Pods Frameworks */,
-				77FC012778C8F9D1F2CE718C /* [CP] Copy Pods Resources */,
+				96B53903D2389AE3223D6811 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -729,7 +729,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DRBrower/Pods-DRBrower-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		70B6BBAA38B41CC6221AC1A9 /* [CP] Check Pods Manifest.lock */ = {
+		920F8BFBEB451B202A899B97 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -744,7 +744,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		77FC012778C8F9D1F2CE718C /* [CP] Copy Pods Resources */ = {
+		96B53903D2389AE3223D6811 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -847,6 +847,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -889,6 +890,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
@@ -896,6 +898,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -929,20 +932,19 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};
 		557DC07A1E08DF8100ECFFDE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7488FCDE566523736ED083EB /* Pods-DRBrower.debug.xcconfig */;
+			baseConfigurationReference = 29F564DE35D2B47EC672A7BD /* Pods-DRBrower.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD_32_BIT)",
-					"$(ARCHS_STANDARD)",
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = C53DGAEY52;
@@ -951,21 +953,18 @@
 				INFOPLIST_FILE = DRBrower/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.DRBrower.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Debug;
 		};
 		557DC07B1E08DF8100ECFFDE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1D4B44C20B272556E4C01B53 /* Pods-DRBrower.release.xcconfig */;
+			baseConfigurationReference = C213DBDC31A50F8A62F488B7 /* Pods-DRBrower.release.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD_32_BIT)",
-					"$(ARCHS_STANDARD)",
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = C53DGAEY52;
@@ -974,10 +973,10 @@
 				INFOPLIST_FILE = DRBrower/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.DRBrower.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Release;
 		};
