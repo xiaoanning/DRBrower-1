@@ -54,7 +54,6 @@
  *  清除图片缓存
  */
 - (void)removeCacheMemory;
-
 @end
 
 /**

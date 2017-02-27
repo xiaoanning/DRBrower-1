@@ -206,14 +206,16 @@
 }
 #pragma mark-----------------------------自定义气泡
 -(void)createTableView {
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     self.bgView = [[UIView alloc] initWithFrame:self.view.bounds];
-    [self.view addSubview:_bgView];
+    [window addSubview:_bgView];
+    
     self.bgView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureAction:)];
     tapGesture.delegate = self;
     [self.bgView addGestureRecognizer:tapGesture];
     
-    self.bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-140, 0, 130, 150)];
+    self.bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-140, 70, 130, 150)];
     self.bgImageView.userInteractionEnabled = YES;
     self.bgImageView.image = [UIImage imageNamed:@"x_cishu_ditu.png"];
     [self.bgView addSubview:self.bgImageView];

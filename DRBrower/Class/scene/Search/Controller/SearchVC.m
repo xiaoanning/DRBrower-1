@@ -42,6 +42,8 @@
     
     if (self.newsModel != nil||self.recordModel != nil) {
         self.searchText = self.newsModel.url?self.newsModel.url:self.recordModel.url;
+    }else {
+        self.searchText = self.sortModel.url;
     }
     [self webViewData];
 

@@ -32,5 +32,14 @@
 #define URL_GETSORTLIST @"sort/getList?page_num=1&site_type="
 //http://61.160.250.174:8080/dr/sort/getList?page_num=1&site_type=3&sort=visit_num
 
+//点赞
+#define URL_ADDLOVE @"sort/addLove"
+//举报
+#define URL_ADDCOMPLAIN @"sort/addComplain?dev_id="
+//获取评论列表
+#define URL_GETCOMMENTLIST @"comment/list?md5="
+//发表评论
+#define URL_ADDCOMMENT @"comment/save?tel="
+
 
 #endif /* AllUrls_h */

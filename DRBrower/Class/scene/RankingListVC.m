@@ -11,15 +11,27 @@
 #import "SortModel.h"
 #import "SortTagModel.h"
 #import "NewsDetailVC.h"
+#import "ComplainVC.h"
+#import "SearchVC.h"
+#import "CommentVC.h"
 
 #define UP_LOAD @"上拉"
 #define DOWN_LOAD @"下拉"
 
 
-@interface RankingListVC ()<UITableViewDelegate,UITableViewDataSource,RankingButtonDelegate>
+@interface RankingListVC ()<UITableViewDelegate,UITableViewDataSource,RankingButtonDelegate,UIGestureRecognizerDelegate,CommitComplainDelegate> {
+    CGFloat fitHeight;
+}
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSArray *sortTagArray;
 @property (nonatomic,strong) NSMutableArray *sortListArray;
+@property (nonatomic,strong) NSMutableArray *localZanArray; //本地存储已点赞下标
+@property (nonatomic,strong) NSMutableArray *localComplainArray; //本地存储已举报下标
+@property (nonatomic,strong) NSMutableArray *zanArray;
+@property (nonatomic,copy) NSString *currentDeviceId;//当前设备Id
+@property (nonatomic,assign) NSInteger currentComplainIndex;//当前举报所在列
+
+@property (nonatomic,strong) UIView *bgView;
 @end
 
 @implementation RankingListVC
@@ -27,9 +39,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor whiteColor];\
+    self.currentDeviceId = [[UIDevice currentDevice].identifierForVendor UUIDString];
     self.sortTagArray = [NSArray array];
     self.sortListArray = [NSMutableArray arrayWithCapacity:5];
+    
+    self.zanArray = [NSMutableArray array];
+
     
     [self createTableView];
     
@@ -37,6 +53,9 @@
     
     [self fooderRereshing];
     [self headerRereshing];
+    
+//    _tableView.rowHeight = UITableViewAutomaticDimension; // 自适应单元格高度
+//    _tableView.estimatedRowHeight = 100; //先估计一个高度
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tongzhi:) name:@"sortType" object:nil];
 }
@@ -105,7 +124,39 @@
         [self.tableView reloadData];
     }];
 }
+//点赞请求
+-(void)addLoveWithModel:(SortModel *)model {
+    self.localZanArray = [NSMutableArray arrayWithArray:[DRLocaldData achieveZanData]];
+    if (![self.localZanArray containsObject:model.sort_id]) {
+        [self.localZanArray addObject:model.sort_id];
+        [DRLocaldData saveZanData:self.localZanArray];
+    }
+    
+    NSString *url_md5 = model.url_md5;
+    NSString *signOrigin = [NSString stringWithFormat:@"%@%@%@",[self.currentDeviceId substringWithRange:NSMakeRange(0, 5)],[url_md5 substringWithRange:NSMakeRange(0, 5)],@"dr_love_2017"];
+    NSString *sign = [[Tools md5:signOrigin] lowercaseString];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@?dev_id=%@&url_md5=%@&sign=%@",BASE_URL,URL_ADDLOVE,self.currentDeviceId,url_md5,sign];
+    
+    [SortModel addLoveUrl:urlString parameters:@{} block:^(NSDictionary *dic, NSError *error) {
+        NSLog(@"%@",[dic objectForKey:@"info"]);
+    }];
+}
+//举报请求
+-(void)addComplainWithModel:(SortModel *)model content:(NSString *)content{
+    //获取本地存储数据
+    self.localComplainArray = [NSMutableArray arrayWithArray:[DRLocaldData achieveComplainData]];
+    if (![self.localComplainArray containsObject:model.sort_id]) {
+        [self.localComplainArray addObject:model.sort_id];
+        [DRLocaldData saveComplainData:self.localComplainArray];
+    }
 
+//   NSString *str = [content stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&url_md5=%@&content=%@",BASE_URL,URL_ADDCOMPLAIN,[self.currentDeviceId substringToIndex:8],model.url_md5,content];
+    [SortModel addComplainUrl:[Tools urlEncodedString:urlString] parameters:@{} block:^(NSDictionary *dic, NSError *error) {
+        NSLog(@"%@",[dic objectForKey:@"info"]);
+    }];
+}
+#pragma mark ----------------tableView--------------
 -(void)createTableView {
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
     _tableView.dataSource = self;
@@ -113,8 +164,8 @@
     [self.view addSubview:_tableView];
     
     [_tableView registerNib:[UINib nibWithNibName:@"RankingCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"rankingCell"];
-
 }
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -125,35 +176,105 @@
     return 0;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 100;
+    return 90+fitHeight/2;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     RankingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rankingCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell rankingCell:cell model:self.sortListArray[indexPath.row] index:indexPath.row];
+    SortModel *sortModel = self.sortListArray[indexPath.row];
+    [cell rankingCell:cell model:sortModel index:indexPath.row];
+    [self resetButtonState:cell model:sortModel]; //更改状态
     cell.delegate = self;
+    cell.zanButton.tag = indexPath.row;
+    cell.informButton.tag = 100+indexPath.row;
+    cell.commentButton.tag = 200+indexPath.row;
+    cell.commentCountButton.tag = 300+indexPath.row;
+    
+    fitHeight = [self fitToText:cell.titleLabel text:sortModel.name];
+
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     SortModel *sortModel = self.sortListArray[indexPath.row];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"NewsDetail" bundle:[NSBundle mainBundle]];
-    NewsDetailVC *newsDetailVC = (NewsDetailVC *)[storyboard instantiateViewControllerWithIdentifier:@"NewsDetailVC"];
-    newsDetailVC.sortModel = sortModel;
-    [self.navigationController showViewController:newsDetailVC sender:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
+    SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
+    searchVC.sortModel = sortModel;
+    [self.navigationController pushViewController:searchVC animated:YES];
+
+}
+//自适应高度
+-(CGFloat)fitToText:(UILabel *)label text:(NSString *)text{
+    label.text = text;
+    label.numberOfLines = 0;
+    label.lineBreakMode = NSLineBreakByWordWrapping;
+    CGSize size = [label sizeThatFits:CGSizeMake(self.view.frame.size.width-20, MAXFLOAT)];
+    return size.height;
 }
 
+
+-(void)resetButtonState:(RankingCell *)cell model:(SortModel *)model{
+    //获取本地存储数据
+    self.localZanArray = [NSMutableArray arrayWithArray:[DRLocaldData achieveZanData]];
+    self.localComplainArray = [NSMutableArray arrayWithArray:[DRLocaldData achieveComplainData]];
+
+    if (self.localZanArray.count>0) {
+        if ([self.localZanArray containsObject:model.sort_id] ) {
+            [cell.zanButton setBackgroundImage:[UIImage imageNamed:@"sort_zanSelected"] forState:UIControlStateNormal];
+            cell.zanLabel.text = [NSString stringWithFormat:@"%ld",(long)[cell.zanLabel.text integerValue]+1];
+            cell.zanButton.userInteractionEnabled = NO;
+        }
+        else {
+            [cell.zanButton setBackgroundImage:[UIImage imageNamed:@"sort_zan"] forState:UIControlStateNormal];
+            cell.zanButton.userInteractionEnabled = YES;
+        }
+    }
+    if (self.localComplainArray.count>0) {
+        if ([self.localComplainArray containsObject:model.sort_id]) {
+            [cell.informButton setBackgroundImage:[UIImage imageNamed:@"sort_informed"] forState:UIControlStateNormal];
+            cell.informLabel.text = [NSString stringWithFormat:@"%ld",(long)[cell.informLabel.text integerValue]+1];
+            cell.informButton.userInteractionEnabled = NO;
+        }else {
+            [cell.informButton setBackgroundImage:[UIImage imageNamed:@"sort_inform"] forState:UIControlStateNormal];
+            cell.informButton.userInteractionEnabled = YES;
+        }
+        
+    }
+}
 #pragma mark-------------RankingButtonDelegate 代理方法
--(void)touchUpPraiseButtonActionWithIndex:(NSInteger)index {
+//点赞
+-(void)touchUpZanButtonWithIndex:(NSInteger)index {
+    [self addLoveWithModel:self.sortListArray[index]];
+}
+//举报
+-(void)touchUpInformButtonWithIndex:(NSInteger)index {
+    self.currentComplainIndex = index;
+    CGFloat sheetWidth = SCREEN_WIDTH*0.8;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Complain" bundle:[NSBundle mainBundle]];
+    ComplainVC *complainVC = (ComplainVC *)[storyboard instantiateViewControllerWithIdentifier:@"ComplainVC"];
+    complainVC.delegete = self;
+    MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:complainVC];
+    formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
+    
+    formSheetController.presentationController.contentViewSize = CGSizeMake(sheetWidth, 220);
+    formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideFromTop;
+    formSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height/2-sheetWidth/2;
+    [self presentViewController:formSheetController animated:YES completion:nil];
+}
+//评论
+-(void)touchUpCommentButtonWithIndex:(NSInteger)index {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Comment" bundle:[NSBundle mainBundle]];
+    CommentVC *commentVC = [storyboard instantiateViewControllerWithIdentifier:@"commentVC"];
+    commentVC.sortModel = self.sortListArray[index];
+    [self.navigationController pushViewController:commentVC animated:YES];
+}
+//用户
+-(void)touchUpUserButtonWithIndex:(NSInteger)index {
     
 }
--(void)touchUpInformButtonActionWithIndex:(NSInteger)index {
-    
-}
--(void)touchUpCommentButtonActionWithIndex:(NSInteger)index {
-    
-}
--(void)touchUpUserButtonActionWithIndex:(NSInteger)index {
-    
+
+//举报提交
+-(void)commitComplainWithContent:(NSString *)contentStr{
+    [self addComplainWithModel:self.sortListArray[self.currentComplainIndex] content:contentStr];
 }
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"sortType" object:nil];
