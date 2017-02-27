@@ -27,6 +27,7 @@
     [realm beginWriteTransaction];
     [realm addOrUpdateObject:realmRecord];
     [realm commitWriteTransaction:&error];
+    [RecordModel selectResultsNumberFromRealm:realmName];
 }
 
 //删除一条记录
@@ -51,7 +52,8 @@
 
 //获取全部记录
 + (NSMutableArray *)realmSelectAllRecordFromRealm:(NSString *)realmName {
-    RLMResults<RecordRealm *> *record = [[RecordRealm allObjectsInRealm:[DRRealmPublic createRealmWithName:realmName]] sortedResultsUsingProperty:@"time" ascending:NO];
+
+    RLMResults<RecordRealm *> *record = [RecordModel selectAllResultsFromRealm:realmName];
     NSMutableArray *recodArray = [NSMutableArray arrayWithCapacity:5];
     for (RecordRealm *oneRecord in record) {
         RecordModel *model = [RecordModel realmChangeToModel:oneRecord];
@@ -60,6 +62,23 @@
     NSLog(@"%@",[RLMRealmConfiguration defaultConfiguration].fileURL);
 
     return recodArray;
+}
+
+//查询所有并按时间排序 结果
++ (RLMResults *)selectAllResultsFromRealm:(NSString *)realmName {
+        RLMResults<RecordRealm *> *record = [[RecordRealm allObjectsInRealm:[DRRealmPublic createRealmWithName:realmName]] sortedResultsUsingProperty:@"time" ascending:NO];
+    NSLog(@"历史记录 条数 %d",record.count);
+    return record;
+}
+
+//判断条数
++ (void)selectResultsNumberFromRealm:(NSString *)realmName {
+    RLMResults<RecordRealm *> *record = [self selectAllResultsFromRealm:realmName];
+    if ([record count] >500) {
+        RecordRealm * rR = [record lastObject];
+        [RecordModel deleteOneRecord:[RecordModel realmChangeToModel:rR] fromRealm:realmName];
+    }
+    
 }
 
 //按时间查询
