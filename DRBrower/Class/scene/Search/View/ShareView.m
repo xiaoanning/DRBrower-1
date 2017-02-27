@@ -18,8 +18,7 @@
 @implementation ShareView
 
 
-- (void)shareButtonClick:(ShareBlock)block
-{
+- (void)shareButtonClick:(ShareBlock)block {
     _shareBlock = [block copy];
 }
 

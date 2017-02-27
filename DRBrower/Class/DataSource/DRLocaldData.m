@@ -134,5 +134,14 @@
     
 }
 
+//清空收藏
++ (void)deleteAllCollectData {
+    
+    NSMutableArray *array = [NSMutableArray arrayWithArray:[self achieveCollectData]];
+    [array removeAllObjects];
+    [DRLocaldData rootSaveData:array fileName:COLLECT];
+    
+}
+
 
 @end

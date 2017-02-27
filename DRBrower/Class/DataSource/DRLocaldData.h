@@ -32,6 +32,7 @@
 + (NSMutableArray *)achieveCollectData;
 //取消收藏
 + (void)deleteOneCollectData:(RecordModel *)record;
-
+//清空收藏
++ (void)deleteAllCollectData;
 
 @end
