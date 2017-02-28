@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 @class MenuVC;
+@class RecordRootVC;
+
 
 @interface HistoryVC : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong)MenuVC *menuVC;
+@property (nonatomic, strong) RecordRootVC *recordRootVC;
+
 
 @end

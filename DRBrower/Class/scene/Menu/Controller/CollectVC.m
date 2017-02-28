@@ -8,15 +8,14 @@
 
 #import "CollectVC.h"
 #import "SearchVC.h"
+#import "RecordRootVC.h"
 #import "RecordCell.h"
-
 #import "RecordModel.h"
 
 static NSString *const recordCellIdentifier = @"RecordCell";
 
 @interface CollectVC ()<SWTableViewCellDelegate,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong)NSMutableArray *collectArray;
 
 @end
@@ -31,10 +30,16 @@ static NSString *const recordCellIdentifier = @"RecordCell";
     self.tableView.delegate = self;
     
     self.collectArray = [NSMutableArray arrayWithArray:[DRLocaldData achieveCollectData]];
+    [self setupEmptyView];
     if ([self.collectArray count] == 0) {
         self.navigationItem.rightBarButtonItem = nil;
-        [self setupEmptyView];
     }
+    
+    [self.recordRootVC emptyInCollectButtonClick:^{
+        [DRLocaldData deleteAllCollectData];
+        [self.collectArray removeAllObjects];
+        [self.tableView reloadData];
+    }];
     
 }
 
@@ -84,6 +89,11 @@ didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
     [self.collectArray removeObjectAtIndex:(NSUInteger)index];
     [self.tableView deleteRowsAtIndexPaths:@[ cellIndexPath ]
                           withRowAnimation:UITableViewRowAnimationLeft];
+}
+
+- (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell {
+    // allow just one cell's utility button to be open at once
+    return YES;
 }
 
 - (NSArray *)rightButtons {

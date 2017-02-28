@@ -32,6 +32,8 @@
 + (NSMutableArray *)achieveCollectData;
 //取消收藏
 + (void)deleteOneCollectData:(RecordModel *)record;
+//清空收藏
++ (void)deleteAllCollectData;
 
 //保存点赞列表
 + (void)saveZanData:(NSMutableArray *)zanArray;
@@ -42,5 +44,6 @@
 + (void)saveComplainData:(NSMutableArray *)complainArray;
 //获取举报列表
 + (NSMutableArray *)achieveComplainData;
+
 
 @end
