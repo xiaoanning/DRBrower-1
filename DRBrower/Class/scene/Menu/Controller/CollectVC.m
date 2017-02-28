@@ -44,9 +44,7 @@ static NSString *const recordCellIdentifier = @"RecordCell";
 
 - (IBAction)backBarButtonAction:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^{
-        
-        
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"12345" object:nil];
+        [[NSNotificationCenter defaultCenter]postNotificationName:DISMISS_VIEW object:nil];
     }];
 }
 

@@ -139,7 +139,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.85753160340000001" green="0.83474170930000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Ggf-ss-5p1" firstAttribute="leading" secondItem="qMC-h6-QBA" secondAttribute="leading" id="Xld-mj-Wm9"/>
                             <constraint firstAttribute="trailing" secondItem="Ggf-ss-5p1" secondAttribute="trailing" id="Y1O-KS-McF"/>
@@ -151,6 +150,7 @@
                     </view>
                     <connections>
                         <outlet property="homeToolBar" destination="Ggf-ss-5p1" id="aCU-PF-dwI"/>
+                        <outlet property="navBar" destination="TfI-L2-82x" id="gMp-BB-nQl"/>
                         <outlet property="titleBtn" destination="fwg-aa-aPI" id="FSa-qs-eC9"/>
                     </connections>
                 </viewController>
