@@ -18,5 +18,8 @@
 +(NSString *)getDateString:(NSString *)spString;
 #pragma mark - 当前时间戳
 + (NSInteger)atPresentTimestamp;
-
+#pragma mark - md5加密
++ (NSString *) md5:(NSString *)input;
+#pragma mark - url中文编码
++ (NSString *)urlEncodedString:(NSString *)urlStr;
 @end

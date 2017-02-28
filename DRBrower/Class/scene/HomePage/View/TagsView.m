@@ -25,7 +25,7 @@
         [channelButton setFrame:CGRectMake(70*i, -10, 70, 42)];
         [self buttonStyle:channelButton];
         [channelButton addTarget:self action:@selector(didClickSwitchChannel:) forControlEvents:UIControlEventTouchUpInside];
-        channelButton.tag = i;
+        channelButton.tag = i+1;
         NewsTagModel *newsTag = [tagArray objectAtIndex:i];
     
         [channelButton setTitle:newsTag.name forState:UIControlStateNormal];
