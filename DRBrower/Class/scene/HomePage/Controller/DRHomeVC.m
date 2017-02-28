@@ -11,10 +11,12 @@
 #import "NewsDetailVC.h"
 #import "WebsiteRootVC.h"
 #import "MenuVC.h"
+#import "ShareVC.h"
 
 #import "NewsTagModel.h"
 #import "NewsModel.h"
 #import "WebsiteModel.h"
+#import "ShareModel.h"
 
 #import "ZeroPicCell.h"
 #import "OnePicCell.h"
@@ -441,7 +443,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:menuVC];
     formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
 
-    formSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height - 240;
+    formSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height - 300;
     
     formSheetController.presentationController.contentViewSize = [UIScreen mainScreen].bounds.size;
     
@@ -449,6 +451,19 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideAndBounceFromBottom;
     
     [self presentViewController:formSheetController animated:YES completion:nil];
+}
+
+- (void)touchUpPageButtonAction {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
+    ShareVC *shareVC = (ShareVC *)[storyboard instantiateViewControllerWithIdentifier:@"ShareVC"];
+    MZFormSheetPresentationViewController *shareFormSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:shareVC];
+    shareFormSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
+    
+    shareFormSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height - 240;
+    shareFormSheetController.presentationController.contentViewSize = [UIScreen mainScreen].bounds.size;
+    shareFormSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideAndBounceFromBottom;
+
+    [self presentViewController:shareFormSheetController animated:YES completion:nil];
 }
 
 //搜索

@@ -11,12 +11,13 @@
 @protocol MenuVCDelegate <NSObject>
 @optional
 - (void)touchUpCollectButtonAction;
+- (void)touchUpFullScreenButtonAction:(BOOL)isfull;
+- (void)touchUpRefreshDataButtonAction;
 
 @end
 
 @interface MenuVC : UIViewController
 
-@property (nonatomic, strong)NSString *str;
 @property (nonatomic, assign)id<MenuVCDelegate>delegate;
 
 @end

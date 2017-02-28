@@ -9,7 +9,10 @@
 #import "MenuVC.h"
 #import "HistoryVC.h"
 
+
 @interface MenuVC ()
+
+@property (weak, nonatomic) IBOutlet UILabel *fullScreenLabel;
 
 
 @end
@@ -20,19 +23,26 @@
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;
     
-    NSLog(@"%@",self.str);
+    BOOL isFullScreen = [[NSUserDefaults standardUserDefaults] boolForKey:kFullScreen];
+
+    if (isFullScreen == YES) {
+        self.fullScreenLabel.text = NSLocalizedString(@"退出全屏", nil);
+    }else {
+        self.fullScreenLabel.text = NSLocalizedString(@"全屏", nil);
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kFullScreen];
+
+    }
     
-    
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(asdf) name:@"12345" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dismissView) name:DISMISS_VIEW object:nil];
     
     // Do any additional setup after loading the view.
 }
 -(void)dealloc{
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"12345" object:nil];
+   
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 
 }
--(void)asdf{
+-(void)dismissView{
     [self dismissViewControllerAnimated:YES completion:nil];
 
 }
@@ -56,6 +66,32 @@
     if(_delegate && [_delegate respondsToSelector:@selector(touchUpCollectButtonAction)]){
         [self dismissViewControllerAnimated:YES completion:nil];
         [_delegate touchUpCollectButtonAction];
+    }
+}
+
+- (IBAction)fullScreenButtonAction:(id)sender {
+    
+    BOOL isFullScreen = [[NSUserDefaults standardUserDefaults] boolForKey:kFullScreen];
+    
+    if (isFullScreen == YES) {
+        self.fullScreenLabel.text = NSLocalizedString(@"退出全屏", nil);
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kFullScreen];
+
+    }else {
+        self.fullScreenLabel.text = NSLocalizedString(@"全屏", nil);
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kFullScreen];
+        
+    }
+    if(_delegate && [_delegate respondsToSelector:@selector(touchUpFullScreenButtonAction:)]){
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [_delegate touchUpFullScreenButtonAction:isFullScreen];
+    }
+}
+
+- (IBAction)refreshDataButtonAction:(id)sender {
+    if(_delegate && [_delegate respondsToSelector:@selector(touchUpRefreshDataButtonAction)]){
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [_delegate touchUpRefreshDataButtonAction];
     }
 }
 

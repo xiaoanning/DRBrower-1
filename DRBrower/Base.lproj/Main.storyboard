@@ -78,9 +78,12 @@
                                                     <action selector="didclickMenuButtonAction:" destination="tYS-3i-TPg" eventType="touchUpInside" id="gBi-EM-FJs"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LaJ-rD-TbH">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LaJ-rD-TbH">
                                                 <rect key="frame" x="225" y="7" width="75" height="30"/>
-                                                <state key="normal" title="Button"/>
+                                                <state key="normal" image="toolBar_share"/>
+                                                <connections>
+                                                    <action selector="didclickPageButtonAction:" destination="tYS-3i-TPg" eventType="touchUpInside" id="CoS-ci-o4F"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fK-Qx-AkB">
                                                 <rect key="frame" x="300" y="7" width="75" height="30"/>
@@ -148,6 +151,7 @@
         <image name="toolBar_back" width="30" height="30"/>
         <image name="toolBar_go" width="30" height="30"/>
         <image name="toolBar_menu" width="30" height="30"/>
+        <image name="toolBar_share" width="30" height="30"/>
         <image name="toolbar_home" width="30" height="30"/>
     </resources>
 </document>
