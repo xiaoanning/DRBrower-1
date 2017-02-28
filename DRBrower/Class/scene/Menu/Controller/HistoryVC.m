@@ -9,6 +9,7 @@
 #import "HistoryVC.h"
 #import "MenuVC.h"
 #import "SearchVC.h"
+#import "RecordRootVC.h"
 
 #import "RecordCell.h"
 
@@ -28,10 +29,10 @@ static NSString *const recordCellIdentifier = @"RecordCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBarHidden = NO;
+    self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"历史" image:nil tag:0];
     // Do any additional setup after loading the view.
     [self setupTableView];
-    self.historyArray = [NSMutableArray arrayWithArray:[RecordModel realmSelectAllRecord]];//[DRLocaldData achieveHistoryData]];
+    self.historyArray = [NSMutableArray arrayWithArray:[RecordModel realmSelectAllRecordFromRealm:REALM_HISTORY]];//[DRLocaldData achieveHistoryData]];
     [self setupEmptyView];
 
     if ([self.historyArray count] == 0) {
@@ -39,6 +40,12 @@ static NSString *const recordCellIdentifier = @"RecordCell";
     }
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
+    [self.recordRootVC emptyInHistoryButtonClick:^{
+        [RecordModel deleteAllRecordFromRealm:REALM_HISTORY];
+        [self.historyArray removeAllObjects];
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)setupTableView {
@@ -51,14 +58,6 @@ static NSString *const recordCellIdentifier = @"RecordCell";
     }];
 }
 
-- (IBAction)deleteAllHistoryButtonAction:(id)sender {
-//    [DRLocaldData deleteAllHistoryData];
-    [RecordModel realmDeleteAllRecord];
-    [self.historyArray removeAllObjects];
-    [self.tableView reloadData];
-    self.navigationItem.rightBarButtonItem = nil;
-    
-}
 
 #pragma mark - tableView
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -93,10 +92,15 @@ didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
     NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
     RecordModel *model = self.historyArray[cellIndexPath.row];
 //    [DRLocaldData deleteOneHistoryData:model];
-    [RecordModel realmDeleteOneRecord:model];
+    [RecordModel deleteOneRecord:model fromRealm:REALM_HISTORY];
     [self.historyArray removeObjectAtIndex:(NSUInteger)index];
     [self.tableView deleteRowsAtIndexPaths:@[ cellIndexPath ]
                           withRowAnimation:UITableViewRowAnimationLeft];
+}
+
+- (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell {
+    // allow just one cell's utility button to be open at once
+    return YES;
 }
 
 - (NSArray *)rightButtons {

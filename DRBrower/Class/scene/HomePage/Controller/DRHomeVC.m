@@ -8,10 +8,11 @@
 
 #import "DRHomeVC.h"
 #import "SearchVC.h"
-#import "NewsDetailVC.h"
+//#import "NewsDetailVC.h"
 #import "WebsiteRootVC.h"
 #import "MenuVC.h"
 #import "ShareVC.h"
+#import "RecordRootVC.h"
 
 #import "NewsTagModel.h"
 #import "NewsModel.h"
@@ -34,7 +35,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 #define UP_LOAD @"上拉"
 #define DOWN_LOAD @"下拉"
 
-@interface DRHomeVC ()<UIPageViewControllerDelegate , UIPageViewControllerDataSource>
+@interface DRHomeVC ()<UIPageViewControllerDelegate , UIPageViewControllerDataSource,MenuVCDelegate>
 
 @property (weak, nonatomic) IBOutlet HomeToolBar *homeToolBar;
 @property (weak, nonatomic) IBOutlet TagsView *tagsView;
@@ -64,6 +65,10 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSDictionary * dict = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+    self.navigationController.navigationBar.titleTextAttributes = dict;
+    
     [self.view bringSubviewToFront:self.homeTableView];
     self.tagsView.delegate = self;
     self.homeToolBar.delegate = self;
@@ -418,7 +423,6 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 }
 
 
-
 //homeToolBar
 //主页按钮
 - (void)touchUpHomeButtonAction {
@@ -442,13 +446,10 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     MenuVC *menuVC = (MenuVC *)[storyboard instantiateViewControllerWithIdentifier:@"MenuVC"];
     MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:menuVC];
     formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
-
     formSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height - 300;
-    
     formSheetController.presentationController.contentViewSize = [UIScreen mainScreen].bounds.size;
-    
-    
     formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideAndBounceFromBottom;
+    menuVC.delegate = self;
     
     [self presentViewController:formSheetController animated:YES completion:nil];
 }
@@ -464,6 +465,11 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     shareFormSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideAndBounceFromBottom;
 
     [self presentViewController:shareFormSheetController animated:YES completion:nil];
+}
+
+- (void)touchUpRecordButtonAction {
+    RecordRootVC *recordRootVC = [[RecordRootVC alloc] init];
+    [self.navigationController showViewController:recordRootVC sender:nil];
 }
 
 //搜索

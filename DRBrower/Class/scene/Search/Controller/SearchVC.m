@@ -10,6 +10,7 @@
 #import "SearchVC.h"
 #import "MenuVC.h"
 #import "ShareVC.h"
+#import "RecordRootVC.h"
 
 #import "HomeToolBar.h"
 
@@ -17,7 +18,6 @@
 #import "ShareModel.h"
 #import "DownloadModel.h"
 
-#define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 
 @interface SearchVC ()<HomeToolBarDelegate,UIWebViewDelegate,WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler,MenuVCDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *titleBtn;
@@ -50,9 +50,13 @@
     self.historyArray = [NSMutableArray arrayWithCapacity:5];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    self.navigationController.navigationBarHidden = YES;
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = NO;
+//    self.navigationController.navigationBarHidden = NO;
     NSLog(@"historyArray = %@",self.historyArray);
     
 }
@@ -245,7 +249,7 @@
     self.record.url = url;
     self.record.title = title;
     self.record.time = [Tools atPresentTimestamp];
-    [self.record realmAddRecord];
+    [self.record addRecordToRealm:REALM_HISTORY];
 
     self.shareModel = [ShareModel shareModelWithShareUrl:url
                                                    title:title
@@ -318,6 +322,11 @@
     }else {
         [self showView:COLLECT_FAILED];
     }
+}
+
+- (void)touchUpRecordButtonAction {
+    RecordRootVC *recordRootVC = [[RecordRootVC alloc] init];
+    [self.navigationController showViewController:recordRootVC sender:nil];
 }
 
 - (void)touchUpFullScreenButtonAction:(BOOL)isfull {
