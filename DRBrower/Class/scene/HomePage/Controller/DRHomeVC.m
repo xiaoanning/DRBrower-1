@@ -391,7 +391,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 //频道
 - (void)touchUpChannelButtonAction:(NSInteger)buttonTags {
     [self.newsListArray removeAllObjects];
-    NewsTagModel *newstag = self.tagListArray[buttonTags];
+    NewsTagModel *newstag = self.tagListArray[buttonTags-1];
     
     UIPageViewControllerNavigationDirection direction ;
     if ([self.tagListArray indexOfObject:newstag] == [self.tagListArray indexOfObject:self.newsTag] )
@@ -406,7 +406,8 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     }
     
     NewsListViewController * vc = [[NewsListViewController alloc]init] ;
-    vc.index = buttonTags ;
+    vc.navigationController = self.navigationController;
+    vc.index = buttonTags-1 ;
     vc.model = self.tagListArray[vc.index];
     
     [_pageVC setViewControllers:@[vc] direction:direction animated:YES completion:nil];

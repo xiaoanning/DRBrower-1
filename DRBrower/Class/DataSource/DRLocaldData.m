@@ -11,6 +11,9 @@
 #define WEBSITE @"ownerWebsite"
 #define COLLECT @"collectData"
 #define HISTORY @"historyRecords"
+#define ZANList @"zanList"
+#define COMPLAINList @"complainList"
+
 
 @implementation DRLocaldData
 
@@ -134,5 +137,30 @@
     
 }
 
+//保存点赞列表
++ (void)saveZanData:(NSMutableArray *)zanArray {
+    [DRLocaldData rootSaveData:zanArray fileName:ZANList];
+}
+//获取点赞列表
++ (NSMutableArray *)achieveZanData {
+    NSString *filePath = [self savePathName:ZANList];//获取文件路径
+    NSMutableArray *dataArray = [NSMutableArray arrayWithContentsOfFile:filePath];//把文件取出放入数字
+    NSMutableArray *zanArray =
+    [NSKeyedUnarchiver unarchiveObjectWithData:dataArray[0]];//把数组中的data转化为
+    return zanArray;
+}
+
+//保存举报列表
++ (void)saveComplainData:(NSMutableArray *)complainArray {
+    [DRLocaldData rootSaveData:complainArray fileName:COMPLAINList];
+}
+//获取点赞列表
++ (NSMutableArray *)achieveComplainData {
+    NSString *filePath = [self savePathName:COMPLAINList];//获取文件路径
+    NSMutableArray *dataArray = [NSMutableArray arrayWithContentsOfFile:filePath];//把文件取出放入数字
+    NSMutableArray *complainArray =
+    [NSKeyedUnarchiver unarchiveObjectWithData:dataArray[0]];//把数组中的data转化为
+    return complainArray;
+}
 
 @end

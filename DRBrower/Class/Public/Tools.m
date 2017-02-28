@@ -7,6 +7,7 @@
 //
 
 #import "Tools.h"
+#import <CommonCrypto/CommonCrypto.h>
 
 #define REGULATOR_TYPE_URL @0
 #define REGULATOR_TYPE_IP @1
@@ -100,20 +101,38 @@
     
     [formatter setTimeStyle:NSDateFormatterShortStyle];
     
-    [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"]; // ----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制
-    
-    //设置时区,这个对于时间的处理有时很重要
-    
+    [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
     NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/beijing"];
-    
     [formatter setTimeZone:timeZone];
-    
-    NSDate *datenow = [NSDate date];//现在时间,你可以输出来看下是什么格式
-    
+    NSDate *datenow = [NSDate date];
     NSInteger timeSp = (long)[datenow timeIntervalSince1970];
     
     return timeSp;
 }
 
-
++ (NSString *) md5:(NSString *)input {
+    const char *cStr = [input UTF8String];
+    unsigned char digest[CC_MD5_DIGEST_LENGTH];
+    CC_MD5( cStr, strlen(cStr), digest );
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+        [output appendFormat:@"%02x", digest[i]];
+    
+    return  output;
+}
++ (NSString *)urlEncodedString:(NSString *)urlStr {
+    NSString *encodedString = (NSString *)
+    CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                              
+                                                              (CFStringRef)urlStr,
+                                                              
+                                                              (CFStringRef)@"!$&'()*+,-./:;=?@_~%#[]",
+                                                              
+                                                              NULL,
+                                                              
+                                                              kCFStringEncodingUTF8));
+    
+    return encodedString;
+}
 @end

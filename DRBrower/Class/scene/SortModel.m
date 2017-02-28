@@ -10,8 +10,10 @@
 
 @implementation SortModel
 
-+(NSDictionary *)JSONKeyPathsByPropertyKey {
-    return @{};
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"sort_id" : @"id"
+             };
 }
 
 +(NSURLSessionDataTask *)getSortListUrl:(NSString *)url
@@ -25,4 +27,16 @@
         completion(sortList,error);
     }];
 }
+
++(NSURLSessionDataTask *)addLoveUrl:(NSString *)url parameters:(NSDictionary *)parameters block:(void (^)(NSDictionary *, NSError *))completion {
+    return [[DRDataService sharedClient] DR_get:url parameters:parameters completion:^(id response, NSError *error, NSDictionary *header) {
+        completion(response,error);
+    }];
+}
++(NSURLSessionDataTask *)addComplainUrl:(NSString *)url parameters:(NSDictionary *)parameters block:(void (^)(NSDictionary *, NSError *))completion {
+    return [[DRDataService sharedClient] DR_get:url parameters:parameters completion:^(id response, NSError *error, NSDictionary *header) {
+        completion(response,error);
+    }];
+}
+
 @end

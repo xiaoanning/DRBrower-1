@@ -42,6 +42,8 @@
     
     if (self.newsModel != nil||self.recordModel != nil) {
         self.searchText = self.newsModel.url?self.newsModel.url:self.recordModel.url;
+    }else if (self.sortModel.url != nil){
+        self.searchText = self.sortModel.url;
     }
     [self webViewData];
 
@@ -211,6 +213,7 @@
     // 保存到相册
 //    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
