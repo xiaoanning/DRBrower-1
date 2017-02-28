@@ -176,7 +176,7 @@
     return 0;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 90+fitHeight/2;
+    return 90+fitHeight*0.6;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     RankingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rankingCell"];

@@ -22,6 +22,7 @@
     self.titleLabel.text = model.name;
     
     self.adressLabel.text = model.location;
+    self.adressLabel.adjustsFontSizeToFitWidth =YES;
     self.timeLabel.text = [Tools getDateString:model.updatetime];
     
     [self.zanButton setImage:[UIImage imageNamed:@"sort_zan"] forState:UIControlStateNormal];
@@ -30,6 +31,7 @@
         
     self.informLabel.text = [NSString stringWithFormat:@"%@",model.complain_num];
     self.userCountLabel.text = [NSString stringWithFormat:@"%@",model.visit_num];
+    self.userCountLabel.adjustsFontSizeToFitWidth = YES;
     
     [self.commentCountButton setTitle:[NSString stringWithFormat:@"%@",model.comment_num] forState:UIControlStateNormal];
     self.commentCountButton.titleLabel.textColor = [UIColor whiteColor];

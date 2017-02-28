@@ -20,10 +20,7 @@
     self.timeLabel.text = [Tools getDateString:model.createtime];
     self.contentLabel.text = model.content;
 }
--(void)layoutSubviews {
-    [super layoutSubviews];
-    NSLog(@"123");
-}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

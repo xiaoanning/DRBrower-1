@@ -165,6 +165,7 @@
     [self.bgView addSubview:self.commentTextView];
     self.commentTextView.tag = 200;
     self.commentTextView.delegate = self;
+    self.commentTextView.font = [UIFont boldSystemFontOfSize:15];
     self.commentTextView.selectedRange=NSMakeRange(0,0) ;   //起始位置
     
     self.placeHolderLabel = [[UILabel alloc]initWithFrame:CGRectMake(3, 3, 200, 20)];
@@ -173,7 +174,9 @@
     self.placeHolderLabel.font =  [UIFont systemFontOfSize:15];
     self.placeHolderLabel.textColor = [UIColor lightGrayColor];
     [self.commentTextView addSubview: self.placeHolderLabel];
-
+    [self.commentTextView sendSubviewToBack:self.placeHolderLabel];
+    
+    
     UIButton *commitButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     commitButton.frame = CGRectMake(CGRectGetWidth(self.bgView.frame)-60, CGRectGetMaxY(self.commentTextView.frame)+15, 50, 25);
     [commitButton setTitle:@"发布"forState:UIControlStateNormal];
@@ -191,9 +194,13 @@
 }
 
 -(void)clickCommitButton:(UIButton *)button {
-    [self.commentTextView resignFirstResponder];
-    NSLog(@"%@",[self.inputTextArray lastObject]);
-    [self addCommentData:[self.inputTextArray lastObject]];
+    NSString *inputString = [self.inputTextArray lastObject];
+    if (inputString.length>0) {
+        [self.commentTextView resignFirstResponder];
+        [self addCommentData:[self.inputTextArray lastObject]];
+    }else {
+        NSLog(@"写点什么吧");
+    }
 }
 //当键盘出现或改变时调用
 - (void)keyboardWillShow:(NSNotification *)aNotification
@@ -221,44 +228,48 @@
         [self createTextView];
         [self.commentTextView becomeFirstResponder];
     }
-
-    
-    if ([textView.text length] == 0) {
-        [self.placeHolderLabel setHidden:NO];
-    }else{
-        [self.placeHolderLabel setHidden:YES];
+    if (textView.tag == 200){
+        if ([textView.text length] == 0) {
+            [self.placeHolderLabel setHidden:NO];
+        }else{
+            [self.placeHolderLabel setHidden:YES];
+        }
     }
 }
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    if (1 == range.length) {//按下回格键
-        return YES;
-    }
-    if ([text isEqualToString:@"\n"]) {//按下return键
-        [textView resignFirstResponder];
-        return NO;
-    }else {
-        if ([textView.text length] < 140) {//判断字符个数
-            NSLog(@"%@",text);
+    if (textView.tag == 200) {
+        if (1 == range.length) {//按下回格键
             return YES;
+        }
+        if ([text isEqualToString:@"\n"]) {//按下return键
+            [textView resignFirstResponder];
+            return NO;
+        }else {
+            if ([textView.text length] < 140) {//判断字符个数
+                NSLog(@"%@",text);
+                return YES;
+            }
         }
     }
     return NO;
 }
 - (void)textViewDidChange:(UITextView *)textView
 {
-    [self.inputTextArray addObject:textView.text];
-    
-    if ([textView.text length] == 0) {
-        [self.placeHolderLabel setHidden:NO];
-    }else{
-        [self.placeHolderLabel setHidden:YES];
+    if (textView.tag == 200) {
+        [self.inputTextArray addObject:textView.text];
+        
+        if ([textView.text length] == 0) {
+            [self.placeHolderLabel setHidden:NO];
+        }else{
+            [self.placeHolderLabel setHidden:YES];
+        }
     }
 }
--(void)textViewDidEndEditing:(UITextView *)textView {
-    if (textView.tag == 100) {
-        NSLog(@"%@",textView.text);
-    }
-}
+//-(void)textViewDidEndEditing:(UITextView *)textView {
+//    if (textView.tag == 100) {
+//        NSLog(@"%@",textView.text);
+//    }
+//}
 #pragma mark - -------------TableView--------
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -270,7 +281,7 @@
     return 0;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 80+fitHeight;
+    return 90+fitHeight;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CommentListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"commentListCell"];
