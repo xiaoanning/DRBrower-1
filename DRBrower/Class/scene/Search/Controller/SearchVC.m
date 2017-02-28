@@ -15,6 +15,7 @@
 
 #import "RecordModel.h"
 #import "ShareModel.h"
+#import "DownloadModel.h"
 
 #define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 
@@ -152,10 +153,7 @@
         }else {
             [self.searchWV loadRequest:navigationAction.request];
         }
-        
         decisionHandler(WKNavigationActionPolicyAllow);
-
-        NSLog(@"%@",navigationAction.request.URL);
 
     }else{
         if([navigationAction.request.URL.host isEqualToString:@"itunes.apple.com"]) {
@@ -167,19 +165,21 @@
                                 block:^(NSString *mimeType, NSError *error) {
                                     if (!error) {
                                         if ([mimeType isEqualToString:@"video/mp4"]) {
-                                            [self showView:[NSString stringWithFormat:@"%@",navigationAction.request.URL]];
-                                        }else {
-                                            
+                                            [self showAlert:[NSString stringWithFormat:@"%@",navigationAction.request.URL]
+                                                      block:^(BOOL isDownload) {
+                                                          if (isDownload == YES) {
+                                                              [DownloadModel downloadFile:navigationAction.request.URL block:^(id response, NSError *error) {
+                                                                  
+                                                              }];
+                                                          }
+                                            }];
                                         }
-                                        
                                     }
                                 }];
+            decisionHandler(WKNavigationActionPolicyAllow);
+
         }
-        NSLog(@"%@",navigationAction.request);
-        decisionHandler(WKNavigationActionPolicyAllow);
-        
     }
-  NSLog(@"1");
 }
 
 //接收到相应后，决定是否跳转
@@ -210,7 +210,8 @@
     return task;
 }
 
-- (void)showAlert:(NSString *)title {
+- (void)showAlert:(NSString *)title
+            block:(void (^)(BOOL))completion {
     UIAlertController *alert =
     [UIAlertController alertControllerWithTitle:title
                                         message:nil
@@ -220,14 +221,16 @@
     [UIAlertAction actionWithTitle:NSLocalizedString(@"取消", nil)
                              style:UIAlertActionStyleDestructive
                            handler:^(UIAlertAction * _Nonnull action) {
-                               
+                               BOOL isDownload = NO;
+                               completion(isDownload);
                            }];
     
     UIAlertAction *confirmAction =
     [UIAlertAction actionWithTitle:NSLocalizedString(@"下载", nil)
                              style:UIAlertActionStyleDefault
                            handler:^(UIAlertAction * _Nonnull action) {
-                               
+                               BOOL isDownload = YES;
+                               completion(isDownload);
                            }];
     
     [alert addAction:confirmAction];
@@ -269,7 +272,6 @@
 }
 
 - (void)touchUpMenuButtonAction {
-    //TODO:菜单
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Menu" bundle:[NSBundle mainBundle]];
     MenuVC *menuVC = (MenuVC *)[storyboard instantiateViewControllerWithIdentifier:@"MenuVC"];
     self.formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:menuVC];

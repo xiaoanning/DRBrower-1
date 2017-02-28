@@ -85,6 +85,7 @@
 		55E5BBD71E64456200A7CF9E /* DownLoadVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BBD61E64456200A7CF9E /* DownLoadVC.m */; };
 		55E5BBDE1E644D3A00A7CF9E /* DownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BBDC1E644D3A00A7CF9E /* DownloadCell.m */; };
 		55E5BBDF1E644D3A00A7CF9E /* DownloadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55E5BBDD1E644D3A00A7CF9E /* DownloadCell.xib */; };
+		55E5BBE81E6584EF00A7CF9E /* DownloadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BBE71E6584EF00A7CF9E /* DownloadModel.m */; };
 		55F623811E2DB0B5003536CC /* MenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F623801E2DB0B5003536CC /* MenuVC.m */; };
 		A507DADB85FCF25ACECBB659 /* libPods-DRBrower.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DBFF56AA0AED9BFE627FB1A /* libPods-DRBrower.a */; };
 /* End PBXBuildFile section */
@@ -231,6 +232,8 @@
 		55E5BBDB1E644D3A00A7CF9E /* DownloadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadCell.h; sourceTree = "<group>"; };
 		55E5BBDC1E644D3A00A7CF9E /* DownloadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadCell.m; sourceTree = "<group>"; };
 		55E5BBDD1E644D3A00A7CF9E /* DownloadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadCell.xib; sourceTree = "<group>"; };
+		55E5BBE61E6584EF00A7CF9E /* DownloadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadModel.h; sourceTree = "<group>"; };
+		55E5BBE71E6584EF00A7CF9E /* DownloadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadModel.m; sourceTree = "<group>"; };
 		55F6237F1E2DB0B5003536CC /* MenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuVC.h; sourceTree = "<group>"; };
 		55F623801E2DB0B5003536CC /* MenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuVC.m; sourceTree = "<group>"; };
 		7488FCDE566523736ED083EB /* Pods-DRBrower.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRBrower.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DRBrower/Pods-DRBrower.debug.xcconfig"; sourceTree = "<group>"; };
@@ -627,6 +630,8 @@
 		55F6237D1E2DB021003536CC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				55E5BBE61E6584EF00A7CF9E /* DownloadModel.h */,
+				55E5BBE71E6584EF00A7CF9E /* DownloadModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -824,6 +829,7 @@
 				55E5BBCD1E64446100A7CF9E /* SRDownloadModel.m in Sources */,
 				1866D4AC1E5BE1AB00BDB5DB /* RankingListVC.m in Sources */,
 				552375891E1CEAF000214ECB /* SearchVC.m in Sources */,
+				55E5BBE81E6584EF00A7CF9E /* DownloadModel.m in Sources */,
 				551661611E222CF900909A11 /* WebsiteCell.m in Sources */,
 				557DC0C61E0CCA4B00ECFFDE /* NewsDetailVC.m in Sources */,
 				557DC0671E08DF8100ECFFDE /* main.m in Sources */,

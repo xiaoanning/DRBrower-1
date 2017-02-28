@@ -23,5 +23,7 @@
 - (NSURLSessionDataTask *)getMIMETypeWithPath:(NSURL *)path
                                     block:(void (^)(NSString *mimeType,
                                                     NSError *error))completion;
+- (void)showAlert:(NSString *)title
+            block:(void (^)(BOOL isDownload))completion;
 
 @end
