@@ -11,6 +11,7 @@
 #import "PYSearch.h"
 #import "NewsModel.h"
 #import "RecordModel.h"
+#import "SortModel.h"
 
 @interface SearchVC : UIViewController
 
@@ -19,7 +20,7 @@
 
 @property (nonatomic, strong)NewsModel *newsModel;
 @property (nonatomic, strong)RecordModel *recordModel;
-
+@property (nonatomic, strong)SortModel *sortModel;
 
 
 @end

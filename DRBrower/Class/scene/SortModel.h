@@ -24,12 +24,24 @@
 @property(nonatomic, copy) NSString *location;     //位置：北京市-朝阳
 @property(nonatomic, copy) NSString *updatetime;    //更新时间
 @property(nonatomic, copy) NSString *visit_num;     //观看人数
-
+@property(nonatomic, copy) NSString *sort_id;     //唯一id
+//获取排行列表
 + (NSURLSessionDataTask *)getSortListUrl:(NSString *)url
                              parameters:(NSDictionary *)parameters
                                   block:(void (^)(SortListModel *newsList,
                                                   NSError *error))completion;
 
+//点赞
++ (NSURLSessionDataTask *)addLoveUrl:(NSString *)url
+                              parameters:(NSDictionary *)parameters
+                                   block:(void (^)(NSDictionary *dic,
+                                                   NSError *error))completion;
+
+//举报
++ (NSURLSessionDataTask *)addComplainUrl:(NSString *)url
+                          parameters:(NSDictionary *)parameters
+                               block:(void (^)(NSDictionary *dic,
+                                               NSError *error))completion;
 
 
 @end
