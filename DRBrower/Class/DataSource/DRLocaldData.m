@@ -137,6 +137,15 @@
     
 }
 
+//清空收藏
++ (void)deleteAllCollectData {
+    
+    NSMutableArray *array = [NSMutableArray arrayWithArray:[self achieveCollectData]];
+    [array removeAllObjects];
+    [DRLocaldData rootSaveData:array fileName:COLLECT];
+    
+}
+
 //保存点赞列表
 + (void)saveZanData:(NSMutableArray *)zanArray {
     [DRLocaldData rootSaveData:zanArray fileName:ZANList];

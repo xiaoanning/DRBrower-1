@@ -16,12 +16,13 @@
 @property (assign, nonatomic)NSInteger time;
 
 //保存记录
-- (void)realmAddRecord;
+- (void)addRecordToRealm:(NSString *)realmName;
 //删除一条记录
-+ (void)realmDeleteOneRecord:(RecordModel *)record;
++ (void)deleteOneRecord:(RecordModel *)record fromRealm:(NSString *)realmName;
 //清空记录
-+ (void)realmDeleteAllRecord;
++ (void)deleteAllRecordFromRealm:(NSString *)realmName;
 //获取全部记录
-+ (NSMutableArray *)realmSelectAllRecord;
++ (NSMutableArray *)realmSelectAllRecordFromRealm:(NSString *)realmName;
+
 
 @end

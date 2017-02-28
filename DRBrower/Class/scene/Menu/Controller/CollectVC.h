@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class RecordRootVC;
 
 @interface CollectVC : UIViewController<UITableViewDelegate, UITableViewDataSource,AXStretchableSubViewControllerViewSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (nonatomic, strong) RecordRootVC *recordRootVC;
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-//typedef void(^ShareBlock)();
 
 typedef void(^ShareBlock)(SSDKPlatformType type);
 
