@@ -20,6 +20,8 @@
 @property (nonatomic, strong)NewsModel *newsModel;
 @property (nonatomic, strong)RecordModel *recordModel;
 
-
+- (NSURLSessionDataTask *)getMIMETypeWithPath:(NSURL *)path
+                                    block:(void (^)(NSString *mimeType,
+                                                    NSError *error))completion;
 
 @end

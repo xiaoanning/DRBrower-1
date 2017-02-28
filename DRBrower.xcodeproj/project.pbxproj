@@ -80,6 +80,11 @@
 		55BC1B121E49D3EF00A64375 /* RecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BC1B101E49D3EF00A64375 /* RecordCell.m */; };
 		55BC1B131E49D3EF00A64375 /* RecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55BC1B111E49D3EF00A64375 /* RecordCell.xib */; };
 		55BC1B161E4AF1A800A64375 /* CollectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BC1B151E4AF1A800A64375 /* CollectVC.m */; };
+		55E5BBCC1E64446100A7CF9E /* SRDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BBC91E64446100A7CF9E /* SRDownloadManager.m */; };
+		55E5BBCD1E64446100A7CF9E /* SRDownloadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BBCB1E64446100A7CF9E /* SRDownloadModel.m */; };
+		55E5BBD71E64456200A7CF9E /* DownLoadVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BBD61E64456200A7CF9E /* DownLoadVC.m */; };
+		55E5BBDE1E644D3A00A7CF9E /* DownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BBDC1E644D3A00A7CF9E /* DownloadCell.m */; };
+		55E5BBDF1E644D3A00A7CF9E /* DownloadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55E5BBDD1E644D3A00A7CF9E /* DownloadCell.xib */; };
 		55F623811E2DB0B5003536CC /* MenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F623801E2DB0B5003536CC /* MenuVC.m */; };
 		A507DADB85FCF25ACECBB659 /* libPods-DRBrower.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DBFF56AA0AED9BFE627FB1A /* libPods-DRBrower.a */; };
 /* End PBXBuildFile section */
@@ -217,6 +222,15 @@
 		55BC1B111E49D3EF00A64375 /* RecordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordCell.xib; sourceTree = "<group>"; };
 		55BC1B141E4AF1A800A64375 /* CollectVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectVC.h; sourceTree = "<group>"; };
 		55BC1B151E4AF1A800A64375 /* CollectVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectVC.m; sourceTree = "<group>"; };
+		55E5BBC81E64446100A7CF9E /* SRDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRDownloadManager.h; sourceTree = "<group>"; };
+		55E5BBC91E64446100A7CF9E /* SRDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRDownloadManager.m; sourceTree = "<group>"; };
+		55E5BBCA1E64446100A7CF9E /* SRDownloadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRDownloadModel.h; sourceTree = "<group>"; };
+		55E5BBCB1E64446100A7CF9E /* SRDownloadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRDownloadModel.m; sourceTree = "<group>"; };
+		55E5BBD51E64456200A7CF9E /* DownLoadVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownLoadVC.h; sourceTree = "<group>"; };
+		55E5BBD61E64456200A7CF9E /* DownLoadVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownLoadVC.m; sourceTree = "<group>"; };
+		55E5BBDB1E644D3A00A7CF9E /* DownloadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadCell.h; sourceTree = "<group>"; };
+		55E5BBDC1E644D3A00A7CF9E /* DownloadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadCell.m; sourceTree = "<group>"; };
+		55E5BBDD1E644D3A00A7CF9E /* DownloadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadCell.xib; sourceTree = "<group>"; };
 		55F6237F1E2DB0B5003536CC /* MenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuVC.h; sourceTree = "<group>"; };
 		55F623801E2DB0B5003536CC /* MenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuVC.m; sourceTree = "<group>"; };
 		7488FCDE566523736ED083EB /* Pods-DRBrower.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRBrower.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DRBrower/Pods-DRBrower.debug.xcconfig"; sourceTree = "<group>"; };
@@ -434,6 +448,7 @@
 		557DC07C1E08E08400ECFFDE /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				55E5BBC61E64446100A7CF9E /* OpenSource */,
 				557DC07D1E08E08400ECFFDE /* App */,
 				557DC0801E08E08400ECFFDE /* DataSource */,
 				557DC0831E08E08400ECFFDE /* Public */,
@@ -565,6 +580,25 @@
 			path = DRBrower/Class/scene/HomePage/Model;
 			sourceTree = SOURCE_ROOT;
 		};
+		55E5BBC61E64446100A7CF9E /* OpenSource */ = {
+			isa = PBXGroup;
+			children = (
+				55E5BBC71E64446100A7CF9E /* SRDownloadManager */,
+			);
+			path = OpenSource;
+			sourceTree = "<group>";
+		};
+		55E5BBC71E64446100A7CF9E /* SRDownloadManager */ = {
+			isa = PBXGroup;
+			children = (
+				55E5BBC81E64446100A7CF9E /* SRDownloadManager.h */,
+				55E5BBC91E64446100A7CF9E /* SRDownloadManager.m */,
+				55E5BBCA1E64446100A7CF9E /* SRDownloadModel.h */,
+				55E5BBCB1E64446100A7CF9E /* SRDownloadModel.m */,
+			);
+			path = SRDownloadManager;
+			sourceTree = "<group>";
+		};
 		55F6237B1E2DB021003536CC /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -578,6 +612,8 @@
 		55F6237C1E2DB021003536CC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				55E5BBD51E64456200A7CF9E /* DownLoadVC.h */,
+				55E5BBD61E64456200A7CF9E /* DownLoadVC.m */,
 				55F6237F1E2DB0B5003536CC /* MenuVC.h */,
 				55F623801E2DB0B5003536CC /* MenuVC.m */,
 				55BC1B0C1E49C8F300A64375 /* HistoryVC.h */,
@@ -601,6 +637,9 @@
 				55BC1B0F1E49D3EF00A64375 /* RecordCell.h */,
 				55BC1B101E49D3EF00A64375 /* RecordCell.m */,
 				55BC1B111E49D3EF00A64375 /* RecordCell.xib */,
+				55E5BBDB1E644D3A00A7CF9E /* DownloadCell.h */,
+				55E5BBDC1E644D3A00A7CF9E /* DownloadCell.m */,
+				55E5BBDD1E644D3A00A7CF9E /* DownloadCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -658,7 +697,6 @@
 				TargetAttributes = {
 					557DC0611E08DF8100ECFFDE = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 5PQN62M948;
 						DevelopmentTeam = C53DGAEY52;
 						ProvisioningStyle = Automatic;
 					};
@@ -698,6 +736,7 @@
 				551661621E222CF900909A11 /* WebsiteCell.xib in Resources */,
 				55BC1B131E49D3EF00A64375 /* RecordCell.xib in Resources */,
 				558ADF9B1E13CE8700035716 /* ZeroPicCell.xib in Resources */,
+				55E5BBDF1E644D3A00A7CF9E /* DownloadCell.xib in Resources */,
 				55BC1B0B1E49BE6A00A64375 /* Menu.storyboard in Resources */,
 				55421AA61E599A5300389B86 /* ShareView.xib in Resources */,
 				557DC0B21E0B658300ECFFDE /* ThreePicCell.xib in Resources */,
@@ -764,6 +803,7 @@
 			files = (
 				55BC1B0E1E49C8F300A64375 /* HistoryVC.m in Sources */,
 				5523758C1E1D03BF00214ECB /* Tools.m in Sources */,
+				55E5BBCC1E64446100A7CF9E /* SRDownloadManager.m in Sources */,
 				557DC0A71E0A64D500ECFFDE /* NewsModel.m in Sources */,
 				55F623811E2DB0B5003536CC /* MenuVC.m in Sources */,
 				557DC06D1E08DF8100ECFFDE /* ViewController.m in Sources */,
@@ -778,10 +818,10 @@
 				557DC0AA1E0A64E900ECFFDE /* NewsListModel.m in Sources */,
 				558ADF991E13CE5F00035716 /* DRImageView.m in Sources */,
 				1866D4A21E5BDDF500BDB5DB /* NewsListViewController.m in Sources */,
-
 				55421AE01E5D22D400389B86 /* UIImage+DRImageClip.m in Sources */,
 				55BC1B121E49D3EF00A64375 /* RecordCell.m in Sources */,
 				551661691E236AEF00909A11 /* WebsiteRootVC.m in Sources */,
+				55E5BBCD1E64446100A7CF9E /* SRDownloadModel.m in Sources */,
 				1866D4AC1E5BE1AB00BDB5DB /* RankingListVC.m in Sources */,
 				552375891E1CEAF000214ECB /* SearchVC.m in Sources */,
 				551661611E222CF900909A11 /* WebsiteCell.m in Sources */,
@@ -803,6 +843,7 @@
 				552ADBD51E24EEB5007036CA /* DRLocaldData.m in Sources */,
 				1866D4B81E5BE1FC00BDB5DB /* SortTagModel.m in Sources */,
 				1866D4B61E5BE1FC00BDB5DB /* SortModel.m in Sources */,
+				55E5BBD71E64456200A7CF9E /* DownLoadVC.m in Sources */,
 				551661721E23701D00909A11 /* WebsiteCustomVC.m in Sources */,
 				1866D49F1E5BD11700BDB5DB /* HomeTopViewLayout.m in Sources */,
 				558ADF5F1E0E2B4F00035716 /* HomeToolBar.m in Sources */,
@@ -814,6 +855,7 @@
 				551661771E23942E00909A11 /* WebsiteCollectVC.m in Sources */,
 				1866D4BC1E5BE22700BDB5DB /* RankingCell.m in Sources */,
 				1866D4AB1E5BE1AB00BDB5DB /* RankingViewController.m in Sources */,
+				55E5BBDE1E644D3A00A7CF9E /* DownloadCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -936,11 +978,11 @@
 			baseConfigurationReference = 7488FCDE566523736ED083EB /* Pods-DRBrower.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5PQN62M948;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = C53DGAEY52;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DRBrower/DRBrowser-Prefix.pch";
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				INFOPLIST_FILE = DRBrower/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -954,11 +996,11 @@
 			baseConfigurationReference = 1D4B44C20B272556E4C01B53 /* Pods-DRBrower.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5PQN62M948;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = C53DGAEY52;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DRBrower/DRBrowser-Prefix.pch";
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				INFOPLIST_FILE = DRBrower/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -140,6 +140,103 @@
     
 }
 
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
+
+    if (navigationAction.navigationType == WKNavigationTypeLinkActivated){
+        
+        NSLog(@"%@",navigationAction.request.URL.host);
+        if([navigationAction.request.URL.host isEqualToString:@"itunes.apple.com"]) {
+            [[UIApplication sharedApplication] openURL:navigationAction.request.URL
+                                               options:@{}
+                                     completionHandler:nil];
+        }else {
+            [self.searchWV loadRequest:navigationAction.request];
+        }
+        
+        decisionHandler(WKNavigationActionPolicyAllow);
+
+        NSLog(@"%@",navigationAction.request.URL);
+
+    }else{
+        if([navigationAction.request.URL.host isEqualToString:@"itunes.apple.com"]) {
+            [[UIApplication sharedApplication] openURL:navigationAction.request.URL
+                                               options:@{}
+                                     completionHandler:nil];
+        }else {
+            [self getMIMETypeWithPath:navigationAction.request.URL
+                                block:^(NSString *mimeType, NSError *error) {
+                                    if (!error) {
+                                        if ([mimeType isEqualToString:@"video/mp4"]) {
+                                            [self showView:[NSString stringWithFormat:@"%@",navigationAction.request.URL]];
+                                        }else {
+                                            
+                                        }
+                                        
+                                    }
+                                }];
+        }
+        NSLog(@"%@",navigationAction.request);
+        decisionHandler(WKNavigationActionPolicyAllow);
+        
+    }
+  NSLog(@"1");
+}
+
+//接收到相应后，决定是否跳转
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler{
+    
+    
+    if (!navigationResponse.isForMainFrame){
+            decisionHandler(WKNavigationResponsePolicyCancel);
+        }else{
+            decisionHandler(WKNavigationResponsePolicyAllow);
+        }
+        NSLog(@"2");
+    
+}
+
+- (NSURLSessionDataTask *)getMIMETypeWithPath:(NSURL *)path
+                                        block:(void (^)(NSString *, NSError *))completion {
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:path];
+    [request setHTTPMethod:@"HEAD"];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+                      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                          NSString *mimeType = response.MIMEType;
+                          completion(mimeType, error);
+                   NSLog(@"response.MIMEType %@",response.MIMEType);
+               }];
+    [task resume];
+    return task;
+}
+
+- (void)showAlert:(NSString *)title {
+    UIAlertController *alert =
+    [UIAlertController alertControllerWithTitle:title
+                                        message:nil
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction =
+    [UIAlertAction actionWithTitle:NSLocalizedString(@"取消", nil)
+                             style:UIAlertActionStyleDestructive
+                           handler:^(UIAlertAction * _Nonnull action) {
+                               
+                           }];
+    
+    UIAlertAction *confirmAction =
+    [UIAlertAction actionWithTitle:NSLocalizedString(@"下载", nil)
+                             style:UIAlertActionStyleDefault
+                           handler:^(UIAlertAction * _Nonnull action) {
+                               
+                           }];
+    
+    [alert addAction:confirmAction];
+    [alert addAction:cancelAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+}
+
 - (void)newOneRecordWithUrl:(NSString *)url title:(NSString *)title {
     self.record = [[RecordModel alloc] init];
     self.record.url = url;
