@@ -60,6 +60,14 @@
     }
 }
 
+- (IBAction)downloadButtonAction:(id)sender {
+    if(_delegate && [_delegate respondsToSelector:@selector(touchUpDownloadButtonAction)]){
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [_delegate touchUpDownloadButtonAction];
+    }
+}
+
+
 - (IBAction)collectButtonAction:(id)sender {
     if(_delegate && [_delegate respondsToSelector:@selector(touchUpCollectButtonAction)]){
         [self dismissViewControllerAnimated:YES completion:nil];

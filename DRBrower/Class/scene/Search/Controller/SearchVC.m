@@ -11,13 +11,13 @@
 #import "MenuVC.h"
 #import "ShareVC.h"
 #import "RecordRootVC.h"
+#import "DownLoadVC.h"
 
 #import "HomeToolBar.h"
 
 #import "RecordModel.h"
 #import "ShareModel.h"
 #import "DownloadModel.h"
-
 
 @interface SearchVC ()<HomeToolBarDelegate,UIWebViewDelegate,WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler,MenuVCDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *titleBtn;
@@ -146,35 +146,36 @@
 }
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
-
+    NSURLRequest *currentRequest = navigationAction.request;
+    NSURL *currentURL = currentRequest.URL;
     if (navigationAction.navigationType == WKNavigationTypeLinkActivated){
         
         NSLog(@"%@",navigationAction.request.URL.host);
-        if([navigationAction.request.URL.host isEqualToString:@"itunes.apple.com"]) {
-            [[UIApplication sharedApplication] openURL:navigationAction.request.URL
+        if([currentURL.host isEqualToString:@"itunes.apple.com"]) {
+            [[UIApplication sharedApplication] openURL:currentURL
                                                options:@{}
                                      completionHandler:nil];
         }else {
-            [self.searchWV loadRequest:navigationAction.request];
+            [self.searchWV loadRequest:currentRequest];
         }
         decisionHandler(WKNavigationActionPolicyAllow);
 
     }else{
-        if([navigationAction.request.URL.host isEqualToString:@"itunes.apple.com"]) {
-            [[UIApplication sharedApplication] openURL:navigationAction.request.URL
+        if([currentURL.host isEqualToString:@"itunes.apple.com"]) {
+            [[UIApplication sharedApplication] openURL:currentURL
                                                options:@{}
                                      completionHandler:nil];
         }else {
-            [self getMIMETypeWithPath:navigationAction.request.URL
+            [self getMIMETypeWithPath:currentURL
                                 block:^(NSString *mimeType, NSError *error) {
                                     if (!error) {
                                         if ([mimeType isEqualToString:@"video/mp4"]) {
-                                            [self showAlert:[NSString stringWithFormat:@"%@",navigationAction.request.URL]
+                                            [self showAlert:[NSString stringWithFormat:@"%@",currentURL]
                                                       block:^(BOOL isDownload) {
                                                           if (isDownload == YES) {
-                                                              [DownloadModel downloadFile:navigationAction.request.URL block:^(id response, NSError *error) {
-                                                                  
-                                                              }];
+                                                              [self showView:NSLocalizedString(@"开始下载", nil)];
+                                                              [self download:[NSString stringWithFormat:@"%@",currentURL]];
+                                                          
                                                           }
                                             }];
                                         }
@@ -186,6 +187,38 @@
     }
 }
 
+- (void)download:(NSString *)urlStr {
+    MCDownloadReceipt *receipt = [[MCDownloadManager defaultInstance] downloadReceiptForURL:urlStr];
+    DownloadModel *download = [[DownloadModel alloc] init];
+    download.url = urlStr;
+    download.title = receipt.truename;
+    if (receipt.state == MCDownloadStateCompleted) {
+        download.state = YES;
+    }else {
+        download.state = NO;
+    }
+    [download addDownloadToRealm:REALM_DOWNLOAD];
+    [[MCDownloadManager defaultInstance] suspendWithDownloadReceipt:receipt];
+    [[MCDownloadManager defaultInstance] downloadFileWithURL:urlStr
+                                                    progress:^(NSProgress * _Nonnull downloadProgress, MCDownloadReceipt *receipt) {
+                                                        
+                                                        if ([receipt.url isEqualToString:urlStr]) {
+                                                            //                                                            self.progressView.progress = downloadProgress.fractionCompleted ;
+//                                                            self.titleLabel.text = [NSString stringWithFormat:@"%0.2fm/%0.2fm", downloadProgress.completedUnitCount/1024.0/1024, downloadProgress.totalUnitCount/1024.0/1024];
+                                                            //                                                            self.speedLable.text = [NSString stringWithFormat:@"%@/s", receipt.speed];
+                                                            NSLog(@"zzz");
+                                                        }
+                                                        
+                                                    }
+                                                 destination:nil
+                                                     success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSURL * _Nonnull filePath) {
+                                                         [self showView:NSLocalizedString(@"下载完成", nil)];
+                                                     }
+                                                     failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
+                                                         [self showView:NSLocalizedString(@"下载失败", nil)];
+                                                     }];
+    
+}
 //接收到相应后，决定是否跳转
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler{
     
@@ -327,6 +360,13 @@
 - (void)touchUpRecordButtonAction {
     RecordRootVC *recordRootVC = [[RecordRootVC alloc] init];
     [self.navigationController showViewController:recordRootVC sender:nil];
+}
+
+- (void)touchUpDownloadButtonAction {
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Menu" bundle:[NSBundle mainBundle]];
+    DownLoadVC *downloadVC = (DownLoadVC *)[storyboard instantiateViewControllerWithIdentifier:@"DownLoadVC"];
+    [self.navigationController showViewController:downloadVC sender:nil];
 }
 
 - (void)touchUpFullScreenButtonAction:(BOOL)isfull {

@@ -96,6 +96,9 @@
                                                             <constraint firstAttribute="width" secondItem="8Nz-Vv-9WE" secondAttribute="height" multiplier="5:2" id="758-bI-pQn"/>
                                                         </constraints>
                                                         <state key="normal" image="menu_download"/>
+                                                        <connections>
+                                                            <action selector="downloadButtonAction:" destination="yPR-D9-az7" eventType="touchUpInside" id="6x6-TO-lqx"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下载" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hb0-6W-p5q">
                                                         <rect key="frame" x="32.5" y="47.5" width="29" height="17"/>
@@ -330,6 +333,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6aI-55-Hsy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1337" y="-13"/>
+        </scene>
+        <!--Down LoadVC-->
+        <scene sceneID="Kwy-0d-Zvj">
+            <objects>
+                <viewController storyboardIdentifier="DownLoadVC" id="To0-70-aO3" customClass="DownLoadVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0b5-O8-B3p"/>
+                        <viewControllerLayoutGuide type="bottom" id="R2J-t7-rPW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mau-tH-hNi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="huJ-AA-Ocn">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="huJ-AA-Ocn" firstAttribute="leading" secondItem="Mau-tH-hNi" secondAttribute="leading" id="4Od-0e-C7K"/>
+                            <constraint firstItem="huJ-AA-Ocn" firstAttribute="top" secondItem="Mau-tH-hNi" secondAttribute="top" id="IVZ-Xq-45C"/>
+                            <constraint firstItem="R2J-t7-rPW" firstAttribute="top" secondItem="huJ-AA-Ocn" secondAttribute="bottom" id="Ttk-sP-z0U"/>
+                            <constraint firstAttribute="trailing" secondItem="huJ-AA-Ocn" secondAttribute="trailing" id="XeX-Bz-Eip"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="huJ-AA-Ocn" id="5pO-Lj-zAA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lAY-Ct-WUA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1447.2" y="-564.46776611694156"/>
         </scene>
         <!--历史-->
         <scene sceneID="m2N-Sm-KJ8">

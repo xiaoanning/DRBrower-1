@@ -14,6 +14,7 @@
 - (void)touchUpFullScreenButtonAction:(BOOL)isfull;
 - (void)touchUpRefreshDataButtonAction;
 - (void)touchUpRecordButtonAction;
+- (void)touchUpDownloadButtonAction;
 
 @end
 

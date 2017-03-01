@@ -84,10 +84,17 @@
 		55BC1B161E4AF1A800A64375 /* CollectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BC1B151E4AF1A800A64375 /* CollectVC.m */; };
 		55E5BBCC1E64446100A7CF9E /* SRDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BBC91E64446100A7CF9E /* SRDownloadManager.m */; };
 		55E5BBCD1E64446100A7CF9E /* SRDownloadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BBCB1E64446100A7CF9E /* SRDownloadModel.m */; };
-		55E5BBD71E64456200A7CF9E /* DownLoadVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BBD61E64456200A7CF9E /* DownLoadVC.m */; };
 		55E5BBDE1E644D3A00A7CF9E /* DownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BBDC1E644D3A00A7CF9E /* DownloadCell.m */; };
 		55E5BBDF1E644D3A00A7CF9E /* DownloadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55E5BBDD1E644D3A00A7CF9E /* DownloadCell.xib */; };
 		55E5BBE81E6584EF00A7CF9E /* DownloadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BBE71E6584EF00A7CF9E /* DownloadModel.m */; };
+		55E5BBEB1E65CB9600A7CF9E /* DownLoadVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BBEA1E65CB9600A7CF9E /* DownLoadVC.m */; };
+		55E5BC0E1E6656FF00A7CF9E /* MCDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BC031E6656FF00A7CF9E /* MCDownloadManager.m */; };
+		55E5BC0F1E6656FF00A7CF9E /* MCURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BC051E6656FF00A7CF9E /* MCURLRequest.m */; };
+		55E5BC101E6656FF00A7CF9E /* MCURLRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BC071E6656FF00A7CF9E /* MCURLRequestCenter.m */; };
+		55E5BC111E6656FF00A7CF9E /* MCURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BC091E6656FF00A7CF9E /* MCURLResponse.m */; };
+		55E5BC121E6656FF00A7CF9E /* MCURLSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BC0B1E6656FF00A7CF9E /* MCURLSessionConfiguration.m */; };
+		55E5BC131E6656FF00A7CF9E /* MCWiFiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BC0D1E6656FF00A7CF9E /* MCWiFiManager.m */; };
+		55E5BC161E66B95500A7CF9E /* DownloadRealm.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BC151E66B95500A7CF9E /* DownloadRealm.m */; };
 		55F623811E2DB0B5003536CC /* MenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F623801E2DB0B5003536CC /* MenuVC.m */; };
 /* End PBXBuildFile section */
 
@@ -230,13 +237,28 @@
 		55E5BBC91E64446100A7CF9E /* SRDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRDownloadManager.m; sourceTree = "<group>"; };
 		55E5BBCA1E64446100A7CF9E /* SRDownloadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRDownloadModel.h; sourceTree = "<group>"; };
 		55E5BBCB1E64446100A7CF9E /* SRDownloadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRDownloadModel.m; sourceTree = "<group>"; };
-		55E5BBD51E64456200A7CF9E /* DownLoadVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownLoadVC.h; sourceTree = "<group>"; };
-		55E5BBD61E64456200A7CF9E /* DownLoadVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownLoadVC.m; sourceTree = "<group>"; };
 		55E5BBDB1E644D3A00A7CF9E /* DownloadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadCell.h; sourceTree = "<group>"; };
 		55E5BBDC1E644D3A00A7CF9E /* DownloadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadCell.m; sourceTree = "<group>"; };
 		55E5BBDD1E644D3A00A7CF9E /* DownloadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadCell.xib; sourceTree = "<group>"; };
 		55E5BBE61E6584EF00A7CF9E /* DownloadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadModel.h; sourceTree = "<group>"; };
 		55E5BBE71E6584EF00A7CF9E /* DownloadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadModel.m; sourceTree = "<group>"; };
+		55E5BBE91E65CB9600A7CF9E /* DownLoadVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownLoadVC.h; sourceTree = "<group>"; };
+		55E5BBEA1E65CB9600A7CF9E /* DownLoadVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownLoadVC.m; sourceTree = "<group>"; };
+		55E5BC011E6656FF00A7CF9E /* MCDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCDefine.h; sourceTree = "<group>"; };
+		55E5BC021E6656FF00A7CF9E /* MCDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCDownloadManager.h; sourceTree = "<group>"; };
+		55E5BC031E6656FF00A7CF9E /* MCDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCDownloadManager.m; sourceTree = "<group>"; };
+		55E5BC041E6656FF00A7CF9E /* MCURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCURLRequest.h; sourceTree = "<group>"; };
+		55E5BC051E6656FF00A7CF9E /* MCURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCURLRequest.m; sourceTree = "<group>"; };
+		55E5BC061E6656FF00A7CF9E /* MCURLRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCURLRequestCenter.h; sourceTree = "<group>"; };
+		55E5BC071E6656FF00A7CF9E /* MCURLRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCURLRequestCenter.m; sourceTree = "<group>"; };
+		55E5BC081E6656FF00A7CF9E /* MCURLResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCURLResponse.h; sourceTree = "<group>"; };
+		55E5BC091E6656FF00A7CF9E /* MCURLResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCURLResponse.m; sourceTree = "<group>"; };
+		55E5BC0A1E6656FF00A7CF9E /* MCURLSessionConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCURLSessionConfiguration.h; sourceTree = "<group>"; };
+		55E5BC0B1E6656FF00A7CF9E /* MCURLSessionConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCURLSessionConfiguration.m; sourceTree = "<group>"; };
+		55E5BC0C1E6656FF00A7CF9E /* MCWiFiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCWiFiManager.h; sourceTree = "<group>"; };
+		55E5BC0D1E6656FF00A7CF9E /* MCWiFiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCWiFiManager.m; sourceTree = "<group>"; };
+		55E5BC141E66B95500A7CF9E /* DownloadRealm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadRealm.h; sourceTree = "<group>"; };
+		55E5BC151E66B95500A7CF9E /* DownloadRealm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadRealm.m; sourceTree = "<group>"; };
 		55F6237F1E2DB0B5003536CC /* MenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuVC.h; sourceTree = "<group>"; };
 		55F623801E2DB0B5003536CC /* MenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuVC.m; sourceTree = "<group>"; };
 		C213DBDC31A50F8A62F488B7 /* Pods-DRBrower.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRBrower.release.xcconfig"; path = "Pods/Target Support Files/Pods-DRBrower/Pods-DRBrower.release.xcconfig"; sourceTree = "<group>"; };
@@ -574,6 +596,7 @@
 		55E5BBC61E64446100A7CF9E /* OpenSource */ = {
 			isa = PBXGroup;
 			children = (
+				55E5BC001E6656FF00A7CF9E /* MCDownloadManager */,
 				55E5BBC71E64446100A7CF9E /* SRDownloadManager */,
 			);
 			path = OpenSource;
@@ -590,6 +613,26 @@
 			path = SRDownloadManager;
 			sourceTree = "<group>";
 		};
+		55E5BC001E6656FF00A7CF9E /* MCDownloadManager */ = {
+			isa = PBXGroup;
+			children = (
+				55E5BC011E6656FF00A7CF9E /* MCDefine.h */,
+				55E5BC021E6656FF00A7CF9E /* MCDownloadManager.h */,
+				55E5BC031E6656FF00A7CF9E /* MCDownloadManager.m */,
+				55E5BC041E6656FF00A7CF9E /* MCURLRequest.h */,
+				55E5BC051E6656FF00A7CF9E /* MCURLRequest.m */,
+				55E5BC061E6656FF00A7CF9E /* MCURLRequestCenter.h */,
+				55E5BC071E6656FF00A7CF9E /* MCURLRequestCenter.m */,
+				55E5BC081E6656FF00A7CF9E /* MCURLResponse.h */,
+				55E5BC091E6656FF00A7CF9E /* MCURLResponse.m */,
+				55E5BC0A1E6656FF00A7CF9E /* MCURLSessionConfiguration.h */,
+				55E5BC0B1E6656FF00A7CF9E /* MCURLSessionConfiguration.m */,
+				55E5BC0C1E6656FF00A7CF9E /* MCWiFiManager.h */,
+				55E5BC0D1E6656FF00A7CF9E /* MCWiFiManager.m */,
+			);
+			path = MCDownloadManager;
+			sourceTree = "<group>";
+		};
 		55F6237B1E2DB021003536CC /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -603,8 +646,6 @@
 		55F6237C1E2DB021003536CC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				55E5BBD51E64456200A7CF9E /* DownLoadVC.h */,
-				55E5BBD61E64456200A7CF9E /* DownLoadVC.m */,
 				55F6237F1E2DB0B5003536CC /* MenuVC.h */,
 				55F623801E2DB0B5003536CC /* MenuVC.m */,
 				557A940C1E5EE118006A2466 /* RecordRootVC.h */,
@@ -613,6 +654,8 @@
 				55BC1B0D1E49C8F300A64375 /* HistoryVC.m */,
 				55BC1B141E4AF1A800A64375 /* CollectVC.h */,
 				55BC1B151E4AF1A800A64375 /* CollectVC.m */,
+				55E5BBE91E65CB9600A7CF9E /* DownLoadVC.h */,
+				55E5BBEA1E65CB9600A7CF9E /* DownLoadVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -622,6 +665,8 @@
 			children = (
 				55E5BBE61E6584EF00A7CF9E /* DownloadModel.h */,
 				55E5BBE71E6584EF00A7CF9E /* DownloadModel.m */,
+				55E5BC141E66B95500A7CF9E /* DownloadRealm.h */,
+				55E5BC151E66B95500A7CF9E /* DownloadRealm.m */,
 				557A94031E5EDD7D006A2466 /* RecordListModel.h */,
 				557A94041E5EDD7D006A2466 /* RecordListModel.m */,
 				557A94051E5EDD7D006A2466 /* RecordModel.h */,
@@ -702,7 +747,7 @@
 		557DC05A1E08DF8100ECFFDE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = QiQi;
 				TargetAttributes = {
 					557DC0611E08DF8100ECFFDE = {
@@ -830,36 +875,43 @@
 				558ADF991E13CE5F00035716 /* DRImageView.m in Sources */,
 				1866D4A21E5BDDF500BDB5DB /* NewsListViewController.m in Sources */,
 				55421AE01E5D22D400389B86 /* UIImage+DRImageClip.m in Sources */,
+				55E5BC161E66B95500A7CF9E /* DownloadRealm.m in Sources */,
 				55BC1B121E49D3EF00A64375 /* RecordCell.m in Sources */,
 				551661691E236AEF00909A11 /* WebsiteRootVC.m in Sources */,
+				55E5BC0E1E6656FF00A7CF9E /* MCDownloadManager.m in Sources */,
 				55E5BBCD1E64446100A7CF9E /* SRDownloadModel.m in Sources */,
 				557A94111E5FD445006A2466 /* DRRealmPublic.m in Sources */,
 				1866D4AC1E5BE1AB00BDB5DB /* RankingListVC.m in Sources */,
 				552375891E1CEAF000214ECB /* SearchVC.m in Sources */,
 				55E5BBE81E6584EF00A7CF9E /* DownloadModel.m in Sources */,
 				551661611E222CF900909A11 /* WebsiteCell.m in Sources */,
+				55E5BBEB1E65CB9600A7CF9E /* DownLoadVC.m in Sources */,
+				55E5BC111E6656FF00A7CF9E /* MCURLResponse.m in Sources */,
 				557DC0C61E0CCA4B00ECFFDE /* NewsDetailVC.m in Sources */,
 				557DC0671E08DF8100ECFFDE /* main.m in Sources */,
 				557DC08D1E08E08400ECFFDE /* OnePicCell.m in Sources */,
 				557DC08B1E08E08400ECFFDE /* AppDelegate.m in Sources */,
 				55075A521E2081E1009A025A /* WebsiteListModel.m in Sources */,
 				1866D4B51E5BE1FC00BDB5DB /* SortListModel.m in Sources */,
+				55E5BC0F1E6656FF00A7CF9E /* MCURLRequest.m in Sources */,
 				557A940E1E5EE118006A2466 /* RecordRootVC.m in Sources */,
 				557DC0911E08E0B700ECFFDE /* DRDataService.m in Sources */,
 				557DC09A1E08E91E00ECFFDE /* HomeTopView.m in Sources */,
 				557DC0B11E0B658300ECFFDE /* ThreePicCell.m in Sources */,
+				55E5BC101E6656FF00A7CF9E /* MCURLRequestCenter.m in Sources */,
 				557DC09E1E0A22D000ECFFDE /* NewsTagListModel.m in Sources */,
 				1866D4B71E5BE1FC00BDB5DB /* SortTagListModel.m in Sources */,
 				55421AC61E5AD45800389B86 /* ShareModel.m in Sources */,
+				55E5BC131E6656FF00A7CF9E /* MCWiFiManager.m in Sources */,
 				55421AA41E59979900389B86 /* ShareVC.m in Sources */,
 				552ADBD51E24EEB5007036CA /* DRLocaldData.m in Sources */,
 				1866D4B81E5BE1FC00BDB5DB /* SortTagModel.m in Sources */,
 				1866D4B61E5BE1FC00BDB5DB /* SortModel.m in Sources */,
-				55E5BBD71E64456200A7CF9E /* DownLoadVC.m in Sources */,
 				551661721E23701D00909A11 /* WebsiteCustomVC.m in Sources */,
 				557A940A1E5EDD7D006A2466 /* RecordModel.m in Sources */,
 				1866D49F1E5BD11700BDB5DB /* HomeTopViewLayout.m in Sources */,
 				558ADF5F1E0E2B4F00035716 /* HomeToolBar.m in Sources */,
+				55E5BC121E6656FF00A7CF9E /* MCURLSessionConfiguration.m in Sources */,
 				557DC0B91E0BC03300ECFFDE /* TagsView.m in Sources */,
 				552ADBDB1E25E579007036CA /* WebsiteRecommendVC.m in Sources */,
 				557DC0A11E0A234100ECFFDE /* NewsTagModel.m in Sources */,
@@ -897,7 +949,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -948,7 +999,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -994,7 +1044,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 29F564DE35D2B47EC672A7BD /* Pods-DRBrower.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = C53DGAEY52;
@@ -1015,7 +1064,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C213DBDC31A50F8A62F488B7 /* Pods-DRBrower.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = C53DGAEY52;

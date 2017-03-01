@@ -23,7 +23,7 @@
 #import <MBProgressHUD.h>
 #import <Realm/Realm.h>
 #import "Masonry.h"
-#import "SRDownloadManager.h"
+#import "MCDownloadManager.h"
 
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKConnector/ShareSDKConnector.h>
@@ -52,6 +52,8 @@
 
 #define REALM_HISTORY @"history"
 #define REALM_COLLECT @"collect"
+#define REALM_DOWNLOAD @"download"
+
 
 #define WEIXIN_APPID @"wxdc03861e4dfb37c0"
 #define WEIXIN_APPKEY @"8e3efff34eb34066e21362df582d1a58"

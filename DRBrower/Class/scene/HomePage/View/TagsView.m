@@ -48,7 +48,7 @@
         [self buttonStyle:btn];
     }
     [self buttonHighLightStyle:button];
-    if( refresh && _delegate && [_delegate respondsToSelector:@selector(touchUpChannelButtonAction:)]){
+    if(refresh && _delegate && [_delegate respondsToSelector:@selector(touchUpChannelButtonAction:)]){
         [_delegate touchUpChannelButtonAction:button.tag];
     }
     

@@ -13,6 +13,7 @@
 #import "MenuVC.h"
 #import "ShareVC.h"
 #import "RecordRootVC.h"
+#import "DownLoadVC.h"
 
 #import "NewsTagModel.h"
 #import "NewsModel.h"
@@ -471,6 +472,13 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     RecordRootVC *recordRootVC = [[RecordRootVC alloc] init];
     [self.navigationController showViewController:recordRootVC sender:nil];
 }
+
+- (void)touchUpDownloadButtonAction {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Menu" bundle:[NSBundle mainBundle]];
+    DownLoadVC *downloadVC = (DownLoadVC *)[storyboard instantiateViewControllerWithIdentifier:@"DownLoadVC"];
+    [self.navigationController showViewController:downloadVC sender:nil];
+}
+
 
 //搜索
 - (void)touchUpSearchButtonAction {
