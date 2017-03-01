@@ -15,7 +15,11 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "144"
             endingLineNumber = "144"
+<<<<<<< HEAD
             landmarkName = "-newOneRecordWithUrl:title:"
+=======
+            landmarkName = "-userContentController:didReceiveScriptMessage:"
+>>>>>>> master
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -89,8 +93,13 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "162"
             endingLineNumber = "162"
+<<<<<<< HEAD
             landmarkName = "-touchUpBackButtonAction"
             landmarkType = "7">
+=======
+            landmarkName = "@implementation SearchVC"
+            landmarkType = "3">
+>>>>>>> master
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -105,7 +114,11 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "171"
             endingLineNumber = "171"
+<<<<<<< HEAD
             landmarkName = "-touchUpGoButtonActionr"
+=======
+            landmarkName = "-touchUpBackButtonAction"
+>>>>>>> master
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

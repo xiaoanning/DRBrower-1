@@ -697,8 +697,7 @@
 				TargetAttributes = {
 					557DC0611E08DF8100ECFFDE = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = J7LGQHZ8DG;
-
+						DevelopmentTeam = C53DGAEY52;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -990,7 +989,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = J7LGQHZ8DG;
+				DEVELOPMENT_TEAM = C53DGAEY52;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DRBrower/DRBrowser-Prefix.pch";
 				INFOPLIST_FILE = DRBrower/Info.plist;
@@ -1010,7 +1009,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = J7LGQHZ8DG;
+				DEVELOPMENT_TEAM = C53DGAEY52;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DRBrower/DRBrowser-Prefix.pch";
 				INFOPLIST_FILE = DRBrower/Info.plist;
