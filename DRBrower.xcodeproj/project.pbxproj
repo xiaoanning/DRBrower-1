@@ -34,6 +34,8 @@
 		18D61F3B1E66B3EF0077BE5C /* CommentListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D61F361E66B3EF0077BE5C /* CommentListCell.xib */; };
 		18D61F3C1E66B3EF0077BE5C /* RankingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D61F381E66B3EF0077BE5C /* RankingCell.m */; };
 		18D61F3D1E66B3EF0077BE5C /* RankingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D61F391E66B3EF0077BE5C /* RankingCell.xib */; };
+		18D61F431E66C7680077BE5C /* AdviceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D61F421E66C7680077BE5C /* AdviceVC.m */; };
+		18D61F451E66C77D0077BE5C /* Advice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D61F441E66C77D0077BE5C /* Advice.storyboard */; };
 		49F0A3869EDB806CA3050A19 /* libPods-DRBrower.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DFB1C3A7BC244DD9034D74 /* libPods-DRBrower.a */; };
 		55075A4F1E20814A009A025A /* WebsiteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55075A4E1E20814A009A025A /* WebsiteModel.m */; };
 		55075A521E2081E1009A025A /* WebsiteListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55075A511E2081E1009A025A /* WebsiteListModel.m */; };
@@ -151,6 +153,9 @@
 		18D61F371E66B3EF0077BE5C /* RankingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RankingCell.h; path = SortPage/View/RankingCell.h; sourceTree = "<group>"; };
 		18D61F381E66B3EF0077BE5C /* RankingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RankingCell.m; path = SortPage/View/RankingCell.m; sourceTree = "<group>"; };
 		18D61F391E66B3EF0077BE5C /* RankingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RankingCell.xib; path = SortPage/View/RankingCell.xib; sourceTree = "<group>"; };
+		18D61F411E66C7680077BE5C /* AdviceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdviceVC.h; sourceTree = "<group>"; };
+		18D61F421E66C7680077BE5C /* AdviceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdviceVC.m; sourceTree = "<group>"; };
+		18D61F441E66C77D0077BE5C /* Advice.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Advice.storyboard; sourceTree = "<group>"; };
 		29F564DE35D2B47EC672A7BD /* Pods-DRBrower.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRBrower.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DRBrower/Pods-DRBrower.debug.xcconfig"; sourceTree = "<group>"; };
 		55075A4D1E20814A009A025A /* WebsiteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebsiteModel.h; sourceTree = "<group>"; };
 		55075A4E1E20814A009A025A /* WebsiteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebsiteModel.m; sourceTree = "<group>"; };
@@ -293,9 +298,9 @@
 		1866D4A31E5BE13200BDB5DB /* Sort */ = {
 			isa = PBXGroup;
 			children = (
-				18D61F401E66B44D0077BE5C /* Model */,
 				18D61F3F1E66B43B0077BE5C /* Controller */,
 				18D61F3E1E66B42C0077BE5C /* VIew */,
+				18D61F401E66B44D0077BE5C /* Model */,
 			);
 			name = Sort;
 			sourceTree = "<group>";
@@ -462,6 +467,7 @@
 				557DC07C1E08E08400ECFFDE /* Class */,
 				557DC06B1E08DF8100ECFFDE /* ViewController.h */,
 				557DC06C1E08DF8100ECFFDE /* ViewController.m */,
+				18D61F441E66C77D0077BE5C /* Advice.storyboard */,
 				189FC7C31E658F2C005E1C73 /* Brightness.storyboard */,
 				189FC7BE1E6583CC005E1C73 /* More.storyboard */,
 				182DA84A1E60075A00BA5B64 /* Comment.storyboard */,
@@ -649,6 +655,8 @@
 				189FC7BA1E657715005E1C73 /* MoreVC.m */,
 				189FC7C01E658EDE005E1C73 /* BrightnessVC.h */,
 				189FC7C11E658EDE005E1C73 /* BrightnessVC.m */,
+				18D61F411E66C7680077BE5C /* AdviceVC.h */,
+				18D61F421E66C7680077BE5C /* AdviceVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -781,6 +789,7 @@
 				55BC1B131E49D3EF00A64375 /* RecordCell.xib in Resources */,
 				558ADF9B1E13CE8700035716 /* ZeroPicCell.xib in Resources */,
 				55BC1B0B1E49BE6A00A64375 /* Menu.storyboard in Resources */,
+				18D61F451E66C77D0077BE5C /* Advice.storyboard in Resources */,
 				55421AA61E599A5300389B86 /* ShareView.xib in Resources */,
 				18D61F3D1E66B3EF0077BE5C /* RankingCell.xib in Resources */,
 				557DC0B21E0B658300ECFFDE /* ThreePicCell.xib in Resources */,
@@ -874,6 +883,7 @@
 				551661691E236AEF00909A11 /* WebsiteRootVC.m in Sources */,
 				18D61F301E66B3DF0077BE5C /* SortListModel.m in Sources */,
 				18D61F1D1E66B3CC0077BE5C /* SortCommonVC.m in Sources */,
+				18D61F431E66C7680077BE5C /* AdviceVC.m in Sources */,
 				557A94111E5FD445006A2466 /* DRRealmPublic.m in Sources */,
 				552375891E1CEAF000214ECB /* SearchVC.m in Sources */,
 				551661611E222CF900909A11 /* WebsiteCell.m in Sources */,
@@ -1046,7 +1056,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.DRBrower.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.DRBrower1.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "arm64 armv7";
 			};
@@ -1066,7 +1076,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.DRBrower.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.DRBrower1.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "arm64 armv7";
 			};

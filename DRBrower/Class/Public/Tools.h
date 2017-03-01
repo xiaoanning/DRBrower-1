@@ -22,4 +22,6 @@
 + (NSString *) md5:(NSString *)input;
 #pragma mark - url中文编码
 + (NSString *)urlEncodedString:(NSString *)urlStr;
+#pragma mark - 申请加入QQ群
++ (BOOL)joinGroup:(NSString *)groupUin key:(NSString *)key;
 @end

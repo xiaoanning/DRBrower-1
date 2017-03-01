@@ -197,8 +197,7 @@
                                                         </constraints>
                                                         <state key="normal" image="menu_ teasing"/>
                                                         <connections>
-                                                            <action selector="touchUpServiceButton:" destination="yPR-D9-az7" eventType="touchUpInside" id="iEO-TK-HG4"/>
-                                                            <action selector="touchUpSpitButton:" destination="yPR-D9-az7" eventType="touchUpInside" id="gES-ht-jex"/>
+                                                            <action selector="touchUpSpitButton:" destination="yPR-D9-az7" eventType="touchUpInside" id="rM9-IS-3mM"/>
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="吐槽" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2r6-x3-kNV">

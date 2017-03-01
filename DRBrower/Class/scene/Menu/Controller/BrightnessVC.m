@@ -6,12 +6,10 @@
 //  Copyright © 2017年 QiQi. All rights reserved.
 //
 
-#define kMaxTransparent 0.5f
 
 #import "BrightnessVC.h"
 
 @interface BrightnessVC ()
-@property (nonatomic, strong) CALayer *brightnessLayer;
 @end
 
 @implementation BrightnessVC
@@ -19,21 +17,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //保存系统亮度
     CGFloat systemValue = [UIScreen mainScreen].brightness;
-    NSLog(@"systemValue-----%f",systemValue);
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setFloat:systemValue forKey:sysBrightness];
+    [userDefaults synchronize];
     
     self.brightnessSlider.minimumValue = 0;
     self.brightnessSlider.maximumValue = 1;
+    
     self.brightnessSlider.value = systemValue;// 设置初始值
     self.brightnessSlider.continuous = YES;
     
     [self.brightnessSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
-
 }
 -(void)sliderValueChanged:(UISlider *)slider {
     [[UIScreen mainScreen] setBrightness:slider.value];
+    
+    //保存app亮度
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setFloat:slider.value forKey:appBirghtness];
+    [userDefaults synchronize];
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

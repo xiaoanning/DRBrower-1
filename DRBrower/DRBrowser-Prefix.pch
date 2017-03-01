@@ -69,5 +69,7 @@
 #pragma mare - defaults
 #define kFullScreen @"isFullScreen"//是否全屏
 
+#define appBirghtness @"appBirghtness"
+#define sysBrightness @"sysBrightness"
 
 #endif /* DRBrowser_Prefix_pch */

@@ -30,6 +30,8 @@
 #import "RankingViewController.h"
 #import "SortRootVC.h"
 
+#import "AdviceVC.h"
+
 static NSString *const onePicCellIdentifier = @"OnePicCell";
 static NSString *const threePicCellIdentifier = @"ThreePicCell";
 static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
@@ -485,15 +487,17 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 }
 //吐槽
 -(void)touchUpSpitButtonAction {
+    UIStoryboard *stroyboard = [UIStoryboard storyboardWithName:@"Advice" bundle:[NSBundle mainBundle]];
+    AdviceVC *adviceVC = (AdviceVC *)[stroyboard instantiateViewControllerWithIdentifier:@"AdviceVC"];
+    [self.navigationController pushViewController:adviceVC animated:YES];
 }
 //客服群
 -(void)touchUpServiceButtonAction {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
                                                                              message:@"是否添加客服群:299032484"
                                                                       preferredStyle:UIAlertControllerStyleActionSheet];
-    
     UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
+        [Tools joinGroup:nil key:@"299032484"];
     }];;
     [alertController addAction:OKAction];
     
