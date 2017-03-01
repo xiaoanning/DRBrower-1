@@ -14,7 +14,9 @@
 - (void)touchUpFullScreenButtonAction:(BOOL)isfull;
 - (void)touchUpRefreshDataButtonAction;
 - (void)touchUpRecordButtonAction;
-
+- (void)touchUpMoreButtonAction;
+- (void)touchUpSpitButtonAction;
+- (void)touchUpServiceButtonAction;
 @end
 
 @interface MenuVC : UIViewController

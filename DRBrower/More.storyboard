@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--MoreVC-->
+        <scene sceneID="83W-01-vDT">
+            <objects>
+                <viewController storyboardIdentifier="MoreVC" id="QR0-z3-tzA" customClass="MoreVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wJE-nn-73g"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zat-FT-QFs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fha-39-WHR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JQt-SG-lVU">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="QR0-z3-tzA" id="TsF-YX-HtB"/>
+                                    <outlet property="delegate" destination="QR0-z3-tzA" id="ir7-f9-6zr"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Zat-FT-QFs" firstAttribute="top" secondItem="JQt-SG-lVU" secondAttribute="bottom" id="Dtr-up-NNN"/>
+                            <constraint firstAttribute="trailing" secondItem="JQt-SG-lVU" secondAttribute="trailing" id="K9A-7u-vwy"/>
+                            <constraint firstItem="JQt-SG-lVU" firstAttribute="top" secondItem="fha-39-WHR" secondAttribute="top" id="ufh-uD-tcq"/>
+                            <constraint firstItem="JQt-SG-lVU" firstAttribute="leading" secondItem="fha-39-WHR" secondAttribute="leading" id="uoJ-yj-7cD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="MoreTableView" destination="JQt-SG-lVU" id="xxQ-HY-D5y"/>
+                        <outlet property="moreTableView" destination="JQt-SG-lVU" id="UfC-9F-k6a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lU1-io-dl1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-228" y="-47.226386806596707"/>
+        </scene>
+    </scenes>
+</document>

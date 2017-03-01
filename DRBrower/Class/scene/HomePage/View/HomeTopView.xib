@@ -111,9 +111,9 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSu-yr-xkD">
-                            <rect key="frame" x="20" y="165" width="51" height="30"/>
+                            <rect key="frame" x="20" y="155" width="51" height="50"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="ghi-XC-CMR"/>
+                                <constraint firstAttribute="height" constant="50" id="ghi-XC-CMR"/>
                             </constraints>
                             <state key="normal" title="网址">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -136,7 +136,7 @@
                         <constraint firstItem="ghX-Ym-T8H" firstAttribute="leading" secondItem="zhp-Px-y7L" secondAttribute="leading" id="IZY-ej-qwy"/>
                         <constraint firstItem="SXz-Lp-TRx" firstAttribute="top" secondItem="1SO-gq-EJX" secondAttribute="bottom" constant="30" id="IdB-S8-1gO"/>
                         <constraint firstItem="NR9-VU-WlF" firstAttribute="leading" secondItem="zhp-Px-y7L" secondAttribute="leading" id="JUt-0W-GwE"/>
-                        <constraint firstItem="aSu-yr-xkD" firstAttribute="top" secondItem="1SO-gq-EJX" secondAttribute="bottom" constant="30" id="Jg6-ad-eLC"/>
+                        <constraint firstItem="aSu-yr-xkD" firstAttribute="top" secondItem="1SO-gq-EJX" secondAttribute="bottom" constant="20" id="Jg6-ad-eLC"/>
                         <constraint firstItem="1SO-gq-EJX" firstAttribute="centerY" secondItem="ghX-Ym-T8H" secondAttribute="centerY" id="S8Y-oa-twC"/>
                         <constraint firstItem="1Tl-g3-7dh" firstAttribute="width" secondItem="aSu-yr-xkD" secondAttribute="width" id="TOS-7e-WMO"/>
                         <constraint firstItem="SXz-Lp-TRx" firstAttribute="leading" secondItem="1Tl-g3-7dh" secondAttribute="trailing" constant="20" id="VE5-Gi-Ipx"/>
@@ -163,6 +163,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="websiteButton" destination="aSu-yr-xkD" id="pFF-oE-kUg"/>
                 <outlet property="websiteCollectionView" destination="2JD-LG-cit" id="KAd-wF-IOC"/>
                 <outlet property="websiteCollectionViewHeight" destination="cTI-1x-tvC" id="SvK-r1-5Z8"/>
                 <outlet property="websitePageControl" destination="NR9-VU-WlF" id="KwU-3l-pN8"/>

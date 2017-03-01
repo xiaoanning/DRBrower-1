@@ -31,5 +31,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *websiteCollectionViewHeight;
 
 @property (nonatomic, strong) NSMutableArray *websiteArray;
+@property (weak, nonatomic) IBOutlet UIButton *websiteButton;
 
 @end

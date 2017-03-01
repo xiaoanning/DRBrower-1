@@ -1,73 +1,40 @@
 //
-//  RankingListVC.m
+//  SortCommonVC.m
 //  DRBrower
 //
-//  Created by apple on 2017/2/20.
+//  Created by apple on 2017/3/1.
 //  Copyright © 2017年 QiQi. All rights reserved.
 //
 
-#import "RankingListVC.h"
+#import "SortCommonVC.h"
 #import "RankingCell.h"
-#import "SortModel.h"
-#import "SortTagModel.h"
-#import "NewsDetailVC.h"
+#import "CommentVC.h"
 #import "ComplainVC.h"
 #import "SearchVC.h"
-#import "CommentVC.h"
 
-#define UP_LOAD @"上拉"
-#define DOWN_LOAD @"下拉"
+@interface SortCommonVC ()<UITableViewDelegate,UITableViewDataSource,CommitComplainDelegate,RankingButtonDelegate>
+//@property (nonatomic,strong) NSMutableArray *sortListArray;
+@property (nonatomic,assign) NSInteger fitHeight;
 
-
-@interface RankingListVC ()<UITableViewDelegate,UITableViewDataSource,RankingButtonDelegate,UIGestureRecognizerDelegate,CommitComplainDelegate> {
-    CGFloat fitHeight;
-}
-@property (nonatomic,strong) UITableView *tableView;
-@property (nonatomic,strong) NSArray *sortTagArray;
-@property (nonatomic,strong) NSMutableArray *sortListArray;
 @property (nonatomic,strong) NSMutableArray *localZanArray; //本地存储已点赞下标
 @property (nonatomic,strong) NSMutableArray *localComplainArray; //本地存储已举报下标
-@property (nonatomic,strong) NSMutableArray *zanArray;
 @property (nonatomic,copy) NSString *currentDeviceId;//当前设备Id
 @property (nonatomic,assign) NSInteger currentComplainIndex;//当前举报所在列
 
-@property (nonatomic,strong) UIView *bgView;
 @end
 
-@implementation RankingListVC
+@implementation SortCommonVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_btn_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonAction:)];
-    self.navigationItem.leftBarButtonItem = backButton;
-
-    self.currentDeviceId = [[UIDevice currentDevice].identifierForVendor UUIDString];
-    self.sortTagArray = [NSArray array];
-    self.sortListArray = [NSMutableArray arrayWithCapacity:5];
-    
-    self.zanArray = [NSMutableArray array];
-
     
     [self createTableView];
     
-    [self getSortListByModel:self.tagModel type:DOWN_LOAD sort:self.sort];
+    self.currentDeviceId = [[UIDevice currentDevice].identifierForVendor UUIDString];
     
     [self fooderRereshing];
     [self headerRereshing];
-    
-//    _tableView.rowHeight = UITableViewAutomaticDimension; // 自适应单元格高度
-//    _tableView.estimatedRowHeight = 100; //先估计一个高度
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tongzhi:) name:@"sortType" object:nil];
-}
-- (void) tongzhi:(NSNotification *)notification{
-    NSString *sortType = notification.object;
-    [self getSortListByModel:self.tagModel type:DOWN_LOAD sort:sortType];
-}
-- (void)backButtonAction:(UIBarButtonItem *)barButton {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self getSortListByModel:self.sortTagModel type:nil sort:nil];
 }
 #pragma mark - 上下拉刷新
 //下拉
@@ -96,38 +63,38 @@
 - (void)loadNewData {
     // 1.请求数据\2.刷新表格\3.拿到当前的下拉刷新控件，结束刷新状态
     
-    [self getSortListByModel:self.tagModel type:DOWN_LOAD sort:self.sort];
+    [self getSortListByModel:self.sortTagModel type:DOWN_LOAD sort:nil];
     [self.tableView.mj_header endRefreshing];
     NSLog(@"下拉刷新");
 }
 
 - (void)loadMoreData {
     //1.请求数据\2.刷新表格\3.拿到当前的下拉刷新控件，结束刷新状态
-    [self getSortListByModel:self.tagModel type:UP_LOAD sort:self.sort];
+    [self getSortListByModel:self.sortTagModel type:UP_LOAD sort:nil];
     [self.tableView.mj_footer endRefreshing];
     
     NSLog(@"上拉刷新");
 }
 //获取排行列表
 - (void)getSortListByModel:(SortTagModel *)model type:(NSString *)type sort:(NSString *)sort{
-    if (sort == nil || [sort integerValue] ==0) {
-        sort = @"visit_num";
-    }else if ([sort integerValue] ==1) {
-        sort = @"love_num";
-    }else if ([sort integerValue] ==2) {
-        sort = @"updatetime";
-    }
-    NSString *site_type = model.site_type;
-    [SortModel getSortListUrl:[NSString stringWithFormat:@"%@%@%@&sort=%@",BASE_URL,URL_GETSORTLIST,site_type,sort] parameters:@{} block:^(SortListModel *newsList, NSError *error) {
-        if ([type isEqualToString:DOWN_LOAD]) {
-            [self.sortListArray insertObjects:newsList.data
-                                    atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [newsList.data count])]];
-
-        }else {
-            [self.sortListArray addObjectsFromArray:newsList.data];
-        }
-        [self.tableView reloadData];
-    }];
+//    if (sort == nil || [sort integerValue] ==0) {
+//        sort = @"visit_num";
+//    }else if ([sort integerValue] ==1) {
+//        sort = @"love_num";
+//    }else if ([sort integerValue] ==2) {
+//        sort = @"updatetime";
+//    }
+//    //    NSString *site_type = model.site_type;
+//    [SortModel getSortListUrl:[NSString stringWithFormat:@"%@%@%@&sort=%@",BASE_URL,URL_GETSORTLIST,model.site_type,sort] parameters:@{} block:^(SortListModel *newsList, NSError *error) {
+//        if ([type isEqualToString:DOWN_LOAD]) {
+//            [self.sortListArray insertObjects:newsList.data
+//                                    atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [newsList.data count])]];
+//            
+//        }else {
+//            [self.sortListArray addObjectsFromArray:newsList.data];
+//        }
+//        [self.tableView reloadData];
+//    }];
 }
 //点赞请求
 -(void)addLoveWithModel:(SortModel *)model {
@@ -154,12 +121,18 @@
         [self.localComplainArray addObject:model.sort_id];
         [DRLocaldData saveComplainData:self.localComplainArray];
     }
-
-//   NSString *str = [content stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    
+    //   NSString *str = [content stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NSString *urlString = [NSString stringWithFormat:@"%@%@%@&url_md5=%@&content=%@",BASE_URL,URL_ADDCOMPLAIN,[self.currentDeviceId substringToIndex:8],model.url_md5,content];
     [SortModel addComplainUrl:[Tools urlEncodedString:urlString] parameters:@{} block:^(NSDictionary *dic, NSError *error) {
         NSLog(@"%@",[dic objectForKey:@"info"]);
     }];
+}
+
+#pragma mark - Stretchable Sub View Controller View Source
+- (UIScrollView *)stretchableSubViewInSubViewController:(id)subViewController
+{
+    return self.tableView;
 }
 #pragma mark ----------------tableView--------------
 -(void)createTableView {
@@ -168,7 +141,7 @@
     _tableView.delegate = self;
     [self.view addSubview:_tableView];
     //layout
-    UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
+    UIEdgeInsets padding = UIEdgeInsetsMake(0, 10, 10, 10);
     [_tableView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view).with.insets(padding);
     }];
@@ -186,7 +159,7 @@
     return 0;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 90+fitHeight*0.6;
+    return 90+_fitHeight*0.6;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     RankingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rankingCell"];
@@ -200,8 +173,8 @@
     cell.commentButton.tag = 200+indexPath.row;
     cell.commentCountButton.tag = 300+indexPath.row;
     
-    fitHeight = [self fitToText:cell.titleLabel text:sortModel.name];
-
+    _fitHeight = [self fitToText:cell.titleLabel text:sortModel.name];
+    
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -210,7 +183,6 @@
     SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
     searchVC.sortModel = sortModel;
     [self.navigationController pushViewController:searchVC animated:YES];
-
 }
 //自适应高度
 -(CGFloat)fitToText:(UILabel *)label text:(NSString *)text{
@@ -220,13 +192,11 @@
     CGSize size = [label sizeThatFits:CGSizeMake(self.view.frame.size.width-20, MAXFLOAT)];
     return size.height;
 }
-
-
 -(void)resetButtonState:(RankingCell *)cell model:(SortModel *)model{
     //获取本地存储数据
     self.localZanArray = [NSMutableArray arrayWithArray:[DRLocaldData achieveZanData]];
     self.localComplainArray = [NSMutableArray arrayWithArray:[DRLocaldData achieveComplainData]];
-
+    
     if (self.localZanArray.count>0) {
         if ([self.localZanArray containsObject:model.sort_id] ) {
             [cell.zanButton setBackgroundImage:[UIImage imageNamed:@"sort_zanSelected"] forState:UIControlStateNormal];
@@ -281,7 +251,6 @@
 -(void)touchUpUserButtonWithIndex:(NSInteger)index {
     
 }
-
 //举报提交
 -(void)commitComplainWithContent:(NSString *)contentStr{
     [self addComplainWithModel:self.sortListArray[self.currentComplainIndex] content:contentStr];

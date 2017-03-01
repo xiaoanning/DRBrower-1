@@ -167,6 +167,9 @@
                                                             <constraint firstAttribute="width" secondItem="gs7-6f-cZQ" secondAttribute="height" multiplier="5:2" id="zjD-oU-pNM"/>
                                                         </constraints>
                                                         <state key="normal" image="menu_setting"/>
+                                                        <connections>
+                                                            <action selector="touchUpMoreButton:" destination="yPR-D9-az7" eventType="touchUpInside" id="LTN-T8-4IV"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更多" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYh-Iu-ncW">
                                                         <rect key="frame" x="32.5" y="45.5" width="29" height="17"/>
@@ -193,6 +196,10 @@
                                                             <constraint firstAttribute="width" secondItem="tYN-aE-HH9" secondAttribute="height" multiplier="5:2" id="gO4-AM-5bH"/>
                                                         </constraints>
                                                         <state key="normal" image="menu_ teasing"/>
+                                                        <connections>
+                                                            <action selector="touchUpServiceButton:" destination="yPR-D9-az7" eventType="touchUpInside" id="iEO-TK-HG4"/>
+                                                            <action selector="touchUpSpitButton:" destination="yPR-D9-az7" eventType="touchUpInside" id="gES-ht-jex"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="吐槽" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2r6-x3-kNV">
                                                         <rect key="frame" x="32" y="45.5" width="29" height="17"/>
@@ -219,6 +226,9 @@
                                                             <constraint firstAttribute="width" secondItem="jVw-El-a2E" secondAttribute="height" multiplier="5:2" id="Toz-rd-GJy"/>
                                                         </constraints>
                                                         <state key="normal" image="menu_service"/>
+                                                        <connections>
+                                                            <action selector="touchUpService:" destination="yPR-D9-az7" eventType="touchUpInside" id="6vt-1D-Xl7"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客服群" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hf-eb-vaT">
                                                         <rect key="frame" x="25.5" y="45.5" width="43" height="17"/>
