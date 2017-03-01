@@ -1,28 +1,28 @@
 //
-//  SortNewFilmVC.m
+//  SortVideoVC.m
 //  DRBrower
 //
 //  Created by apple on 2017/3/1.
 //  Copyright © 2017年 QiQi. All rights reserved.
 //
 
-#import "SortNewFilmVC.h"
+#import "SortVideoVC.h"
 #import "SortModel.h"
 
-@interface SortNewFilmVC ()
+@interface SortVideoVC ()
 @property (nonatomic,assign) NSInteger page;
 @end
 
-@implementation SortNewFilmVC
+@implementation SortVideoVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.sortListArray = [NSMutableArray array];
     self.page = 1;
-
     self.tabBarItem = [[UITabBarItem alloc] initWithTitle:self.sortTagModel.name image:nil tag:0];
 
     [self getSortListByModel:self.sortTagModel type:nil sort:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tongzhi:) name:@"sortType" object:nil];
     
 }
@@ -30,6 +30,7 @@
     NSString *sortType = notification.object;
     [self getSortListByModel:self.sortTagModel type:DOWN_LOAD sort:sortType];
 }
+
 - (void)loadMoreData {
     //1.请求数据\2.刷新表格\3.拿到当前的下拉刷新控件，结束刷新状态
     [self getSortListByModel:self.sortTagModel type:UP_LOAD sort:nil];
@@ -51,8 +52,8 @@
     if (self.page <1) {
         self.page = 1;
     }
-    //http://61.160.250.174:8080/dr/sort/getList?page_num=1&site_type=3&sort=visit_num
-    [SortModel getSortListUrl:[NSString stringWithFormat:@"%@%@%@&site_type=%@&sort=%@",BASE_URL,URL_GETSORTLIST,[NSString stringWithFormat:@"%d",self.page],model.site_type,sort] parameters:@{} block:^(SortListModel *newsList, NSError *error) {
+     //http://61.160.250.174:8080/dr/sort/getList?page_num=1&site_type=3&sort=visit_num
+    [SortModel getSortListUrl:[NSString stringWithFormat:@"%@%@%@&site_type=%@&sort=%@",BASE_URL,URL_GETSORTLIST,[NSString stringWithFormat:@"%ld",(long)self.page],model.site_type,sort] parameters:@{} block:^(SortListModel *newsList, NSError *error) {
         if ([type isEqualToString:DOWN_LOAD]) {
             [self.sortListArray insertObjects:newsList.data
                                     atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [newsList.data count])]];
