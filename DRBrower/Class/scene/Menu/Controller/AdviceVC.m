@@ -7,6 +7,7 @@
 //
 
 #import "AdviceVC.h"
+#import "AdviceModel.h"
 
 @interface AdviceVC ()<UITextViewDelegate>
 @property (nonatomic,strong) NSMutableArray *inputArray;
@@ -41,12 +42,30 @@
     [self.adviceTextView addSubview: self.placeHolderLabel];
     [self.adviceTextView sendSubviewToBack:self.placeHolderLabel];
 }
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self.adviceTextView resignFirstResponder];
+}
 - (void)backButtonAction:(UIBarButtonItem *)barButton {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 //发送
 - (IBAction)touchUpSendButton:(id)sender {
-    NSLog(@"----inputArray-------%@",[self.inputArray lastObject]);
+    [self.adviceTextView resignFirstResponder];
+    [self addAdvice:[self.inputArray lastObject]];
+}
+-(void)addAdvice:(NSString *)content {
+    //http://admin.drliulanqi.com/index.php?g=api&m=suggest&a=add&token=brower*@forapi@*&dev_id=11&content=5&platform=0
+    
+    NSString *currentDeviceId = [[UIDevice currentDevice].identifierForVendor UUIDString];
+    NSString *contentStr = [content stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@&content=%@&platform=%@",URL_ADVICE,currentDeviceId,contentStr,Platform];
+    [AdviceModel addAdviceUrl:urlStr parameters:@{} block:^(NSDictionary *dic, NSError *error) {
+        if (dic.allKeys.count>0) {
+            [Tools showView:[dic objectForKey:@"msg"]];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }];
 }
 //申请加群
 - (IBAction)touchUpJoinQQButton:(id)sender {
@@ -63,7 +82,7 @@
         [textView resignFirstResponder];
         return NO;
     }else {
-        if ([textView.text length] < 140) {//判断字符个数
+        if ([textView.text length] < 250) {//判断字符个数
             NSLog(@"%@",text);
             return YES;
         }

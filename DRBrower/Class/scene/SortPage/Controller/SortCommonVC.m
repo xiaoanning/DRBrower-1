@@ -34,7 +34,7 @@
     
     [self fooderRereshing];
     [self headerRereshing];
-    [self getSortListByModel:self.sortTagModel type:nil sort:nil];
+//    [self getSortListByModel:self.sortTagModel type:nil sort:nil];
 }
 #pragma mark - 上下拉刷新
 //下拉
@@ -110,7 +110,10 @@
     NSString *urlString = [NSString stringWithFormat:@"%@%@?dev_id=%@&url_md5=%@&sign=%@",BASE_URL,URL_ADDLOVE,self.currentDeviceId,url_md5,sign];
     
     [SortModel addLoveUrl:urlString parameters:@{} block:^(NSDictionary *dic, NSError *error) {
-        NSLog(@"%@",[dic objectForKey:@"info"]);
+        if (dic.allKeys.count>0) {
+            NSString *infoStr = [dic objectForKey:@"info"];
+            [Tools showView:infoStr];
+        }
     }];
 }
 //举报请求
@@ -121,11 +124,13 @@
         [self.localComplainArray addObject:model.sort_id];
         [DRLocaldData saveComplainData:self.localComplainArray];
     }
-    
     //   NSString *str = [content stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NSString *urlString = [NSString stringWithFormat:@"%@%@%@&url_md5=%@&content=%@",BASE_URL,URL_ADDCOMPLAIN,[self.currentDeviceId substringToIndex:8],model.url_md5,content];
     [SortModel addComplainUrl:[Tools urlEncodedString:urlString] parameters:@{} block:^(NSDictionary *dic, NSError *error) {
-        NSLog(@"%@",[dic objectForKey:@"info"]);
+        if (dic.allKeys.count>0) {
+            NSString *infoStr = [dic objectForKey:@"info"];
+            [Tools showView:infoStr];
+        }
     }];
 }
 
@@ -141,7 +146,7 @@
     _tableView.delegate = self;
     [self.view addSubview:_tableView];
     //layout
-    UIEdgeInsets padding = UIEdgeInsetsMake(0, 10, 10, 10);
+    UIEdgeInsets padding = UIEdgeInsetsMake(0, 0, 0, 0);
     [_tableView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view).with.insets(padding);
     }];
@@ -159,7 +164,7 @@
     return 0;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 90+_fitHeight*0.6;
+    return 90;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     RankingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rankingCell"];
@@ -173,7 +178,7 @@
     cell.commentButton.tag = 200+indexPath.row;
     cell.commentCountButton.tag = 300+indexPath.row;
     
-    _fitHeight = [self fitToText:cell.titleLabel text:sortModel.name];
+//    _fitHeight = [self fitToText:cell.titleLabel text:sortModel.name];
     
     return cell;
 }
@@ -184,14 +189,14 @@
     searchVC.sortModel = sortModel;
     [self.navigationController pushViewController:searchVC animated:YES];
 }
-//自适应高度
--(CGFloat)fitToText:(UILabel *)label text:(NSString *)text{
-    label.text = text;
-    label.numberOfLines = 0;
-    label.lineBreakMode = NSLineBreakByWordWrapping;
-    CGSize size = [label sizeThatFits:CGSizeMake(self.view.frame.size.width-20, MAXFLOAT)];
-    return size.height;
-}
+////自适应高度
+//-(CGFloat)fitToText:(UILabel *)label text:(NSString *)text{
+//    label.text = text;
+//    label.numberOfLines = 0;
+//    label.lineBreakMode = NSLineBreakByWordWrapping;
+//    CGSize size = [label sizeThatFits:CGSizeMake(self.view.frame.size.width-20, MAXFLOAT)];
+//    return size.height;
+//}
 -(void)resetButtonState:(RankingCell *)cell model:(SortModel *)model{
     //获取本地存储数据
     self.localZanArray = [NSMutableArray arrayWithArray:[DRLocaldData achieveZanData]];
@@ -211,9 +216,11 @@
     if (self.localComplainArray.count>0) {
         if ([self.localComplainArray containsObject:model.sort_id]) {
             [cell.informButton setBackgroundImage:[UIImage imageNamed:@"sort_informed"] forState:UIControlStateNormal];
-            cell.informLabel.text = [NSString stringWithFormat:@"%ld",(long)[cell.informLabel.text integerValue]+1];
+//            cell.informLabel.text = [NSString stringWithFormat:@"%ld",(long)[cell.informLabel.text integerValue]+1];
+            cell.informLabel.text = @"已投诉";
             cell.informButton.userInteractionEnabled = NO;
         }else {
+            cell.informLabel.text = @"举报";
             [cell.informButton setBackgroundImage:[UIImage imageNamed:@"sort_inform"] forState:UIControlStateNormal];
             cell.informButton.userInteractionEnabled = YES;
         }

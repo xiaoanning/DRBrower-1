@@ -60,8 +60,10 @@
 }
 //获取排行分类标签
 -(void)getSortTag {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
     [SortTagModel getSortTagUrl:[NSString stringWithFormat:@"%@%@",BASE_URL,URL_GETSORTTAG] parameters:@{} block:^(SortTagListModel *newsList, NSError *error) {
-        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.sortTagArray = newsList.data;
         
         SortVideoVC *sortVideoVC = [[SortVideoVC alloc] init];

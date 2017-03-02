@@ -72,4 +72,15 @@
 #define appBirghtness @"appBirghtness"
 #define sysBrightness @"sysBrightness"
 
+#define Platform @"1"  //平台区分
+
+
+
+
 #endif /* DRBrowser_Prefix_pch */
+
+
+
+
+
+

@@ -40,6 +40,7 @@
 
 //获取排行列表
 - (void)getSortListByModel:(SortTagModel *)model type:(NSString *)type sort:(NSString *)sort{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     if (sort == nil || [sort integerValue] ==0) {
         sort = @"visit_num";
     }else if ([sort integerValue] ==1) {
@@ -60,6 +61,7 @@
         }else {
             [self.sortListArray addObjectsFromArray:newsList.data];
         }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         [self.tableView reloadData];
     }];
 }

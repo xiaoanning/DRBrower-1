@@ -45,4 +45,22 @@
 //发表评论
 #define URL_ADDCOMMENT @"comment/save?tel="
 
+//吐槽程序员
+#define URL_ADVICE @"http://admin.drliulanqi.com/index.php?g=api&m=suggest&a=add&token=brower*@forapi@*&dev_id="
+
+
+
+
+
+
 #endif /* AllUrls_h */
+
+
+
+
+
+
+
+
+
+
