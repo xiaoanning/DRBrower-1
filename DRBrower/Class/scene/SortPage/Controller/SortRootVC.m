@@ -25,15 +25,15 @@
 @end
 
 @implementation SortRootVC
-
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = NO;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBarHidden = NO;
     self.sortTagArray = [NSArray array];
     
     [self getSortTag];
-//    [self loadViewControllers];
-    
     [self creaetRightButtonItem];
     
     self.selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
@@ -44,19 +44,6 @@
     self.title = NSLocalizedString(@"热度排行", nil);
     
     
-}
--(void)loadViewControllers {
-    
-//    SortVideoVC *sortVideoVC = [[SortVideoVC alloc] init];
-//    sortVideoVC.sortRootVC = self;
-//    SortNewFilmVC *sortNewFilmVC = [[SortNewFilmVC alloc] init];
-//    sortNewFilmVC.sortRootVC = self;
-//    SortOtherVC *sortOtherVC = [[SortOtherVC alloc] init];
-//    sortOtherVC.sortRootVC = self;
-//    
-//    NSArray *viewControllersArray = @[sortVideoVC,sortNewFilmVC,sortOtherVC];
-//    self.viewControllers = viewControllersArray;
-
 }
 //获取排行分类标签
 -(void)getSortTag {

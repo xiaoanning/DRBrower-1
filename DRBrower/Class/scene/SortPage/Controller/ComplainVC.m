@@ -80,7 +80,6 @@
     }
 }
 -(void)changeButtonState:(UIButton *)button clickCount:(NSInteger)clickCount{
-    NSLog(@"clickCount-------------%ld",(long)clickCount);
     if (clickCount%2) {
         [button setBackgroundImage:[UIImage imageNamed:@"sort_informSelected"] forState:UIControlStateNormal];
     }else {

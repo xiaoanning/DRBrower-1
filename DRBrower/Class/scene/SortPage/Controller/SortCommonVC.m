@@ -18,7 +18,6 @@
 
 @property (nonatomic,strong) NSMutableArray *localZanArray; //本地存储已点赞下标
 @property (nonatomic,strong) NSMutableArray *localComplainArray; //本地存储已举报下标
-@property (nonatomic,copy) NSString *currentDeviceId;//当前设备Id
 @property (nonatomic,assign) NSInteger currentComplainIndex;//当前举报所在列
 
 @end
@@ -29,8 +28,6 @@
     [super viewDidLoad];
     
     [self createTableView];
-    
-    self.currentDeviceId = [[UIDevice currentDevice].identifierForVendor UUIDString];
     
     [self fooderRereshing];
     [self headerRereshing];
@@ -98,6 +95,7 @@
 }
 //点赞请求
 -(void)addLoveWithModel:(SortModel *)model {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.localZanArray = [NSMutableArray arrayWithArray:[DRLocaldData achieveZanData]];
     if (![self.localZanArray containsObject:model.sort_id]) {
         [self.localZanArray addObject:model.sort_id];
@@ -105,11 +103,12 @@
     }
     
     NSString *url_md5 = model.url_md5;
-    NSString *signOrigin = [NSString stringWithFormat:@"%@%@%@",[self.currentDeviceId substringWithRange:NSMakeRange(0, 5)],[url_md5 substringWithRange:NSMakeRange(0, 5)],@"dr_love_2017"];
+    NSString *signOrigin = [NSString stringWithFormat:@"%@%@%@",[DEV_ID substringWithRange:NSMakeRange(0, 5)],[url_md5 substringWithRange:NSMakeRange(0, 5)],@"dr_love_2017"];
     NSString *sign = [[Tools md5:signOrigin] lowercaseString];
-    NSString *urlString = [NSString stringWithFormat:@"%@%@?dev_id=%@&url_md5=%@&sign=%@",BASE_URL,URL_ADDLOVE,self.currentDeviceId,url_md5,sign];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@?dev_id=%@&url_md5=%@&sign=%@",BASE_URL,URL_ADDLOVE,DEV_ID,url_md5,sign];
     
     [SortModel addLoveUrl:urlString parameters:@{} block:^(NSDictionary *dic, NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (dic.allKeys.count>0) {
             NSString *infoStr = [dic objectForKey:@"info"];
             [Tools showView:infoStr];
@@ -118,6 +117,7 @@
 }
 //举报请求
 -(void)addComplainWithModel:(SortModel *)model content:(NSString *)content{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     //获取本地存储数据
     self.localComplainArray = [NSMutableArray arrayWithArray:[DRLocaldData achieveComplainData]];
     if (![self.localComplainArray containsObject:model.sort_id]) {
@@ -125,8 +125,9 @@
         [DRLocaldData saveComplainData:self.localComplainArray];
     }
     //   NSString *str = [content stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&url_md5=%@&content=%@",BASE_URL,URL_ADDCOMPLAIN,[self.currentDeviceId substringToIndex:8],model.url_md5,content];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&url_md5=%@&content=%@",BASE_URL,URL_ADDCOMPLAIN,[DEV_ID substringToIndex:8],model.url_md5,content];
     [SortModel addComplainUrl:[Tools urlEncodedString:urlString] parameters:@{} block:^(NSDictionary *dic, NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (dic.allKeys.count>0) {
             NSString *infoStr = [dic objectForKey:@"info"];
             [Tools showView:infoStr];
@@ -235,14 +236,14 @@
 //举报
 -(void)touchUpInformButtonWithIndex:(NSInteger)index {
     self.currentComplainIndex = index;
-    CGFloat sheetWidth = SCREEN_WIDTH*0.8;
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Complain" bundle:[NSBundle mainBundle]];
-    ComplainVC *complainVC = (ComplainVC *)[storyboard instantiateViewControllerWithIdentifier:@"ComplainVC"];
+    CGFloat sheetWidth = SCREEN_WIDTH*0.9;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Inform" bundle:[NSBundle mainBundle]];
+    ComplainVC *complainVC = (ComplainVC *)[storyboard instantiateViewControllerWithIdentifier:@"InformVC"];
     complainVC.delegete = self;
     MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:complainVC];
     formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
     
-    formSheetController.presentationController.contentViewSize = CGSizeMake(sheetWidth, 220);
+    formSheetController.presentationController.contentViewSize = CGSizeMake(sheetWidth, 270);
     formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideFromTop;
     formSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height/2-sheetWidth/2;
     [self presentViewController:formSheetController animated:YES completion:nil];

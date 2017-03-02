@@ -13,7 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *commentListTableView;
 
-@property (weak, nonatomic) IBOutlet UITextView *textView1;
+@property (weak, nonatomic) IBOutlet UILabel *writeCommentLabel;
 
 @property (nonatomic,strong)SortModel *sortModel;
 

@@ -36,8 +36,8 @@
     self.placeHolderLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 0, CGRectGetWidth(self.adviceTextView.frame)-10, 40)];
     self.placeHolderLabel.enabled = NO;
     self.placeHolderLabel.text = @"哪里用着不爽，吐槽给我们（别忘了留下QQ）";
-    self.placeHolderLabel.adjustsFontSizeToFitWidth = YES;
     self.placeHolderLabel.font =  [UIFont systemFontOfSize:15];
+    self.placeHolderLabel.adjustsFontSizeToFitWidth = YES;
     self.placeHolderLabel.textColor = [UIColor lightGrayColor];
     [self.adviceTextView addSubview: self.placeHolderLabel];
     [self.adviceTextView sendSubviewToBack:self.placeHolderLabel];
@@ -55,11 +55,8 @@
 }
 -(void)addAdvice:(NSString *)content {
     //http://admin.drliulanqi.com/index.php?g=api&m=suggest&a=add&token=brower*@forapi@*&dev_id=11&content=5&platform=0
-    
-    NSString *currentDeviceId = [[UIDevice currentDevice].identifierForVendor UUIDString];
     NSString *contentStr = [content stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@&content=%@&platform=%@",URL_ADVICE,currentDeviceId,contentStr,Platform];
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@&content=%@&platform=%@",URL_ADVICE,DEV_ID,contentStr,Platform];
     [AdviceModel addAdviceUrl:urlStr parameters:@{} block:^(NSDictionary *dic, NSError *error) {
         if (dic.allKeys.count>0) {
             [Tools showView:[dic objectForKey:@"msg"]];

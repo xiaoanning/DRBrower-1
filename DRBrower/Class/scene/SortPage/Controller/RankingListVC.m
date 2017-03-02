@@ -28,7 +28,6 @@
 @property (nonatomic,strong) NSMutableArray *localZanArray; //本地存储已点赞下标
 @property (nonatomic,strong) NSMutableArray *localComplainArray; //本地存储已举报下标
 @property (nonatomic,strong) NSMutableArray *zanArray;
-@property (nonatomic,copy) NSString *currentDeviceId;//当前设备Id
 @property (nonatomic,assign) NSInteger currentComplainIndex;//当前举报所在列
 
 @property (nonatomic,strong) UIView *bgView;
@@ -43,7 +42,6 @@
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_btn_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonAction:)];
     self.navigationItem.leftBarButtonItem = backButton;
 
-    self.currentDeviceId = [[UIDevice currentDevice].identifierForVendor UUIDString];
     self.sortTagArray = [NSArray array];
     self.sortListArray = [NSMutableArray arrayWithCapacity:5];
     
@@ -138,9 +136,9 @@
     }
     
     NSString *url_md5 = model.url_md5;
-    NSString *signOrigin = [NSString stringWithFormat:@"%@%@%@",[self.currentDeviceId substringWithRange:NSMakeRange(0, 5)],[url_md5 substringWithRange:NSMakeRange(0, 5)],@"dr_love_2017"];
+    NSString *signOrigin = [NSString stringWithFormat:@"%@%@%@",[DEV_ID substringWithRange:NSMakeRange(0, 5)],[url_md5 substringWithRange:NSMakeRange(0, 5)],@"dr_love_2017"];
     NSString *sign = [[Tools md5:signOrigin] lowercaseString];
-    NSString *urlString = [NSString stringWithFormat:@"%@%@?dev_id=%@&url_md5=%@&sign=%@",BASE_URL,URL_ADDLOVE,self.currentDeviceId,url_md5,sign];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@?dev_id=%@&url_md5=%@&sign=%@",BASE_URL,URL_ADDLOVE,DEV_ID,url_md5,sign];
     
     [SortModel addLoveUrl:urlString parameters:@{} block:^(NSDictionary *dic, NSError *error) {
         NSLog(@"%@",[dic objectForKey:@"info"]);
@@ -154,9 +152,8 @@
         [self.localComplainArray addObject:model.sort_id];
         [DRLocaldData saveComplainData:self.localComplainArray];
     }
-
 //   NSString *str = [content stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&url_md5=%@&content=%@",BASE_URL,URL_ADDCOMPLAIN,[self.currentDeviceId substringToIndex:8],model.url_md5,content];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&url_md5=%@&content=%@",BASE_URL,URL_ADDCOMPLAIN,[DEV_ID substringToIndex:8],model.url_md5,content];
     [SortModel addComplainUrl:[Tools urlEncodedString:urlString] parameters:@{} block:^(NSDictionary *dic, NSError *error) {
         NSLog(@"%@",[dic objectForKey:@"info"]);
     }];

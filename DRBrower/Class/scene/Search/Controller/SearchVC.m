@@ -165,7 +165,9 @@
 - (void)touchUpBackButtonAction {
     if ([self.searchWV canGoBack]) {
         [self.searchWV goBack];
-    }else {
+    }else if(self.sortModel.url != nil) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
         [self.searchViewController dismissViewControllerAnimated:NO completion:nil];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }

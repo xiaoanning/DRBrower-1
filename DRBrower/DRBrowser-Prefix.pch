@@ -74,7 +74,7 @@
 
 #define Platform @"1"  //平台区分
 
-
+#define DEV_ID [[UIDevice currentDevice].identifierForVendor UUIDString]
 
 
 #endif /* DRBrowser_Prefix_pch */

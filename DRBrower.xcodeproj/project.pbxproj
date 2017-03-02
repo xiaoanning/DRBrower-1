@@ -37,6 +37,7 @@
 		18D61F3D1E66B3EF0077BE5C /* RankingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D61F391E66B3EF0077BE5C /* RankingCell.xib */; };
 		18D61F431E66C7680077BE5C /* AdviceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D61F421E66C7680077BE5C /* AdviceVC.m */; };
 		18D61F451E66C77D0077BE5C /* Advice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D61F441E66C77D0077BE5C /* Advice.storyboard */; };
+		18FF71111E68264500F7BAA3 /* Inform.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18FF71101E68264500F7BAA3 /* Inform.storyboard */; };
 		49F0A3869EDB806CA3050A19 /* libPods-DRBrower.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DFB1C3A7BC244DD9034D74 /* libPods-DRBrower.a */; };
 		55075A4F1E20814A009A025A /* WebsiteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55075A4E1E20814A009A025A /* WebsiteModel.m */; };
 		55075A521E2081E1009A025A /* WebsiteListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55075A511E2081E1009A025A /* WebsiteListModel.m */; };
@@ -159,6 +160,7 @@
 		18D61F411E66C7680077BE5C /* AdviceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdviceVC.h; sourceTree = "<group>"; };
 		18D61F421E66C7680077BE5C /* AdviceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdviceVC.m; sourceTree = "<group>"; };
 		18D61F441E66C77D0077BE5C /* Advice.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Advice.storyboard; sourceTree = "<group>"; };
+		18FF71101E68264500F7BAA3 /* Inform.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Inform.storyboard; sourceTree = "<group>"; };
 		29F564DE35D2B47EC672A7BD /* Pods-DRBrower.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRBrower.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DRBrower/Pods-DRBrower.debug.xcconfig"; sourceTree = "<group>"; };
 		55075A4D1E20814A009A025A /* WebsiteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebsiteModel.h; sourceTree = "<group>"; };
 		55075A4E1E20814A009A025A /* WebsiteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebsiteModel.m; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 				189FC7BE1E6583CC005E1C73 /* More.storyboard */,
 				182DA84A1E60075A00BA5B64 /* Comment.storyboard */,
 				182DA8031E5EE34900BA5B64 /* Complain.storyboard */,
+				18FF71101E68264500F7BAA3 /* Inform.storyboard */,
 				557DC06E1E08DF8100ECFFDE /* Main.storyboard */,
 				551661731E23936600909A11 /* Website.storyboard */,
 				557DC0C21E0CC4B100ECFFDE /* NewsDetail.storyboard */,
@@ -781,6 +784,7 @@
 				557DC0C31E0CC4B100ECFFDE /* NewsDetail.storyboard in Resources */,
 				182DA8041E5EE34900BA5B64 /* Complain.storyboard in Resources */,
 				552ADBDC1E25E579007036CA /* WebsiteRecommendVC.xib in Resources */,
+				18FF71111E68264500F7BAA3 /* Inform.storyboard in Resources */,
 				557DC0751E08DF8100ECFFDE /* LaunchScreen.storyboard in Resources */,
 				18D61F3B1E66B3EF0077BE5C /* CommentListCell.xib in Resources */,
 				557DC08E1E08E08400ECFFDE /* OnePicCell.xib in Resources */,
