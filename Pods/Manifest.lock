@@ -43,6 +43,9 @@ PODS:
   - ShareSDK3/ShareSDKPlatforms/QQ (3.5.2)
   - ShareSDK3/ShareSDKPlatforms/WeChat (3.5.2)
   - SWTableViewCell (0.3.7)
+  - ZXingObjC (3.1.0):
+    - ZXingObjC/All (= 3.1.0)
+  - ZXingObjC/All (3.1.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
@@ -63,6 +66,7 @@ DEPENDENCIES:
   - ShareSDK3/ShareSDKPlatforms/QQ
   - ShareSDK3/ShareSDKPlatforms/WeChat
   - SWTableViewCell (~> 0.3.7)
+  - ZXingObjC (~> 3.1.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -82,7 +86,8 @@ SPEC CHECKSUMS:
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   ShareSDK3: 08ed714e2bbdcd97ab60f58cb398227341dfc20a
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
+  ZXingObjC: bf15b3814f7a105b6d99f47da2333c93a063650a
 
-PODFILE CHECKSUM: 84b7155759cd7ddebb9ae49b36224608ebe4ace4
+PODFILE CHECKSUM: f06f05510985eecab2193954fc1022ce0a5f5117
 
 COCOAPODS: 1.1.1

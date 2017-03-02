@@ -14,7 +14,7 @@
                 <navigationController id="2Kh-V4-s1Q" sceneMemberID="viewController">
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="0T9-Nb-VoK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="0T9-Nb-VoK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -25,7 +25,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9w9-wC-cpf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1716" y="-146"/>
+            <point key="canvasLocation" x="-2038" y="-180"/>
         </scene>
         <!--HomeVC-->
         <scene sceneID="tne-QT-ifu">
@@ -145,6 +145,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-934" y="-180"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="mgB-uT-5cn">
+            <objects>
+                <viewController id="aY7-Bp-o4G" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vcm-Ao-g6G"/>
+                        <viewControllerLayoutGuide type="bottom" id="9jo-3A-a4n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="osc-Gn-bKM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pbM-lb-wDg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-28" y="-183"/>
         </scene>
     </scenes>
     <resources>

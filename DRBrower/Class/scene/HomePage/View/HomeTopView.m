@@ -99,7 +99,7 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
 
 #pragma  mark UICollectionViewDelegateFlowLayout
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(SCREEN_WIDTH/5.0, (self.websiteCollectionViewHeight.constant-20)/2);
+    return CGSizeMake(SCREEN_WIDTH/5.0, self.websiteCollectionViewHeight.constant/2);
 }
 
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{

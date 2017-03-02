@@ -8,11 +8,13 @@
 
 #import "DRHomeVC.h"
 #import "SearchVC.h"
-//#import "NewsDetailVC.h"
 #import "WebsiteRootVC.h"
 #import "MenuVC.h"
 #import "ShareVC.h"
 #import "RecordRootVC.h"
+#import "ScanVC.h"
+#import "NewsListViewController.h"
+#import "RankingViewController.h"
 
 #import "NewsTagModel.h"
 #import "NewsModel.h"
@@ -25,8 +27,7 @@
 
 #import "HomeToolBar.h"
 
-#import "NewsListViewController.h"
-#import "RankingViewController.h"
+
 
 static NSString *const onePicCellIdentifier = @"OnePicCell";
 static NSString *const threePicCellIdentifier = @"ThreePicCell";
@@ -347,10 +348,6 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NewsModel *news = self.newsListArray[indexPath.row];
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"NewsDetail" bundle:[NSBundle mainBundle]];
-//    NewsDetailVC *newsDetailVC = (NewsDetailVC *)[storyboard instantiateViewControllerWithIdentifier:@"NewsDetailVC"];
-//    newsDetailVC.newsModel = news;
-//    [self.navigationController showViewController:newsDetailVC sender:nil];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
     SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
     searchVC.newsModel = news;
@@ -363,10 +360,10 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
         
         if ([Tools isRemainder:[DRLocaldData achieveWebsiteData]] == YES) {
 
-            return 435;
+            return 360;
 
         }else {
-            return 435-37;
+            return 360-30;
         }
     }
     return 1;
@@ -471,6 +468,10 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 - (void)touchUpRecordButtonAction {
     RecordRootVC *recordRootVC = [[RecordRootVC alloc] init];
     [self.navigationController showViewController:recordRootVC sender:nil];
+}
+
+- (void)touchUpQRcodeButtonAction {
+    
 }
 
 //搜索
