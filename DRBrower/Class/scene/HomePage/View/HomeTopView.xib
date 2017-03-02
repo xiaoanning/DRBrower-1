@@ -104,12 +104,12 @@
                                                 <action selector="didclickSearchButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="5MV-pF-7Vx"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5h-IN-e0w">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5h-IN-e0w">
                                             <rect key="frame" x="295" y="0.0" width="40" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="40" id="FUr-tQ-IqF"/>
                                             </constraints>
-                                            <state key="normal" title="扫码"/>
+                                            <state key="normal" image="scan"/>
                                             <connections>
                                                 <action selector="didClickQRcodeButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="p6A-Ar-Fd6"/>
                                             </connections>
@@ -136,12 +136,12 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0jh-ce-Pt0">
                                             <rect key="frame" x="0.0" y="0.0" width="75" height="70"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rRp-OE-Tg4">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rRp-OE-Tg4">
                                                     <rect key="frame" x="0.0" y="0.0" width="75" height="55"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="rRp-OE-Tg4" secondAttribute="height" multiplier="15:11" id="ujc-rg-Len"/>
                                                     </constraints>
-                                                    <state key="normal" title="网址">
+                                                    <state key="normal" image="header_url">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
@@ -167,12 +167,12 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XaB-Hz-uet">
                                             <rect key="frame" x="75" y="0.0" width="75" height="70"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgc-yo-HyM">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgc-yo-HyM">
                                                     <rect key="frame" x="0.0" y="0.0" width="75" height="55"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="pgc-yo-HyM" secondAttribute="height" multiplier="15:11" id="Pl8-2e-Fll"/>
                                                     </constraints>
-                                                    <state key="normal" title="小说">
+                                                    <state key="normal" image="header_novel">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
@@ -198,12 +198,12 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UzX-Wa-0Qs">
                                             <rect key="frame" x="150" y="0.0" width="75" height="70"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9t-la-NiX">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9t-la-NiX">
                                                     <rect key="frame" x="0.0" y="0.0" width="75" height="55"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="s9t-la-NiX" secondAttribute="height" multiplier="15:11" id="tIZ-AV-TIe"/>
                                                     </constraints>
-                                                    <state key="normal" title="女郎">
+                                                    <state key="normal" image="header_lady">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
@@ -229,12 +229,12 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D0D-cq-tGF">
                                             <rect key="frame" x="225" y="0.0" width="75" height="70"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVL-3f-ugn">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVL-3f-ugn">
                                                     <rect key="frame" x="0.0" y="0.0" width="75" height="55"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="vVL-3f-ugn" secondAttribute="height" multiplier="15:11" id="X2F-1e-rKZ"/>
                                                     </constraints>
-                                                    <state key="normal" title="段子">
+                                                    <state key="normal" image="header_ jokes">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                 </button>
@@ -260,12 +260,12 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6D3-nD-SwJ">
                                             <rect key="frame" x="300" y="0.0" width="75" height="70"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E26-Pu-7jo">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E26-Pu-7jo">
                                                     <rect key="frame" x="0.0" y="0.0" width="75" height="55"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="E26-Pu-7jo" secondAttribute="height" multiplier="15:11" id="5C1-rf-rSN"/>
                                                     </constraints>
-                                                    <state key="normal" title="排行">
+                                                    <state key="normal" image="header_ranking">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <connections>
@@ -387,6 +387,12 @@
         </view>
     </objects>
     <resources>
+        <image name="header_ jokes" width="16" height="16"/>
+        <image name="header_lady" width="16" height="16"/>
+        <image name="header_novel" width="30" height="30"/>
+        <image name="header_ranking" width="16" height="16"/>
+        <image name="header_url" width="16" height="16"/>
+        <image name="scan" width="30" height="30"/>
         <image name="search_fangdajing" width="20" height="20"/>
     </resources>
 </document>

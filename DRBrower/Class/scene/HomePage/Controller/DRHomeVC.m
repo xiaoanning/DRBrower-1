@@ -12,7 +12,6 @@
 #import "MenuVC.h"
 #import "ShareVC.h"
 #import "RecordRootVC.h"
-#import "ScanVC.h"
 #import "NewsListViewController.h"
 #import "RankingViewController.h"
 
@@ -36,7 +35,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 #define UP_LOAD @"上拉"
 #define DOWN_LOAD @"下拉"
 
-@interface DRHomeVC ()<UIPageViewControllerDelegate , UIPageViewControllerDataSource,MenuVCDelegate>
+@interface DRHomeVC ()<UIPageViewControllerDelegate, UIPageViewControllerDataSource,MenuVCDelegate,QRCodeReaderDelegate>
 
 @property (weak, nonatomic) IBOutlet HomeToolBar *homeToolBar;
 @property (weak, nonatomic) IBOutlet TagsView *tagsView;
@@ -471,7 +470,31 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 }
 
 - (void)touchUpQRcodeButtonAction {
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+//    ScanVC *scanVC = (ScanVC *)[storyboard instantiateViewControllerWithIdentifier:@"ScanVC"];
+//    [self.navigationController showViewController:scanVC sender:nil];
+
     
+    QRCodeReaderViewController *reader = [QRCodeReaderViewController new];
+    reader.modalPresentationStyle = UIModalPresentationFormSheet;
+    reader.delegate = self;
+    
+    __weak typeof (self) wSelf = self;
+    [reader setCompletionWithBlock:^(NSString *resultAsString) {
+        [wSelf.navigationController popViewControllerAnimated:YES];
+//        [[[UIAlertView alloc] initWithTitle:@"" message:resultAsString delegate:self cancelButtonTitle:@"好的" otherButtonTitles: nil] show];
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
+        SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
+        searchVC.searchText = resultAsString;
+        
+        [self.navigationController pushViewController:searchVC animated:YES];
+    }];
+    
+    //[self presentViewController:reader animated:YES completion:NULL];
+    [self.navigationController pushViewController:reader animated:YES];
+    
+
 }
 
 //搜索
@@ -611,6 +634,28 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
         [searchViewController.navigationController pushViewController:searchVC animated:YES];
     }
 }
+
+#pragma mark - QRCodeReader Delegate Methods
+
+- (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"QRCodeReader" message:result delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alert show];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
+        SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
+        searchVC.searchText = result;
+        
+        [self.navigationController pushViewController:searchVC animated:YES];
+    }];
+}
+
+- (void)readerDidCancel:(QRCodeReaderViewController *)reader
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

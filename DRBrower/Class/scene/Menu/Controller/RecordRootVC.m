@@ -52,7 +52,7 @@
 }
 
 - (void)backButtonAction:(UIBarButtonItem *)barButton {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)emptyButtonAction:(UIBarButtonItem *)barButton {
@@ -66,6 +66,7 @@
         }
     }
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

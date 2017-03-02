@@ -146,24 +146,6 @@
             </objects>
             <point key="canvasLocation" x="-934" y="-180"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="mgB-uT-5cn">
-            <objects>
-                <viewController id="aY7-Bp-o4G" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Vcm-Ao-g6G"/>
-                        <viewControllerLayoutGuide type="bottom" id="9jo-3A-a4n"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="osc-Gn-bKM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pbM-lb-wDg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-28" y="-183"/>
-        </scene>
     </scenes>
     <resources>
         <image name="toolBar_back" width="30" height="30"/>

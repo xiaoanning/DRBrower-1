@@ -85,7 +85,6 @@
 		55BC1B161E4AF1A800A64375 /* CollectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BC1B151E4AF1A800A64375 /* CollectVC.m */; };
 		55E5BC211E67C92800A7CF9E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E5BC201E67C92800A7CF9E /* CoreMedia.framework */; };
 		55E5BC231E67C93200A7CF9E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E5BC221E67C93200A7CF9E /* QuartzCore.framework */; };
-		55E5BC251E67C94400A7CF9E /* libZXingObjC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E5BC241E67C94400A7CF9E /* libZXingObjC.a */; };
 		55E5BC271E67C95000A7CF9E /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E5BC261E67C95000A7CF9E /* ImageIO.framework */; };
 		55E5BC291E67C96800A7CF9E /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E5BC281E67C96800A7CF9E /* CoreVideo.framework */; };
 		55E5BC2A1E67C97B00A7CF9E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55421AAE1E59A50900389B86 /* CoreGraphics.framework */; };
@@ -100,7 +99,9 @@
 		55E5BC471E68084A00A7CF9E /* NewsDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55E5BC3E1E68084A00A7CF9E /* NewsDetail.storyboard */; };
 		55E5BC481E68084A00A7CF9E /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55E5BC401E68084A00A7CF9E /* Search.storyboard */; };
 		55E5BC491E68084A00A7CF9E /* Website.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55E5BC421E68084A00A7CF9E /* Website.storyboard */; };
-		55E5BC4F1E680A6600A7CF9E /* ScanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BC4E1E680A6600A7CF9E /* ScanVC.m */; };
+		55E5BC591E68252200A7CF9E /* QRCameraSwitchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BC531E68252200A7CF9E /* QRCameraSwitchButton.m */; };
+		55E5BC5A1E68252200A7CF9E /* QRCodeReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BC561E68252200A7CF9E /* QRCodeReaderView.m */; };
+		55E5BC5B1E68252200A7CF9E /* QRCodeReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BC581E68252200A7CF9E /* QRCodeReaderViewController.m */; };
 		55F623811E2DB0B5003536CC /* MenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F623801E2DB0B5003536CC /* MenuVC.m */; };
 /* End PBXBuildFile section */
 
@@ -261,8 +262,13 @@
 		55E5BC3F1E68084A00A7CF9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NewsDetail.storyboard; sourceTree = "<group>"; };
 		55E5BC411E68084A00A7CF9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Search.storyboard; sourceTree = "<group>"; };
 		55E5BC431E68084A00A7CF9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Website.storyboard; sourceTree = "<group>"; };
-		55E5BC4D1E680A6600A7CF9E /* ScanVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanVC.h; sourceTree = "<group>"; };
-		55E5BC4E1E680A6600A7CF9E /* ScanVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanVC.m; sourceTree = "<group>"; };
+		55E5BC521E68252200A7CF9E /* QRCameraSwitchButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCameraSwitchButton.h; sourceTree = "<group>"; };
+		55E5BC531E68252200A7CF9E /* QRCameraSwitchButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCameraSwitchButton.m; sourceTree = "<group>"; };
+		55E5BC541E68252200A7CF9E /* QRCodeReaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeReaderDelegate.h; sourceTree = "<group>"; };
+		55E5BC551E68252200A7CF9E /* QRCodeReaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeReaderView.h; sourceTree = "<group>"; };
+		55E5BC561E68252200A7CF9E /* QRCodeReaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeReaderView.m; sourceTree = "<group>"; };
+		55E5BC571E68252200A7CF9E /* QRCodeReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeReaderViewController.h; sourceTree = "<group>"; };
+		55E5BC581E68252200A7CF9E /* QRCodeReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeReaderViewController.m; sourceTree = "<group>"; };
 		55F6237F1E2DB0B5003536CC /* MenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuVC.h; sourceTree = "<group>"; };
 		55F623801E2DB0B5003536CC /* MenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuVC.m; sourceTree = "<group>"; };
 		C213DBDC31A50F8A62F488B7 /* Pods-DRBrower.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRBrower.release.xcconfig"; path = "Pods/Target Support Files/Pods-DRBrower/Pods-DRBrower.release.xcconfig"; sourceTree = "<group>"; };
@@ -281,7 +287,6 @@
 				55E5BC2A1E67C97B00A7CF9E /* CoreGraphics.framework in Frameworks */,
 				55E5BC291E67C96800A7CF9E /* CoreVideo.framework in Frameworks */,
 				55E5BC271E67C95000A7CF9E /* ImageIO.framework in Frameworks */,
-				55E5BC251E67C94400A7CF9E /* libZXingObjC.a in Frameworks */,
 				55E5BC231E67C93200A7CF9E /* QuartzCore.framework in Frameworks */,
 				55E5BC211E67C92800A7CF9E /* CoreMedia.framework in Frameworks */,
 				55421AB51E59A55F00389B86 /* libsqlite3.tbd in Frameworks */,
@@ -486,6 +491,7 @@
 		557DC07C1E08E08400ECFFDE /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				55E5BC501E68251A00A7CF9E /* OpenSource */,
 				557DC07D1E08E08400ECFFDE /* App */,
 				557DC0801E08E08400ECFFDE /* DataSource */,
 				557DC0831E08E08400ECFFDE /* Public */,
@@ -561,8 +567,6 @@
 			children = (
 				557DC0951E08E3A500ECFFDE /* DRHomeVC.h */,
 				557DC0961E08E3A500ECFFDE /* DRHomeVC.m */,
-				55E5BC4D1E680A6600A7CF9E /* ScanVC.h */,
-				55E5BC4E1E680A6600A7CF9E /* ScanVC.m */,
 				55E5BC331E6807E300A7CF9E /* NewsDetailVC.h */,
 				55E5BC341E6807E300A7CF9E /* NewsDetailVC.m */,
 				1866D4A11E5BDDF500BDB5DB /* NewsListViewController.h */,
@@ -620,6 +624,28 @@
 			name = Model;
 			path = DRBrower/Class/scene/HomePage/Model;
 			sourceTree = SOURCE_ROOT;
+		};
+		55E5BC501E68251A00A7CF9E /* OpenSource */ = {
+			isa = PBXGroup;
+			children = (
+				55E5BC511E68252200A7CF9E /* QRCodeReaderViewController */,
+			);
+			path = OpenSource;
+			sourceTree = "<group>";
+		};
+		55E5BC511E68252200A7CF9E /* QRCodeReaderViewController */ = {
+			isa = PBXGroup;
+			children = (
+				55E5BC521E68252200A7CF9E /* QRCameraSwitchButton.h */,
+				55E5BC531E68252200A7CF9E /* QRCameraSwitchButton.m */,
+				55E5BC541E68252200A7CF9E /* QRCodeReaderDelegate.h */,
+				55E5BC551E68252200A7CF9E /* QRCodeReaderView.h */,
+				55E5BC561E68252200A7CF9E /* QRCodeReaderView.m */,
+				55E5BC571E68252200A7CF9E /* QRCodeReaderViewController.h */,
+				55E5BC581E68252200A7CF9E /* QRCodeReaderViewController.m */,
+			);
+			path = QRCodeReaderViewController;
+			sourceTree = "<group>";
 		};
 		55F6237B1E2DB021003536CC /* Menu */ = {
 			isa = PBXGroup;
@@ -868,6 +894,7 @@
 				55421AE01E5D22D400389B86 /* UIImage+DRImageClip.m in Sources */,
 				55BC1B121E49D3EF00A64375 /* RecordCell.m in Sources */,
 				551661691E236AEF00909A11 /* WebsiteRootVC.m in Sources */,
+				55E5BC591E68252200A7CF9E /* QRCameraSwitchButton.m in Sources */,
 				557A94111E5FD445006A2466 /* DRRealmPublic.m in Sources */,
 				1866D4AC1E5BE1AB00BDB5DB /* RankingListVC.m in Sources */,
 				552375891E1CEAF000214ECB /* SearchVC.m in Sources */,
@@ -879,6 +906,7 @@
 				55075A521E2081E1009A025A /* WebsiteListModel.m in Sources */,
 				1866D4B51E5BE1FC00BDB5DB /* SortListModel.m in Sources */,
 				557A940E1E5EE118006A2466 /* RecordRootVC.m in Sources */,
+				55E5BC5B1E68252200A7CF9E /* QRCodeReaderViewController.m in Sources */,
 				557DC0911E08E0B700ECFFDE /* DRDataService.m in Sources */,
 				557DC09A1E08E91E00ECFFDE /* HomeTopView.m in Sources */,
 				182DA8531E60365600BA5B64 /* CommentListModel.m in Sources */,
@@ -893,7 +921,6 @@
 				1866D4B61E5BE1FC00BDB5DB /* SortModel.m in Sources */,
 				551661721E23701D00909A11 /* WebsiteCustomVC.m in Sources */,
 				557A940A1E5EDD7D006A2466 /* RecordModel.m in Sources */,
-				55E5BC4F1E680A6600A7CF9E /* ScanVC.m in Sources */,
 				1866D49F1E5BD11700BDB5DB /* HomeTopViewLayout.m in Sources */,
 				558ADF5F1E0E2B4F00035716 /* HomeToolBar.m in Sources */,
 				557DC0B91E0BC03300ECFFDE /* TagsView.m in Sources */,
@@ -902,6 +929,7 @@
 				55BC1B161E4AF1A800A64375 /* CollectVC.m in Sources */,
 				557A940B1E5EDD7D006A2466 /* RecordRealm.m in Sources */,
 				1866D4BC1E5BE22700BDB5DB /* RankingCell.m in Sources */,
+				55E5BC5A1E68252200A7CF9E /* QRCodeReaderView.m in Sources */,
 				1866D4AB1E5BE1AB00BDB5DB /* RankingViewController.m in Sources */,
 				182DA8071E5EE58E00BA5B64 /* ComplainVC.m in Sources */,
 			);
@@ -1087,10 +1115,7 @@
 				INFOPLIST_FILE = DRBrower/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/ZXingObjC",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.DRBrower.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1111,10 +1136,7 @@
 				INFOPLIST_FILE = DRBrower/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/ZXingObjC",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.DRBrower.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
