@@ -135,4 +135,25 @@
     
     return encodedString;
 }
+//申请加入QQ群 http://qun.qq.com/join.html
++ (BOOL)joinGroup:(NSString *)groupUin key:(NSString *)key{
+    NSString *urlStr = [NSString stringWithFormat:@"mqqapi://card/show_pslcard?src_type=internal&version=1&uin=%@&key=%@&card_type=group&source=external", key,@"ec0b0babccfd35290d551f1571dac5f256f4a114c5878b55eafce5dff738973f"];
+    NSURL *url = [NSURL URLWithString:urlStr];
+    if([[UIApplication sharedApplication] canOpenURL:url]){
+        [[UIApplication sharedApplication] openURL:url];
+        return YES;
+    }
+    else return NO;
+}
+//提示窗
++ (void)showView:(NSString *)title{
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.label.text = NSLocalizedString(title, @"HUD message title");
+    hud.tintColor = [UIColor whiteColor];
+    [hud hideAnimated:YES afterDelay:1.f];
+    
+}
+
 @end

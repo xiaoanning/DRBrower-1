@@ -13,6 +13,7 @@
 #import "MenuVC.h"
 #import "ShareVC.h"
 #import "RecordRootVC.h"
+#import "MoreVC.h"
 
 #import "NewsTagModel.h"
 #import "NewsModel.h"
@@ -27,6 +28,9 @@
 
 #import "NewsListViewController.h"
 #import "RankingViewController.h"
+#import "SortRootVC.h"
+
+#import "AdviceVC.h"
 
 static NSString *const onePicCellIdentifier = @"OnePicCell";
 static NSString *const threePicCellIdentifier = @"ThreePicCell";
@@ -392,8 +396,11 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 #pragma mark - custom delegate
 //排行
 -(void)touchUpSortButtonAction {
-    RankingViewController *rankingVC = [[RankingViewController alloc] init];
-    [self.navigationController pushViewController:rankingVC animated:YES];
+//    RankingViewController *rankingVC = [[RankingViewController alloc] init];
+//    [self.navigationController pushViewController:rankingVC animated:YES];
+    
+    SortRootVC *sortRootVC = [[SortRootVC alloc] init];
+    [self.navigationController pushViewController:sortRootVC animated:YES];
 }
 
 //频道
@@ -467,10 +474,39 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 
     [self presentViewController:shareFormSheetController animated:YES completion:nil];
 }
-
+//历史
 - (void)touchUpRecordButtonAction {
     RecordRootVC *recordRootVC = [[RecordRootVC alloc] init];
     [self.navigationController showViewController:recordRootVC sender:nil];
+}
+//更多
+- (void)touchUpMoreButtonAction {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"More" bundle:[NSBundle mainBundle]];
+    MoreVC *moreVC = (MoreVC *)[storyboard instantiateViewControllerWithIdentifier:@"MoreVC"];
+    [self.navigationController showViewController:moreVC sender:nil];
+}
+//吐槽
+-(void)touchUpSpitButtonAction {
+    UIStoryboard *stroyboard = [UIStoryboard storyboardWithName:@"Advice" bundle:[NSBundle mainBundle]];
+    AdviceVC *adviceVC = (AdviceVC *)[stroyboard instantiateViewControllerWithIdentifier:@"AdviceVC"];
+    [self.navigationController pushViewController:adviceVC animated:YES];
+}
+//客服群
+-(void)touchUpServiceButtonAction {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
+                                                                             message:@"是否添加客服群:299032484"
+                                                                      preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [Tools joinGroup:nil key:@"299032484"];
+    }];;
+    [alertController addAction:OKAction];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 //搜索

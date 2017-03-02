@@ -37,7 +37,6 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
     [self data];
     [self reloadPageControl];
 }
-
 - (void)data {
     self.websiteArray = [DRLocaldData achieveWebsiteData];
     [(HomeTopViewLayout *)self.websiteCollectionView.collectionViewLayout setDefectListModel:self.websiteArray] ;

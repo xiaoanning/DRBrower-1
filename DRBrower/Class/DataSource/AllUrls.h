@@ -29,7 +29,7 @@
 //获取排行分类标签
 #define URL_GETSORTTAG @"sort/cateList"
 //获取排行列表标签
-#define URL_GETSORTLIST @"sort/getList?page_num=1&site_type="
+#define URL_GETSORTLIST @"sort/getList?page_num="
 //http://61.160.250.174:8080/dr/sort/getList?page_num=1&site_type=3&sort=visit_num
 
 
@@ -45,4 +45,22 @@
 //发表评论
 #define URL_ADDCOMMENT @"comment/save?tel="
 
+//吐槽程序员
+#define URL_ADVICE @"http://admin.drliulanqi.com/index.php?g=api&m=suggest&a=add&token=brower*@forapi@*&dev_id="
+
+
+
+
+
+
 #endif /* AllUrls_h */
+
+
+
+
+
+
+
+
+
+

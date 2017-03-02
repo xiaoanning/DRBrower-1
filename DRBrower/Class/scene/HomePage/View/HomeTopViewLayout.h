@@ -10,6 +10,6 @@
 
 @interface HomeTopViewLayout : UICollectionViewLayout
 
-@property ( nonatomic , assign   ) NSArray * defectListModel ;
+@property ( nonatomic , assign) NSArray * defectListModel ;
 
 @end

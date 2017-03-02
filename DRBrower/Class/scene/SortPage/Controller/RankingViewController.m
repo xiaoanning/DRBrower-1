@@ -37,6 +37,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBarHidden = NO;
     self.title = @"热度排行";
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_btn_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonAction:)];
+    self.navigationItem.leftBarButtonItem = backButton;
+
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
     topSpace = 60;
@@ -46,6 +49,10 @@
     
     [self getSortTag];
 }
+- (void)backButtonAction:(UIBarButtonItem *)barButton {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 -(void)creaetRightButtonItem {
     UIButton *rightBar = [UIButton buttonWithType:UIButtonTypeCustom];
     [rightBar setImage:[UIImage imageNamed:@"sort_switch"] forState:UIControlStateNormal];
