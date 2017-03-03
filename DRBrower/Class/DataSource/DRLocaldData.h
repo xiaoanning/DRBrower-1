@@ -45,5 +45,8 @@
 //获取举报列表
 + (NSMutableArray *)achieveComplainData;
 
-
+//保存开关列表
++ (void)saveSwitchData:(NSMutableArray *)switchArray;
+//获取开关列表
++ (NSMutableArray *)achieveSwitchData;
 @end

@@ -39,6 +39,7 @@ static NSString *const recordCellIdentifier = @"RecordCell";
         [DRLocaldData deleteAllCollectData];
         [self.collectArray removeAllObjects];
         [self.tableView reloadData];
+        [Tools showView:@"清除成功"];
     }];
     
 }

@@ -22,5 +22,6 @@
 @property (nonatomic, strong)RecordModel *recordModel;
 @property (nonatomic, strong)SortModel *sortModel;
 
+@property (nonatomic,copy) NSString *urlString;
 
 @end

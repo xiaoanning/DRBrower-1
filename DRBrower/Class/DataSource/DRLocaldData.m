@@ -13,7 +13,7 @@
 #define HISTORY @"historyRecords"
 #define ZANList @"zanList"
 #define COMPLAINList @"complainList"
-
+#define SWITCHList @"switchList"
 
 @implementation DRLocaldData
 
@@ -170,6 +170,19 @@
     NSMutableArray *complainArray =
     [NSKeyedUnarchiver unarchiveObjectWithData:dataArray[0]];//把数组中的data转化为
     return complainArray;
+}
+
+//保存开关列表
++ (void)saveSwitchData:(NSMutableArray *)switchArray {
+    [DRLocaldData rootSaveData:switchArray fileName:SWITCHList];
+}
+//获取开关列表
++ (NSMutableArray *)achieveSwitchData {
+    NSString *filePath = [self savePathName:SWITCHList];//获取文件路径
+    NSMutableArray *dataArray = [NSMutableArray arrayWithContentsOfFile:filePath];//把文件取出放入数字
+    NSMutableArray *switchArray =
+    [NSKeyedUnarchiver unarchiveObjectWithData:dataArray[0]];//把数组中的data转化为
+    return switchArray;
 }
 
 @end

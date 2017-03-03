@@ -46,7 +46,7 @@
     [self.adviceTextView resignFirstResponder];
 }
 - (void)backButtonAction:(UIBarButtonItem *)barButton {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 //发送
 - (IBAction)touchUpSendButton:(id)sender {
