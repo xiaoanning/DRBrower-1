@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--ComplainVC-->
+        <!--View Controller-->
         <scene sceneID="TWq-HT-a1Z">
             <objects>
-                <viewController storyboardIdentifier="ComplainVC" id="zGF-gQ-LfJ" customClass="ComplainVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ComplainVC" id="zGF-gQ-LfJ" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kZA-Ge-gIJ"/>
                         <viewControllerLayoutGuide type="bottom" id="FEB-46-okA"/>
@@ -243,7 +243,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vwo-Bw-Hvp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-699" y="-309"/>
+            <point key="canvasLocation" x="-718" y="-300"/>
         </scene>
     </scenes>
     <resources>

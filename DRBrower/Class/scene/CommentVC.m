@@ -34,6 +34,10 @@
     [super viewDidLoad];
     self.title = @"全部评论";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_btn_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonAction:)];
+    self.navigationItem.leftBarButtonItem = backButton;
+
     self.view.backgroundColor = [UIColor whiteColor];
     self.commentListArray = [NSMutableArray arrayWithCapacity:5];
     self.inputTextArray = [NSMutableArray arrayWithCapacity:5];
@@ -41,6 +45,7 @@
     [self getCommentListData:nil page:self.page];
     
     [self.commentListTableView registerNib:[UINib nibWithNibName:@"CommentListCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"commentListCell"];
+    self.commentListTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     self.textView1.layer.cornerRadius = 15;
     self.textView1.layer.masksToBounds = YES;
@@ -58,6 +63,10 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
 }
+- (void)backButtonAction:(UIBarButtonItem *)barButton {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 #pragma mark - 上下拉刷新
 //下拉
 - (void)headerRereshing {

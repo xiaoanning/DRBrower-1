@@ -7,6 +7,8 @@
 //
 
 #import "MenuVC.h"
+#import "MoreVC.h"
+#import "HistoryVC.h"
 
 @interface MenuVC ()
 
@@ -92,7 +94,24 @@
         [_delegate touchUpRefreshDataButtonAction];
     }
 }
-
+- (IBAction)touchUpMoreButton:(id)sender {
+    if(_delegate && [_delegate respondsToSelector:@selector(touchUpMoreButtonAction)]){
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [_delegate touchUpMoreButtonAction];
+    }
+}
+- (IBAction)touchUpSpitButton:(id)sender {
+    if(_delegate && [_delegate respondsToSelector:@selector(touchUpSpitButtonAction)]){
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [_delegate touchUpSpitButtonAction];
+    }
+}
+- (IBAction)touchUpService:(id)sender {
+    if(_delegate && [_delegate respondsToSelector:@selector(touchUpServiceButtonAction)]){
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [_delegate touchUpServiceButtonAction];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

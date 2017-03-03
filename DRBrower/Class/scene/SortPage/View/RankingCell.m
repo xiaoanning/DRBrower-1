@@ -29,11 +29,10 @@
     self.zanButton.userInteractionEnabled = YES;
     self.zanLabel.text = [NSString stringWithFormat:@"%@",model.love_num];
         
-    self.informLabel.text = [NSString stringWithFormat:@"%@",model.complain_num];
-    self.userCountLabel.text = [NSString stringWithFormat:@"%@",model.visit_num];
-    self.userCountLabel.adjustsFontSizeToFitWidth = YES;
+//    self.informLabel.text = [NSString stringWithFormat:@"%@",model.complain_num];
     
     [self.commentCountButton setTitle:[NSString stringWithFormat:@"%@",model.comment_num] forState:UIControlStateNormal];
+    self.commentCountButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     self.commentCountButton.titleLabel.textColor = [UIColor whiteColor];
     self.commentCountButton.titleLabel.font = [UIFont boldSystemFontOfSize:11];
     self.commentCountButton.titleEdgeInsets = UIEdgeInsetsMake(0, -self.commentCountButton.imageView.frame.size.width, 0, 0);
@@ -60,7 +59,7 @@
 - (IBAction)touchUpinformButton:(id)sender {
     UIButton *button = sender;
     self.informButton.userInteractionEnabled = NO;
-    self.informLabel.text = [NSString stringWithFormat:@"%ld",(long)[self.zanLabel.text integerValue]+1];
+//    self.informLabel.text = [NSString stringWithFormat:@"%ld",(long)[self.zanLabel.text integerValue]+1];
     [self.informButton setImage:[UIImage imageNamed:@"sort_informed"] forState:UIControlStateNormal];
 
     if (_delegate &&[_delegate respondsToSelector:@selector(touchUpInformButtonWithIndex:)]) {

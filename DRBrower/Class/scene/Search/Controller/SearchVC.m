@@ -165,7 +165,9 @@
 - (void)touchUpBackButtonAction {
     if ([self.searchWV canGoBack]) {
         [self.searchWV goBack];
-    }else {
+    }else if(self.sortModel.url != nil) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
         [self.searchViewController dismissViewControllerAnimated:NO completion:nil];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
@@ -221,9 +223,9 @@
 //menu收藏
 - (void)touchUpCollectButtonAction {
     if ([[DRLocaldData alloc] saveCollectData:self.record] == YES) {
-        [self showView:COLLECT_SUCCESS];
+        [Tools showView:COLLECT_SUCCESS];
     }else {
-        [self showView:COLLECT_FAILED];
+        [Tools showView:COLLECT_FAILED];
     }
 }
 
@@ -265,15 +267,15 @@
     
 }
 
-- (void)showView:(NSString *)title{
-    
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.label.text = NSLocalizedString(title, @"HUD message title");
-    hud.tintColor = [UIColor whiteColor];
-    [hud hideAnimated:YES afterDelay:2.f];
-    
-}
+//- (void)showView:(NSString *)title{
+//    
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
+//    hud.mode = MBProgressHUDModeText;
+//    hud.label.text = NSLocalizedString(title, @"HUD message title");
+//    hud.tintColor = [UIColor whiteColor];
+//    [hud hideAnimated:YES afterDelay:2.f];
+//    
+//}
 
 #pragma mark -scrollView 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{

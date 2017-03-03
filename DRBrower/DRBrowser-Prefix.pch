@@ -47,6 +47,10 @@
 #define SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height
 #define SCREEN_WIDTH [[UIScreen mainScreen]bounds].size.width
 
+#define UP_LOAD @"上拉"
+#define DOWN_LOAD @"下拉"
+
+
 #define COLLECT_SUCCESS @"收藏成功"
 #define COLLECT_FAILED @"已收藏"
 
@@ -66,5 +70,18 @@
 #pragma mare - defaults
 #define kFullScreen @"isFullScreen"//是否全屏
 
+#define appBirghtness @"appBirghtness"
+#define sysBrightness @"sysBrightness"
+
+#define Platform @"1"  //平台区分
+
+#define DEV_ID [[UIDevice currentDevice].identifierForVendor UUIDString]
+
 
 #endif /* DRBrowser_Prefix_pch */
+
+
+
+
+
+

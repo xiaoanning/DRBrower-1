@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="128" id="KGk-i7-Jjw" customClass="CommentListCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="127"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CircleFriends" translatesAutoresizingMaskIntoConstraints="NO" id="sjv-Wg-pVQ">
+                        <rect key="frame" x="13" y="18" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="Fke-QI-sJX"/>
+                            <constraint firstAttribute="width" constant="40" id="Jid-du-vjr"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="T9U-TI-xXC"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="axX-Jt-R7W"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北京市-朝阳区EEA9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPY-V4-gMy">
+                        <rect key="frame" x="61" y="16" width="243" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="m7T-YQ-KK6"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017年02月24日16:56:35" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vap-QH-6Dd">
+                        <rect key="frame" x="61" y="44" width="243" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="IXc-HJ-bKu"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" restorationIdentifier="commentListCell" text="2017年02月24日16:59:30 2017-02-24 16:59:39" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jqf-el-2HQ">
+                        <rect key="frame" x="61" y="62" width="243" height="57.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" priority="500" constant="41.5" id="hXV-78-3pN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="Vap-QH-6Dd" secondAttribute="trailing" constant="8" id="3Pw-An-Qlt"/>
+                    <constraint firstItem="Vap-QH-6Dd" firstAttribute="leading" secondItem="sjv-Wg-pVQ" secondAttribute="trailing" constant="8" id="9Qe-5q-Vo1"/>
+                    <constraint firstItem="Jqf-el-2HQ" firstAttribute="width" secondItem="YPY-V4-gMy" secondAttribute="width" id="AJE-Zs-Pcf"/>
+                    <constraint firstItem="Jqf-el-2HQ" firstAttribute="top" secondItem="Vap-QH-6Dd" secondAttribute="bottom" id="AzG-Bb-qIb"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Jqf-el-2HQ" secondAttribute="trailing" constant="8" id="EfD-tQ-x2S"/>
+                    <constraint firstItem="sjv-Wg-pVQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="EqF-zI-npB"/>
+                    <constraint firstItem="sjv-Wg-pVQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="Zsk-NX-mBp"/>
+                    <constraint firstItem="YPY-V4-gMy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="bgs-Im-d44"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="YPY-V4-gMy" secondAttribute="trailing" constant="8" id="h9U-Xc-wXC"/>
+                    <constraint firstItem="YPY-V4-gMy" firstAttribute="leading" secondItem="sjv-Wg-pVQ" secondAttribute="trailing" constant="8" id="uTu-74-3J8"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Jqf-el-2HQ" secondAttribute="bottom" id="ySa-vx-2iE"/>
+                    <constraint firstItem="Vap-QH-6Dd" firstAttribute="top" secondItem="YPY-V4-gMy" secondAttribute="bottom" constant="8" id="ztg-4d-rJm"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="contentLabel" destination="Jqf-el-2HQ" id="Kck-GF-t7N"/>
+                <outlet property="iconImageView" destination="sjv-Wg-pVQ" id="DVI-S7-XWm"/>
+                <outlet property="nameLabel" destination="YPY-V4-gMy" id="yv6-t5-mK1"/>
+                <outlet property="timeLabel" destination="Vap-QH-6Dd" id="wfS-kh-Ype"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="96"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="CircleFriends" width="50" height="50"/>
+    </resources>
+</document>

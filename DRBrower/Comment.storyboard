@@ -30,7 +30,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAE-wN-VDd">
-                                <rect key="frame" x="16" y="619" width="343" height="1"/>
+                                <rect key="frame" x="0.0" y="617" width="375" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="5YB-Eb-Phe"/>
@@ -40,35 +40,35 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" tag="100" contentMode="scaleToFill" text=" 写评论" translatesAutoresizingMaskIntoConstraints="NO" id="Map-3J-wh6">
-                                <rect key="frame" x="15" y="628" width="345" height="31"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  写评论" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zC7-kK-gEb">
+                                <rect key="frame" x="16" y="626" width="343" height="33"/>
+                                <color key="backgroundColor" red="0.8396818329015544" green="0.8396818329015544" blue="0.8396818329015544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="jAE-wN-VDd" firstAttribute="top" secondItem="7b5-37-aHC" secondAttribute="bottom" constant="2" id="1wY-at-SQP"/>
-                            <constraint firstItem="Map-3J-wh6" firstAttribute="leading" secondItem="uMJ-sj-fbF" secondAttribute="leading" constant="15" id="6E7-dS-KcV"/>
+                            <constraint firstItem="jAE-wN-VDd" firstAttribute="top" secondItem="7b5-37-aHC" secondAttribute="bottom" id="0m8-xm-SPq"/>
+                            <constraint firstItem="zC7-kK-gEb" firstAttribute="leading" secondItem="uMJ-sj-fbF" secondAttribute="leadingMargin" id="8kj-F5-fdv"/>
                             <constraint firstAttribute="trailing" secondItem="7b5-37-aHC" secondAttribute="trailing" id="Asl-4v-Jyt"/>
-                            <constraint firstAttribute="bottom" secondItem="Map-3J-wh6" secondAttribute="bottom" constant="8" id="CjA-wF-e8s"/>
-                            <constraint firstItem="jAE-wN-VDd" firstAttribute="trailing" secondItem="uMJ-sj-fbF" secondAttribute="trailingMargin" id="EKf-yy-y01"/>
+                            <constraint firstItem="zC7-kK-gEb" firstAttribute="trailing" secondItem="uMJ-sj-fbF" secondAttribute="trailingMargin" id="E30-HC-5jS"/>
+                            <constraint firstItem="jAE-wN-VDd" firstAttribute="trailing" secondItem="uMJ-sj-fbF" secondAttribute="trailingMargin" constant="16" id="EKf-yy-y01"/>
                             <constraint firstItem="7b5-37-aHC" firstAttribute="leading" secondItem="uMJ-sj-fbF" secondAttribute="leading" id="Eak-fU-Edl"/>
-                            <constraint firstItem="Map-3J-wh6" firstAttribute="top" secondItem="jAE-wN-VDd" secondAttribute="bottom" constant="8" id="TWY-S4-and"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="jAE-wN-VDd" secondAttribute="trailing" id="Y4y-Cq-DAR"/>
+                            <constraint firstItem="sIk-ue-kNJ" firstAttribute="top" secondItem="zC7-kK-gEb" secondAttribute="bottom" constant="8" id="U9k-fp-6Qe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jAE-wN-VDd" secondAttribute="trailing" constant="-16" id="Y4y-Cq-DAR"/>
+                            <constraint firstItem="zC7-kK-gEb" firstAttribute="top" secondItem="jAE-wN-VDd" secondAttribute="bottom" constant="8" id="Yrj-5I-JLg"/>
                             <constraint firstItem="7b5-37-aHC" firstAttribute="top" secondItem="uMJ-sj-fbF" secondAttribute="top" id="bLc-yL-t2i"/>
                             <constraint firstItem="sIk-ue-kNJ" firstAttribute="top" secondItem="7b5-37-aHC" secondAttribute="bottom" constant="50" id="gi6-J8-OA3"/>
-                            <constraint firstItem="jAE-wN-VDd" firstAttribute="leading" secondItem="uMJ-sj-fbF" secondAttribute="leadingMargin" id="o0f-21-1J4"/>
-                            <constraint firstItem="jAE-wN-VDd" firstAttribute="leading" secondItem="uMJ-sj-fbF" secondAttribute="leadingMargin" id="wmC-PX-4K1"/>
-                            <constraint firstItem="jAE-wN-VDd" firstAttribute="top" secondItem="7b5-37-aHC" secondAttribute="bottom" constant="2" id="zV7-2N-yXZ"/>
-                            <constraint firstAttribute="trailing" secondItem="Map-3J-wh6" secondAttribute="trailing" constant="15" id="znU-6v-kC3"/>
+                            <constraint firstItem="jAE-wN-VDd" firstAttribute="leading" secondItem="uMJ-sj-fbF" secondAttribute="leadingMargin" constant="-16" id="o0f-21-1J4"/>
+                            <constraint firstItem="jAE-wN-VDd" firstAttribute="leading" secondItem="uMJ-sj-fbF" secondAttribute="leadingMargin" constant="-16" id="wmC-PX-4K1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="LDv-F6-E8w"/>
                     <connections>
                         <outlet property="commentListTableView" destination="7b5-37-aHC" id="KH1-jd-FcX"/>
-                        <outlet property="textView1" destination="Map-3J-wh6" id="AP2-iI-NGv"/>
+                        <outlet property="writeCommentLabel" destination="zC7-kK-gEb" id="o3h-7b-zvY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T1m-XX-LMK" userLabel="First Responder" sceneMemberID="firstResponder"/>
