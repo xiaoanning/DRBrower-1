@@ -330,7 +330,7 @@
                                 <constraint firstItem="CLd-2b-fsc" firstAttribute="top" secondItem="PXM-l4-CJm" secondAttribute="bottom" id="exN-87-8AW"/>
                                 <constraint firstItem="PXM-l4-CJm" firstAttribute="top" secondItem="jQN-XC-7r7" secondAttribute="top" constant="35" id="gTe-AC-aE5"/>
                                 <constraint firstItem="2cS-UK-KB7" firstAttribute="leading" secondItem="ctE-Rj-c4E" secondAttribute="trailing" constant="3" id="hfn-7w-kcc"/>
-                                <constraint firstAttribute="width" secondItem="jQN-XC-7r7" secondAttribute="height" multiplier="75:38" id="inc-1P-EbH"/>
+                                <constraint firstAttribute="height" constant="190" id="hmj-nb-qUq"/>
                                 <constraint firstAttribute="trailing" secondItem="PXM-l4-CJm" secondAttribute="trailing" constant="20" id="keJ-GO-mo0"/>
                                 <constraint firstItem="B6c-NN-JJH" firstAttribute="leading" secondItem="wXr-g0-kbi" secondAttribute="trailing" id="n3L-Ul-0nM"/>
                                 <constraint firstAttribute="bottom" secondItem="JXJ-Hy-52R" secondAttribute="bottom" id="otf-hb-iSv"/>
@@ -383,15 +383,15 @@
                 <outlet property="websitePageControl" destination="NR9-VU-WlF" id="KwU-3l-pN8"/>
                 <outlet property="websitePageControlHeight" destination="LBx-oJ-Yta" id="CK4-sY-8Da"/>
             </connections>
-            <point key="canvasLocation" x="313.5" y="-298"/>
+            <point key="canvasLocation" x="113" y="-305"/>
         </view>
     </objects>
     <resources>
-        <image name="header_ jokes" width="16" height="16"/>
-        <image name="header_lady" width="16" height="16"/>
+        <image name="header_ jokes" width="30" height="30"/>
+        <image name="header_lady" width="30" height="30"/>
         <image name="header_novel" width="30" height="30"/>
-        <image name="header_ranking" width="16" height="16"/>
-        <image name="header_url" width="16" height="16"/>
+        <image name="header_ranking" width="30" height="30"/>
+        <image name="header_url" width="30" height="30"/>
         <image name="scan" width="30" height="30"/>
         <image name="search_fangdajing" width="20" height="20"/>
     </resources>

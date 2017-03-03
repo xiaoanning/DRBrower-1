@@ -642,8 +642,8 @@
 				557DC0B81E0BC03300ECFFDE /* TagsView.m */,
 				558ADF5D1E0E2B4F00035716 /* HomeToolBar.h */,
 				558ADF5E1E0E2B4F00035716 /* HomeToolBar.m */,
-				1866D49D1E5BD11700BDB5DB /* HomeTopViewLayout.m */,
 				1866D49E1E5BD11700BDB5DB /* HomeTopViewLayout.h */,
+				1866D49D1E5BD11700BDB5DB /* HomeTopViewLayout.m */,
 			);
 			path = View;
 			sourceTree = "<group>";

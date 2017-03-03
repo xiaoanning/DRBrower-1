@@ -297,14 +297,14 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     
     switch ([news.imgs count]) {
         case 0:
-            return 100;
+            return 70;
             break;
         case 1:{
             return 100;
         }
             break;
         case 3:{
-            return 180;
+            return 145;
         }
             break;
             
