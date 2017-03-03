@@ -23,6 +23,7 @@
 #import <MBProgressHUD.h>
 #import <Realm/Realm.h>
 #import "Masonry.h"
+#import "QRCodeReaderViewController.h"
 
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKConnector/ShareSDKConnector.h>

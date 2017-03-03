@@ -19,5 +19,4 @@ target 'DRBrower' do
   pod 'ShareSDK3/ShareSDKPlatforms/QQ'
   pod 'ShareSDK3/ShareSDKPlatforms/WeChat'
   pod 'Masonry', '~> 1.0.2'
-
 end
