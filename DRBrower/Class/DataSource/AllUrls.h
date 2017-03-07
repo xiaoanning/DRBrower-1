@@ -32,7 +32,11 @@
 //获取排行列表标签
 #define URL_GETSORTLIST @"sort/getList?page_num="
 //http://61.160.250.174:8080/dr/sort/getList?page_num=1&site_type=3&sort=visit_num
-
+//网址
+#define URL_123HAOURL @"http://m.hao123.com/"
+#define URL_NOVEL @"http://book.easou.com/"
+#define URL_LADY @"http://www.tuigirl.com/"
+#define URL_JOKES @"http://www.qiushibaike.com/"
 //天气
 #define URL_GETWEATHER @"http://admin.drliulanqi.com/index.php?g=api&m=weather&a=get_weather&token=brower*@forapi@*&name="
 

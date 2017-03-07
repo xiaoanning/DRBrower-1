@@ -234,6 +234,9 @@
                                                     <state key="normal" image="header_ jokes">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="didClickJokesButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="lRF-gj-TgB"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="段子" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YmT-qZ-OVd">
                                                     <rect key="frame" x="22" y="55" width="30" height="15"/>
