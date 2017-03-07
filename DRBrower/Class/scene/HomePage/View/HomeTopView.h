@@ -16,9 +16,10 @@
 - (void)touchUpSearchButtonAction;
 - (void)touchUpQRcodeButtonAction;
 - (void)touchUpSortButtonAction;
+- (void)touchUpButtonShowDetail:(NSString *)urlStr;
 
 - (void)websiteViewSelectWithWebsite:(WebsiteModel *)website;
-- (void)homeTopViewpresentView:(WebsiteModel *)model;
+- (void)homeTopViewPresentView:(WebsiteModel *)model;
 
 @end
 

@@ -379,7 +379,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
     SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
     searchVC.newsModel = news;
-    [self.navigationController pushViewController:searchVC animated:YES];
+    [self.navigationController showViewController:searchVC sender:nil];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -423,6 +423,15 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     SortRootVC *sortRootVC = [[SortRootVC alloc] init];
     [self.navigationController pushViewController:sortRootVC animated:YES];
 }
+
+//网址
+- (void)touchUpButtonShowDetail:(NSString *)urlStr {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
+    SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
+    searchVC.searchText = urlStr;
+    [self.navigationController showViewController:searchVC sender:nil];
+}
+
 
 //频道
 - (void)touchUpChannelButtonAction:(NSInteger)buttonTags {
@@ -515,6 +524,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     AdviceVC *adviceVC = (AdviceVC *)[stroyboard instantiateViewControllerWithIdentifier:@"AdviceVC"];
     [self.navigationController showViewController:adviceVC sender:nil];
 }
+
 //客服群
 -(void)touchUpServiceButtonAction {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
@@ -542,11 +552,6 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     }
 }
 - (void)touchUpQRcodeButtonAction {
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-//    ScanVC *scanVC = (ScanVC *)[storyboard instantiateViewControllerWithIdentifier:@"ScanVC"];
-//    [self.navigationController showViewController:scanVC sender:nil];
-
-    
     QRCodeReaderViewController *reader = [QRCodeReaderViewController new];
     reader.modalPresentationStyle = UIModalPresentationFormSheet;
     reader.delegate = self;
@@ -554,7 +559,6 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     __weak typeof (self) wSelf = self;
     [reader setCompletionWithBlock:^(NSString *resultAsString) {
         [wSelf.navigationController popViewControllerAnimated:YES];
-//        [[[UIAlertView alloc] initWithTitle:@"" message:resultAsString delegate:self cancelButtonTitle:@"好的" otherButtonTitles: nil] show];
         
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
         SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
@@ -563,10 +567,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
         [self.navigationController pushViewController:searchVC animated:YES];
     }];
     
-    //[self presentViewController:reader animated:YES completion:NULL];
     [self.navigationController pushViewController:reader animated:YES];
-    
-
 }
 
 //搜索
