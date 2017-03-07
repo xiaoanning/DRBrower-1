@@ -101,10 +101,17 @@
 		55BC1B121E49D3EF00A64375 /* RecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BC1B101E49D3EF00A64375 /* RecordCell.m */; };
 		55BC1B131E49D3EF00A64375 /* RecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55BC1B111E49D3EF00A64375 /* RecordCell.xib */; };
 		55BC1B161E4AF1A800A64375 /* CollectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BC1B151E4AF1A800A64375 /* CollectVC.m */; };
+<<<<<<< HEAD
 		55DE44D71E6E9FBB00DCD1BE /* DRGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DE44D21E6E9FBB00DCD1BE /* DRGeocoder.m */; };
 		55DE44D81E6E9FBB00DCD1BE /* DRLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DE44D41E6E9FBB00DCD1BE /* DRLocationManager.m */; };
 		55DE44D91E6E9FBB00DCD1BE /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DE44D61E6E9FBB00DCD1BE /* WeatherModel.m */; };
 		55DE44DD1E6EA13200DCD1BE /* NSString+StringSeparated.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DE44DC1E6EA13200DCD1BE /* NSString+StringSeparated.m */; };
+=======
+		55DE44E11E6EA4A600DCD1BE /* NSString+StringSeparated.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DE44E01E6EA4A600DCD1BE /* NSString+StringSeparated.m */; };
+		55DE44E81E6EA4BA00DCD1BE /* DRGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DE44E31E6EA4BA00DCD1BE /* DRGeocoder.m */; };
+		55DE44E91E6EA4BA00DCD1BE /* DRLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DE44E51E6EA4BA00DCD1BE /* DRLocationManager.m */; };
+		55DE44EA1E6EA4BA00DCD1BE /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DE44E71E6EA4BA00DCD1BE /* WeatherModel.m */; };
+>>>>>>> 7e00b703d17b2bbfd3635a7b1cb8e818ce116ed6
 		55E5BC211E67C92800A7CF9E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E5BC201E67C92800A7CF9E /* CoreMedia.framework */; };
 		55E5BC231E67C93200A7CF9E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E5BC221E67C93200A7CF9E /* QuartzCore.framework */; };
 		55E5BC271E67C95000A7CF9E /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E5BC261E67C95000A7CF9E /* ImageIO.framework */; };
@@ -298,6 +305,7 @@
 		55BC1B111E49D3EF00A64375 /* RecordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordCell.xib; sourceTree = "<group>"; };
 		55BC1B141E4AF1A800A64375 /* CollectVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectVC.h; sourceTree = "<group>"; };
 		55BC1B151E4AF1A800A64375 /* CollectVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectVC.m; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		55DE44D11E6E9FBB00DCD1BE /* DRGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRGeocoder.h; sourceTree = "<group>"; };
 		55DE44D21E6E9FBB00DCD1BE /* DRGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRGeocoder.m; sourceTree = "<group>"; };
 		55DE44D31E6E9FBB00DCD1BE /* DRLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRLocationManager.h; sourceTree = "<group>"; };
@@ -307,6 +315,17 @@
 		55DE44DA1E6EA13200DCD1BE /* Define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
 		55DE44DB1E6EA13200DCD1BE /* NSString+StringSeparated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StringSeparated.h"; sourceTree = "<group>"; };
 		55DE44DC1E6EA13200DCD1BE /* NSString+StringSeparated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StringSeparated.m"; sourceTree = "<group>"; };
+=======
+		55DE44DE1E6EA4A600DCD1BE /* Define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
+		55DE44DF1E6EA4A600DCD1BE /* NSString+StringSeparated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StringSeparated.h"; sourceTree = "<group>"; };
+		55DE44E01E6EA4A600DCD1BE /* NSString+StringSeparated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StringSeparated.m"; sourceTree = "<group>"; };
+		55DE44E21E6EA4BA00DCD1BE /* DRGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRGeocoder.h; sourceTree = "<group>"; };
+		55DE44E31E6EA4BA00DCD1BE /* DRGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRGeocoder.m; sourceTree = "<group>"; };
+		55DE44E41E6EA4BA00DCD1BE /* DRLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRLocationManager.h; sourceTree = "<group>"; };
+		55DE44E51E6EA4BA00DCD1BE /* DRLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRLocationManager.m; sourceTree = "<group>"; };
+		55DE44E61E6EA4BA00DCD1BE /* WeatherModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherModel.h; sourceTree = "<group>"; };
+		55DE44E71E6EA4BA00DCD1BE /* WeatherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherModel.m; sourceTree = "<group>"; };
+>>>>>>> 7e00b703d17b2bbfd3635a7b1cb8e818ce116ed6
 		55E5BC201E67C92800A7CF9E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		55E5BC221E67C93200A7CF9E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		55E5BC241E67C94400A7CF9E /* libZXingObjC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libZXingObjC.a; path = "Pods/../build/Debug-iphoneos/ZXingObjC/libZXingObjC.a"; sourceTree = "<group>"; };
@@ -605,9 +624,15 @@
 		557DC0831E08E08400ECFFDE /* Public */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				55DE44DA1E6EA13200DCD1BE /* Define.h */,
 				55DE44DB1E6EA13200DCD1BE /* NSString+StringSeparated.h */,
 				55DE44DC1E6EA13200DCD1BE /* NSString+StringSeparated.m */,
+=======
+				55DE44DE1E6EA4A600DCD1BE /* Define.h */,
+				55DE44DF1E6EA4A600DCD1BE /* NSString+StringSeparated.h */,
+				55DE44E01E6EA4A600DCD1BE /* NSString+StringSeparated.m */,
+>>>>>>> 7e00b703d17b2bbfd3635a7b1cb8e818ce116ed6
 				55421ADE1E5D22D400389B86 /* UIImage+DRImageClip.h */,
 				55421ADF1E5D22D400389B86 /* UIImage+DRImageClip.m */,
 				558ADF571E0D115600035716 /* DRImageView.h */,
@@ -688,6 +713,12 @@
 		557DC09B1E0A21B500ECFFDE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				55DE44E21E6EA4BA00DCD1BE /* DRGeocoder.h */,
+				55DE44E31E6EA4BA00DCD1BE /* DRGeocoder.m */,
+				55DE44E41E6EA4BA00DCD1BE /* DRLocationManager.h */,
+				55DE44E51E6EA4BA00DCD1BE /* DRLocationManager.m */,
+				55DE44E61E6EA4BA00DCD1BE /* WeatherModel.h */,
+				55DE44E71E6EA4BA00DCD1BE /* WeatherModel.m */,
 				557DC09F1E0A234100ECFFDE /* NewsTagModel.h */,
 				557DC0A01E0A234100ECFFDE /* NewsTagModel.m */,
 				557DC09C1E0A22D000ECFFDE /* NewsTagListModel.h */,
@@ -870,6 +901,10 @@
 				TargetAttributes = {
 					557DC0611E08DF8100ECFFDE = {
 						CreatedOnToolsVersion = 8.1;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7e00b703d17b2bbfd3635a7b1cb8e818ce116ed6
 						DevelopmentTeam = J7LGQHZ8DG;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -997,12 +1032,14 @@
 				18D61F3A1E66B3EF0077BE5C /* CommentListCell.m in Sources */,
 				55BC1B001E4957CE00A64375 /* UIButton+ImageTitleSpacing.m in Sources */,
 				557DC0971E08E3A500ECFFDE /* DRHomeVC.m in Sources */,
+				55DE44E91E6EA4BA00DCD1BE /* DRLocationManager.m in Sources */,
 				557A94091E5EDD7D006A2466 /* RecordListModel.m in Sources */,
 				552ADBD11E249189007036CA /* WebsiteRecommendCell.m in Sources */,
 				557DC0AD1E0A685100ECFFDE /* ImgsModel.m in Sources */,
 				557DC0BD1E0CB7F900ECFFDE /* ZeroPicCell.m in Sources */,
 				55421AA91E599A6E00389B86 /* ShareView.m in Sources */,
 				557DC0AA1E0A64E900ECFFDE /* NewsListModel.m in Sources */,
+				55DE44EA1E6EA4BA00DCD1BE /* WeatherModel.m in Sources */,
 				558ADF991E13CE5F00035716 /* DRImageView.m in Sources */,
 				18FF71581E6D4F3B00F7BAA3 /* RegsitVC.m in Sources */,
 				1866D4A21E5BDDF500BDB5DB /* NewsListViewController.m in Sources */,
@@ -1018,6 +1055,7 @@
 				55E5BC591E68252200A7CF9E /* QRCameraSwitchButton.m in Sources */,
 				18D61F301E66B3DF0077BE5C /* SortListModel.m in Sources */,
 				18D61F1D1E66B3CC0077BE5C /* SortCommonVC.m in Sources */,
+				55DE44E81E6EA4BA00DCD1BE /* DRGeocoder.m in Sources */,
 				18D61F431E66C7680077BE5C /* AdviceVC.m in Sources */,
 				557A94111E5FD445006A2466 /* DRRealmPublic.m in Sources */,
 				552375891E1CEAF000214ECB /* SearchVC.m in Sources */,
@@ -1055,6 +1093,7 @@
 				55BC1B161E4AF1A800A64375 /* CollectVC.m in Sources */,
 				18FF71621E6E3F9500F7BAA3 /* LoginModel.m in Sources */,
 				18D61F2F1E66B3DF0077BE5C /* CommentModel.m in Sources */,
+				55DE44E11E6EA4A600DCD1BE /* NSString+StringSeparated.m in Sources */,
 				557A940B1E5EDD7D006A2466 /* RecordRealm.m in Sources */,
 				55E5BC5A1E68252200A7CF9E /* QRCodeReaderView.m in Sources */,
 				55DE44DD1E6EA13200DCD1BE /* NSString+StringSeparated.m in Sources */,
@@ -1219,6 +1258,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+<<<<<<< HEAD
+=======
+				DEVELOPMENT_TEAM = "";
+>>>>>>> 7e00b703d17b2bbfd3635a7b1cb8e818ce116ed6
 				DEVELOPMENT_TEAM = J7LGQHZ8DG;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DRBrower/DRBrowser-Prefix.pch";
@@ -1239,6 +1282,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+<<<<<<< HEAD
+=======
+				DEVELOPMENT_TEAM = "";
+>>>>>>> 7e00b703d17b2bbfd3635a7b1cb8e818ce116ed6
 				DEVELOPMENT_TEAM = J7LGQHZ8DG;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DRBrower/DRBrowser-Prefix.pch";

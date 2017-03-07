@@ -41,6 +41,7 @@
 #import "Tools.h"
 #import "Define.h"
 #import "AllUrls.h"
+#import "Define.h"
 #import "DRRealmPublic.h"
 #import "DRLocationManager.h"
 #import "DRGeocoder.h"

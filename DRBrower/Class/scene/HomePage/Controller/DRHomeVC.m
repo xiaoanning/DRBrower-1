@@ -56,9 +56,16 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 
 @property (strong, nonatomic) NewsTagModel *newsTag;
 @property (strong, nonatomic) WeatherModel *weather;
+<<<<<<< HEAD
 @property (assign, nonatomic) BOOL isHeight;
 
 @property ( nonatomic , strong ) UIPageViewController * pageVC ;
+=======
+
+@property (assign, nonatomic) BOOL isHeight;
+
+@property (nonatomic , strong ) UIPageViewController * pageVC ;
+>>>>>>> 7e00b703d17b2bbfd3635a7b1cb8e818ce116ed6
 @property (nonatomic, strong) DRLocationManager *locationManger;
 
 
@@ -85,7 +92,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     [self getTagData];
     [self getNewsByTag:nil type:nil];
     [self getWebsiteData];
-    
+    [self location];
     [self setupTableView];
     [self location];
     
@@ -113,7 +120,10 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     [self.locationManger creatManager];
     
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7e00b703d17b2bbfd3635a7b1cb8e818ce116ed6
 #pragma mark - UIPageViewController
 -(void)createPageVCUI
 {
@@ -411,8 +421,6 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
         return top;
     }
     return nil;
-
-    
 }
 
 #pragma mark - custom delegate
@@ -732,6 +740,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     
     __block DRGeocoder *geo = [[DRGeocoder alloc] init];
     [geo creatGeocoder:locations.lastObject
+<<<<<<< HEAD
                       block:^(DRGeocoder *geocoder, NSError *error) {
                           
                           [self getWeatherData:[geocoder.city stringByAppendingString:geocoder.subLocality]];
@@ -750,6 +759,17 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 }
 
 
+=======
+                 block:^(DRGeocoder *geocoder, NSError *error) {
+                     
+                     [self getWeatherData:[geocoder.city stringByAppendingString:geocoder.subLocality]];
+                     
+                     [manager stopUpdatingLocation];
+                     
+                 }];
+    
+}
+>>>>>>> 7e00b703d17b2bbfd3635a7b1cb8e818ce116ed6
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
