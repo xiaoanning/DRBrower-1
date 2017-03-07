@@ -11,6 +11,7 @@
 #import "WebsiteCell.h"
 #import "WebsiteModel.h"
 #import "HomeTopViewLayout.h"
+#import "WeatherModel.h"
 
 static NSString *const websiteCellIdentifier = @"WebsiteCell";
 @interface HomeTopView()<UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate>{
@@ -27,6 +28,50 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
 }
 */
 
+- (void)weatherHeader:(HomeTopView *)header model:(WeatherModel *)model {
+    self.weatherLabel.text = model.weather;
+    self.temperatureLabel.text = [model.temperature stringByAppendingString:@"°"];
+    self.pmLabel.text = model.pm25;
+    self.placeLabel.text = model.currentCity;
+    
+    int parseInt = [model.pm25 intValue];
+    if (0 <= parseInt && parseInt < 50) {
+        self.airQualityLabel.text = NSLocalizedString(@"空气优", nil);
+        self.pmLabel.backgroundColor = colorWithvalue(@"39e0d6");
+    } else if (50 <= parseInt && parseInt < 100) {
+        self.airQualityLabel.text = NSLocalizedString(@"空气良", nil);
+        self.pmLabel.backgroundColor = colorWithvalue(@"6ce324");
+    } else if (100 <= parseInt && parseInt < 150) {
+        self.airQualityLabel.text = NSLocalizedString(@"轻度污染", nil);
+        self.pmLabel.backgroundColor = colorWithvalue(@"e7cc16");
+    } else if (150 <= parseInt && parseInt < 200) {
+        self.airQualityLabel.text = NSLocalizedString(@"中度污染", nil);
+        self.pmLabel.backgroundColor = colorWithvalue(@"e67c27");
+    } else if (200 <= parseInt && parseInt < 300) {
+        self.airQualityLabel.text = NSLocalizedString(@"重度污染", nil);
+        self.pmLabel.backgroundColor = colorWithvalue(@"c92b41");
+    } else if (parseInt >= 300) {
+        self.airQualityLabel.text = NSLocalizedString(@"严重污染", nil);
+        self.pmLabel.backgroundColor = colorWithvalue(@"8827c5");
+    }
+    
+    if ([model.weather containsString:NSLocalizedString(@"晴", nil)]) {
+        self.weatherImage.image = [UIImage imageNamed:@"weather_fine"];
+    }else if ([model.weather containsString:NSLocalizedString(@"云", nil)]) {
+        self.weatherImage.image = [UIImage imageNamed:@"weather_cloudy"];
+    }else if ([model.weather containsString:NSLocalizedString(@"雨", nil)]) {
+        self.weatherImage.image = [UIImage imageNamed:@"weather_light_rain"];
+    }else if ([model.weather containsString:NSLocalizedString(@"霾", nil)]) {
+        self.weatherImage.image = [UIImage imageNamed:@"weather_haze"];
+    }else if ([model.weather containsString:NSLocalizedString(@"阴", nil)]) {
+        self.weatherImage.image = [UIImage imageNamed:@"weather_overcast"];
+    }else if ([model.weather containsString:NSLocalizedString(@"雪", nil)]) {
+        self.weatherImage.image = [UIImage imageNamed:@"weather_Light_Snow"];
+    }else {
+        self.weatherImage.image = [UIImage imageNamed:@"weather_cloudy"];
+    }
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     
@@ -41,15 +86,6 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
     self.websiteArray = [DRLocaldData achieveWebsiteData];
     [(HomeTopViewLayout *)self.websiteCollectionView.collectionViewLayout setDefectListModel:self.websiteArray] ;
     [self reloadPageControl];
-
-//    if ([self.websiteArray count]>10) {
-//        NSInteger num = 10 - [self.websiteArray count]%10;
-//        for (int i = 0; i < num; i++) {
-//            WebsiteModel *model = [[WebsiteModel alloc] init];
-//            [self.websiteArray addObject:model];
-//        }
-//        [self reloadPageControl];
-//    }
     
 }
 
@@ -132,6 +168,21 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
     }
 }
 
+- (IBAction)didClickURLButtonAciton:(id)sender {
+}
+
+- (IBAction)didClickNovelButtonAction:(id)sender {
+}
+
+- (IBAction)didClickLadyButtonAction:(id)sender {
+}
+
+- (IBAction)touchUpSortButton:(id)sender {
+    if (_delegate && [_delegate respondsToSelector:@selector(touchUpSortButtonAction)]) {
+        [_delegate touchUpSortButtonAction];
+    }
+}
+
 - (void)longPressGesture:(WebsiteModel *)model {
 
         if(_delegate && [_delegate respondsToSelector:@selector(homeTopViewpresentView:)]){
@@ -139,11 +190,7 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
         }
 
 }
-- (IBAction)touchUpSortButton:(id)sender {
-    if (_delegate && [_delegate respondsToSelector:@selector(touchUpSortButtonAction)]) {
-        [_delegate touchUpSortButtonAction];
-    }
-}
+
 
 
 

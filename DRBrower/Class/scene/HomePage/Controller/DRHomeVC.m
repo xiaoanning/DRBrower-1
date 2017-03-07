@@ -20,6 +20,7 @@
 #import "NewsModel.h"
 #import "WebsiteModel.h"
 #import "ShareModel.h"
+#import "WeatherModel.h"
 
 #import "ZeroPicCell.h"
 #import "OnePicCell.h"
@@ -55,9 +56,12 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 @property (strong, nonatomic) NSMutableArray *websiteArray;
 
 @property (strong, nonatomic) NewsTagModel *newsTag;
+@property (strong, nonatomic) WeatherModel *weather;
+
 @property (assign, nonatomic) BOOL isHeight;
 
-@property ( nonatomic , strong ) UIPageViewController * pageVC ;
+@property (nonatomic , strong ) UIPageViewController * pageVC ;
+@property (nonatomic, strong) DRLocationManager *locationManger;
 
 
 @end
@@ -83,7 +87,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     [self getTagData];
     [self getNewsByTag:nil type:nil];
     [self getWebsiteData];
-    
+    [self location];
     [self setupTableView];
     
     self.newsListArray = [NSMutableArray arrayWithCapacity:5];
@@ -102,6 +106,13 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     [self.homeTableView registerNib:[UINib nibWithNibName:@"ThreePicCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:threePicCellIdentifier];
     [self.homeTableView registerNib:[UINib nibWithNibName:@"ZeroPicCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:zeroPicCellIdentifier];
 
+}
+
+- (void)location {
+    self.locationManger = [[DRLocationManager alloc] init];
+    self.locationManger.delegate = self;
+    [self.locationManger creatManager];
+    
 }
 #pragma mark - UIPageViewController
 -(void)createPageVCUI
@@ -241,6 +252,18 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     
 }
 
+- (void)getWeatherData:(NSString *)city {
+    
+    [WeatherModel getWeatherUrl:URL_GETWEATHER
+                     parameters:city
+                          block:^(WeatherModel *weather, NSError *error) {
+                              if (!error) {
+                                  self.weather = weather;
+                                  [self.homeTableView reloadData];
+                              }
+                          }];
+}
+
 #pragma mark - 上下拉刷新
 //下拉
 - (void)headerRereshing {
@@ -298,14 +321,14 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     
     switch ([news.imgs count]) {
         case 0:
-            return 100;
+            return 70;
             break;
         case 1:{
             return 100;
         }
             break;
         case 3:{
-            return 180;
+            return 145;
         }
             break;
             
@@ -382,13 +405,13 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (self.isHeight == YES) {
         NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"HomeTopView" owner:nil options:nil];
-        self.top = [views lastObject];
-        self.top.delegate = self;
-        return self.top;
+        HomeTopView *top = [views lastObject];
+        top.delegate = self;
+        [top weatherHeader:top model:self.weather];
+        
+        return top;
     }
     return nil;
-
-    
 }
 
 #pragma mark - custom delegate
@@ -704,7 +727,24 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
+#pragma mark - location delegate
+// 当定位到用户位置时调用
+// 调用非常频繁(耗电)
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    // 一个CLLocation对象代表一个位置
+    NSLog(@"%@",locations);
+    
+    __block DRGeocoder *geo = [[DRGeocoder alloc] init];
+    [geo creatGeocoder:locations.lastObject
+                 block:^(DRGeocoder *geocoder, NSError *error) {
+                     
+                     [self getWeatherData:[geocoder.city stringByAppendingString:geocoder.subLocality]];
+                     
+                     [manager stopUpdatingLocation];
+                     
+                 }];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
