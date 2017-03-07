@@ -8,18 +8,25 @@
 
 #import "MoreVC.h"
 #import "BrightnessVC.h"
+#import "SearchVC.h"
 
 @interface MoreVC ()
-
+@property (nonatomic,strong) NSArray *titleArray;
+@property (nonatomic,strong) UILabel *cacheLabel;
+@property (nonatomic,strong) NSMutableArray *switchStatusArray;
 @end
 
 @implementation MoreVC
-
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = NO;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBarHidden = NO;
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"更多";
+    self.switchStatusArray = [NSMutableArray array];
+    self.titleArray = @[@"清理缓存",@"字体大小",@"调整亮度"];
     
     self.moreTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
@@ -28,41 +35,144 @@
 }
 
 - (void)backButtonAction:(UIBarButtonItem *)barButton {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
-
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return self.titleArray.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 40;
+    return 50;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifer = @"identifer";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
-    }
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.textLabel.text = @"调节亮度";
+    cell.textLabel.text = self.titleArray[indexPath.row];
+    if (indexPath.row == 0) {
+        [self createLabelOnCell:cell];
+    }
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    switch (indexPath.row) {
+        case 0: //清理缓存
+            [self cleanCacheAlert];
+            break;
+        case 1: //字体大小
+            break;
+        case 2: //调整亮度
+            [self createBrightnessView];
+            break;
+        default:
+            break;
+    }
+}
+//创建右侧Label
+-(void)createLabelOnCell:(UITableViewCell *)cell {
+    self.cacheLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.cacheLabel.textAlignment = NSTextAlignmentRight;
+    self.cacheLabel.font = [UIFont boldSystemFontOfSize:15];
+    self.cacheLabel.adjustsFontSizeToFitWidth = YES;
+    self.cacheLabel.text = [NSString stringWithFormat:@"%.2f M",[self getCacheSize]];
+    [cell addSubview:self.cacheLabel];
+    [self.cacheLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(100, 50));
+        make.top.equalTo(cell.mas_top).with.offset(0);
+        make.right.equalTo(cell.mas_right).with.offset(-30);
+    }];
+}
+////创建右侧switch
+//-(void)createSwitchOnCell:(UITableViewCell *)cell index:(NSInteger)index{
+//    cell.accessoryType = UITableViewCellAccessoryNone;
+//    UISwitch *aSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+//    aSwitch.tag = index+100;
+//    [cell addSubview:aSwitch];
+//    if ([[DRLocaldData achieveSwitchData] containsObject:[NSString stringWithFormat:@"%ld",(long)index+100]]) {
+//        aSwitch.on = YES;
+//    }else {
+//        aSwitch.on = NO;
+//    }
+//    [aSwitch addTarget:self action:@selector(touchUpSwitch:) forControlEvents:UIControlEventTouchUpInside];
+//    [aSwitch mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(cell.mas_top).with.offset(10);
+//        make.bottom.equalTo(cell.mas_bottom).with.offset(10);
+//        make.right.equalTo(cell.mas_right).with.offset(-10);
+//    }];
+//}
+//-(void)touchUpSwitch:(UISwitch *)aSwitch {
+//    NSString *aSwitchTag = [NSString stringWithFormat:@"%ld",(long)aSwitch.tag];
+//    if ([[DRLocaldData achieveSwitchData] containsObject:aSwitchTag]) { //开--->关
+//        aSwitch.on = NO;
+//        [self.switchStatusArray removeObject:aSwitchTag];
+//        
+//    }else {//关--->开
+//        aSwitch.on = YES;
+//        [self.switchStatusArray addObject:aSwitchTag];
+//        
+//    }
+//    [DRLocaldData saveSwitchData:self.switchStatusArray];
+//}
+
+-(void)cleanCacheAlert {
+    UIAlertController *cacheAlert = [UIAlertController alertControllerWithTitle:@"是否清理文件缓存" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [cacheAlert addAction:cancelAction];
+
+    UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self clearCache];
+        self.cacheLabel.text = @"";
+        [self.moreTableView reloadData];
+    }];;
+    [cacheAlert addAction:OKAction];
     
+    [self presentViewController:cacheAlert animated:YES completion:nil];
+}
+- (double)getCacheSize {
+    //清除缓存
+    SDImageCache *imageCache = [SDImageCache sharedImageCache];
+    //image 缓存
+    NSUInteger fileSize = [imageCache getSize];
+    
+    //本地下载缓存
+    NSString *myCache = [NSHomeDirectory() stringByAppendingString:@"/Library/Caches/MyCaches"];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    
+    NSDictionary *dict = [fm attributesOfItemAtPath:myCache error:nil];
+    //sdwebimage缓存+ 本地下载缓存
+    fileSize += dict.fileSize;
+    double size = fileSize/1024.0/1024.0;
+    return size;
+}
+
+-(void)clearCache{
+    //清理sd 的内存
+    [[SDImageCache sharedImageCache] clearMemory];
+    //清理sd 缓存
+    [[SDImageCache sharedImageCache] clearDisk];
+    //清除 本地其他缓存
+    //本地下载缓存
+    NSString *myCache = [NSHomeDirectory() stringByAppendingString:@"/Library/Caches/MyCaches"];
+    [[NSFileManager defaultManager] removeItemAtPath:myCache error:nil];
+    
+    [Tools showView:@"清理完成"];
+}
+//亮度
+-(void)createBrightnessView {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Brightness" bundle:[NSBundle mainBundle]];
     BrightnessVC *brightnessVC = (BrightnessVC *)[storyboard instantiateViewControllerWithIdentifier:@"BrightnessVC"];
-
     MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:brightnessVC];
     formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
     formSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height - 160;
     formSheetController.presentationController.contentViewSize = [UIScreen mainScreen].bounds.size;
     formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideAndBounceFromBottom;
-//    brightnessVC.delegate = self;
-    
+    //    brightnessVC.delegate = self;
     [self presentViewController:formSheetController animated:YES completion:nil];
 }
 - (void)didReceiveMemoryWarning {

@@ -45,6 +45,7 @@ static NSString *const recordCellIdentifier = @"RecordCell";
         [RecordModel deleteAllRecordFromRealm:REALM_HISTORY];
         [self.historyArray removeAllObjects];
         [self.tableView reloadData];
+        [Tools showView:@"清除成功"];
     }];
 }
 

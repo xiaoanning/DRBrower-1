@@ -16,7 +16,7 @@
     dispatch_once(&onceToken, ^{
         _sharedClient = [[DRDataService alloc] init];
     });
-    _sharedClient.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+//    _sharedClient.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
     return _sharedClient;
 }
 - (NSURLSessionDataTask *)DR_get:(NSString *)URLString

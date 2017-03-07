@@ -243,7 +243,7 @@
     MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:complainVC];
     formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
     
-    formSheetController.presentationController.contentViewSize = CGSizeMake(sheetWidth, 270);
+    formSheetController.presentationController.contentViewSize = CGSizeMake(sheetWidth, 260);
     formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideFromTop;
     formSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height/2-sheetWidth/2;
     [self presentViewController:formSheetController animated:YES completion:nil];

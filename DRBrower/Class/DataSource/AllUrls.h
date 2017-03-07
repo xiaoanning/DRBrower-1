@@ -14,7 +14,9 @@
  Base Url
  @return Base Url
  */
-#define BASE_URL @"http://61.160.250.174:8080/dr/"
+#define BASE_URL @"http://61.160.250.174:8080/dr/"//@"http://61.160.196.119:8080/dr/"//@"http://112.84.188.42:9999/DRBrower/"
+#define PHP_BASE_URL @"http://admin.drliulanqi.com/index.php?g=api&token=brower*@forapi@*&"
+
 ///获取新闻分类标签
 #define URL_GETTABS @"news/getTabs"
 ///根据标签ID获取新闻
@@ -31,8 +33,6 @@
 #define URL_GETSORTLIST @"sort/getList?page_num="
 //http://61.160.250.174:8080/dr/sort/getList?page_num=1&site_type=3&sort=visit_num
 
-//天气
-#define URL_GETWEATHER @"http://admin.drliulanqi.com/index.php?g=api&m=weather&a=get_weather&token=brower*@forapi@*&name="
 
 //分享下载链接
 #define URL_SHARE @"http://www.drliulanqi.com/dr/index.html"
@@ -47,14 +47,29 @@
 #define URL_ADDCOMMENT @"comment/save?tel="
 
 //吐槽程序员
-#define URL_ADVICE @"http://admin.drliulanqi.com/index.php?g=api&m=suggest&a=add&token=brower*@forapi@*&dev_id="
+#define URL_ADVICE @"m=suggest&a=add&dev_id="
 
+//获取短信验证码
+#define URL_GETCODE @"m=user&a=get_send_message&tel="
+//注册
+#define URL_REGSIT @"m=user&a=register&sigtype=1"
+//找回密码
+#define URL_FINDPWD @"m=user&a=findpwd&devtype=1"
+//登录
+#define URL_LOGIN @"m=user&a=login&devtype=1"
 
 
 
 
 
 #endif /* AllUrls_h */
+
+
+
+
+
+
+
 
 
 

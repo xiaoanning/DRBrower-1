@@ -20,7 +20,6 @@
 #import "NewsModel.h"
 #import "WebsiteModel.h"
 #import "ShareModel.h"
-#import "WeatherModel.h"
 
 #import "ZeroPicCell.h"
 #import "OnePicCell.h"
@@ -33,6 +32,7 @@
 #import "SortRootVC.h"
 
 #import "AdviceVC.h"
+#import "LoginVC.h"
 
 static NSString *const onePicCellIdentifier = @"OnePicCell";
 static NSString *const threePicCellIdentifier = @"ThreePicCell";
@@ -41,10 +41,11 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 #define UP_LOAD @"上拉"
 #define DOWN_LOAD @"下拉"
 
-@interface DRHomeVC ()<UIPageViewControllerDelegate, UIPageViewControllerDataSource,MenuVCDelegate,QRCodeReaderDelegate, CLLocationManagerDelegate>
+@interface DRHomeVC ()<UIPageViewControllerDelegate, UIPageViewControllerDataSource,MenuVCDelegate,QRCodeReaderDelegate>
 
 @property (weak, nonatomic) IBOutlet HomeToolBar *homeToolBar;
 @property (weak, nonatomic) IBOutlet TagsView *tagsView;
+@property (strong, nonatomic) HomeTopView *top;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *listTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tagsViewHeightConstraint;
@@ -54,11 +55,9 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 @property (strong, nonatomic) NSMutableArray *websiteArray;
 
 @property (strong, nonatomic) NewsTagModel *newsTag;
-@property (strong, nonatomic) WeatherModel *weather;
 @property (assign, nonatomic) BOOL isHeight;
 
 @property ( nonatomic , strong ) UIPageViewController * pageVC ;
-@property (nonatomic, strong) DRLocationManager *locationManger;
 
 
 @end
@@ -86,7 +85,6 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     [self getWebsiteData];
     
     [self setupTableView];
-    [self location];
     
     self.newsListArray = [NSMutableArray arrayWithCapacity:5];
     self.navigationController.navigationBarHidden = YES;
@@ -105,14 +103,6 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     [self.homeTableView registerNib:[UINib nibWithNibName:@"ZeroPicCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:zeroPicCellIdentifier];
 
 }
-
-- (void)location {
-    self.locationManger = [[DRLocationManager alloc] init];
-    self.locationManger.delegate = self;
-    [self.locationManger creatManager];
-    
-}
-
 #pragma mark - UIPageViewController
 -(void)createPageVCUI
 {
@@ -245,21 +235,10 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
                                   [array addObject:addWebsite];
                                   
                                   [DRLocaldData saveWebsiteData:array];
+                                  NSLog(@"%@",array);
                               }
                           }];
     
-}
-
-- (void)getWeatherData:(NSString *)city {
-    
-    [WeatherModel getWeatherUrl:URL_GETWEATHER
-                     parameters:city
-                          block:^(WeatherModel *weather, NSError *error) {
-                              if (!error) {
-                                  self.weather = weather;
-                                  [self.homeTableView reloadData];
-                              }
-                          }];
 }
 
 #pragma mark - 上下拉刷新
@@ -319,14 +298,14 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     
     switch ([news.imgs count]) {
         case 0:
-            return 70;
+            return 100;
             break;
         case 1:{
             return 100;
         }
             break;
         case 3:{
-            return 145;
+            return 180;
         }
             break;
             
@@ -403,11 +382,9 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (self.isHeight == YES) {
         NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"HomeTopView" owner:nil options:nil];
-        HomeTopView *top = [views lastObject];
-        top.delegate = self;
-        [top weatherHeader:top model:self.weather];
-        
-        return top;
+        self.top = [views lastObject];
+        self.top.delegate = self;
+        return self.top;
     }
     return nil;
 
@@ -532,8 +509,20 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     
     [self presentViewController:alertController animated:YES completion:nil];
 }
-
+//登陆
+-(void)touchUpIconImageView {
+    BOOL isLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"isLogin"];
+    if (!isLogin) {
+        UIStoryboard *stroyboard = [UIStoryboard storyboardWithName:@"Login" bundle:[NSBundle mainBundle]];
+        LoginVC *loginVC = (LoginVC *)[stroyboard instantiateViewControllerWithIdentifier:@"LoginVC"];
+        [self.navigationController pushViewController:loginVC animated:YES];
+    }
+}
 - (void)touchUpQRcodeButtonAction {
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+//    ScanVC *scanVC = (ScanVC *)[storyboard instantiateViewControllerWithIdentifier:@"ScanVC"];
+//    [self.navigationController showViewController:scanVC sender:nil];
+
     
     QRCodeReaderViewController *reader = [QRCodeReaderViewController new];
     reader.modalPresentationStyle = UIModalPresentationFormSheet;
@@ -542,6 +531,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     __weak typeof (self) wSelf = self;
     [reader setCompletionWithBlock:^(NSString *resultAsString) {
         [wSelf.navigationController popViewControllerAnimated:YES];
+//        [[[UIAlertView alloc] initWithTitle:@"" message:resultAsString delegate:self cancelButtonTitle:@"好的" otherButtonTitles: nil] show];
         
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
         SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
@@ -550,6 +540,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
         [self.navigationController pushViewController:searchVC animated:YES];
     }];
     
+    //[self presentViewController:reader animated:YES completion:NULL];
     [self.navigationController pushViewController:reader animated:YES];
     
 
@@ -711,32 +702,6 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 - (void)readerDidCancel:(QRCodeReaderViewController *)reader
 {
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-#pragma mark - location delegate
-// 当定位到用户位置时调用
-// 调用非常频繁(耗电)
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    // 一个CLLocation对象代表一个位置
-    NSLog(@"%@",locations);
-    
-    __block DRGeocoder *geo = [[DRGeocoder alloc] init];
-    [geo creatGeocoder:locations.lastObject
-                      block:^(DRGeocoder *geocoder, NSError *error) {
-                          
-                          [self getWeatherData:[geocoder.city stringByAppendingString:geocoder.subLocality]];
-                          
-                          [manager stopUpdatingLocation];
-
-                      }];
-    
-    
-    
-//    if (geocoder.city) {
-//            [manager stopUpdatingLocation];
-//
-//    }
-
 }
 
 

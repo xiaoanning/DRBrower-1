@@ -18,14 +18,14 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cEm-zY-UZ3">
-                        <rect key="frame" x="25" y="0.0" width="30" height="30"/>
+                        <rect key="frame" x="25" y="15" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="0hT-j1-4gA"/>
                             <constraint firstAttribute="height" constant="30" id="cAb-TB-by4"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hji-jR-iaj">
-                        <rect key="frame" x="0.0" y="35" width="80" height="15"/>
+                        <rect key="frame" x="0.0" y="50" width="80" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="ZaY-Sh-ybk"/>
                         </constraints>
@@ -41,7 +41,7 @@
                 <constraint firstItem="hji-jR-iaj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="6RR-sK-jyj"/>
                 <constraint firstItem="hji-jR-iaj" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="BEB-Bz-hjU"/>
                 <constraint firstItem="hji-jR-iaj" firstAttribute="top" secondItem="cEm-zY-UZ3" secondAttribute="bottom" constant="5" id="SO6-Vu-OK6"/>
-                <constraint firstItem="cEm-zY-UZ3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="nxz-6I-xTG"/>
+                <constraint firstItem="cEm-zY-UZ3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="nxz-6I-xTG"/>
                 <constraint firstAttribute="trailing" secondItem="hji-jR-iaj" secondAttribute="trailing" id="pNz-dI-jaq"/>
             </constraints>
             <size key="customSize" width="80" height="69"/>

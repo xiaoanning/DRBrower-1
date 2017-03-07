@@ -231,6 +231,12 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+//    NewsModel *news = self.newsListArray[indexPath.row];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"NewsDetail" bundle:[NSBundle mainBundle]];
+//    NewsDetailVC *newsDetailVC = (NewsDetailVC *)[storyboard instantiateViewControllerWithIdentifier:@"NewsDetailVC"];
+//    newsDetailVC.newsModel = news;
+//    [_navigationController showViewController:newsDetailVC sender:nil];
+    
     NewsModel *newsModel = self.newsListArray[indexPath.row];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
     SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];

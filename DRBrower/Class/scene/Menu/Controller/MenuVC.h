@@ -17,10 +17,12 @@
 - (void)touchUpMoreButtonAction;
 - (void)touchUpSpitButtonAction;
 - (void)touchUpServiceButtonAction;
+- (void)touchUpIconImageView;
 @end
 
 @interface MenuVC : UIViewController
 
 @property (nonatomic, assign)id<MenuVCDelegate>delegate;
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 
 @end

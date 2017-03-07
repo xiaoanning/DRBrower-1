@@ -16,6 +16,8 @@
 
 #import "RecordModel.h"
 #import "ShareModel.h"
+#import "MoreVC.h"
+#import "AdviceVC.h"
 
 
 @interface SearchVC ()<HomeToolBarDelegate,UIWebViewDelegate,WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler,MenuVCDelegate,UIScrollViewDelegate>
@@ -45,6 +47,8 @@
         self.searchText = self.newsModel.url?self.newsModel.url:self.recordModel.url;
     }else if (self.sortModel.url != nil){
         self.searchText = self.sortModel.url;
+    }else if (self.urlString != nil) {
+        self.searchText = self.urlString;
     }
     [self webViewData];
 
@@ -140,12 +144,27 @@
     if (![title isEqualToString:@""] && ![url isEqualToString:@""]) {
         [self newOneRecordWithUrl:url title:title];
     }
-}
-
-- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
+    
+//    [webView evaluateJavaScript:@"var script = document.createElement('script');"
+//     "script.type = 'text/javascript';"
+//     "script.text = \"function ResizeImages() { "
+//     "var myimg,oldwidth;"
+//     "var maxwidth = 50.0;" // UIWebView中显示的图片宽度
+//     "for(i=0;i <document.images.length;i++){"
+//     "myimg = document.images[i];"
+//     "oldwidth = myimg.width;"
+//     "myimg.width = maxwidth;"
+//     "}"
+//     "}\";"
+//     "document.getElementsByTagName('head')[0].appendChild(script);ResizeImages();" completionHandler:nil];
     
 }
-
+//- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler{
+//    NSLog(@"%@",navigationResponse.response);
+//}
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
+    NSLog(@"%@",message);
+}
 - (void)newOneRecordWithUrl:(NSString *)url title:(NSString *)title {
     self.record = [[RecordModel alloc] init];
     self.record.url = url;
@@ -166,6 +185,8 @@
     if ([self.searchWV canGoBack]) {
         [self.searchWV goBack];
     }else if(self.sortModel.url != nil) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else if (self.urlString != nil){
         [self.navigationController popViewControllerAnimated:YES];
     }else{
         [self.searchViewController dismissViewControllerAnimated:NO completion:nil];
@@ -266,6 +287,42 @@
     [self.searchWV reload];
     
 }
+-(void)touchUpMoreButtonAction {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"More" bundle:[NSBundle mainBundle]];
+    MoreVC *moreVC = (MoreVC *)[storyboard instantiateViewControllerWithIdentifier:@"MoreVC"];
+    [self.navigationController showViewController:moreVC sender:nil];
+}
+-(void)touchUpSpitButtonAction {
+    UIStoryboard *stroyboard = [UIStoryboard storyboardWithName:@"Advice" bundle:[NSBundle mainBundle]];
+    AdviceVC *adviceVC = (AdviceVC *)[stroyboard instantiateViewControllerWithIdentifier:@"AdviceVC"];
+    [self.navigationController showViewController:adviceVC sender:nil];
+}
+-(void)touchUpServiceButtonAction {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
+                                                                             message:@"是否添加客服群:299032484"
+                                                                      preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [Tools joinGroup:nil key:@"299032484"];
+    }];;
+    [alertController addAction:OKAction];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+
+}
+//- (void)showView:(NSString *)title{
+//    
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
+//    hud.mode = MBProgressHUDModeText;
+//    hud.label.text = NSLocalizedString(title, @"HUD message title");
+//    hud.tintColor = [UIColor whiteColor];
+//    [hud hideAnimated:YES afterDelay:2.f];
+//    
+//}
 
 #pragma mark -scrollView 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
