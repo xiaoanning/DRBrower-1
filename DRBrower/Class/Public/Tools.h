@@ -24,7 +24,9 @@
 + (NSString *)urlEncodedString:(NSString *)urlStr;
 #pragma mark - 申请加入QQ群
 + (BOOL)joinGroup:(NSString *)groupUin key:(NSString *)key;
-
 #pragma mark - 提示窗
 + (void)showView:(NSString *)title;
+
+
+
 @end

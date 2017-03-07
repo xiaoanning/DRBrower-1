@@ -111,6 +111,11 @@
 		55E5BC671E69182C00A7CF9E /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55E5BC401E68084A00A7CF9E /* Search.storyboard */; };
 		55E5BC681E69185F00A7CF9E /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55E5BC3C1E68084A00A7CF9E /* Menu.storyboard */; };
 		55E5BC691E6918BC00A7CF9E /* Comment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55E5BC621E69147F00A7CF9E /* Comment.storyboard */; };
+		55E5BC8F1E69C70800A7CF9E /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BC8E1E69C70800A7CF9E /* WeatherModel.m */; };
+		55E5BC951E6CF75500A7CF9E /* NSString+StringSeparated.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BC941E6CF75500A7CF9E /* NSString+StringSeparated.m */; };
+		55E5BC981E6D4F9F00A7CF9E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E5BC971E6D4F9F00A7CF9E /* CoreLocation.framework */; };
+		55E5BC9B1E6D4FE900A7CF9E /* DRLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BC9A1E6D4FE900A7CF9E /* DRLocationManager.m */; };
+		55E5BC9E1E6D5FCD00A7CF9E /* DRGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5BC9D1E6D5FCD00A7CF9E /* DRGeocoder.m */; };
 		55F623811E2DB0B5003536CC /* MenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F623801E2DB0B5003536CC /* MenuVC.m */; };
 /* End PBXBuildFile section */
 
@@ -300,6 +305,16 @@
 		55E5BC581E68252200A7CF9E /* QRCodeReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeReaderViewController.m; sourceTree = "<group>"; };
 		55E5BC621E69147F00A7CF9E /* Comment.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Comment.storyboard; sourceTree = "<group>"; };
 		55E5BC631E69147F00A7CF9E /* Complain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Complain.storyboard; sourceTree = "<group>"; };
+		55E5BC8D1E69C70800A7CF9E /* WeatherModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherModel.h; sourceTree = "<group>"; };
+		55E5BC8E1E69C70800A7CF9E /* WeatherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherModel.m; sourceTree = "<group>"; };
+		55E5BC931E6CF75500A7CF9E /* NSString+StringSeparated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StringSeparated.h"; sourceTree = "<group>"; };
+		55E5BC941E6CF75500A7CF9E /* NSString+StringSeparated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StringSeparated.m"; sourceTree = "<group>"; };
+		55E5BC961E6D35AB00A7CF9E /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
+		55E5BC971E6D4F9F00A7CF9E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		55E5BC991E6D4FE900A7CF9E /* DRLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRLocationManager.h; sourceTree = "<group>"; };
+		55E5BC9A1E6D4FE900A7CF9E /* DRLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRLocationManager.m; sourceTree = "<group>"; };
+		55E5BC9C1E6D5FCD00A7CF9E /* DRGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRGeocoder.h; sourceTree = "<group>"; };
+		55E5BC9D1E6D5FCD00A7CF9E /* DRGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRGeocoder.m; sourceTree = "<group>"; };
 		55F6237F1E2DB0B5003536CC /* MenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuVC.h; sourceTree = "<group>"; };
 		55F623801E2DB0B5003536CC /* MenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuVC.m; sourceTree = "<group>"; };
 		C213DBDC31A50F8A62F488B7 /* Pods-DRBrower.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRBrower.release.xcconfig"; path = "Pods/Target Support Files/Pods-DRBrower/Pods-DRBrower.release.xcconfig"; sourceTree = "<group>"; };
@@ -311,6 +326,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55E5BC981E6D4F9F00A7CF9E /* CoreLocation.framework in Frameworks */,
 				55E5BC321E67C9CC00A7CF9E /* UIKit.framework in Frameworks */,
 				55E5BC301E67C9BD00A7CF9E /* Foundation.framework in Frameworks */,
 				55E5BC2E1E67C9AA00A7CF9E /* AudioToolbox.framework in Frameworks */,
@@ -571,12 +587,15 @@
 		557DC0831E08E08400ECFFDE /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				55E5BC931E6CF75500A7CF9E /* NSString+StringSeparated.h */,
+				55E5BC941E6CF75500A7CF9E /* NSString+StringSeparated.m */,
 				55421ADE1E5D22D400389B86 /* UIImage+DRImageClip.h */,
 				55421ADF1E5D22D400389B86 /* UIImage+DRImageClip.m */,
 				558ADF571E0D115600035716 /* DRImageView.h */,
 				558ADF981E13CE5F00035716 /* DRImageView.m */,
 				558ADF591E0D115600035716 /* ZYImagesPlayer.h */,
 				558ADF5A1E0D115600035716 /* ZYImagesPlayer.m */,
+				55E5BC961E6D35AB00A7CF9E /* Define.h */,
 				5523758A1E1D03BF00214ECB /* Tools.h */,
 				5523758B1E1D03BF00214ECB /* Tools.m */,
 				55BC1AFE1E4957CE00A64375 /* UIButton+ImageTitleSpacing.h */,
@@ -642,8 +661,8 @@
 				557DC0B81E0BC03300ECFFDE /* TagsView.m */,
 				558ADF5D1E0E2B4F00035716 /* HomeToolBar.h */,
 				558ADF5E1E0E2B4F00035716 /* HomeToolBar.m */,
-				1866D49D1E5BD11700BDB5DB /* HomeTopViewLayout.m */,
 				1866D49E1E5BD11700BDB5DB /* HomeTopViewLayout.h */,
+				1866D49D1E5BD11700BDB5DB /* HomeTopViewLayout.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -665,6 +684,12 @@
 				55075A4E1E20814A009A025A /* WebsiteModel.m */,
 				55075A501E2081E1009A025A /* WebsiteListModel.h */,
 				55075A511E2081E1009A025A /* WebsiteListModel.m */,
+				55E5BC8D1E69C70800A7CF9E /* WeatherModel.h */,
+				55E5BC8E1E69C70800A7CF9E /* WeatherModel.m */,
+				55E5BC9C1E6D5FCD00A7CF9E /* DRGeocoder.h */,
+				55E5BC9D1E6D5FCD00A7CF9E /* DRGeocoder.m */,
+				55E5BC991E6D4FE900A7CF9E /* DRLocationManager.h */,
+				55E5BC9A1E6D4FE900A7CF9E /* DRLocationManager.m */,
 			);
 			name = Model;
 			path = DRBrower/Class/scene/HomePage/Model;
@@ -751,6 +776,7 @@
 		5C2C92254BB705D5D4190F62 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				55E5BC971E6D4F9F00A7CF9E /* CoreLocation.framework */,
 				55E5BC311E67C9CC00A7CF9E /* UIKit.framework */,
 				55E5BC2F1E67C9BD00A7CF9E /* Foundation.framework */,
 				55E5BC2D1E67C9AA00A7CF9E /* AudioToolbox.framework */,
@@ -819,7 +845,13 @@
 				TargetAttributes = {
 					557DC0611E08DF8100ECFFDE = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = C53DGAEY52;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -952,6 +984,7 @@
 				18D61F1A1E66B3CC0077BE5C /* ComplainVC.m in Sources */,
 				18BDFC6C1E67BBE900D7D32D /* AdviceModel.m in Sources */,
 				551661691E236AEF00909A11 /* WebsiteRootVC.m in Sources */,
+				55E5BC9B1E6D4FE900A7CF9E /* DRLocationManager.m in Sources */,
 				55E5BC591E68252200A7CF9E /* QRCameraSwitchButton.m in Sources */,
 				18D61F301E66B3DF0077BE5C /* SortListModel.m in Sources */,
 				18D61F1D1E66B3CC0077BE5C /* SortCommonVC.m in Sources */,
@@ -969,10 +1002,12 @@
 				557A940E1E5EE118006A2466 /* RecordRootVC.m in Sources */,
 				55E5BC5B1E68252200A7CF9E /* QRCodeReaderViewController.m in Sources */,
 				557DC0911E08E0B700ECFFDE /* DRDataService.m in Sources */,
+				55E5BC9E1E6D5FCD00A7CF9E /* DRGeocoder.m in Sources */,
 				557DC09A1E08E91E00ECFFDE /* HomeTopView.m in Sources */,
 				18D61F1E1E66B3CC0077BE5C /* SortNewFilmVC.m in Sources */,
 				557DC0B11E0B658300ECFFDE /* ThreePicCell.m in Sources */,
 				557DC09E1E0A22D000ECFFDE /* NewsTagListModel.m in Sources */,
+				55E5BC8F1E69C70800A7CF9E /* WeatherModel.m in Sources */,
 				55421AC61E5AD45800389B86 /* ShareModel.m in Sources */,
 				55421AA41E59979900389B86 /* ShareVC.m in Sources */,
 				552ADBD51E24EEB5007036CA /* DRLocaldData.m in Sources */,
@@ -984,6 +1019,7 @@
 				18D61F211E66B3CC0077BE5C /* SortVideoVC.m in Sources */,
 				557DC0B91E0BC03300ECFFDE /* TagsView.m in Sources */,
 				18D61F311E66B3DF0077BE5C /* SortModel.m in Sources */,
+				55E5BC951E6CF75500A7CF9E /* NSString+StringSeparated.m in Sources */,
 				552ADBDB1E25E579007036CA /* WebsiteRecommendVC.m in Sources */,
 				557DC0A11E0A234100ECFFDE /* NewsTagModel.m in Sources */,
 				55BC1B161E4AF1A800A64375 /* CollectVC.m in Sources */,
@@ -1151,7 +1187,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = C53DGAEY52;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DRBrower/DRBrowser-Prefix.pch";
 				INFOPLIST_FILE = DRBrower/Info.plist;
@@ -1171,7 +1207,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = C53DGAEY52;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DRBrower/DRBrowser-Prefix.pch";
 				INFOPLIST_FILE = DRBrower/Info.plist;

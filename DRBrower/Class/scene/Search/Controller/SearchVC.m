@@ -267,16 +267,6 @@
     
 }
 
-//- (void)showView:(NSString *)title{
-//    
-//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
-//    hud.mode = MBProgressHUDModeText;
-//    hud.label.text = NSLocalizedString(title, @"HUD message title");
-//    hud.tintColor = [UIColor whiteColor];
-//    [hud hideAnimated:YES afterDelay:2.f];
-//    
-//}
-
 #pragma mark -scrollView 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
 
