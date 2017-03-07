@@ -50,7 +50,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 @property (assign, nonatomic) BOOL isHeight;
 
 @property ( nonatomic , strong ) UIPageViewController * pageVC ;
-
+@property (nonatomic,strong) NSMutableArray *selectedArray;
 
 @end
 
@@ -225,26 +225,24 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
             break;
     }
     
-    
     return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-//    NewsModel *news = self.newsListArray[indexPath.row];
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"NewsDetail" bundle:[NSBundle mainBundle]];
-//    NewsDetailVC *newsDetailVC = (NewsDetailVC *)[storyboard instantiateViewControllerWithIdentifier:@"NewsDetailVC"];
-//    newsDetailVC.newsModel = news;
-//    [_navigationController showViewController:newsDetailVC sender:nil];
-    
     NewsModel *newsModel = self.newsListArray[indexPath.row];
+    
+    self.selectedArray = [NSMutableArray arrayWithArray:[DRLocaldData achieveNewsSelectedData]];
+    if (![self.selectedArray containsObject:newsModel.url]) {
+        [self.selectedArray addObject:newsModel.url];
+        [DRLocaldData saveSelectedData:self.selectedArray];
+    }
+
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
     SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
     searchVC.newsModel = newsModel;
     [self.navigationController pushViewController:searchVC animated:YES];
 
 }
-
-
 
 @end
