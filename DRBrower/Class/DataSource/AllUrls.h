@@ -14,7 +14,7 @@
  Base Url
  @return Base Url
  */
-#define BASE_URL @"http://61.160.250.174:8080/dr/"//@"http://61.160.196.119:8080/dr/"//@"http://112.84.188.42:9999/DRBrower/"
+#define BASE_URL @"http://61.160.250.174:8080/dr/"
 #define PHP_BASE_URL @"http://admin.drliulanqi.com/index.php?g=api&token=brower*@forapi@*&"
 
 ///获取新闻分类标签
@@ -33,6 +33,8 @@
 #define URL_GETSORTLIST @"sort/getList?page_num="
 //http://61.160.250.174:8080/dr/sort/getList?page_num=1&site_type=3&sort=visit_num
 
+//天气
+#define URL_GETWEATHER @"http://admin.drliulanqi.com/index.php?g=api&m=weather&a=get_weather&token=brower*@forapi@*&name="
 
 //分享下载链接
 #define URL_SHARE @"http://www.drliulanqi.com/dr/index.html"
