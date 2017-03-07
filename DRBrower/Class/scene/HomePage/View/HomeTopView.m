@@ -70,6 +70,10 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
     }else {
         self.weatherImage.image = [UIImage imageNamed:@"weather_cloudy"];
     }
+    
+    if (model.pm25 == nil) {
+        self.airQualityLabel.text = @"";
+    }
 }
 
 - (void)awakeFromNib {
@@ -169,12 +173,26 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
 }
 
 - (IBAction)didClickURLButtonAciton:(id)sender {
+    if(_delegate && [_delegate respondsToSelector:@selector(touchUpButtonShowDetail:)]){
+        [_delegate touchUpButtonShowDetail:URL_123HAOURL];
+    }
 }
 
 - (IBAction)didClickNovelButtonAction:(id)sender {
+    if(_delegate && [_delegate respondsToSelector:@selector(touchUpButtonShowDetail:)]){
+        [_delegate touchUpButtonShowDetail:URL_NOVEL];
+    }
 }
 
 - (IBAction)didClickLadyButtonAction:(id)sender {
+    if(_delegate && [_delegate respondsToSelector:@selector(touchUpButtonShowDetail:)]){
+        [_delegate touchUpButtonShowDetail:URL_LADY];
+    }
+}
+- (IBAction)didClickJokesButtonAction:(id)sender {
+    if(_delegate && [_delegate respondsToSelector:@selector(touchUpButtonShowDetail:)]){
+        [_delegate touchUpButtonShowDetail:URL_JOKES];
+    }
 }
 
 - (IBAction)touchUpSortButton:(id)sender {
@@ -185,8 +203,8 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
 
 - (void)longPressGesture:(WebsiteModel *)model {
 
-        if(_delegate && [_delegate respondsToSelector:@selector(homeTopViewpresentView:)]){
-            [_delegate homeTopViewpresentView:model];
+        if(_delegate && [_delegate respondsToSelector:@selector(homeTopViewPresentView:)]){
+            [_delegate homeTopViewPresentView:model];
         }
 
 }
