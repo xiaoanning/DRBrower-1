@@ -144,12 +144,27 @@
     if (![title isEqualToString:@""] && ![url isEqualToString:@""]) {
         [self newOneRecordWithUrl:url title:title];
     }
-}
-
-- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
+    
+//    [webView evaluateJavaScript:@"var script = document.createElement('script');"
+//     "script.type = 'text/javascript';"
+//     "script.text = \"function ResizeImages() { "
+//     "var myimg,oldwidth;"
+//     "var maxwidth = 50.0;" // UIWebView中显示的图片宽度
+//     "for(i=0;i <document.images.length;i++){"
+//     "myimg = document.images[i];"
+//     "oldwidth = myimg.width;"
+//     "myimg.width = maxwidth;"
+//     "}"
+//     "}\";"
+//     "document.getElementsByTagName('head')[0].appendChild(script);ResizeImages();" completionHandler:nil];
     
 }
-
+//- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler{
+//    NSLog(@"%@",navigationResponse.response);
+//}
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
+    NSLog(@"%@",message);
+}
 - (void)newOneRecordWithUrl:(NSString *)url title:(NSString *)title {
     self.record = [[RecordModel alloc] init];
     self.record.url = url;

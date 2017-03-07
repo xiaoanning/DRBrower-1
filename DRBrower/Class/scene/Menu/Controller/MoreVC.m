@@ -26,7 +26,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"更多";
     self.switchStatusArray = [NSMutableArray array];
-    self.titleArray = @[@"广告屏蔽",@"只在WIFI模式下载",@"搜索引擎",@"账户管理",@"清理缓存",@"无图模式",@"无痕浏览",@"字体大小",@"二维码",@"绑定手机",@"调整亮度",@"官网"];
+    self.titleArray = @[@"清理缓存",@"字体大小",@"调整亮度"];
     
     self.moreTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
@@ -52,27 +52,21 @@
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.text = self.titleArray[indexPath.row];
-    if (indexPath.row == 4) {
+    if (indexPath.row == 0) {
         [self createLabelOnCell:cell];
-    }
-    if ([@[@"0",@"1",@"5",@"6"] containsObject:[NSString stringWithFormat:@"%ld",(long)indexPath.row]]) {
-        [self createSwitchOnCell:cell index:indexPath.row];
     }
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     switch (indexPath.row) {
-        case 1:
-            break;
-        case 4:
+        case 0: //清理缓存
             [self cleanCacheAlert];
             break;
-        case 10:
-            [self createBrightnessView];
+        case 1: //字体大小
             break;
-        case 11:
-            [self openWithUrl:@"http://www.drliulanqi.com/dr/index.html"];
+        case 2: //调整亮度
+            [self createBrightnessView];
             break;
         default:
             break;
@@ -92,55 +86,37 @@
         make.right.equalTo(cell.mas_right).with.offset(-30);
     }];
 }
-//创建右侧switch
--(void)createSwitchOnCell:(UITableViewCell *)cell index:(NSInteger)index{
-    cell.accessoryType = UITableViewCellAccessoryNone;
-    UISwitch *aSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
-    aSwitch.tag = index+100;
-    [cell addSubview:aSwitch];
-    if ([[DRLocaldData achieveSwitchData] containsObject:[NSString stringWithFormat:@"%ld",(long)index+100]]) {
-        aSwitch.on = YES;
-    }else {
-        aSwitch.on = NO;
-    }
-    [aSwitch addTarget:self action:@selector(touchUpSwitch:) forControlEvents:UIControlEventTouchUpInside];
-    [aSwitch mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(cell.mas_top).with.offset(10);
-        make.bottom.equalTo(cell.mas_bottom).with.offset(10);
-        make.right.equalTo(cell.mas_right).with.offset(-10);
-    }];
-}
--(void)touchUpSwitch:(UISwitch *)aSwitch {
-    NSString *aSwitchTag = [NSString stringWithFormat:@"%ld",(long)aSwitch.tag];
-    if ([[DRLocaldData achieveSwitchData] containsObject:aSwitchTag]) { //开--->关
-        aSwitch.on = NO;
-        [self.switchStatusArray removeObject:aSwitchTag];
-        
-    }else {//关--->开
-        aSwitch.on = YES;
-        [self.switchStatusArray addObject:aSwitchTag];
-        
-        switch (aSwitch.tag) {
-            case 100: //广告屏蔽
-                
-                break;
-            case 101: //只在WIFI模式下载
-                
-                break;
-            case 105: //无图模式
-                
-                break;
-            case 106:  //无痕浏览
-                
-                break;
-   
-            default:
-                break;
-        }
-        
-    }
-    [DRLocaldData saveSwitchData:self.switchStatusArray];
-}
+////创建右侧switch
+//-(void)createSwitchOnCell:(UITableViewCell *)cell index:(NSInteger)index{
+//    cell.accessoryType = UITableViewCellAccessoryNone;
+//    UISwitch *aSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+//    aSwitch.tag = index+100;
+//    [cell addSubview:aSwitch];
+//    if ([[DRLocaldData achieveSwitchData] containsObject:[NSString stringWithFormat:@"%ld",(long)index+100]]) {
+//        aSwitch.on = YES;
+//    }else {
+//        aSwitch.on = NO;
+//    }
+//    [aSwitch addTarget:self action:@selector(touchUpSwitch:) forControlEvents:UIControlEventTouchUpInside];
+//    [aSwitch mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(cell.mas_top).with.offset(10);
+//        make.bottom.equalTo(cell.mas_bottom).with.offset(10);
+//        make.right.equalTo(cell.mas_right).with.offset(-10);
+//    }];
+//}
+//-(void)touchUpSwitch:(UISwitch *)aSwitch {
+//    NSString *aSwitchTag = [NSString stringWithFormat:@"%ld",(long)aSwitch.tag];
+//    if ([[DRLocaldData achieveSwitchData] containsObject:aSwitchTag]) { //开--->关
+//        aSwitch.on = NO;
+//        [self.switchStatusArray removeObject:aSwitchTag];
+//        
+//    }else {//关--->开
+//        aSwitch.on = YES;
+//        [self.switchStatusArray addObject:aSwitchTag];
+//        
+//    }
+//    [DRLocaldData saveSwitchData:self.switchStatusArray];
+//}
 
 -(void)cleanCacheAlert {
     UIAlertController *cacheAlert = [UIAlertController alertControllerWithTitle:@"是否清理文件缓存" message:nil preferredStyle:UIAlertControllerStyleAlert];
@@ -198,13 +174,6 @@
     formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideAndBounceFromBottom;
     //    brightnessVC.delegate = self;
     [self presentViewController:formSheetController animated:YES completion:nil];
-}
-//官网
--(void)openWithUrl:(NSString *)urlString {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
-    SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
-    searchVC.urlString = urlString;
-    [self.navigationController pushViewController:searchVC animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

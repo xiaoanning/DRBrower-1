@@ -56,7 +56,7 @@
 -(void)addAdvice:(NSString *)content {
     //http://admin.drliulanqi.com/index.php?g=api&m=suggest&a=add&token=brower*@forapi@*&dev_id=11&content=5&platform=0
     NSString *contentStr = [content stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@&content=%@&platform=%@",URL_ADVICE,DEV_ID,contentStr,Platform];
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@%@&content=%@&platform=%@",PHP_BASE_URL,URL_ADVICE,DEV_ID,contentStr,Platform];
     [AdviceModel addAdviceUrl:urlStr parameters:@{} block:^(NSDictionary *dic, NSError *error) {
         if (dic.allKeys.count>0) {
             [Tools showView:[dic objectForKey:@"msg"]];

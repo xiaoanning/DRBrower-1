@@ -17,17 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //保存系统亮度
-    CGFloat systemValue = [UIScreen mainScreen].brightness;
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setFloat:systemValue forKey:sysBrightness];
-    [userDefaults synchronize];
+    CGFloat sys = [UIScreen mainScreen].brightness;
     
     self.brightnessSlider.minimumValue = 0;
     self.brightnessSlider.maximumValue = 1;
-    
-    self.brightnessSlider.value = systemValue;// 设置初始值
     self.brightnessSlider.continuous = YES;
+    self.brightnessSlider.value = sys;// 设置初始值
     
     [self.brightnessSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
 }

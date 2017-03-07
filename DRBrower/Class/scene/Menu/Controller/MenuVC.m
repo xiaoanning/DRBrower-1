@@ -18,10 +18,12 @@
 @end
 
 @implementation MenuVC
-
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = NO;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBarHidden = YES;
     
     BOOL isFullScreen = [[NSUserDefaults standardUserDefaults] boolForKey:kFullScreen];
 
@@ -35,13 +37,16 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dismissView) name:DISMISS_VIEW object:nil];
     
-    // Do any additional setup after loading the view.
+    
+    self.iconImageView.layer.cornerRadius = CGRectGetHeight(self.iconImageView.frame)/2;
+    self.iconImageView.layer.masksToBounds = YES;
+    self.iconImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapIconImageView:)];
+    [self.iconImageView addGestureRecognizer:tap];
 }
-
 -(void)dealloc{
    
     [[NSNotificationCenter defaultCenter]removeObserver:self];
-
 }
 
 -(void)dismissView{
@@ -110,6 +115,12 @@
     if(_delegate && [_delegate respondsToSelector:@selector(touchUpServiceButtonAction)]){
         [self dismissViewControllerAnimated:YES completion:nil];
         [_delegate touchUpServiceButtonAction];
+    }
+}
+-(void)tapIconImageView:(UITapGestureRecognizer *)tapIconImageView {
+    if (_delegate && [_delegate respondsToSelector:@selector(touchUpIconImageView)]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [_delegate touchUpIconImageView];
     }
 }
 
