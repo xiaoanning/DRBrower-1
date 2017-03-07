@@ -35,8 +35,6 @@
                                if (!subLocalityStr)  {
                                    subLocalityStr = @"";
                                }
-//                               DRGeocoder *geocoder = [[DRGeocoder alloc] initWithCurrentCity:cityStr
-//                                                                                  subLocality:subLocalityStr];
                                self.city = cityStr;
                                self.subLocality = subLocalityStr;
                                completion(self, error);

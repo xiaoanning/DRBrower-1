@@ -31,7 +31,7 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
 - (void)weatherHeader:(HomeTopView *)header model:(WeatherModel *)model {
     self.weatherLabel.text = model.weather;
     self.temperatureLabel.text = [model.temperature stringByAppendingString:@"°"];
-    self.pmLabel.text = @"1234";//model.pm25;
+    self.pmLabel.text = model.pm25;
     self.placeLabel.text = model.currentCity;
     
     int parseInt = [model.pm25 intValue];
@@ -58,17 +58,17 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
     if ([model.weather containsString:NSLocalizedString(@"晴", nil)]) {
         self.weatherImage.image = [UIImage imageNamed:@"weather_fine"];
     }else if ([model.weather containsString:NSLocalizedString(@"云", nil)]) {
-        self.weatherImage.image = [UIImage imageNamed:@""];
+        self.weatherImage.image = [UIImage imageNamed:@"weather_cloudy"];
     }else if ([model.weather containsString:NSLocalizedString(@"雨", nil)]) {
         self.weatherImage.image = [UIImage imageNamed:@"weather_light_rain"];
     }else if ([model.weather containsString:NSLocalizedString(@"霾", nil)]) {
         self.weatherImage.image = [UIImage imageNamed:@"weather_haze"];
     }else if ([model.weather containsString:NSLocalizedString(@"阴", nil)]) {
-        self.weatherImage.image = [UIImage imageNamed:@"weather_cloudy"];
+        self.weatherImage.image = [UIImage imageNamed:@"weather_overcast"];
     }else if ([model.weather containsString:NSLocalizedString(@"雪", nil)]) {
         self.weatherImage.image = [UIImage imageNamed:@"weather_Light_Snow"];
     }else {
-        self.weatherImage.image = [UIImage imageNamed:@""];
+        self.weatherImage.image = [UIImage imageNamed:@"weather_cloudy"];
     }
 }
 
