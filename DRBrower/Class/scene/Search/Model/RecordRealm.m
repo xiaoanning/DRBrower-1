@@ -18,7 +18,7 @@
     return @[@"title",@"url",@"time"];
 }
 
-- (instancetype)initWithUrl:(NSString *)url title:(NSString *)title time:(NSInteger)time {
+- (instancetype)initWithUrl:(NSString *)url title:(NSString *)title time:(NSInteger)time icon:(NSString *)icon {
     if (self = [[RecordRealm alloc] init]) {
         _title = title;
         _url = url;
@@ -27,8 +27,8 @@
     return self;
 }
 
-+ (instancetype)recordWithUrl:(NSString *)url title:(NSString *)title time:(NSInteger)time {
-    return [[RecordRealm alloc] initWithUrl:url title:title time:time];
++ (instancetype)recordWithUrl:(NSString *)url title:(NSString *)title time:(NSInteger)time icon:(NSString *)icon {
+    return [[RecordRealm alloc] initWithUrl:url title:title time:time icon:icon];
 }
 
 

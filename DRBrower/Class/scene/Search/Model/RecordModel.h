@@ -14,6 +14,7 @@
 @property (strong, nonatomic)NSString *url;
 @property (strong, nonatomic)NSString *title;
 @property (assign, nonatomic)NSInteger time;
+@property (strong, nonatomic)NSString *icon;
 
 //保存记录
 - (void)addRecordToRealm:(NSString *)realmName;

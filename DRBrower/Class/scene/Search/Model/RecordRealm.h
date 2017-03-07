@@ -13,8 +13,12 @@
 @property (strong, nonatomic)NSString *url;
 @property (strong, nonatomic)NSString *title;
 @property (assign, nonatomic)NSInteger time;
+@property (strong, nonatomic)NSString *icon;
 
-+ (instancetype)recordWithUrl:(NSString *)url title:(NSString *)title time:(NSInteger)time;
++ (instancetype)recordWithUrl:(NSString *)url
+                        title:(NSString *)title
+                         time:(NSInteger)time
+                         icon:(NSString *)icon;
 
 
 @end

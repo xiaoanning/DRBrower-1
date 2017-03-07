@@ -11,6 +11,13 @@
 
 @implementation RecordModel
 
+- (NSString *)icon {
+    if (_icon == nil) {
+        _icon = @"";
+    }
+    return _icon;
+}
+
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{};
 }
@@ -19,8 +26,13 @@
 - (void)addRecordToRealm:(NSString *)realmName {
     NSError *error;
     RLMRealm *realm = [DRRealmPublic createRealmWithName:realmName];
-    RecordRealm *realmRecord = [RecordRealm recordWithUrl:self.url title:self.title time:self.time];
-    RecordRealm *selectRecord = [RecordModel realmSelectRecordWithTitle:self.title url:self.url fromRealm:realmName];
+    RecordRealm *realmRecord = [RecordRealm recordWithUrl:self.url
+                                                    title:self.title
+                                                     time:self.time
+                                                     icon:self.icon];
+    RecordRealm *selectRecord = [RecordModel realmSelectRecordWithTitle:self.title
+                                                                    url:self.url
+                                                              fromRealm:realmName];
     if (selectRecord) {
         [RecordModel deleteOneRecord:[RecordModel realmChangeToModel:selectRecord] fromRealm:realmName];
     }
@@ -31,7 +43,8 @@
 }
 
 //删除一条记录
-+ (void)deleteOneRecord:(RecordModel *)record fromRealm:(NSString *)realmName{
++ (void)deleteOneRecord:(RecordModel *)record
+              fromRealm:(NSString *)realmName{
     NSError *error;
     RLMRealm *realm = [DRRealmPublic createRealmWithName:realmName];
     RecordRealm * realmRecord = [RecordModel realmSelectRecordWithTime:record.time fromRealm:realmName];
@@ -82,7 +95,8 @@
 }
 
 //按时间查询
-+ (RecordRealm *)realmSelectRecordWithTime:(NSInteger)time fromRealm:(NSString *)realmName {
++ (RecordRealm *)realmSelectRecordWithTime:(NSInteger)time
+                                 fromRealm:(NSString *)realmName {
     RLMResults<RecordRealm *> *recordResults = [RecordRealm objectsInRealm:[DRRealmPublic createRealmWithName:realmName]
                                                              withPredicate:[NSPredicate predicateWithFormat:@"time = %ld", time]];
     RecordRealm *realmRecord = recordResults[0];
@@ -91,7 +105,9 @@
 }
 
 //按title和url查询
-+ (RecordRealm *)realmSelectRecordWithTitle:(NSString *)title url:(NSString *)url fromRealm:(NSString *)realmName {
++ (RecordRealm *)realmSelectRecordWithTitle:(NSString *)title
+                                        url:(NSString *)url
+                                  fromRealm:(NSString *)realmName {
     RLMResults<RecordRealm *> *recordResults = [RecordRealm objectsInRealm:[DRRealmPublic createRealmWithName:realmName]
                                                              withPredicate:[NSPredicate predicateWithFormat:@"url = %@ AND title = %@", url,title]];
     if (recordResults.count>0) {
@@ -107,6 +123,7 @@
     record.title = recordRealm.title;
     record.url = recordRealm.url;
     record.time = recordRealm.time;
+    record.icon = recordRealm.icon;
     return record;
     
 }
