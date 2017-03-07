@@ -17,6 +17,7 @@
         _sharedClient = [[DRDataService alloc] init];
     });
     _sharedClient.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"application/json", @"text/json", @"text/plain", nil];
+
     return _sharedClient;
 }
 - (NSURLSessionDataTask *)DR_get:(NSString *)URLString

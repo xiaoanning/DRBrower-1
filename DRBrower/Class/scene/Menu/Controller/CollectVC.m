@@ -41,6 +41,7 @@ static NSString *const websiteRecommendCellIdentifier = @"WebsiteRecommendCell";
         [DRLocaldData deleteAllCollectData];
         [self.collectArray removeAllObjects];
         [self.tableView reloadData];
+        [Tools showView:@"清除成功"];
     }];
     
 }

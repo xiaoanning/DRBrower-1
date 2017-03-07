@@ -12,6 +12,8 @@
 
 #pragma mark - 正则表达式判断网址合法
 + (NSString *)urlValidation:(NSString *)string;
+#pragma mark - 正则表达式判断手机号合法性
++ (BOOL)phoneNumberValidation:(NSString *)phoneNum;
 #pragma mark - 判断数组元素个数 决定pageControl的高度个页数
 + (BOOL)isRemainder:(NSArray *)array;
 #pragma 将时间戳转换为北京时间
@@ -24,9 +26,7 @@
 + (NSString *)urlEncodedString:(NSString *)urlStr;
 #pragma mark - 申请加入QQ群
 + (BOOL)joinGroup:(NSString *)groupUin key:(NSString *)key;
+
 #pragma mark - 提示窗
 + (void)showView:(NSString *)title;
-
-
-
 @end
