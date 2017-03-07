@@ -32,6 +32,7 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 //微信SDK头文件
 #import "WXApi.h"
+#import <CoreLocation/CoreLocation.h>
 
 #import "DRDataService.h"
 #import "DRLocaldData.h"
@@ -39,8 +40,10 @@
 #import "UIImage+DRImageClip.h"
 #import "Tools.h"
 #import "AllUrls.h"
+#import "Define.h"
 #import "DRRealmPublic.h"
-
+#import "DRLocationManager.h"
+#import "DRGeocoder.h"
 
 #pragma mark - 常量
 #define TAG_ID_RECOMMEND @"100"
