@@ -101,17 +101,10 @@
 		55BC1B121E49D3EF00A64375 /* RecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BC1B101E49D3EF00A64375 /* RecordCell.m */; };
 		55BC1B131E49D3EF00A64375 /* RecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55BC1B111E49D3EF00A64375 /* RecordCell.xib */; };
 		55BC1B161E4AF1A800A64375 /* CollectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BC1B151E4AF1A800A64375 /* CollectVC.m */; };
-<<<<<<< HEAD
 		55DE44D71E6E9FBB00DCD1BE /* DRGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DE44D21E6E9FBB00DCD1BE /* DRGeocoder.m */; };
 		55DE44D81E6E9FBB00DCD1BE /* DRLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DE44D41E6E9FBB00DCD1BE /* DRLocationManager.m */; };
 		55DE44D91E6E9FBB00DCD1BE /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DE44D61E6E9FBB00DCD1BE /* WeatherModel.m */; };
 		55DE44DD1E6EA13200DCD1BE /* NSString+StringSeparated.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DE44DC1E6EA13200DCD1BE /* NSString+StringSeparated.m */; };
-=======
-		55DE44E11E6EA4A600DCD1BE /* NSString+StringSeparated.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DE44E01E6EA4A600DCD1BE /* NSString+StringSeparated.m */; };
-		55DE44E81E6EA4BA00DCD1BE /* DRGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DE44E31E6EA4BA00DCD1BE /* DRGeocoder.m */; };
-		55DE44E91E6EA4BA00DCD1BE /* DRLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DE44E51E6EA4BA00DCD1BE /* DRLocationManager.m */; };
-		55DE44EA1E6EA4BA00DCD1BE /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DE44E71E6EA4BA00DCD1BE /* WeatherModel.m */; };
->>>>>>> 7e00b703d17b2bbfd3635a7b1cb8e818ce116ed6
 		55E5BC211E67C92800A7CF9E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E5BC201E67C92800A7CF9E /* CoreMedia.framework */; };
 		55E5BC231E67C93200A7CF9E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E5BC221E67C93200A7CF9E /* QuartzCore.framework */; };
 		55E5BC271E67C95000A7CF9E /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E5BC261E67C95000A7CF9E /* ImageIO.framework */; };
@@ -305,7 +298,6 @@
 		55BC1B111E49D3EF00A64375 /* RecordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordCell.xib; sourceTree = "<group>"; };
 		55BC1B141E4AF1A800A64375 /* CollectVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectVC.h; sourceTree = "<group>"; };
 		55BC1B151E4AF1A800A64375 /* CollectVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectVC.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		55DE44D11E6E9FBB00DCD1BE /* DRGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRGeocoder.h; sourceTree = "<group>"; };
 		55DE44D21E6E9FBB00DCD1BE /* DRGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRGeocoder.m; sourceTree = "<group>"; };
 		55DE44D31E6E9FBB00DCD1BE /* DRLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRLocationManager.h; sourceTree = "<group>"; };
@@ -315,17 +307,7 @@
 		55DE44DA1E6EA13200DCD1BE /* Define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
 		55DE44DB1E6EA13200DCD1BE /* NSString+StringSeparated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StringSeparated.h"; sourceTree = "<group>"; };
 		55DE44DC1E6EA13200DCD1BE /* NSString+StringSeparated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StringSeparated.m"; sourceTree = "<group>"; };
-=======
-		55DE44DE1E6EA4A600DCD1BE /* Define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
-		55DE44DF1E6EA4A600DCD1BE /* NSString+StringSeparated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StringSeparated.h"; sourceTree = "<group>"; };
-		55DE44E01E6EA4A600DCD1BE /* NSString+StringSeparated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StringSeparated.m"; sourceTree = "<group>"; };
-		55DE44E21E6EA4BA00DCD1BE /* DRGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRGeocoder.h; sourceTree = "<group>"; };
-		55DE44E31E6EA4BA00DCD1BE /* DRGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRGeocoder.m; sourceTree = "<group>"; };
-		55DE44E41E6EA4BA00DCD1BE /* DRLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRLocationManager.h; sourceTree = "<group>"; };
-		55DE44E51E6EA4BA00DCD1BE /* DRLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRLocationManager.m; sourceTree = "<group>"; };
-		55DE44E61E6EA4BA00DCD1BE /* WeatherModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherModel.h; sourceTree = "<group>"; };
-		55DE44E71E6EA4BA00DCD1BE /* WeatherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherModel.m; sourceTree = "<group>"; };
->>>>>>> 7e00b703d17b2bbfd3635a7b1cb8e818ce116ed6
+
 		55E5BC201E67C92800A7CF9E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		55E5BC221E67C93200A7CF9E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		55E5BC241E67C94400A7CF9E /* libZXingObjC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libZXingObjC.a; path = "Pods/../build/Debug-iphoneos/ZXingObjC/libZXingObjC.a"; sourceTree = "<group>"; };
@@ -624,15 +606,9 @@
 		557DC0831E08E08400ECFFDE /* Public */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				55DE44DA1E6EA13200DCD1BE /* Define.h */,
 				55DE44DB1E6EA13200DCD1BE /* NSString+StringSeparated.h */,
 				55DE44DC1E6EA13200DCD1BE /* NSString+StringSeparated.m */,
-=======
-				55DE44DE1E6EA4A600DCD1BE /* Define.h */,
-				55DE44DF1E6EA4A600DCD1BE /* NSString+StringSeparated.h */,
-				55DE44E01E6EA4A600DCD1BE /* NSString+StringSeparated.m */,
->>>>>>> 7e00b703d17b2bbfd3635a7b1cb8e818ce116ed6
 				55421ADE1E5D22D400389B86 /* UIImage+DRImageClip.h */,
 				55421ADF1E5D22D400389B86 /* UIImage+DRImageClip.m */,
 				558ADF571E0D115600035716 /* DRImageView.h */,
@@ -901,10 +877,6 @@
 				TargetAttributes = {
 					557DC0611E08DF8100ECFFDE = {
 						CreatedOnToolsVersion = 8.1;
-<<<<<<< HEAD
-=======
-
->>>>>>> 7e00b703d17b2bbfd3635a7b1cb8e818ce116ed6
 						DevelopmentTeam = J7LGQHZ8DG;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -1258,10 +1230,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-<<<<<<< HEAD
-=======
 				DEVELOPMENT_TEAM = "";
->>>>>>> 7e00b703d17b2bbfd3635a7b1cb8e818ce116ed6
 				DEVELOPMENT_TEAM = J7LGQHZ8DG;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DRBrower/DRBrowser-Prefix.pch";
@@ -1282,10 +1251,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-<<<<<<< HEAD
-=======
 				DEVELOPMENT_TEAM = "";
->>>>>>> 7e00b703d17b2bbfd3635a7b1cb8e818ce116ed6
 				DEVELOPMENT_TEAM = J7LGQHZ8DG;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DRBrower/DRBrowser-Prefix.pch";

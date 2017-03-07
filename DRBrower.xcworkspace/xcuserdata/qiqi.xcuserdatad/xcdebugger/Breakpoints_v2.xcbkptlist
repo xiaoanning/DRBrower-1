@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DRBrower/Class/scene/HomePage/Controller/DRHomeVC.m"
-            timestampString = "510568993.950496"
+            timestampString = "510575437.853735"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "735"
-            endingLineNumber = "735"
-            landmarkName = "-locationManager:didUpdateLocations:"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "-location"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
