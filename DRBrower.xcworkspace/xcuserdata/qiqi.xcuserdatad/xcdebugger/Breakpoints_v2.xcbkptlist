@@ -35,6 +35,15 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+<<<<<<< HEAD
+            filePath = "DRBrower/Class/scene/HomePage/Model/DRGeocoder.m"
+            timestampString = "510542516.953964"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "-creatGeocoder:block:"
+=======
             filePath = "DRBrower/Class/scene/Menu/Controller/DownLoadVC.m"
             timestampString = "510062636.9891"
             startingColumnNumber = "9223372036854775807"
@@ -74,6 +83,7 @@
             startingLineNumber = "218"
             endingLineNumber = "218"
             landmarkName = "-touchUpHomeButtonAction"
+>>>>>>> master
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -83,6 +93,15 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+<<<<<<< HEAD
+            filePath = "DRBrower/Class/scene/HomePage/Model/WeatherModel.m"
+            timestampString = "510490166.584847"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "+getWeatherUrl:parameters:block:"
+=======
             filePath = "DRBrower/Class/scene/Search/Controller/SearchVC.m"
             timestampString = "510057997.334913"
             startingColumnNumber = "9223372036854775807"
@@ -90,6 +109,7 @@
             startingLineNumber = "215"
             endingLineNumber = "215"
             landmarkName = "-touchUpHomeButtonAction"
+>>>>>>> master
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -99,6 +119,15 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+<<<<<<< HEAD
+            filePath = "DRBrower/Class/scene/HomePage/Controller/DRHomeVC.m"
+            timestampString = "510552653.237856"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "-getNewsByTag:type:"
+=======
             filePath = "DRBrower/Class/scene/Menu/View/DownloadCell.m"
             timestampString = "510062636.9891"
             startingColumnNumber = "9223372036854775807"
@@ -106,6 +135,7 @@
             startingLineNumber = "87"
             endingLineNumber = "87"
             landmarkName = "-seell"
+>>>>>>> master
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -115,6 +145,15 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+<<<<<<< HEAD
+            filePath = "DRBrower/Class/scene/HomePage/Model/NewsModel.m"
+            timestampString = "510552664.104416"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "+getNewsByTagUrl:parameters:block:"
+=======
             filePath = "DRBrower/Class/scene/Search/Controller/SearchVC.m"
             timestampString = "510057432.351688"
             startingColumnNumber = "9223372036854775807"
@@ -122,6 +161,7 @@
             startingLineNumber = "177"
             endingLineNumber = "177"
             landmarkName = "-touchUpGoButtonActionr"
+>>>>>>> master
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -131,6 +171,15 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+<<<<<<< HEAD
+            filePath = "DRBrower/Class/scene/HomePage/Model/NewsModel.m"
+            timestampString = "510552696.769256"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "+getNewsByTagUrl:parameters:block:"
+=======
             filePath = "DRBrower/Class/scene/Search/Controller/SearchVC.m"
             timestampString = "510058037.950465"
             startingColumnNumber = "9223372036854775807"
@@ -170,6 +219,7 @@
             startingLineNumber = "643"
             endingLineNumber = "643"
             landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
+>>>>>>> master
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

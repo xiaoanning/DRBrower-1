@@ -32,6 +32,7 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Menu" bundle:[NSBundle mainBundle]];
     CollectVC *collectVC = (CollectVC *)[storyboard instantiateViewControllerWithIdentifier:@"CollectVC"];
+    collectVC.rootVCType = CollectVCRootVCTypeWebsite;
     
     WebsiteCustomVC *customVC = [[WebsiteCustomVC alloc] init];
     

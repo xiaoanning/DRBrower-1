@@ -9,10 +9,18 @@
 #import <UIKit/UIKit.h>
 @class RecordRootVC;
 
+typedef NS_ENUM(NSInteger, CollectVCRootVCType) {
+    CollectVCRootVCTypeUnknown = 0,
+    CollectVCRootVCTypeRecord,
+    CollectVCRootVCTypeWebsite
+};
+
 @interface CollectVC : UIViewController<UITableViewDelegate, UITableViewDataSource,AXStretchableSubViewControllerViewSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) RecordRootVC *recordRootVC;
+@property (assign, nonatomic) CollectVCRootVCType rootVCType;
+
 
 @end

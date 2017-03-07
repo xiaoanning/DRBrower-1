@@ -11,8 +11,10 @@
 #import "RecordRootVC.h"
 #import "RecordCell.h"
 #import "RecordModel.h"
+#import "WebsiteRecommendCell.h"
 
 static NSString *const recordCellIdentifier = @"RecordCell";
+static NSString *const websiteRecommendCellIdentifier = @"WebsiteRecommendCell";
 
 @interface CollectVC ()<SWTableViewCellDelegate,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 
@@ -46,6 +48,8 @@ static NSString *const recordCellIdentifier = @"RecordCell";
 
 - (void)setupTableView {
     [self.tableView registerNib:[UINib nibWithNibName:@"RecordCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:recordCellIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WebsiteRecommendCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:websiteRecommendCellIdentifier];
+
 }
 
 - (IBAction)backBarButtonAction:(id)sender {
@@ -63,21 +67,58 @@ static NSString *const recordCellIdentifier = @"RecordCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    RecordCell *cell = [tableView dequeueReusableCellWithIdentifier:recordCellIdentifier];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.delegate = self;
-    cell.rightUtilityButtons = [self rightButtons];
     RecordModel *model = self.collectArray[indexPath.row];
-    [cell recordCell:cell model:model];
-    return cell;
+
+    if (self.rootVCType == CollectVCRootVCTypeRecord) {
+        RecordCell *cell = [tableView dequeueReusableCellWithIdentifier:recordCellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.delegate = self;
+        cell.rightUtilityButtons = [self rightButtons];
+        [cell recordCell:cell model:model];
+        return cell;
+
+    }else {
+        
+        WebsiteRecommendCell *cell = [tableView dequeueReusableCellWithIdentifier:websiteRecommendCellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        WebsiteModel *website = [self changeToWebsiteWithRecord:model];
+        [cell websiteRecommendCell:cell model:website];
+        return cell;
+    }
+}
+
+- (WebsiteModel *)changeToWebsiteWithRecord:(RecordModel *)record {
+    WebsiteModel *website = [[WebsiteModel alloc] init];
+    website.name = record.title;
+    website.url = record.url;
+    website.icon = record.icon;
+    return website;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
-    SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
-    searchVC.recordModel = self.collectArray[indexPath.row];
-    [self.navigationController pushViewController:searchVC animated:YES];
+    
+    if (self.rootVCType == CollectVCRootVCTypeWebsite) {
+        
+        WebsiteModel *website = [[WebsiteModel alloc] init];
+        RecordModel *record = self.collectArray[indexPath.row];
+        website.name = record.title;
+        website.url = record.url;
+        website.icon = record.icon;
+        NSMutableArray *array = [DRLocaldData achieveWebsiteData];
+        
+        if ([array containsObject:website] == NO) {
+            
+            [array insertObject:website atIndex:array.count-1];
+            [DRLocaldData saveWebsiteData:array];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }else {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
+        SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
+        searchVC.recordModel = self.collectArray[indexPath.row];
+        [self.navigationController pushViewController:searchVC animated:YES];
+    }
+
 }
 
 #pragma mark - SWTableViewCellDelegate

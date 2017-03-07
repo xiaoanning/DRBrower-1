@@ -7,6 +7,7 @@
 //
 
 #import "WebsiteRecommendCell.h"
+#import "WebsiteModel.h"
 
 #define STATUS_EXIST @"已添加";
 //#define STATUS_WITHOUT 
@@ -19,10 +20,12 @@
 }
 
 - (void)websiteRecommendCell:(WebsiteRecommendCell *)cell model:(WebsiteModel *)model {
-    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:model.icon]
-                     placeholderImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[[NSURL URLWithString:model.icon] absoluteString]]completed:nil];
-    self.nameLabel.text = model.name;
-    self.urlLabel.text = model.url;
+    WebsiteModel *website = model;
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:website.icon]
+                          placeholderImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[[NSURL URLWithString:website.icon] absoluteString]]completed:nil];
+    self.nameLabel.text = website.name;
+    self.urlLabel.text = website.url;
+
     NSMutableArray *array = [DRLocaldData achieveWebsiteData];
     if ([array containsObject:model]) {
         self.statusLabel.text = STATUS_EXIST;

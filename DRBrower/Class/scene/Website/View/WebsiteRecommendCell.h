@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WebsiteModel.h"
 
 @interface WebsiteRecommendCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;

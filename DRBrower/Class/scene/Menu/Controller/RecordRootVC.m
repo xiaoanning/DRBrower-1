@@ -24,6 +24,7 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Menu" bundle:[NSBundle mainBundle]];
     CollectVC *collectVC = (CollectVC *)[storyboard instantiateViewControllerWithIdentifier:@"CollectVC"];
+    collectVC.rootVCType = CollectVCRootVCTypeRecord;
     collectVC.recordRootVC = self;
     
     HistoryVC *historyVC = (HistoryVC *)[storyboard instantiateViewControllerWithIdentifier:@"HistoryVC"];
