@@ -33,6 +33,7 @@
 #import "SortRootVC.h"
 
 #import "AdviceVC.h"
+#import "LoginVC.h"
 
 static NSString *const onePicCellIdentifier = @"OnePicCell";
 static NSString *const threePicCellIdentifier = @"ThreePicCell";
@@ -531,6 +532,15 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     [alertController addAction:cancelAction];
     
     [self presentViewController:alertController animated:YES completion:nil];
+}
+//登陆
+-(void)touchUpIconImageView {
+    BOOL isLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"isLogin"];
+    if (!isLogin) {
+        UIStoryboard *stroyboard = [UIStoryboard storyboardWithName:@"Login" bundle:[NSBundle mainBundle]];
+        LoginVC *loginVC = (LoginVC *)[stroyboard instantiateViewControllerWithIdentifier:@"LoginVC"];
+        [self.navigationController pushViewController:loginVC animated:YES];
+    }
 }
 
 - (void)touchUpQRcodeButtonAction {
