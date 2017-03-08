@@ -46,6 +46,8 @@
 		49F0A3869EDB806CA3050A19 /* libPods-DRBrower.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DFB1C3A7BC244DD9034D74 /* libPods-DRBrower.a */; };
 		55075A4F1E20814A009A025A /* WebsiteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55075A4E1E20814A009A025A /* WebsiteModel.m */; };
 		55075A521E2081E1009A025A /* WebsiteListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55075A511E2081E1009A025A /* WebsiteListModel.m */; };
+		551025511E6FBFE600303E62 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5510254F1E6FBFE600303E62 /* SettingCell.m */; };
+		551025521E6FBFE600303E62 /* SettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551025501E6FBFE600303E62 /* SettingCell.xib */; };
 		551661611E222CF900909A11 /* WebsiteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5516615F1E222CF900909A11 /* WebsiteCell.m */; };
 		551661621E222CF900909A11 /* WebsiteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551661601E222CF900909A11 /* WebsiteCell.xib */; };
 		551661691E236AEF00909A11 /* WebsiteRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 551661681E236AEF00909A11 /* WebsiteRootVC.m */; };
@@ -194,6 +196,9 @@
 		55075A4E1E20814A009A025A /* WebsiteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebsiteModel.m; sourceTree = "<group>"; };
 		55075A501E2081E1009A025A /* WebsiteListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebsiteListModel.h; sourceTree = "<group>"; };
 		55075A511E2081E1009A025A /* WebsiteListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebsiteListModel.m; sourceTree = "<group>"; };
+		5510254E1E6FBFE600303E62 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
+		5510254F1E6FBFE600303E62 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
+		551025501E6FBFE600303E62 /* SettingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingCell.xib; sourceTree = "<group>"; };
 		5516615E1E222CF900909A11 /* WebsiteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebsiteCell.h; sourceTree = "<group>"; };
 		5516615F1E222CF900909A11 /* WebsiteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebsiteCell.m; sourceTree = "<group>"; };
 		551661601E222CF900909A11 /* WebsiteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebsiteCell.xib; sourceTree = "<group>"; };
@@ -307,7 +312,6 @@
 		55DE44DA1E6EA13200DCD1BE /* Define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
 		55DE44DB1E6EA13200DCD1BE /* NSString+StringSeparated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StringSeparated.h"; sourceTree = "<group>"; };
 		55DE44DC1E6EA13200DCD1BE /* NSString+StringSeparated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StringSeparated.m"; sourceTree = "<group>"; };
-
 		55E5BC201E67C92800A7CF9E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		55E5BC221E67C93200A7CF9E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		55E5BC241E67C94400A7CF9E /* libZXingObjC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libZXingObjC.a; path = "Pods/../build/Debug-iphoneos/ZXingObjC/libZXingObjC.a"; sourceTree = "<group>"; };
@@ -689,12 +693,6 @@
 		557DC09B1E0A21B500ECFFDE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				55DE44E21E6EA4BA00DCD1BE /* DRGeocoder.h */,
-				55DE44E31E6EA4BA00DCD1BE /* DRGeocoder.m */,
-				55DE44E41E6EA4BA00DCD1BE /* DRLocationManager.h */,
-				55DE44E51E6EA4BA00DCD1BE /* DRLocationManager.m */,
-				55DE44E61E6EA4BA00DCD1BE /* WeatherModel.h */,
-				55DE44E71E6EA4BA00DCD1BE /* WeatherModel.m */,
 				557DC09F1E0A234100ECFFDE /* NewsTagModel.h */,
 				557DC0A01E0A234100ECFFDE /* NewsTagModel.m */,
 				557DC09C1E0A22D000ECFFDE /* NewsTagListModel.h */,
@@ -802,6 +800,9 @@
 				55BC1B0F1E49D3EF00A64375 /* RecordCell.h */,
 				55BC1B101E49D3EF00A64375 /* RecordCell.m */,
 				55BC1B111E49D3EF00A64375 /* RecordCell.xib */,
+				5510254E1E6FBFE600303E62 /* SettingCell.h */,
+				5510254F1E6FBFE600303E62 /* SettingCell.m */,
+				551025501E6FBFE600303E62 /* SettingCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -933,6 +934,7 @@
 				18D61F3D1E66B3EF0077BE5C /* RankingCell.xib in Resources */,
 				557DC0B21E0B658300ECFFDE /* ThreePicCell.xib in Resources */,
 				189FC7BF1E6583CC005E1C73 /* More.storyboard in Resources */,
+				551025521E6FBFE600303E62 /* SettingCell.xib in Resources */,
 				5517EAB91E1C8AE1008B3853 /* HomeTopView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1004,14 +1006,12 @@
 				18D61F3A1E66B3EF0077BE5C /* CommentListCell.m in Sources */,
 				55BC1B001E4957CE00A64375 /* UIButton+ImageTitleSpacing.m in Sources */,
 				557DC0971E08E3A500ECFFDE /* DRHomeVC.m in Sources */,
-				55DE44E91E6EA4BA00DCD1BE /* DRLocationManager.m in Sources */,
 				557A94091E5EDD7D006A2466 /* RecordListModel.m in Sources */,
 				552ADBD11E249189007036CA /* WebsiteRecommendCell.m in Sources */,
 				557DC0AD1E0A685100ECFFDE /* ImgsModel.m in Sources */,
 				557DC0BD1E0CB7F900ECFFDE /* ZeroPicCell.m in Sources */,
 				55421AA91E599A6E00389B86 /* ShareView.m in Sources */,
 				557DC0AA1E0A64E900ECFFDE /* NewsListModel.m in Sources */,
-				55DE44EA1E6EA4BA00DCD1BE /* WeatherModel.m in Sources */,
 				558ADF991E13CE5F00035716 /* DRImageView.m in Sources */,
 				18FF71581E6D4F3B00F7BAA3 /* RegsitVC.m in Sources */,
 				1866D4A21E5BDDF500BDB5DB /* NewsListViewController.m in Sources */,
@@ -1027,7 +1027,6 @@
 				55E5BC591E68252200A7CF9E /* QRCameraSwitchButton.m in Sources */,
 				18D61F301E66B3DF0077BE5C /* SortListModel.m in Sources */,
 				18D61F1D1E66B3CC0077BE5C /* SortCommonVC.m in Sources */,
-				55DE44E81E6EA4BA00DCD1BE /* DRGeocoder.m in Sources */,
 				18D61F431E66C7680077BE5C /* AdviceVC.m in Sources */,
 				557A94111E5FD445006A2466 /* DRRealmPublic.m in Sources */,
 				552375891E1CEAF000214ECB /* SearchVC.m in Sources */,
@@ -1056,6 +1055,7 @@
 				557A940A1E5EDD7D006A2466 /* RecordModel.m in Sources */,
 				18D61F3C1E66B3EF0077BE5C /* RankingCell.m in Sources */,
 				1866D49F1E5BD11700BDB5DB /* HomeTopViewLayout.m in Sources */,
+				551025511E6FBFE600303E62 /* SettingCell.m in Sources */,
 				558ADF5F1E0E2B4F00035716 /* HomeToolBar.m in Sources */,
 				18D61F211E66B3CC0077BE5C /* SortVideoVC.m in Sources */,
 				557DC0B91E0BC03300ECFFDE /* TagsView.m in Sources */,
@@ -1065,7 +1065,6 @@
 				55BC1B161E4AF1A800A64375 /* CollectVC.m in Sources */,
 				18FF71621E6E3F9500F7BAA3 /* LoginModel.m in Sources */,
 				18D61F2F1E66B3DF0077BE5C /* CommentModel.m in Sources */,
-				55DE44E11E6EA4A600DCD1BE /* NSString+StringSeparated.m in Sources */,
 				557A940B1E5EDD7D006A2466 /* RecordRealm.m in Sources */,
 				55E5BC5A1E68252200A7CF9E /* QRCodeReaderView.m in Sources */,
 				55DE44DD1E6EA13200DCD1BE /* NSString+StringSeparated.m in Sources */,
@@ -1230,7 +1229,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
 				DEVELOPMENT_TEAM = J7LGQHZ8DG;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DRBrower/DRBrowser-Prefix.pch";
@@ -1251,7 +1249,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
 				DEVELOPMENT_TEAM = J7LGQHZ8DG;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DRBrower/DRBrowser-Prefix.pch";

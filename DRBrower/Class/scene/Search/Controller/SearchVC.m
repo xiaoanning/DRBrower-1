@@ -56,14 +56,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [self.searchWV reload];
     self.navigationController.navigationBarHidden = YES;
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-//    self.navigationController.navigationBarHidden = NO;
-    NSLog(@"historyArray = %@",self.historyArray);
-    
 }
 
 - (void)isFullScreen {
@@ -138,6 +132,17 @@
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    
+    NSString *fontStr = [[NSUserDefaults standardUserDefaults] objectForKey:WEBVIEW_FONT];
+    if (fontStr == nil) {
+        fontStr = @"100%";
+    }
+    
+    NSString *jsStr = [NSString stringWithFormat:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust = '%@'",fontStr];
+    
+    [webView evaluateJavaScript:jsStr
+              completionHandler:nil];
+    
     NSString *title = webView.title;
     NSString *url = webView.URL.absoluteString;
     [self.titleBtn setTitle:title forState:UIControlStateNormal];
@@ -145,23 +150,8 @@
         [self newOneRecordWithUrl:url title:title];
     }
     
-//    [webView evaluateJavaScript:@"var script = document.createElement('script');"
-//     "script.type = 'text/javascript';"
-//     "script.text = \"function ResizeImages() { "
-//     "var myimg,oldwidth;"
-//     "var maxwidth = 50.0;" // UIWebView中显示的图片宽度
-//     "for(i=0;i <document.images.length;i++){"
-//     "myimg = document.images[i];"
-//     "oldwidth = myimg.width;"
-//     "myimg.width = maxwidth;"
-//     "}"
-//     "}\";"
-//     "document.getElementsByTagName('head')[0].appendChild(script);ResizeImages();" completionHandler:nil];
-    
 }
-//- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler{
-//    NSLog(@"%@",navigationResponse.response);
-//}
+
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
     NSLog(@"%@",message);
 }
