@@ -25,10 +25,8 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"登录";
-        
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_btn_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonAction:)];
     self.navigationItem.leftBarButtonItem = backButton;
-    
 }
 - (void)backButtonAction:(UIBarButtonItem *)barButton {
     [self.navigationController popViewControllerAnimated:YES];
@@ -61,14 +59,16 @@
     [self.pwdTextField resignFirstResponder];
     [self.phoneNumTextField resignFirstResponder];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@%@&tel=%@&dev_id=%@&pwd=%@",PHP_BASE_URL,URL_LOGIN,self.phoneNum,DEV_ID,self.pwd];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&tel=%@&dev_id=%@&pwd=%@",PHP_BASE_URL,URL_LOGIN,TOKEN,self.phoneNum,DEV_ID,self.pwd];
     [LoginModel userLoginUrl:urlString parameters:@{} block:^(NSDictionary *dic, NSError *error) {
         NSLog(@"%@",dic);
         [Tools showView:[dic objectForKey:@"msg"]];
         if ([[dic objectForKey:@"msg"] isEqualToString:@"登录成功"]) {
             [self.navigationController popViewControllerAnimated:YES];
-            //登陆成功
-            [[NSNotificationCenter defaultCenter] postNotificationName:LoginSuccess object:dic];
+            //登陆成功,保存token到本地
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            [userDefaults setObject:[[dic objectForKey:@"data"] objectForKey:@"token"] forKey:LOGIN_TOKEN];
+            [userDefaults synchronize];
         }
     }];
 }

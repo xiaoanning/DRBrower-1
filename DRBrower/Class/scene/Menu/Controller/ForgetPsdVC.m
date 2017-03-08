@@ -91,7 +91,7 @@
 -(void)getTelCode {
     [self.phoneNumTextField resignFirstResponder];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&dev_id=%@",PHP_BASE_URL,URL_GETCODE,self.phoneNum,DEV_ID];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&dev_id=%@&token=%@",PHP_BASE_URL,URL_GETCODE,self.phoneNum,DEV_ID,TOKEN];
     [LoginModel getTelCodeUrl:urlString parameters:@{} block:^(NSDictionary *dic, NSError *error) {
         NSLog(@"%@",dic);
         [Tools showView:[dic objectForKey:@"msg"]];
@@ -103,7 +103,7 @@
     [self.nPwdTextField resignFirstResponder];
     [self.codeTextField resignFirstResponder];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@%@&dev_id=%@&tel=%@&pwd=%@&code=%@",PHP_BASE_URL,URL_FINDPWD,DEV_ID,self.phoneNum,self.nPassword,self.code];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&dev_id=%@&tel=%@&pwd=%@&code=%@",PHP_BASE_URL,URL_FINDPWD,TOKEN,DEV_ID,self.phoneNum,self.nPassword,self.code];
     [LoginModel resetPasswordUrl:urlString parameters:@{} block:^(NSDictionary *dic, NSError *error) {
         NSLog(@"%@",dic);
         [Tools showView:[dic objectForKey:@"msg"]];

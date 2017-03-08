@@ -91,8 +91,8 @@
 
 //获取短信验证码
 -(void)getTelCode {
-    [self.codeTextField resignFirstResponder];
-    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&dev_id=%@",PHP_BASE_URL,URL_GETCODE,self.phoneNum,DEV_ID];
+    [self.phoneNumTextField resignFirstResponder];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&dev_id=%@&token=%@",PHP_BASE_URL,URL_GETCODE,self.phoneNum,DEV_ID,TOKEN];
     [LoginModel getTelCodeUrl:urlString parameters:@{} block:^(NSDictionary *dic, NSError *error) {
         NSLog(@"%@",dic);
         [Tools showView:[dic objectForKey:@"msg"]];
@@ -105,7 +105,7 @@
     [self.pwdAgainTextField resignFirstResponder];
     [self.codeTextField resignFirstResponder];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@%@&tel=%@&dev_id=%@&pwd=%@&repwd=%@&code=%@&sex=%@",PHP_BASE_URL,URL_REGSIT,self.phoneNum,DEV_ID,self.password,self.passwordAgain,self.code,@"1"];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&tel=%@&dev_id=%@&pwd=%@&repwd=%@&code=%@&sex=%@",PHP_BASE_URL,URL_REGSIT,TOKEN,self.phoneNum,DEV_ID,self.password,self.passwordAgain,self.code,@"1"];
     [LoginModel userRegsitUrl:urlString parameters:@{} block:^(NSDictionary *dic, NSError *error) {
         NSLog(@"%@",dic);
         [Tools showView:[dic objectForKey:@"msg"]];

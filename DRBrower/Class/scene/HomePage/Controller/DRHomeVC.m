@@ -99,8 +99,6 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     [self.homeTableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
     // Do any additional setup after loading the view.
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSeccess:) name:LoginSuccess object:nil];
-
 }
 
 - (void)setupTableView {
@@ -541,15 +539,13 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 }
 //登陆
 -(void)touchUpIconImageView {
-    if (!self.loginSuccess) {
+    if ([TOKEN isEqualToString:@"brower*@forapi@*"]) {
         UIStoryboard *stroyboard = [UIStoryboard storyboardWithName:@"Login" bundle:[NSBundle mainBundle]];
         LoginVC *loginVC = (LoginVC *)[stroyboard instantiateViewControllerWithIdentifier:@"LoginVC"];
         [self.navigationController pushViewController:loginVC animated:YES];
+    }else {
+        [Tools showView:@"已登陆"];
     }
-}
--(void)loginSeccess:(NSNotification *)info {
-    NSLog(@"info--%@",info.object);
-    self.loginSuccess = YES;
 }
 - (void)touchUpQRcodeButtonAction {
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
