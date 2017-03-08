@@ -14,6 +14,15 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *fullScreenLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *recordBtn;
+@property (weak, nonatomic) IBOutlet UIButton *collectBtn;
+@property (weak, nonatomic) IBOutlet UIButton *reloadBtn;
+@property (weak, nonatomic) IBOutlet UIButton *fullScreenBtn;
+@property (weak, nonatomic) IBOutlet UIButton *MoreBtn;
+@property (weak, nonatomic) IBOutlet UIButton *teasingBtn;
+@property (weak, nonatomic) IBOutlet UIButton *serviceBtn;
+
+
 
 @end
 
@@ -24,38 +33,52 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupSubviews];
     
-    BOOL isFullScreen = [[NSUserDefaults standardUserDefaults] boolForKey:kFullScreen];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dismissView) name:DISMISS_VIEW object:nil];
+}
 
+- (void)setupSubviews {
+    BOOL isFullScreen = [[NSUserDefaults standardUserDefaults] boolForKey:kFullScreen];
+    
     if (isFullScreen == YES) {
         self.fullScreenLabel.text = NSLocalizedString(@"退出全屏", nil);
     }else {
         self.fullScreenLabel.text = NSLocalizedString(@"全屏", nil);
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kFullScreen];
-
+        
     }
-    
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dismissView) name:DISMISS_VIEW object:nil];
-    
     
     self.iconImageView.layer.cornerRadius = CGRectGetHeight(self.iconImageView.frame)/2;
     self.iconImageView.layer.masksToBounds = YES;
     self.iconImageView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapIconImageView:)];
     [self.iconImageView addGestureRecognizer:tap];
+    
+    switch (_rootVCType) {
+        case MenuVCRootVCTypeUnknown:
+            
+            break;
+        case MenuVCRootVCTypeHome:{
+            [self.collectBtn setImage:[UIImage imageNamed:@"menu_collect_enabel"] forState:UIControlStateNormal];
+            [self.reloadBtn setImage:[UIImage imageNamed:@"menu_reload_enable"] forState:UIControlStateNormal];
+        }
+            break;
+        case MenuVCRootVCTypeSearch:
+            
+            break;
+            
+        default:
+            break;
+    }
 }
--(void)dealloc{
+
+- (void)dealloc{
    
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 -(void)dismissView{
-    [self dismissViewControllerAnimated:YES completion:nil];
-
-}
-
-- (IBAction)didClickBackButtonAction:(id)sender {
-    
     [self dismissViewControllerAnimated:YES completion:nil];
 
 }

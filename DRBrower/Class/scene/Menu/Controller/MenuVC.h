@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+
+typedef NS_ENUM(NSInteger, MenuVCRootVCType) {
+    MenuVCRootVCTypeUnknown = 0,
+    MenuVCRootVCTypeHome,
+    MenuVCRootVCTypeSearch
+};
+
 @protocol MenuVCDelegate <NSObject>
 @optional
 - (void)touchUpCollectButtonAction;
@@ -24,5 +31,7 @@
 
 @property (nonatomic, assign)id<MenuVCDelegate>delegate;
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
+
+@property (assign, nonatomic) MenuVCRootVCType rootVCType;
 
 @end

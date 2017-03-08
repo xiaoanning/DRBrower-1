@@ -487,13 +487,13 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     //菜单
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Menu" bundle:[NSBundle mainBundle]];
     MenuVC *menuVC = (MenuVC *)[storyboard instantiateViewControllerWithIdentifier:@"MenuVC"];
+    menuVC.rootVCType = MenuVCRootVCTypeHome;
     MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:menuVC];
     formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
-    formSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height - 300;
+    formSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height - MENU_HEIGHT - 20;
     formSheetController.presentationController.contentViewSize = [UIScreen mainScreen].bounds.size;
     formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideAndBounceFromBottom;
     menuVC.delegate = self;
-    
     [self presentViewController:formSheetController animated:YES completion:nil];
 }
 

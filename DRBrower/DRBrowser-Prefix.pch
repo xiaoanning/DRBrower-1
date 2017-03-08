@@ -68,7 +68,7 @@
 #define QQ_APPID @"1105997278"
 #define QQ_APPKEY @"0IpJBDsSAVxLXHC0"
 
-#define MENU_HEIGHT 280
+#define MENU_HEIGHT 250
 
 #pragma mark - 通知
 #define DISMISS_VIEW @"dissmissView"
