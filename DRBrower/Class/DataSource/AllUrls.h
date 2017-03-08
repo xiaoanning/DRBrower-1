@@ -52,9 +52,9 @@
 #define URL_ADVICE @"m=suggest&a=add&dev_id="
 
 //获取短信验证码
-#define URL_GETCODE @"m=user&a=get_send_message&tel="
+#define URL_GETCODE @"m=user&a=get_send_message&devtype=1&tel="
 //注册
-#define URL_REGSIT @"m=user&a=register&sigtype=1"
+#define URL_REGSIT @"m=user&a=register&sigtype=1&devtype=1"
 //找回密码
 #define URL_FINDPWD @"m=user&a=findpwd&devtype=1"
 //登录

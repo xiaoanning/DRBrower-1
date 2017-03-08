@@ -20,6 +20,12 @@
 - (void)onePicCell:(OnePicCell *)cell model:(NewsModel *)model {
     
     self.titleLabel.text = model.title;
+    if (model.isSelected) {
+        self.titleLabel.textColor = [UIColor grayColor];
+    }else {
+        self.titleLabel.textColor = [UIColor blackColor];
+    }
+
     ImgsModel *img = model.imgs[0];
     
     [self.imgImageView sd_setImageWithURL:[NSURL URLWithString:img.url]

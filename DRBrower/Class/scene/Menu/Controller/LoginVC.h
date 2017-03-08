@@ -9,9 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LoginVC : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *accountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *passwordLabel;
+@property (weak, nonatomic) IBOutlet UITextField *phoneNumTextField;
+@property (weak, nonatomic) IBOutlet UITextField *pwdTextField;
 
-@property (weak, nonatomic) IBOutlet UITextView *accountTextView;
-@property (weak, nonatomic) IBOutlet UITextView *passwordTextView;
 @end

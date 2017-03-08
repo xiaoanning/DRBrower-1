@@ -77,6 +77,7 @@
 #define sysBrightness @"sysBrightness"
 
 #define Platform @"1"  //平台区分
+#define LoginSuccess @"LoginSuccess" //登陆成功
 
 #define DEV_ID [[UIDevice currentDevice].identifierForVendor UUIDString]
 

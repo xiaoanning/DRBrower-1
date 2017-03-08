@@ -18,6 +18,11 @@
 
 - (void)zeroPicCell:(ZeroPicCell *)cell model:(NewsModel *)model {
     self.titleLabel.text = model.title;
+    if (model.isSelected) {
+        self.titleLabel.textColor = [UIColor grayColor];
+    }else {
+        self.titleLabel.textColor = [UIColor blackColor];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
