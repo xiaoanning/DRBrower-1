@@ -14,8 +14,9 @@
  Base Url
  @return Base Url
  */
-#define BASE_URL @"http://61.160.250.174:8080/dr/"//@"http://61.160.196.119:8080/dr/"//@"http://112.84.188.42:9999/DRBrower/"
+
 #define PHP_BASE_URL @"http://admin.drliulanqi.com/index.php?g=api&"
+#define BASE_URL @"http://61.160.250.174:8080/dr/"
 
 ///获取新闻分类标签
 #define URL_GETTABS @"news/getTabs"
@@ -31,7 +32,11 @@
 #define URL_GETSORTTAG @"sort/cateList"
 //获取排行列表标签
 #define URL_GETSORTLIST @"sort/getList?page_num="
-
+//网址
+#define URL_123HAOURL @"http://m.hao123.com/"
+#define URL_NOVEL @"http://book.easou.com/"
+#define URL_LADY @"http://www.tuigirl.com/"
+#define URL_JOKES @"http://www.qiushibaike.com/"
 //天气
 #define URL_GETWEATHER @"http://admin.drliulanqi.com/index.php?g=api&m=weather&a=get_weather&token=brower*@forapi@*&name="
 
