@@ -14,6 +14,8 @@
 #define ZANList @"zanList"
 #define COMPLAINList @"complainList"
 #define SWITCHList @"switchList"
+#define SELECTEDList @"selectedList"
+#define NEWSSELECTEDList @"newsSelectedList"
 
 @implementation DRLocaldData
 
@@ -183,6 +185,30 @@
     NSMutableArray *switchArray =
     [NSKeyedUnarchiver unarchiveObjectWithData:dataArray[0]];//把数组中的data转化为
     return switchArray;
+}
+//保存开关列表
++ (void)saveSelectedData:(NSMutableArray *)selectedArray {
+    [DRLocaldData rootSaveData:selectedArray fileName:SELECTEDList];
+}
+//获取开关列表
++ (NSMutableArray *)achieveSelectedData {
+    NSString *filePath = [self savePathName:SELECTEDList];//获取文件路径
+    NSMutableArray *dataArray = [NSMutableArray arrayWithContentsOfFile:filePath];//把文件取出放入数字
+    NSMutableArray *selectedArray =
+    [NSKeyedUnarchiver unarchiveObjectWithData:dataArray[0]];//把数组中的data转化为
+    return selectedArray;
+}
+//保存新闻点击列表
++ (void)saveNewsSelectedData:(NSMutableArray *)selectedArray {
+    [DRLocaldData rootSaveData:selectedArray fileName:NEWSSELECTEDList];
+}
+//获取x新闻点击列表
++ (NSMutableArray *)achieveNewsSelectedData {
+    NSString *filePath = [self savePathName:NEWSSELECTEDList];//获取文件路径
+    NSMutableArray *dataArray = [NSMutableArray arrayWithContentsOfFile:filePath];//把文件取出放入数字
+    NSMutableArray *selectedArray =
+    [NSKeyedUnarchiver unarchiveObjectWithData:dataArray[0]];//把数组中的data转化为
+    return selectedArray;
 }
 
 @end

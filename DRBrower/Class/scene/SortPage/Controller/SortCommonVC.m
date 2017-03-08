@@ -19,6 +19,7 @@
 @property (nonatomic,strong) NSMutableArray *localZanArray; //本地存储已点赞下标
 @property (nonatomic,strong) NSMutableArray *localComplainArray; //本地存储已举报下标
 @property (nonatomic,assign) NSInteger currentComplainIndex;//当前举报所在列
+@property (nonatomic,strong) NSMutableArray *selectedArray;//已看列表
 
 @end
 
@@ -185,6 +186,14 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     SortModel *sortModel = self.sortListArray[indexPath.row];
+    
+    RankingCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.titleLabel.textColor = [UIColor grayColor];
+    self.selectedArray = [NSMutableArray arrayWithArray:[DRLocaldData achieveSelectedData]];
+    if (![self.selectedArray containsObject:sortModel.sort_id]) {
+        [self.selectedArray addObject:sortModel.sort_id];
+        [DRLocaldData saveSelectedData:self.selectedArray];
+    }
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
     SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
     searchVC.sortModel = sortModel;
@@ -202,6 +211,7 @@
     //获取本地存储数据
     self.localZanArray = [NSMutableArray arrayWithArray:[DRLocaldData achieveZanData]];
     self.localComplainArray = [NSMutableArray arrayWithArray:[DRLocaldData achieveComplainData]];
+    self.selectedArray = [NSMutableArray arrayWithArray:[DRLocaldData achieveSelectedData]];
     
     if (self.localZanArray.count>0) {
         if ([self.localZanArray containsObject:model.sort_id] ) {
@@ -217,7 +227,6 @@
     if (self.localComplainArray.count>0) {
         if ([self.localComplainArray containsObject:model.sort_id]) {
             [cell.informButton setBackgroundImage:[UIImage imageNamed:@"sort_informed"] forState:UIControlStateNormal];
-//            cell.informLabel.text = [NSString stringWithFormat:@"%ld",(long)[cell.informLabel.text integerValue]+1];
             cell.informLabel.text = @"已投诉";
             cell.informButton.userInteractionEnabled = NO;
         }else {
@@ -225,7 +234,13 @@
             [cell.informButton setBackgroundImage:[UIImage imageNamed:@"sort_inform"] forState:UIControlStateNormal];
             cell.informButton.userInteractionEnabled = YES;
         }
-        
+    }
+    if (self.selectedArray.count>0) {
+        if ([self.selectedArray containsObject:model.sort_id]) {
+            cell.titleLabel.textColor = [UIColor grayColor];
+        }else {
+            cell.titleLabel.textColor = [UIColor blackColor];
+        }
     }
 }
 #pragma mark-------------RankingButtonDelegate 代理方法

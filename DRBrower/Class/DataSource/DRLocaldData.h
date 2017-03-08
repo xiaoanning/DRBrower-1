@@ -49,4 +49,24 @@
 + (void)saveSwitchData:(NSMutableArray *)switchArray;
 //获取开关列表
 + (NSMutableArray *)achieveSwitchData;
+
+//保存选中列表
++ (void)saveSelectedData:(NSMutableArray *)selectedArray;
+//获取选中列表
++ (NSMutableArray *)achieveSelectedData;
+
+//保存新闻点击列表
++ (void)saveNewsSelectedData:(NSMutableArray *)selectedArray;
+//获取x新闻点击列表
++ (NSMutableArray *)achieveNewsSelectedData;
 @end
+
+
+
+
+
+
+
+
+
+
