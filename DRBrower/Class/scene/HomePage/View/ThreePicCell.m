@@ -20,6 +20,12 @@
 - (void)threePicCell:(ThreePicCell *)cell model:(NewsModel *)model {
     
     self.titleLabel.text = model.title;
+    if (model.isSelected) {
+        self.titleLabel.textColor = [UIColor grayColor];
+    }else {
+        self.titleLabel.textColor = [UIColor blackColor];
+    }
+
     for (int i = 0;i<[self.imgsImageView count]; i++) {
         DRImageView *imageView = self.imgsImageView[i];
         ImgsModel *img =model.imgs[i];

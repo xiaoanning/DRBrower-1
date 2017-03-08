@@ -61,7 +61,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 @property ( nonatomic , strong ) UIPageViewController * pageVC ;
 
 @property (nonatomic, strong) DRLocationManager *locationManger;
-
+@property (nonatomic,assign) BOOL loginSuccess;
 
 @end
 
@@ -98,6 +98,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     
     [self.homeTableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
     // Do any additional setup after loading the view.
+    
 }
 
 - (void)setupTableView {
@@ -376,6 +377,10 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NewsModel *news = self.newsListArray[indexPath.row];
+    
+    news.isSelected = YES;
+    [self.homeTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
     SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
     searchVC.newsModel = news;
@@ -544,11 +549,12 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 }
 //登陆
 -(void)touchUpIconImageView {
-    BOOL isLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"isLogin"];
-    if (!isLogin) {
+    if ([TOKEN isEqualToString:@"brower*@forapi@*"]) {
         UIStoryboard *stroyboard = [UIStoryboard storyboardWithName:@"Login" bundle:[NSBundle mainBundle]];
         LoginVC *loginVC = (LoginVC *)[stroyboard instantiateViewControllerWithIdentifier:@"LoginVC"];
         [self.navigationController pushViewController:loginVC animated:YES];
+    }else {
+        [Tools showView:@"已登陆"];
     }
 }
 

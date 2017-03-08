@@ -13,7 +13,7 @@
 @property(nonatomic, strong) NSString *title;//新闻标题
 @property(nonatomic, strong) NSString *url;//地址
 @property(nonatomic, strong) NSMutableArray *imgs;//图片
-
+@property (nonatomic,assign) BOOL isSelected;
 + (NSURLSessionDataTask *)getNewsByTagUrl:(NSString *)url
                              parameters:(NSDictionary *)parameters
                                   block:(void (^)(NewsListModel *newsList,

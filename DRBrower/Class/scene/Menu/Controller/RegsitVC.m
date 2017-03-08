@@ -10,15 +10,14 @@
 #import "RegsitVC.h"
 #import "LoginModel.h"
 
-@interface RegsitVC ()<UITextViewDelegate>
-@property (nonatomic,strong) NSMutableArray *phoneNumArray;//手机号
-@property (nonatomic,strong) NSMutableArray *passwordArray;//密码
-@property (nonatomic,strong) NSMutableArray *passwordArginArray; //确认密码
-@property (nonatomic,strong) NSMutableArray *codeArray; //验证码
+@interface RegsitVC ()<UITextFieldDelegate>
+@property (nonatomic,copy) NSString *phoneNum;//手机号
+@property (nonatomic,copy) NSString *password;//密码
+@property (nonatomic,copy) NSString *passwordAgain; //确认密码
+@property (nonatomic,copy) NSString *code; //验证码
 
 @property (nonatomic,assign) NSInteger timeCount;
 @property (nonatomic,strong) NSTimer *timer;
-@property (nonatomic,assign) BOOL isPhoneNum;
 @end
 
 @implementation RegsitVC
@@ -34,11 +33,6 @@
     self.title = @"注册";
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_btn_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonAction:)];
     self.navigationItem.leftBarButtonItem = backButton;
-    
-    self.phoneNumArray = [NSMutableArray arrayWithCapacity:5];
-    self.passwordArray = [NSMutableArray arrayWithCapacity:5];
-    self.passwordArginArray = [NSMutableArray arrayWithCapacity:5];
-    self.codeArray = [NSMutableArray arrayWithCapacity:5];
 }
 
 - (void)backButtonAction:(UIBarButtonItem *)barButton {
@@ -46,12 +40,12 @@
 }
 //获取验证码
 - (IBAction)touchUpCodeButton:(id)sender {
-    if (self.isPhoneNum) {
+//    if (self.isPhoneNum) {
         [self getTelCode];
         [self timeFailBeginFrom:60];
-    }else {
-        [Tools showView:@"请输入正确手机号"];
-    }
+//    }else {
+//        [Tools showView:@"请输入正确手机号"];
+//    }
 }
 //注册
 - (IBAction)touchUpRegsitButton:(id)sender {
@@ -74,124 +68,31 @@
         [self.timer invalidate];
     }
 }
-#pragma mark - -------------TextView--------
--(void)textViewDidBeginEditing:(UITextView *)textView {
-}
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    switch (textView.tag) {
-        case 200:
-            if ([textView.text length] >= 11) {//判断字符个数
-                if (self.isPhoneNum) {
-                    NSLog(@"%@",[self.phoneNumArray lastObject]);
-                }else {
-                    [Tools showView:@"手机号输入有误"];
-                    textView.text = @"";
-                    [self.phoneNumArray removeAllObjects];
-                    [self.phoneNumLabel setHidden:NO];
-                }
-            }
-            return YES;
-            break;
-        case 201:
-            if (1 == range.length) {//按下回格键
-                return YES;
-            }
-            if ([text isEqualToString:@"\n"]) {//按下return键
-                [textView resignFirstResponder];
-                return NO;
-            }else {
-                if ([textView.text length] < 250) {//判断字符个数
-                    NSLog(@"%@",text);
-                    return YES;
-                }
-            }
-            break;
-        case 202:
-            if (1 == range.length) {//按下回格键
-                return YES;
-            }
-            if ([text isEqualToString:@"\n"]) {//按下return键
-                [textView resignFirstResponder];
-                return NO;
-            }else {
-                if ([textView.text length] < 250) {//判断字符个数
-                    NSLog(@"%@",text);
-                    return YES;
-                }
-            }
 
-            break;
-        case 203:
-            if (1 == range.length) {//按下回格键
-                return YES;
-            }
-            if ([text isEqualToString:@"\n"]) {//按下return键
-                [textView resignFirstResponder];
-                return NO;
-            }else {
-                if ([textView.text length] < 7) {//判断字符个数
-                    NSLog(@"%@",text);
-                    return YES;
-                }
-            }
-            break;
-        default:
-            break;
-    }
-    return NO;
-}
-- (void)textViewDidChange:(UITextView *)textView{
-    switch (textView.tag) {
+#pragma mark - -------------TextFieldDelegate--------
+-(void)textFieldDidEndEditing:(UITextField *)textField {
+    switch (textField.tag) {
         case 200:
-            if ([textView.text length] == 0) {
-                [self.phoneNumLabel setHidden:NO];
-            }else if ([textView.text length] >= 11){
-                [textView resignFirstResponder];
-                [self.phoneNumArray addObject:textView.text];
-                self.isPhoneNum = [Tools phoneNumberValidation:[self.phoneNumArray lastObject]];
-            }else {
-                [self.phoneNumLabel setHidden:YES];
-                [self.phoneNumArray addObject:textView.text];
-            }
+            self.phoneNum = textField.text;
             break;
         case 201:
-            if ([textView.text length] == 0) {
-                [self.passwordLabel setHidden:NO];
-            }else {
-                [self.passwordLabel setHidden:YES];
-                [self.passwordArray addObject:textView.text];
-            }
+            self.password = textField.text;
             break;
         case 202:
-            if ([textView.text length] == 0) {
-                [self.passwordAgainLabel setHidden:NO];
-            }else {
-                [self.passwordAgainLabel setHidden:YES];
-                [self.passwordArginArray addObject:textView.text];
-                NSLog(@"%@   %@",[self.passwordArginArray lastObject],[self.passwordArray lastObject]);
-                if ([[self.passwordArginArray lastObject] length] == [[self.passwordArray lastObject] length]) {
-                    [textView resignFirstResponder];
-                }
-            }
+            self.passwordAgain = textField.text;
             break;
         case 203:
-            if ([textView.text length] == 0) {
-                [self.codeLabel setHidden:NO];
-            }else if ([textView.text length] >= 6) {
-                [textView resignFirstResponder];
-                [self.codeArray addObject:textView.text];
-            }else {
-                [self.codeLabel setHidden:YES];
-                [self.codeArray addObject:textView.text];
-            }
+            self.code = textField.text;
             break;
         default:
             break;
     }
 }
+
 //获取短信验证码
 -(void)getTelCode {
-    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&devtype=%@&dev_id=%@",PHP_BASE_URL,URL_GETCODE,[self.phoneNumArray lastObject],@"1",DEV_ID];
+    [self.phoneNumTextField resignFirstResponder];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&dev_id=%@&token=%@",PHP_BASE_URL,URL_GETCODE,self.phoneNum,DEV_ID,TOKEN];
     [LoginModel getTelCodeUrl:urlString parameters:@{} block:^(NSDictionary *dic, NSError *error) {
         NSLog(@"%@",dic);
         [Tools showView:[dic objectForKey:@"msg"]];
@@ -199,7 +100,12 @@
 }
 //用户注册
 -(void)userRegsit {
-    NSString *urlString = [NSString stringWithFormat:@"%@%@&tel=%@&devtype=%@&dev_id=%@&pwd=%@&repwd=%@&code=%@&sex=%@",PHP_BASE_URL,URL_REGSIT,[self.phoneNumArray lastObject],@"1",DEV_ID,[self.passwordArray lastObject],[self.passwordArginArray lastObject],[self.codeArray lastObject],@"1"];
+    [self.phoneNumTextField resignFirstResponder];
+    [self.pwdTextField resignFirstResponder];
+    [self.pwdAgainTextField resignFirstResponder];
+    [self.codeTextField resignFirstResponder];
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&tel=%@&dev_id=%@&pwd=%@&repwd=%@&code=%@&sex=%@",PHP_BASE_URL,URL_REGSIT,TOKEN,self.phoneNum,DEV_ID,self.password,self.passwordAgain,self.code,@"1"];
     [LoginModel userRegsitUrl:urlString parameters:@{} block:^(NSDictionary *dic, NSError *error) {
         NSLog(@"%@",dic);
         [Tools showView:[dic objectForKey:@"msg"]];

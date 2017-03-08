@@ -14,8 +14,9 @@
  Base Url
  @return Base Url
  */
+
+#define PHP_BASE_URL @"http://admin.drliulanqi.com/index.php?g=api&"
 #define BASE_URL @"http://61.160.250.174:8080/dr/"
-#define PHP_BASE_URL @"http://admin.drliulanqi.com/index.php?g=api&token=brower*@forapi@*&"
 
 ///获取新闻分类标签
 #define URL_GETTABS @"news/getTabs"
@@ -31,7 +32,6 @@
 #define URL_GETSORTTAG @"sort/cateList"
 //获取排行列表标签
 #define URL_GETSORTLIST @"sort/getList?page_num="
-//http://61.160.250.174:8080/dr/sort/getList?page_num=1&site_type=3&sort=visit_num
 //网址
 #define URL_123HAOURL @"http://m.hao123.com/"
 #define URL_NOVEL @"http://book.easou.com/"
@@ -56,13 +56,13 @@
 #define URL_ADVICE @"m=suggest&a=add&dev_id="
 
 //获取短信验证码
-#define URL_GETCODE @"m=user&a=get_send_message&tel="
+#define URL_GETCODE @"m=user&a=get_send_message&devtype=2&tel="
 //注册
-#define URL_REGSIT @"m=user&a=register&sigtype=1"
-//找回密码
-#define URL_FINDPWD @"m=user&a=findpwd&devtype=1"
+#define URL_REGSIT @"m=user&a=register&sigtype=1&devtype=2&token="
+//重置密码
+#define URL_FINDPWD @"m=user&a=findpwd&devtype=2&token="
 //登录
-#define URL_LOGIN @"m=user&a=login&devtype=1"
+#define URL_LOGIN @"m=user&a=login&devtype=2&token="
 
 
 

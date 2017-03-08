@@ -79,10 +79,10 @@
 #define appBirghtness @"appBirghtness"
 #define sysBrightness @"sysBrightness"
 
-#define Platform @"1"  //平台区分
+#define LOGIN_TOKEN @"loginToken" //登陆成功
 
 #define DEV_ID [[UIDevice currentDevice].identifierForVendor UUIDString]
-
+#define TOKEN [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_TOKEN]?[[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_TOKEN]:@"brower*@forapi@*"
 
 #endif /* DRBrowser_Prefix_pch */
 
