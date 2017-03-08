@@ -42,11 +42,10 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 #define UP_LOAD @"上拉"
 #define DOWN_LOAD @"下拉"
 
-@interface DRHomeVC ()<UIPageViewControllerDelegate, UIPageViewControllerDataSource,MenuVCDelegate,QRCodeReaderDelegate>
+@interface DRHomeVC ()<UIPageViewControllerDelegate, UIPageViewControllerDataSource,MenuVCDelegate,QRCodeReaderDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet HomeToolBar *homeToolBar;
 @property (weak, nonatomic) IBOutlet TagsView *tagsView;
-@property (strong, nonatomic) HomeTopView *top;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *listTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tagsViewHeightConstraint;
@@ -57,10 +56,10 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 
 @property (strong, nonatomic) NewsTagModel *newsTag;
 @property (strong, nonatomic) WeatherModel *weather;
-
 @property (assign, nonatomic) BOOL isHeight;
 
-@property (nonatomic , strong ) UIPageViewController * pageVC ;
+@property ( nonatomic , strong ) UIPageViewController * pageVC ;
+
 @property (nonatomic, strong) DRLocationManager *locationManger;
 
 
@@ -89,6 +88,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     [self getWebsiteData];
     [self location];
     [self setupTableView];
+    [self location];
     
     self.newsListArray = [NSMutableArray arrayWithCapacity:5];
     self.navigationController.navigationBarHidden = YES;
@@ -114,6 +114,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     [self.locationManger creatManager];
     
 }
+
 #pragma mark - UIPageViewController
 -(void)createPageVCUI
 {
@@ -246,7 +247,6 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
                                   [array addObject:addWebsite];
                                   
                                   [DRLocaldData saveWebsiteData:array];
-                                  NSLog(@"%@",array);
                               }
                           }];
     
@@ -551,6 +551,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
         [self.navigationController pushViewController:loginVC animated:YES];
     }
 }
+
 - (void)touchUpQRcodeButtonAction {
     QRCodeReaderViewController *reader = [QRCodeReaderViewController new];
     reader.modalPresentationStyle = UIModalPresentationFormSheet;
@@ -737,14 +738,13 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     
     __block DRGeocoder *geo = [[DRGeocoder alloc] init];
     [geo creatGeocoder:locations.lastObject
-                 block:^(DRGeocoder *geocoder, NSError *error) {
-                     
-                     [self getWeatherData:[geocoder.city stringByAppendingString:geocoder.subLocality]];
-                     
-                     [manager stopUpdatingLocation];
-                     
-                 }];
-    
+                      block:^(DRGeocoder *geocoder, NSError *error) {
+                          
+                          [self getWeatherData:[geocoder.city stringByAppendingString:geocoder.subLocality]];
+                          
+                          [manager stopUpdatingLocation];
+
+                      }];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -39,6 +39,7 @@
 #import "DRImageView.h"
 #import "UIImage+DRImageClip.h"
 #import "Tools.h"
+#import "Define.h"
 #import "AllUrls.h"
 #import "Define.h"
 #import "DRRealmPublic.h"
@@ -53,6 +54,8 @@
 #define UP_LOAD @"上拉"
 #define DOWN_LOAD @"下拉"
 
+#define WEBVIEW_FONT @"webViewFont"
+#define WEBVIEW_FONT_KEY @"webViewFontKey"
 
 #define COLLECT_SUCCESS @"收藏成功"
 #define COLLECT_FAILED @"已收藏"
