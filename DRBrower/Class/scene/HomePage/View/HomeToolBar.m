@@ -17,6 +17,33 @@
     // Drawing code
 }
 */
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+}
+
+- (void)setBarButton:(HomeToolBarRootVCType)rootVCType {
+    switch (rootVCType) {
+        case HomeToolBarRootVCTypeUnknown:
+        HomeToolBarRootVCTypeHome:
+            [self.backBtn setImage:[UIImage imageNamed:@"toolBar_back"] forState:UIControlStateNormal];
+            [self.goBtn setImage:[UIImage imageNamed:@"toolBar_go"] forState:UIControlStateNormal];
+            break;
+        case HomeToolBarRootVCTypeHome:
+            [self.backBtn setImage:[UIImage imageNamed:@"toolBar_back_enable"] forState:UIControlStateNormal];
+            [self.goBtn setImage:[UIImage imageNamed:@"toolBar_go_enable"] forState:UIControlStateNormal];
+            break;
+        case HomeToolBarRootVCTypeSearch:
+            
+            [self.goBtn setImage:[UIImage imageNamed:@"toolBar_go_enable"] forState:UIControlStateNormal];
+            break;
+            
+        default:
+            break;
+    }
+}
+
 - (IBAction)didclickHomeButtonAction:(id)sender {
     if(_delegate && [_delegate respondsToSelector:@selector(touchUpHomeButtonAction)]){
         [_delegate touchUpHomeButtonAction];

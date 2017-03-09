@@ -74,7 +74,7 @@
 
 - (void)setupSubviews {
     self.homeToolBar.delegate = self;
-
+    [self.homeToolBar setBarButton:HomeToolBarRootVCTypeSearch];
     self.searchWV = [WKWebView new];
     self.searchWV.backgroundColor = [UIColor whiteColor];
     self.searchWV.navigationDelegate = self;
@@ -150,6 +150,9 @@
         [self newOneRecordWithUrl:url title:title];
     }
     
+    if (![self.searchWV canGoForward]) {
+        [self.homeToolBar setBarButton:HomeToolBarRootVCTypeSearch];
+    }
 }
 
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
@@ -174,6 +177,8 @@
 - (void)touchUpBackButtonAction {
     if ([self.searchWV canGoBack]) {
         [self.searchWV goBack];
+        [self.homeToolBar setBarButton:HomeToolBarRootVCTypeUnknown];
+        
     }else if(self.sortModel.url != nil) {
         [self.navigationController popViewControllerAnimated:YES];
     }else if (self.urlString != nil){

@@ -81,6 +81,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     [self.view bringSubviewToFront:self.homeTableView];
     self.tagsView.delegate = self;
     self.homeToolBar.delegate = self;
+    [self.homeToolBar setBarButton:HomeToolBarRootVCTypeHome];
     self.isHeight = YES;
     
     [self getTagData];
