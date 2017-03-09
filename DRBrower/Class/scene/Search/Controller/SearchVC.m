@@ -73,7 +73,7 @@
 
 - (void)setupSubviews {
     self.homeToolBar.delegate = self;
-
+    [self.homeToolBar setBarButton:HomeToolBarRootVCTypeSearch];
     self.searchWV = [WKWebView new];
     self.searchWV.backgroundColor = [UIColor whiteColor];
     self.searchWV.navigationDelegate = self;
@@ -149,6 +149,9 @@
         [self newOneRecordWithUrl:url title:title];
     }
     
+    if (![self.searchWV canGoForward]) {
+        [self.homeToolBar setBarButton:HomeToolBarRootVCTypeSearch];
+    }
 }
 
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
@@ -173,6 +176,8 @@
 - (void)touchUpBackButtonAction {
     if ([self.searchWV canGoBack]) {
         [self.searchWV goBack];
+        [self.homeToolBar setBarButton:HomeToolBarRootVCTypeUnknown];
+        
     }else if(self.sortModel.url != nil) {
         [self.navigationController popViewControllerAnimated:YES];
     }else if (self.urlString != nil){
@@ -197,13 +202,11 @@
     self.formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
     
     self.formSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height - 20 - MENU_HEIGHT;
-    
     self.formSheetController.presentationController.contentViewSize = [UIScreen mainScreen].bounds.size;
-    
-    
     self.formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideAndBounceFromBottom;
     
     menuVC.delegate = self;
+    menuVC.rootVCType = MenuVCRootVCTypeSearch;
     
     [self presentViewController:self.formSheetController animated:YES completion:nil];
     

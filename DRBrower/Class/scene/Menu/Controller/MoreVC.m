@@ -122,7 +122,7 @@ static NSString *const settingCellIdentifier = @"SettingCell";
                                 actionWithTitle:@"大号字体"
                                           style:UIAlertActionStyleDefault
                                         handler:^(UIAlertAction * _Nonnull action) {
-                                          [[NSUserDefaults standardUserDefaults] setObject:@"110%"
+                                          [[NSUserDefaults standardUserDefaults] setObject:@"120%"
                                                                                     forKey:WEBVIEW_FONT];
                                           [[NSUserDefaults standardUserDefaults] setObject:@"大"
                                                                                     forKey:WEBVIEW_FONT_KEY];
@@ -144,7 +144,7 @@ static NSString *const settingCellIdentifier = @"SettingCell";
                                   actionWithTitle:@"小号字体"
                                             style:UIAlertActionStyleDefault
                                           handler:^(UIAlertAction * _Nonnull action) {
-                                              [[NSUserDefaults standardUserDefaults] setObject:@"90%"
+                                              [[NSUserDefaults standardUserDefaults] setObject:@"80%"
                                                                                         forKey:WEBVIEW_FONT];
                                               [[NSUserDefaults standardUserDefaults] setObject:@"小"
                                                                                         forKey:WEBVIEW_FONT_KEY];

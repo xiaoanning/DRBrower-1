@@ -13,7 +13,7 @@
 
 @interface HistoryVC : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong)MenuVC *menuVC;
+@property (nonatomic, strong) MenuVC *menuVC;
 @property (nonatomic, strong) RecordRootVC *recordRootVC;
 
 

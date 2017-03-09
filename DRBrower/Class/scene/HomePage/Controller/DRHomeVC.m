@@ -15,6 +15,7 @@
 #import "NewsListViewController.h"
 #import "RankingViewController.h"
 #import "MoreVC.h"
+#import "GenderVC.h"
 
 #import "NewsTagModel.h"
 #import "NewsModel.h"
@@ -72,6 +73,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
     [self.homeTableView reloadData];
+    [self userGenderVC];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -82,6 +84,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     [self.view bringSubviewToFront:self.homeTableView];
     self.tagsView.delegate = self;
     self.homeToolBar.delegate = self;
+    [self.homeToolBar setBarButton:HomeToolBarRootVCTypeHome];
     self.isHeight = YES;
     self.navigationController.navigationBarHidden = YES;
 
@@ -115,6 +118,18 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     self.locationManger.delegate = self;
     [self.locationManger creatManager];
     
+}
+
+- (void)userGenderVC {
+    if ([UserInfo getUserGender]==nil) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+        GenderVC *genderVC = (GenderVC *)[storyboard instantiateViewControllerWithIdentifier:@"GenderVC"];
+        MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:genderVC];
+        formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideFromTop;
+        formSheetController.presentationController.portraitTopInset = self.view.center.y - 100;
+        formSheetController.presentationController.contentViewSize = CGSizeMake(SCREEN_WIDTH - 40, 200);
+        [self presentViewController:formSheetController animated:YES completion:nil];
+    }
 }
 
 #pragma mark - UIPageViewController
@@ -488,13 +503,13 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     //菜单
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Menu" bundle:[NSBundle mainBundle]];
     MenuVC *menuVC = (MenuVC *)[storyboard instantiateViewControllerWithIdentifier:@"MenuVC"];
+    menuVC.rootVCType = MenuVCRootVCTypeHome;
     MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:menuVC];
     formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
-    formSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height - 300;
+    formSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height - MENU_HEIGHT - 20;
     formSheetController.presentationController.contentViewSize = [UIScreen mainScreen].bounds.size;
     formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideAndBounceFromBottom;
     menuVC.delegate = self;
-    
     [self presentViewController:formSheetController animated:YES completion:nil];
 }
 
