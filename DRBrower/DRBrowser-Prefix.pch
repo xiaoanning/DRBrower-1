@@ -80,9 +80,12 @@
 #define sysBrightness @"sysBrightness"
 
 #define LOGIN_TOKEN @"loginToken" //登陆成功
+#define LOGIN_UID @"loginUid"
 
 #define DEV_ID [[UIDevice currentDevice].identifierForVendor UUIDString]
 #define TOKEN [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_TOKEN]?[[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_TOKEN]:@"brower*@forapi@*"
+
+#define GET_LOCATION @"getLocation" 
 
 #endif /* DRBrowser_Prefix_pch */
 

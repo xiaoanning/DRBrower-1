@@ -31,6 +31,11 @@
                                 parameters:(NSDictionary *)parameters
                                      block:(void (^)(NSDictionary *dic,
                                                      NSError *error))completion;
+//取消登录
++ (NSURLSessionDataTask *)cancleLoginUrl:(NSString *)url
+                            parameters:(NSDictionary *)parameters
+                                 block:(void (^)(NSDictionary *dic,
+                                                 NSError *error))completion;
 
 
 @end

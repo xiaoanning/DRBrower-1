@@ -60,10 +60,10 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
 }
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     self.newsListArray = [NSMutableArray array];
     
     self.homeTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
@@ -75,7 +75,6 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     
     [self setupTableView];
     
-//    self.navigationController.navigationBarHidden = YES;
     [self fooderRereshing];
     [self headerRereshing];
     
@@ -120,7 +119,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 #pragma mark - 上下拉刷新
 //下拉
 - (void)headerRereshing {
-//
+    //
     __unsafe_unretained __typeof(self) weakSelf = self;
     // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
     self.homeTableView.mj_header =
@@ -232,18 +231,18 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     
     NewsModel *newsModel = self.newsListArray[indexPath.row];
     
-//    self.selectedArray = [NSMutableArray arrayWithArray:[DRLocaldData achieveNewsSelectedData]];
-//    if (![self.selectedArray containsObject:newsModel.url]) {
-//        [self.selectedArray addObject:newsModel.url];
-//        [DRLocaldData saveSelectedData:self.selectedArray];
-//    }
+    //    self.selectedArray = [NSMutableArray arrayWithArray:[DRLocaldData achieveNewsSelectedData]];
+    //    if (![self.selectedArray containsObject:newsModel.url]) {
+    //        [self.selectedArray addObject:newsModel.url];
+    //        [DRLocaldData saveSelectedData:self.selectedArray];
+    //    }
     newsModel.isSelected = YES;
     [self.homeTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
     SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
     searchVC.newsModel = newsModel;
     [self.navigationController pushViewController:searchVC animated:YES];
-
+    
 }
 
 @end

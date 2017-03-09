@@ -22,7 +22,7 @@
     self.tagsSV.contentSize = CGSizeMake([tagArray count] * 70, 0);
     for (int i = 0; i < [tagArray count]; i++) {
         UIButton *channelButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        [channelButton setFrame:CGRectMake(70*i, -10, 70, 42)];
+        [channelButton setFrame:CGRectMake(70*i, 0, 70, 42)];
         [self buttonStyle:channelButton];
         [channelButton addTarget:self action:@selector(didClickSwitchChannel:) forControlEvents:UIControlEventTouchUpInside];
         channelButton.tag = i+1;

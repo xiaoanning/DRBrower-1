@@ -136,7 +136,10 @@
 -(void)addCommentData:(NSString *)content {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     NSString *contentStr = [content stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    NSString *address = [@"北京市-朝阳区" stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NSDictionary *dic = [[NSUserDefaults standardUserDefaults] objectForKey:GET_LOCATION];
+    NSString *location = [NSString stringWithFormat:@"%@-%@",[dic objectForKey:@"city"],[dic objectForKey:@"subLocality"]];
+    location = location?location:@"北京市-朝阳区";
+    NSString *address = [location stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NSString *urlString = [NSString stringWithFormat:@"%@%@%@&md5=%@&content=%@&address=%@&dev_id=%@&sex=%@",BASE_URL,URL_ADDCOMMENT,@"",self.sortModel.url_md5,contentStr,address,DEV_ID,@"1"];
 
     [CommentModel addCommentUrl:urlString parameters:@{} block:^(NSDictionary *dic, NSError *error) {
