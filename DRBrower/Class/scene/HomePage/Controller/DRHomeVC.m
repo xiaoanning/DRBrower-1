@@ -15,6 +15,7 @@
 #import "NewsListViewController.h"
 #import "RankingViewController.h"
 #import "MoreVC.h"
+#import "GenderVC.h"
 
 #import "NewsTagModel.h"
 #import "NewsModel.h"
@@ -70,6 +71,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
     [self.homeTableView reloadData];
+    [self userGenderVC];
 }
 
 - (void)viewDidLoad {
@@ -115,6 +117,18 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     self.locationManger.delegate = self;
     [self.locationManger creatManager];
     
+}
+
+- (void)userGenderVC {
+    if ([UserInfo getUserGender]==nil) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+        GenderVC *genderVC = (GenderVC *)[storyboard instantiateViewControllerWithIdentifier:@"GenderVC"];
+        MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:genderVC];
+        formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideFromTop;
+        formSheetController.presentationController.portraitTopInset = self.view.center.y - 100;
+        formSheetController.presentationController.contentViewSize = CGSizeMake(SCREEN_WIDTH - 40, 200);
+        [self presentViewController:formSheetController animated:YES completion:nil];
+    }
 }
 
 #pragma mark - UIPageViewController

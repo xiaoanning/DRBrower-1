@@ -18,14 +18,14 @@
                         <viewControllerLayoutGuide type="bottom" id="Gwx-7W-b7Q"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5Tu-NA-Ah2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ez7-Fj-wtx">
-                                <rect key="frame" x="0.0" y="30" width="375" height="220"/>
+                                <rect key="frame" x="0.0" y="30" width="375" height="230"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MpS-Ue-Dys">
-                                        <rect key="frame" x="0.0" y="30" width="375" height="90"/>
+                                        <rect key="frame" x="0.0" y="40" width="375" height="90"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpA-kz-3GR">
                                                 <rect key="frame" x="0.0" y="0.0" width="94" height="90"/>
@@ -159,7 +159,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QgA-SP-Lu8">
-                                        <rect key="frame" x="0.0" y="120" width="375" height="90"/>
+                                        <rect key="frame" x="0.0" y="130" width="375" height="90"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7A-6b-2FO">
                                                 <rect key="frame" x="0.0" y="0.0" width="94" height="90"/>
@@ -294,13 +294,12 @@
                                     <constraint firstItem="QgA-SP-Lu8" firstAttribute="leading" secondItem="ez7-Fj-wtx" secondAttribute="leading" id="OnH-Si-YGT"/>
                                     <constraint firstAttribute="trailing" secondItem="QgA-SP-Lu8" secondAttribute="trailing" id="Rhr-MG-X1r"/>
                                     <constraint firstItem="QgA-SP-Lu8" firstAttribute="top" secondItem="MpS-Ue-Dys" secondAttribute="bottom" id="agC-EQ-W8L"/>
-                                    <constraint firstItem="MpS-Ue-Dys" firstAttribute="top" secondItem="ez7-Fj-wtx" secondAttribute="top" constant="30" id="d8Z-2K-M01"/>
+                                    <constraint firstItem="MpS-Ue-Dys" firstAttribute="top" secondItem="ez7-Fj-wtx" secondAttribute="top" constant="40" id="d8Z-2K-M01"/>
                                     <constraint firstAttribute="trailing" secondItem="MpS-Ue-Dys" secondAttribute="trailing" id="hPI-6h-eFB"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fh8-b2-LTa">
-                                <rect key="frame" x="50" y="0.0" width="60" height="60"/>
-                                <color key="backgroundColor" red="0.85753160340000001" green="0.83474170930000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fh8-b2-LTa">
+                                <rect key="frame" x="50" y="10" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Fh8-b2-LTa" secondAttribute="height" multiplier="1:1" id="blG-uX-M4Q"/>
                                     <constraint firstAttribute="width" constant="60" id="enH-Va-E9d"/>
@@ -311,7 +310,7 @@
                             <constraint firstItem="ez7-Fj-wtx" firstAttribute="top" secondItem="VkX-je-1wi" secondAttribute="bottom" constant="30" id="4rL-1f-D9j"/>
                             <constraint firstAttribute="trailing" secondItem="ez7-Fj-wtx" secondAttribute="trailing" id="A8S-lJ-McM"/>
                             <constraint firstItem="Gwx-7W-b7Q" firstAttribute="top" secondItem="ez7-Fj-wtx" secondAttribute="bottom" id="QWU-rt-kw6"/>
-                            <constraint firstItem="Fh8-b2-LTa" firstAttribute="top" secondItem="5Tu-NA-Ah2" secondAttribute="top" id="b2c-ha-pK7"/>
+                            <constraint firstItem="Fh8-b2-LTa" firstAttribute="top" secondItem="5Tu-NA-Ah2" secondAttribute="top" constant="10" id="b2c-ha-pK7"/>
                             <constraint firstItem="ez7-Fj-wtx" firstAttribute="leading" secondItem="5Tu-NA-Ah2" secondAttribute="leading" id="fHG-oK-Oje"/>
                             <constraint firstItem="Fh8-b2-LTa" firstAttribute="leading" secondItem="5Tu-NA-Ah2" secondAttribute="leading" constant="50" id="fjY-db-jJ2"/>
                         </constraints>
@@ -319,7 +318,7 @@
                     <navigationItem key="navigationItem" id="ogp-H1-buG"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="250"/>
+                    <size key="freeformSize" width="375" height="260"/>
                     <connections>
                         <outlet property="MoreBtn" destination="gs7-6f-cZQ" id="9iB-yO-Eja"/>
                         <outlet property="collectBtn" destination="iow-NQ-OSF" id="O6q-SZ-7R3"/>

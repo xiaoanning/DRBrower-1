@@ -49,8 +49,12 @@
         
     }
     
-    self.iconImageView.layer.cornerRadius = CGRectGetHeight(self.iconImageView.frame)/2;
-    self.iconImageView.layer.masksToBounds = YES;
+    if ([[[NSUserDefaults standardUserDefaults]objectForKey:USERINFO_GENDER]isEqualToString:@"男"]) {
+        self.iconImageView.image = [UIImage imageNamed:@"userHead_man"];
+    }else {
+        self.iconImageView.image = [UIImage imageNamed:@"userHead_woman"];
+    }
+    
     self.iconImageView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapIconImageView:)];
     [self.iconImageView addGestureRecognizer:tap];

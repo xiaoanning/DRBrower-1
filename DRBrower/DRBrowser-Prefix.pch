@@ -46,6 +46,8 @@
 #import "DRLocationManager.h"
 #import "DRGeocoder.h"
 
+#import "UserInfo.h"
+
 #pragma mark - 常量
 #define TAG_ID_RECOMMEND @"100"
 #define SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height
@@ -56,6 +58,7 @@
 
 #define WEBVIEW_FONT @"webViewFont"
 #define WEBVIEW_FONT_KEY @"webViewFontKey"
+#define USERINFO_GENDER @"gender"
 
 #define COLLECT_SUCCESS @"收藏成功"
 #define COLLECT_FAILED @"已收藏"
@@ -68,7 +71,7 @@
 #define QQ_APPID @"1105997278"
 #define QQ_APPKEY @"0IpJBDsSAVxLXHC0"
 
-#define MENU_HEIGHT 250
+#define MENU_HEIGHT 260
 
 #pragma mark - 通知
 #define DISMISS_VIEW @"dissmissView"

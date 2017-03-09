@@ -54,6 +54,7 @@
         self.pwd = textField.text;
     }
 }
+
 //登录
 -(void)userLogin{
     [self.pwdTextField resignFirstResponder];
