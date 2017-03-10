@@ -44,7 +44,7 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
 #define UP_LOAD @"上拉"
 #define DOWN_LOAD @"下拉"
 
-@interface DRHomeVC ()<MenuVCDelegate,QRCodeReaderDelegate, CLLocationManagerDelegate>
+@interface DRHomeVC ()<MenuVCDelegate, QRCodeReaderDelegate, CLLocationManagerDelegate, NewsMenuDelegate>
 
 @property (weak, nonatomic) IBOutlet HomeToolBar *homeToolBar;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *listTopConstraint;
@@ -93,9 +93,6 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
     [self.homeTableView registerNib:[UINib nibWithNibName:@"ThreePicCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:threePicCellIdentifier];
     [self.homeTableView registerNib:[UINib nibWithNibName:@"ZeroPicCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:zeroPicCellIdentifier];
     [self.homeTableView registerNib:[UINib nibWithNibName:@"MoreNewsCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:moreNewsCellIdentifier];
-
-    
-    
 }
 
 - (void)location {
@@ -258,6 +255,12 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
         [self.navigationController showViewController:searchVC sender:nil];
     }else {
         //TODO: 新闻页
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"NewsPage" bundle:[NSBundle mainBundle]];
+        NewsPageVC *newsPageVC = (NewsPageVC *)[storyboard instantiateViewControllerWithIdentifier:@"NewsPageVC"];
+        newsPageVC.tagListArray = self.tagListArray;
+        newsPageVC.delegate = self;
+        [self.navigationController showViewController:newsPageVC sender:nil];
+
     }
 }
 
