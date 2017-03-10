@@ -14,6 +14,10 @@
 @property (nonatomic, strong)NSString *pm25;
 @property (nonatomic, strong)NSString *temperature;
 @property (nonatomic, strong)NSString *weather;
+@property (nonatomic, strong)NSString *colorValue;
+@property (nonatomic, strong)NSString *airQuality;
+@property (nonatomic, strong)NSString *weatherImage;
+
 
 
 + (NSURLSessionDataTask *)getWeatherUrl:(NSString *)url
