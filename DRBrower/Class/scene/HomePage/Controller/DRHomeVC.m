@@ -34,6 +34,7 @@
 #import "AdviceVC.h"
 #import "LoginVC.h"
 #import "LoginModel.h"
+#import "NewsPageVC.h"
 
 static NSString *const onePicCellIdentifier = @"OnePicCell";
 static NSString *const threePicCellIdentifier = @"ThreePicCell";
@@ -46,7 +47,6 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
 @interface DRHomeVC ()<MenuVCDelegate,QRCodeReaderDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet HomeToolBar *homeToolBar;
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *listTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tagsViewHeightConstraint;
 
@@ -259,7 +259,6 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
     }else {
         //TODO: 新闻页
     }
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -268,8 +267,6 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
     }else {
         return 0.1;
     }
-    
-
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -282,12 +279,25 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
         HomeTopView *top = [views lastObject];
         top.delegate = self;
         [top weatherHeader:top model:self.weather];
-        
         return top;
     }
     return nil;
 }
-
+//-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    button.frame = CGRectMake(0, 0, CGRectGetWidth(tableView.frame), 50);
+//    [button setTitle:@"点击查看更多" forState:UIControlStateNormal];
+//    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    [button addTarget:self action:@selector(toucuUpMoreButton:) forControlEvents:UIControlEventTouchUpInside];
+//    return button;
+//}
+//-(void)toucuUpMoreButton:(UIButton *)button {
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"NewsPage" bundle:[NSBundle mainBundle]];
+//    NewsPageVC *newsPageVC = (NewsPageVC *)[storyboard instantiateViewControllerWithIdentifier:@"NewsPageVC"];
+//    newsPageVC.tagListArray = self.tagListArray;
+//    newsPageVC.delegate = self;
+//    [self.navigationController pushViewController:newsPageVC animated:YES];
+//}
 #pragma mark - custom delegate
 #pragma mark - homeToolBar
 //主页按钮
@@ -509,6 +519,7 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
         [self presentViewController:alert animated:YES completion:nil];
     }
 }
+
 
 #pragma mark - search delegate
 - (void)searchViewController:(PYSearchViewController *)searchViewController searchTextDidChange:(UISearchBar *)seachBar searchText:(NSString *)searchText {

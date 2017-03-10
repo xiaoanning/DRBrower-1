@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--News PageVC-->
+        <scene sceneID="AZe-Mf-VBM">
+            <objects>
+                <viewController storyboardIdentifier="NewsPageVC" id="6yB-oV-hzx" customClass="NewsPageVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nYu-jU-KX1"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mng-MZ-gBP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QZe-oO-jIQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BFL-7w-mcu">
+                                <rect key="frame" x="0.0" y="20" width="375" height="40"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ukR-lx-KI5"/>
+                                </constraints>
+                            </scrollView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ork-l0-vrk">
+                                <rect key="frame" x="0.0" y="60" width="375" height="563"/>
+                                <connections>
+                                    <outlet property="delegate" destination="6yB-oV-hzx" id="wzI-zQ-ASy"/>
+                                </connections>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L9J-6D-Wmx" customClass="HomeToolBar">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K3f-2k-eLt">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qn-la-Q05">
+                                                <rect key="frame" x="0.0" y="7" width="75" height="30"/>
+                                                <state key="normal" image="toolBar_back"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ONU-FE-45l">
+                                                <rect key="frame" x="75" y="7" width="75" height="30"/>
+                                                <state key="normal" image="toolBar_go"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NlC-Le-AaN">
+                                                <rect key="frame" x="150" y="7" width="75" height="30"/>
+                                                <state key="normal" image="toolBar_menu"/>
+                                                <connections>
+                                                    <action selector="didclickMenuButtonAction:" destination="L9J-6D-Wmx" eventType="touchUpInside" id="Knq-ZR-VXA"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZA-MU-IrA">
+                                                <rect key="frame" x="225" y="7" width="75" height="30"/>
+                                                <state key="normal" image="toolBar_share"/>
+                                                <connections>
+                                                    <action selector="didclickPageButtonAction:" destination="L9J-6D-Wmx" eventType="touchUpInside" id="Dbb-Ee-lF9"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e03-vN-cjO">
+                                                <rect key="frame" x="300" y="7" width="75" height="30"/>
+                                                <state key="normal" image="toolbar_home"/>
+                                                <connections>
+                                                    <action selector="didclickHomeButtonAction:" destination="L9J-6D-Wmx" eventType="touchUpInside" id="5x0-P7-zWj"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92931067940000001" green="0.92946994299999997" blue="0.92930072549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="K3f-2k-eLt" secondAttribute="trailing" id="6TW-Vz-2dP"/>
+                                    <constraint firstAttribute="height" constant="44" id="H0T-so-crJ"/>
+                                    <constraint firstItem="K3f-2k-eLt" firstAttribute="top" secondItem="L9J-6D-Wmx" secondAttribute="top" id="Mdx-xb-8S0"/>
+                                    <constraint firstAttribute="bottom" secondItem="K3f-2k-eLt" secondAttribute="bottom" id="qzw-3q-HyQ"/>
+                                    <constraint firstItem="K3f-2k-eLt" firstAttribute="leading" secondItem="L9J-6D-Wmx" secondAttribute="leading" id="w57-Mc-J94"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="backBtn" destination="0qn-la-Q05" id="1fL-e7-1rA"/>
+                                    <outlet property="goBtn" destination="ONU-FE-45l" id="7DY-yc-sjk"/>
+                                    <outlet property="homeBtn" destination="e03-vN-cjO" id="e7T-yv-1So"/>
+                                    <outlet property="menuBtn" destination="NlC-Le-AaN" id="ndO-bH-cqw"/>
+                                    <outlet property="pageBtn" destination="KZA-MU-IrA" id="C8b-dr-zCj"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="L9J-6D-Wmx" firstAttribute="leading" secondItem="QZe-oO-jIQ" secondAttribute="leading" id="5cZ-bj-0qj"/>
+                            <constraint firstAttribute="trailing" secondItem="BFL-7w-mcu" secondAttribute="trailing" id="Bf7-lZ-DgZ"/>
+                            <constraint firstItem="Ork-l0-vrk" firstAttribute="leading" secondItem="QZe-oO-jIQ" secondAttribute="leading" id="ULD-Hv-UW7"/>
+                            <constraint firstItem="Ork-l0-vrk" firstAttribute="top" secondItem="BFL-7w-mcu" secondAttribute="bottom" id="gXc-RS-hDq"/>
+                            <constraint firstItem="L9J-6D-Wmx" firstAttribute="top" secondItem="Ork-l0-vrk" secondAttribute="bottom" id="k5m-XQ-ecX"/>
+                            <constraint firstAttribute="trailing" secondItem="L9J-6D-Wmx" secondAttribute="trailing" id="pEq-KF-Qw3"/>
+                            <constraint firstItem="Mng-MZ-gBP" firstAttribute="top" secondItem="L9J-6D-Wmx" secondAttribute="bottom" id="quY-VC-dVw"/>
+                            <constraint firstAttribute="trailing" secondItem="Ork-l0-vrk" secondAttribute="trailing" id="rOZ-7w-oxX"/>
+                            <constraint firstItem="BFL-7w-mcu" firstAttribute="leading" secondItem="QZe-oO-jIQ" secondAttribute="leading" id="wah-Ux-Ffv"/>
+                            <constraint firstItem="BFL-7w-mcu" firstAttribute="top" secondItem="nYu-jU-KX1" secondAttribute="bottom" id="y5E-1c-6gc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bigScrollView" destination="Ork-l0-vrk" id="e3o-St-0mv"/>
+                        <outlet property="homeToolBar" destination="L9J-6D-Wmx" id="q5x-nA-Dih"/>
+                        <outlet property="smallScrollView" destination="BFL-7w-mcu" id="x4t-Et-uMj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="med-9e-FK3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-562.39999999999998" y="-28.335832083958024"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="toolBar_back" width="30" height="30"/>
+        <image name="toolBar_go" width="30" height="30"/>
+        <image name="toolBar_menu" width="30" height="30"/>
+        <image name="toolBar_share" width="30" height="30"/>
+        <image name="toolbar_home" width="30" height="30"/>
+    </resources>
+</document>
