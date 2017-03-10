@@ -34,6 +34,7 @@
 #import "AdviceVC.h"
 #import "LoginVC.h"
 #import "LoginModel.h"
+#import "NewsPageVC.h"
 
 static NSString *const onePicCellIdentifier = @"OnePicCell";
 static NSString *const threePicCellIdentifier = @"ThreePicCell";
@@ -42,7 +43,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 #define UP_LOAD @"上拉"
 #define DOWN_LOAD @"下拉"
 
-@interface DRHomeVC ()<UIPageViewControllerDelegate, UIPageViewControllerDataSource,MenuVCDelegate,QRCodeReaderDelegate, CLLocationManagerDelegate>
+@interface DRHomeVC ()<UIPageViewControllerDelegate, UIPageViewControllerDataSource,MenuVCDelegate,QRCodeReaderDelegate, CLLocationManagerDelegate,NewsMenuDelegate>
 
 @property (weak, nonatomic) IBOutlet HomeToolBar *homeToolBar;
 @property (weak, nonatomic) IBOutlet TagsView *tagsView;
@@ -227,14 +228,13 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     [NewsModel getNewsByTagUrl:[NSString stringWithFormat:@"%@%@%@",BASE_URL,URL_GETNEWS_CID,tagId]
                     parameters:@{}
                          block:^(NewsListModel *newsList, NSError *error) {
-                             
+//                             
                              if ([type isEqualToString:DOWN_LOAD]) {
                                  [self.newsListArray insertObjects:newsList.data
                                                          atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [newsList.data count])]];
                              }else {
                                  [self.newsListArray addObjectsFromArray:newsList.data];
                              }
-                             
                              [self.homeTableView reloadData];
                          }];
 }
@@ -327,7 +327,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     if (self.newsListArray) {
         return self.newsListArray.count;
     }
-    return 0;
+    return 5;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -398,6 +398,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
     searchVC.newsModel = news;
     [self.navigationController showViewController:searchVC sender:nil];
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -426,18 +427,28 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
         HomeTopView *top = [views lastObject];
         top.delegate = self;
         [top weatherHeader:top model:self.weather];
-        
         return top;
     }
     return nil;
 }
-
+//-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    button.frame = CGRectMake(0, 0, CGRectGetWidth(tableView.frame), 50);
+//    [button setTitle:@"点击查看更多" forState:UIControlStateNormal];
+//    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    [button addTarget:self action:@selector(toucuUpMoreButton:) forControlEvents:UIControlEventTouchUpInside];
+//    return button;
+//}
+//-(void)toucuUpMoreButton:(UIButton *)button {
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"NewsPage" bundle:[NSBundle mainBundle]];
+//    NewsPageVC *newsPageVC = (NewsPageVC *)[storyboard instantiateViewControllerWithIdentifier:@"NewsPageVC"];
+//    newsPageVC.tagListArray = self.tagListArray;
+//    newsPageVC.delegate = self;
+//    [self.navigationController pushViewController:newsPageVC animated:YES];
+//}
 #pragma mark - custom delegate
 //排行
 -(void)touchUpSortButtonAction {
-    //    RankingViewController *rankingVC = [[RankingViewController alloc] init];
-    //    [self.navigationController pushViewController:rankingVC animated:YES];
-    
     SortRootVC *sortRootVC = [[SortRootVC alloc] init];
     [self.navigationController pushViewController:sortRootVC animated:YES];
 }
@@ -713,9 +724,10 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
             self.homeTableView.bounces = YES;
             [self.homeTableView reloadData];
             
-            if (_pageVC == nil) {
-                [self createPageVCUI];
-            }
+//            if (_pageVC == nil) {
+//                [self createPageVCUI];
+//            }
+        
         }
     }
     

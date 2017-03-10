@@ -227,21 +227,19 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     return nil;
 }
 
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NewsModel *newsModel = self.newsListArray[indexPath.row];
     
-    //    self.selectedArray = [NSMutableArray arrayWithArray:[DRLocaldData achieveNewsSelectedData]];
-    //    if (![self.selectedArray containsObject:newsModel.url]) {
-    //        [self.selectedArray addObject:newsModel.url];
-    //        [DRLocaldData saveSelectedData:self.selectedArray];
-    //    }
     newsModel.isSelected = YES;
     [self.homeTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
-    SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
+    UIStoryboard *storyboards = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
+    SearchVC *searchVC = (SearchVC *)[storyboards instantiateViewControllerWithIdentifier:@"SearchVC"];
     searchVC.newsModel = newsModel;
-    [self.navigationController pushViewController:searchVC animated:YES];
+//    [self.navigationController pushViewController:searchVC animated:YES];
+    [self.navigationController showViewController:searchVC sender:nil];
     
 }
 
