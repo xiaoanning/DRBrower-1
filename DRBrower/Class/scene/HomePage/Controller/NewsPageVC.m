@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet HomeToolBar *homeToolBar;
 @property (strong, nonatomic) MZFormSheetPresentationViewController *formSheetController;
 @property (strong, nonatomic) MZFormSheetPresentationViewController *shareFormSheetController;
+
 @end
 
 @implementation NewsPageVC
@@ -33,7 +34,9 @@
     self.smallScrollView.showsVerticalScrollIndicator = NO;
 
     [self addController];
+    
     [self createTitleLabel];
+    
     self.homeToolBar.delegate = self;
     [self.homeToolBar setBarButton:HomeToolBarRootVCTypeHome];
 
@@ -50,6 +53,7 @@
     self.bigScrollView.showsHorizontalScrollIndicator = NO;
 
 }
+
 - (void)addController{
     for (int i=0 ; i<self.tagListArray.count ;i++){
         NewsListViewController *vc1 = [[NewsListViewController alloc] init];

@@ -16,7 +16,6 @@
 #import "MoreVC.h"
 #import "GenderVC.h"
 
-#import "NewsTagModel.h"
 #import "NewsModel.h"
 #import "WebsiteModel.h"
 #import "ShareModel.h"
@@ -50,11 +49,9 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *listTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tagsViewHeightConstraint;
 
-@property (strong, nonatomic) NSArray *tagListArray;
 @property (strong, nonatomic) NSArray *newsListArray;
 @property (strong, nonatomic) NSMutableArray *websiteArray;
-
-@property (strong, nonatomic) NewsTagModel *newsTag;
+@property (strong, nonatomic) NSArray *tagListArray;
 @property (strong, nonatomic) WeatherModel *weather;
 
 @property (nonatomic, strong) DRLocationManager *locationManger;
@@ -86,6 +83,7 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
     [self location];
     [self setupTableView];
     [self location];
+    [self getTagData];
 }
 
 - (void)setupTableView {
@@ -115,6 +113,17 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
 }
 
 #pragma mark - 数据请求
+
+//请求新闻分类标签
+- (void)getTagData {
+    [NewsTagModel getNewsTagUrl:[NSString stringWithFormat:@"%@%@",BASE_URL,URL_GETTABS]
+                     parameters:@{}
+                          block:^(NewsTagListModel *tagList, NSError *error) {
+                              self.tagListArray = tagList.data;
+                              
+                              
+                          }];
+}
 //获取新闻
 - (void)getNews {
     [NewsModel getNewsByTagUrl:[NSString stringWithFormat:@"%@%@%@",BASE_URL,URL_GETNEWS_CID,TAG_ID_RECOMMEND]
@@ -286,21 +295,7 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
     }
     return nil;
 }
-//-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//    button.frame = CGRectMake(0, 0, CGRectGetWidth(tableView.frame), 50);
-//    [button setTitle:@"点击查看更多" forState:UIControlStateNormal];
-//    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//    [button addTarget:self action:@selector(toucuUpMoreButton:) forControlEvents:UIControlEventTouchUpInside];
-//    return button;
-//}
-//-(void)toucuUpMoreButton:(UIButton *)button {
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"NewsPage" bundle:[NSBundle mainBundle]];
-//    NewsPageVC *newsPageVC = (NewsPageVC *)[storyboard instantiateViewControllerWithIdentifier:@"NewsPageVC"];
-//    newsPageVC.tagListArray = self.tagListArray;
-//    newsPageVC.delegate = self;
-//    [self.navigationController pushViewController:newsPageVC animated:YES];
-//}
+
 #pragma mark - custom delegate
 #pragma mark - homeToolBar
 //主页按钮

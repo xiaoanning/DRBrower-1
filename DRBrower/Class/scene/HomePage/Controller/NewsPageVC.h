@@ -17,7 +17,7 @@
 @interface NewsPageVC : UIViewController
 @property (weak, nonatomic) IBOutlet UIScrollView *smallScrollView;
 @property (weak, nonatomic) IBOutlet UIScrollView *bigScrollView;
-
 @property (nonatomic,strong) NSArray *tagListArray;
+
 @property (nonatomic,weak) id<NewsMenuDelegate>delegate;
 @end
