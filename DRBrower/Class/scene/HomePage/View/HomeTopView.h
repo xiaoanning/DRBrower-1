@@ -15,8 +15,6 @@
 @optional
 - (void)touchUpSearchButtonAction;
 - (void)touchUpQRcodeButtonAction;
-- (void)touchUpSortButtonAction;
-- (void)touchUpButtonShowDetail:(NSString *)urlStr;
 
 - (void)websiteViewSelectWithWebsite:(WebsiteModel *)website;
 - (void)homeTopViewPresentView:(WebsiteModel *)model;
