@@ -176,24 +176,6 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="75G-ne-0gh" customClass="TagsView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
-                                <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G5l-1i-Rhl">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
-                                    </scrollView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="G5l-1i-Rhl" firstAttribute="leading" secondItem="75G-ne-0gh" secondAttribute="leading" id="4TJ-Kn-IvC"/>
-                                    <constraint firstAttribute="height" constant="52" id="7Ui-bd-VRI"/>
-                                    <constraint firstAttribute="trailing" secondItem="G5l-1i-Rhl" secondAttribute="trailing" id="Lz8-Bj-KUE"/>
-                                    <constraint firstAttribute="bottom" secondItem="G5l-1i-Rhl" secondAttribute="bottom" id="blW-F0-6i4"/>
-                                    <constraint firstItem="G5l-1i-Rhl" firstAttribute="top" secondItem="75G-ne-0gh" secondAttribute="top" id="nrW-mZ-ofu"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="tagsSV" destination="G5l-1i-Rhl" id="o4S-rl-xnd"/>
-                                </connections>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tYS-3i-TPg" customClass="HomeToolBar">
                                 <rect key="frame" x="0.0" y="559" width="375" height="44"/>
                                 <subviews>
@@ -248,9 +230,10 @@
                                     <outlet property="pageBtn" destination="LaJ-rD-TbH" id="nIH-zb-x5J"/>
                                 </connections>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="enE-2o-eXQ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="enE-2o-eXQ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="sectionIndexBackgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="EVA-6a-bPO"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="nJK-5K-or8"/>
@@ -261,13 +244,10 @@
                         <constraints>
                             <constraint firstItem="tYS-3i-TPg" firstAttribute="top" secondItem="enE-2o-eXQ" secondAttribute="bottom" id="60G-Wz-C7o"/>
                             <constraint firstAttribute="trailing" secondItem="enE-2o-eXQ" secondAttribute="trailing" id="7Lp-Ym-JMw"/>
-                            <constraint firstItem="75G-ne-0gh" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="9Lw-I3-oKJ"/>
                             <constraint firstItem="enE-2o-eXQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="D5m-XT-rCp"/>
                             <constraint firstAttribute="trailing" secondItem="tYS-3i-TPg" secondAttribute="trailing" id="UZt-Jl-70h"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="tYS-3i-TPg" secondAttribute="bottom" id="WQP-1s-6KG"/>
                             <constraint firstItem="enE-2o-eXQ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="goP-aC-8Mx"/>
-                            <constraint firstItem="75G-ne-0gh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hqC-8z-aDa"/>
-                            <constraint firstAttribute="trailing" secondItem="75G-ne-0gh" secondAttribute="trailing" id="tZi-km-nl7"/>
                             <constraint firstItem="tYS-3i-TPg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="x7A-3V-MO4"/>
                         </constraints>
                     </view>
@@ -276,7 +256,6 @@
                         <outlet property="homeTableView" destination="enE-2o-eXQ" id="RQ5-mN-LTB"/>
                         <outlet property="homeToolBar" destination="tYS-3i-TPg" id="6j1-8e-fsP"/>
                         <outlet property="listTopConstraint" destination="goP-aC-8Mx" id="h02-fl-G2a"/>
-                        <outlet property="tagsView" destination="75G-ne-0gh" id="HM1-qA-m9v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

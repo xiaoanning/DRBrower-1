@@ -2,16 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "iconNext.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "weather_ cloudy@2x.png",
+      "filename" : "iconNext@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "weather_ cloudy@3x.png",
+      "filename" : "iconNext@3x.png",
       "scale" : "3x"
     }
   ],

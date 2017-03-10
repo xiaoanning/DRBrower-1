@@ -108,16 +108,30 @@
 }
 
 #pragma mark - 判断数组元素个数 决定pageControl的高度个页数
-+ (BOOL)isRemainder:(NSArray *)array {
++ (NSInteger)pageCount:(NSArray *)array {
+    NSInteger pageCount;
+    if ([array count] > 15) {
+        if ([array count]%15 > 0) {
+            pageCount = [array count]/15 + 1;
+        }else {
+            pageCount = [array count]/15;
+        }
+        return pageCount;
+    }else {
+        return 0;
+    }
+
+}
+
++ (NSInteger)headHeight:(NSArray *)array {
     if ([array count] <= 10) {
-        return NO;
+        return 320 - 25;
+    }else if ([array count] >10 && [array count] <= 15) {
+        return 320 - 25 + 60;
+    }else if ([array count] > 15) {
+        return 320 + 60;
     }
-    if([array count]%10 > 0 || [array count]%10 == 0) {
-        return YES;
-    }
-    else {
-        return NO;
-    }
+    return 155;
 }
 
 +(NSString *)getDateString:(NSString *)spString

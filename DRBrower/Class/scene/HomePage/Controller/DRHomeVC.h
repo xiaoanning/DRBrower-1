@@ -13,7 +13,7 @@
 
 #import "PYSearch.h"
 
-@interface DRHomeVC : UIViewController<UITableViewDelegate,UITableViewDataSource,TagsViewChannelButtonDelegate,HomeToolBarDelegate,PYSearchViewControllerDelegate,HomeTopViewDelegate>
+@interface DRHomeVC : UIViewController<UITableViewDelegate,UITableViewDataSource,HomeToolBarDelegate,PYSearchViewControllerDelegate,HomeTopViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *homeTableView;
 

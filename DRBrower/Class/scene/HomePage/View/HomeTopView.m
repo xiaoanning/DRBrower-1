@@ -30,46 +30,12 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
 
 - (void)weatherHeader:(HomeTopView *)header model:(WeatherModel *)model {
     self.weatherLabel.text = model.weather;
-    self.temperatureLabel.text = [model.temperature stringByAppendingString:@"°"];
+    self.temperatureLabel.text = model.temperature;
     self.pmLabel.text = model.pm25;
     self.placeLabel.text = model.currentCity;
-    
-    int parseInt = [model.pm25 intValue];
-    if (0 <= parseInt && parseInt < 50) {
-        self.airQualityLabel.text = NSLocalizedString(@"空气优", nil);
-        self.pmLabel.backgroundColor = colorWithvalue(@"39e0d6");
-    } else if (50 <= parseInt && parseInt < 100) {
-        self.airQualityLabel.text = NSLocalizedString(@"空气良", nil);
-        self.pmLabel.backgroundColor = colorWithvalue(@"6ce324");
-    } else if (100 <= parseInt && parseInt < 150) {
-        self.airQualityLabel.text = NSLocalizedString(@"轻度污染", nil);
-        self.pmLabel.backgroundColor = colorWithvalue(@"e7cc16");
-    } else if (150 <= parseInt && parseInt < 200) {
-        self.airQualityLabel.text = NSLocalizedString(@"中度污染", nil);
-        self.pmLabel.backgroundColor = colorWithvalue(@"e67c27");
-    } else if (200 <= parseInt && parseInt < 300) {
-        self.airQualityLabel.text = NSLocalizedString(@"重度污染", nil);
-        self.pmLabel.backgroundColor = colorWithvalue(@"c92b41");
-    } else if (parseInt >= 300) {
-        self.airQualityLabel.text = NSLocalizedString(@"严重污染", nil);
-        self.pmLabel.backgroundColor = colorWithvalue(@"8827c5");
-    }
-    
-    if ([model.weather containsString:NSLocalizedString(@"晴", nil)]) {
-        self.weatherImage.image = [UIImage imageNamed:@"weather_fine"];
-    }else if ([model.weather containsString:NSLocalizedString(@"云", nil)]) {
-        self.weatherImage.image = [UIImage imageNamed:@"weather_cloudy"];
-    }else if ([model.weather containsString:NSLocalizedString(@"雨", nil)]) {
-        self.weatherImage.image = [UIImage imageNamed:@"weather_light_rain"];
-    }else if ([model.weather containsString:NSLocalizedString(@"霾", nil)]) {
-        self.weatherImage.image = [UIImage imageNamed:@"weather_haze"];
-    }else if ([model.weather containsString:NSLocalizedString(@"阴", nil)]) {
-        self.weatherImage.image = [UIImage imageNamed:@"weather_overcast"];
-    }else if ([model.weather containsString:NSLocalizedString(@"雪", nil)]) {
-        self.weatherImage.image = [UIImage imageNamed:@"weather_Light_Snow"];
-    }else {
-        self.weatherImage.image = [UIImage imageNamed:@"weather_cloudy"];
-    }
+    self.airQualityLabel.text = model.airQuality;
+    self.pmLabel.backgroundColor = colorWithvalue(model.colorValue);
+    self.weatherImage.image = [UIImage imageNamed:model.weatherImage];
     
     if (model.pm25 == nil) {
         self.airQualityLabel.text = @"";
@@ -85,6 +51,7 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
     [self.websiteCollectionView registerNib:[UINib nibWithNibName:@"WebsiteCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:websiteCellIdentifier];
     [self data];
     [self reloadPageControl];
+    [self reloadCollectViewHeight];
 }
 - (void)data {
     self.websiteArray = [DRLocaldData achieveWebsiteData];
@@ -94,17 +61,21 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
 }
 
 - (void)reloadPageControl {
-    if ([Tools isRemainder:self.websiteArray] == YES) {
-        NSInteger num = [self.websiteArray count]/10;
-        if([self.websiteArray count]%10 > 0) {
-            self.websitePageControl.numberOfPages = num + 1;
-        }
-        else{
-            self.websitePageControl.numberOfPages = num;
-        }
-        
-    }else {
+    
+    NSInteger pageCount = [Tools pageCount:self.websiteArray];
+    
+    if ([self.websiteArray count] < 15 || pageCount == 0) {
         self.websitePageControlHeight.constant = 0;
+    }else {
+        self.websitePageControl.numberOfPages = pageCount;
+    }
+}
+
+- (void)reloadCollectViewHeight {
+    if ([self.websiteArray count] > 10) {
+        self.websiteCollectionViewHeight.constant = 200;
+    }else {
+        self.websiteCollectionViewHeight.constant = 140;
     }
 }
 
@@ -169,35 +140,6 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
 - (IBAction)didClickQRcodeButtonAction:(id)sender {
     if(_delegate && [_delegate respondsToSelector:@selector(touchUpQRcodeButtonAction)]){
         [_delegate touchUpQRcodeButtonAction];
-    }
-}
-
-- (IBAction)didClickURLButtonAciton:(id)sender {
-    if(_delegate && [_delegate respondsToSelector:@selector(touchUpButtonShowDetail:)]){
-        [_delegate touchUpButtonShowDetail:URL_123HAOURL];
-    }
-}
-
-- (IBAction)didClickNovelButtonAction:(id)sender {
-    if(_delegate && [_delegate respondsToSelector:@selector(touchUpButtonShowDetail:)]){
-        [_delegate touchUpButtonShowDetail:URL_NOVEL];
-    }
-}
-
-- (IBAction)didClickLadyButtonAction:(id)sender {
-    if(_delegate && [_delegate respondsToSelector:@selector(touchUpButtonShowDetail:)]){
-        [_delegate touchUpButtonShowDetail:URL_LADY];
-    }
-}
-- (IBAction)didClickJokesButtonAction:(id)sender {
-    if(_delegate && [_delegate respondsToSelector:@selector(touchUpButtonShowDetail:)]){
-        [_delegate touchUpButtonShowDetail:URL_JOKES];
-    }
-}
-
-- (IBAction)touchUpSortButton:(id)sender {
-    if (_delegate && [_delegate respondsToSelector:@selector(touchUpSortButtonAction)]) {
-        [_delegate touchUpSortButtonAction];
     }
 }
 
