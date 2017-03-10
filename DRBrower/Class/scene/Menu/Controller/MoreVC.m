@@ -23,6 +23,7 @@ static NSString *const settingCellIdentifier = @"SettingCell";
 @end
 
 @implementation MoreVC
+
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;

@@ -13,6 +13,7 @@
 
 #import "PYSearch.h"
 
+
 @interface NewsListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,TagsViewChannelButtonDelegate,HomeToolBarDelegate,PYSearchViewControllerDelegate,HomeTopViewDelegate>
 
 @property (retain, nonatomic)  UITableView *homeTableView;

@@ -63,9 +63,8 @@
 #define URL_FINDPWD @"m=user&a=findpwd&devtype=2&token="
 //登录
 #define URL_LOGIN @"m=user&a=login&devtype=2&token="
-
-
-
+//退出登陆
+#define URL_LOGOUT @"m=user&a=logout&devtype=2&token="
 
 
 #endif /* AllUrls_h */

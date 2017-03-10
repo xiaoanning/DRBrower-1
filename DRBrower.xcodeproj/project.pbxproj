@@ -16,8 +16,6 @@
 		18BDFC6C1E67BBE900D7D32D /* AdviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BDFC6B1E67BBE900D7D32D /* AdviceModel.m */; };
 		18D61F191E66B3CC0077BE5C /* CommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D61F081E66B3CC0077BE5C /* CommentVC.m */; };
 		18D61F1A1E66B3CC0077BE5C /* ComplainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D61F0A1E66B3CC0077BE5C /* ComplainVC.m */; };
-		18D61F1B1E66B3CC0077BE5C /* RankingListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D61F0C1E66B3CC0077BE5C /* RankingListVC.m */; };
-		18D61F1C1E66B3CC0077BE5C /* RankingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D61F0E1E66B3CC0077BE5C /* RankingViewController.m */; };
 		18D61F1D1E66B3CC0077BE5C /* SortCommonVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D61F101E66B3CC0077BE5C /* SortCommonVC.m */; };
 		18D61F1E1E66B3CC0077BE5C /* SortNewFilmVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D61F121E66B3CC0077BE5C /* SortNewFilmVC.m */; };
 		18D61F1F1E66B3CC0077BE5C /* SortOtherVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D61F141E66B3CC0077BE5C /* SortOtherVC.m */; };
@@ -43,6 +41,7 @@
 		18FF715D1E6D5D1600F7BAA3 /* ForgetPsdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF715C1E6D5D1600F7BAA3 /* ForgetPsdVC.m */; };
 		18FF715F1E6D5D2D00F7BAA3 /* ForgetPsd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18FF715E1E6D5D2D00F7BAA3 /* ForgetPsd.storyboard */; };
 		18FF71621E6E3F9500F7BAA3 /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF71611E6E3F9500F7BAA3 /* LoginModel.m */; };
+		18FF71681E714F1500F7BAA3 /* SortRealm.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF71671E714F1500F7BAA3 /* SortRealm.m */; };
 		49F0A3869EDB806CA3050A19 /* libPods-DRBrower.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DFB1C3A7BC244DD9034D74 /* libPods-DRBrower.a */; };
 		55075A4F1E20814A009A025A /* WebsiteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55075A4E1E20814A009A025A /* WebsiteModel.m */; };
 		55075A521E2081E1009A025A /* WebsiteListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55075A511E2081E1009A025A /* WebsiteListModel.m */; };
@@ -146,10 +145,6 @@
 		18D61F081E66B3CC0077BE5C /* CommentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentVC.m; path = SortPage/Controller/CommentVC.m; sourceTree = "<group>"; };
 		18D61F091E66B3CC0077BE5C /* ComplainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComplainVC.h; path = SortPage/Controller/ComplainVC.h; sourceTree = "<group>"; };
 		18D61F0A1E66B3CC0077BE5C /* ComplainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComplainVC.m; path = SortPage/Controller/ComplainVC.m; sourceTree = "<group>"; };
-		18D61F0B1E66B3CC0077BE5C /* RankingListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RankingListVC.h; path = SortPage/Controller/RankingListVC.h; sourceTree = "<group>"; };
-		18D61F0C1E66B3CC0077BE5C /* RankingListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RankingListVC.m; path = SortPage/Controller/RankingListVC.m; sourceTree = "<group>"; };
-		18D61F0D1E66B3CC0077BE5C /* RankingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RankingViewController.h; path = SortPage/Controller/RankingViewController.h; sourceTree = "<group>"; };
-		18D61F0E1E66B3CC0077BE5C /* RankingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RankingViewController.m; path = SortPage/Controller/RankingViewController.m; sourceTree = "<group>"; };
 		18D61F0F1E66B3CC0077BE5C /* SortCommonVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SortCommonVC.h; path = SortPage/Controller/SortCommonVC.h; sourceTree = "<group>"; };
 		18D61F101E66B3CC0077BE5C /* SortCommonVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SortCommonVC.m; path = SortPage/Controller/SortCommonVC.m; sourceTree = "<group>"; };
 		18D61F111E66B3CC0077BE5C /* SortNewFilmVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SortNewFilmVC.h; path = SortPage/Controller/SortNewFilmVC.h; sourceTree = "<group>"; };
@@ -193,6 +188,8 @@
 		18FF715E1E6D5D2D00F7BAA3 /* ForgetPsd.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ForgetPsd.storyboard; sourceTree = "<group>"; };
 		18FF71601E6E3F9500F7BAA3 /* LoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginModel.h; path = DRBrower/LoginModel.h; sourceTree = SOURCE_ROOT; };
 		18FF71611E6E3F9500F7BAA3 /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginModel.m; path = DRBrower/LoginModel.m; sourceTree = SOURCE_ROOT; };
+		18FF71661E714F1500F7BAA3 /* SortRealm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortRealm.h; sourceTree = "<group>"; };
+		18FF71671E714F1500F7BAA3 /* SortRealm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortRealm.m; sourceTree = "<group>"; };
 		29F564DE35D2B47EC672A7BD /* Pods-DRBrower.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRBrower.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DRBrower/Pods-DRBrower.debug.xcconfig"; sourceTree = "<group>"; };
 		55075A4D1E20814A009A025A /* WebsiteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebsiteModel.h; sourceTree = "<group>"; };
 		55075A4E1E20814A009A025A /* WebsiteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebsiteModel.m; sourceTree = "<group>"; };
@@ -401,10 +398,6 @@
 		18D61F3F1E66B43B0077BE5C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				18D61F0D1E66B3CC0077BE5C /* RankingViewController.h */,
-				18D61F0E1E66B3CC0077BE5C /* RankingViewController.m */,
-				18D61F0B1E66B3CC0077BE5C /* RankingListVC.h */,
-				18D61F0C1E66B3CC0077BE5C /* RankingListVC.m */,
 				18D61F151E66B3CC0077BE5C /* SortRootVC.h */,
 				18D61F161E66B3CC0077BE5C /* SortRootVC.m */,
 				18D61F0F1E66B3CC0077BE5C /* SortCommonVC.h */,
@@ -434,6 +427,8 @@
 				18D61F271E66B3DF0077BE5C /* SortListModel.m */,
 				18D61F281E66B3DF0077BE5C /* SortModel.h */,
 				18D61F291E66B3DF0077BE5C /* SortModel.m */,
+				18FF71661E714F1500F7BAA3 /* SortRealm.h */,
+				18FF71671E714F1500F7BAA3 /* SortRealm.m */,
 				18D61F2A1E66B3DF0077BE5C /* SortTagListModel.h */,
 				18D61F2B1E66B3DF0077BE5C /* SortTagListModel.m */,
 				18D61F2C1E66B3DF0077BE5C /* SortTagModel.h */,
@@ -912,7 +907,6 @@
 				TargetAttributes = {
 					557DC0611E08DF8100ECFFDE = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = J7LGQHZ8DG;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -1055,6 +1049,7 @@
 				189FC7C21E658EDE005E1C73 /* BrightnessVC.m in Sources */,
 				55BC1B121E49D3EF00A64375 /* RecordCell.m in Sources */,
 				55DE44D71E6E9FBB00DCD1BE /* DRGeocoder.m in Sources */,
+				18FF71681E714F1500F7BAA3 /* SortRealm.m in Sources */,
 				18D61F1A1E66B3CC0077BE5C /* ComplainVC.m in Sources */,
 				18BDFC6C1E67BBE900D7D32D /* AdviceModel.m in Sources */,
 				551661691E236AEF00909A11 /* WebsiteRootVC.m in Sources */,
@@ -1067,7 +1062,6 @@
 				551661611E222CF900909A11 /* WebsiteCell.m in Sources */,
 				557DC0671E08DF8100ECFFDE /* main.m in Sources */,
 				557DC08D1E08E08400ECFFDE /* OnePicCell.m in Sources */,
-				18D61F1B1E66B3CC0077BE5C /* RankingListVC.m in Sources */,
 				18D61F331E66B3DF0077BE5C /* SortTagModel.m in Sources */,
 				189FC7BB1E657715005E1C73 /* MoreVC.m in Sources */,
 				557DC08B1E08E08400ECFFDE /* AppDelegate.m in Sources */,
@@ -1105,7 +1099,6 @@
 				55E5BC5A1E68252200A7CF9E /* QRCodeReaderView.m in Sources */,
 				55DE44DD1E6EA13200DCD1BE /* NSString+StringSeparated.m in Sources */,
 				18D61F2E1E66B3DF0077BE5C /* CommentListModel.m in Sources */,
-				18D61F1C1E66B3CC0077BE5C /* RankingViewController.m in Sources */,
 				18D61F1F1E66B3CC0077BE5C /* SortOtherVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1265,7 +1258,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = J7LGQHZ8DG;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DRBrower/DRBrowser-Prefix.pch";
 				INFOPLIST_FILE = DRBrower/Info.plist;
@@ -1285,7 +1278,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = J7LGQHZ8DG;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DRBrower/DRBrowser-Prefix.pch";
 				INFOPLIST_FILE = DRBrower/Info.plist;

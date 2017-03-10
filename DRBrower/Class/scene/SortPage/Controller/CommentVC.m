@@ -9,6 +9,7 @@
 #import "CommentVC.h"
 #import "CommentListCell.h"
 #import "CommentModel.h"
+#import "UserInfo.h"
 
 @interface CommentVC ()<UITextViewDelegate> {
     CGFloat fitHeight;
@@ -136,9 +137,12 @@
 -(void)addCommentData:(NSString *)content {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     NSString *contentStr = [content stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    NSString *address = [@"北京市-朝阳区" stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&md5=%@&content=%@&address=%@&dev_id=%@&sex=%@",BASE_URL,URL_ADDCOMMENT,@"",self.sortModel.url_md5,contentStr,address,DEV_ID,@"1"];
-
+    NSDictionary *dic = [[NSUserDefaults standardUserDefaults] objectForKey:GET_LOCATION];
+    NSString *location = [NSString stringWithFormat:@"%@-%@",[dic objectForKey:@"city"],[dic objectForKey:@"subLocality"]];
+    location = location?location:@"北京市-朝阳区";
+    NSString *address = [location stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&md5=%@&content=%@&address=%@&dev_id=%@&sex=%@",BASE_URL,URL_ADDCOMMENT,@"",self.sortModel.url_md5,contentStr,address,DEV_ID,[[UserInfo getUserGender] isEqualToString:@"男"]?@"0":@"1"];
+    NSLog(@"%@",[UserInfo getUserGender]);
     [CommentModel addCommentUrl:urlString parameters:@{} block:^(NSDictionary *dic, NSError *error) {
         NSLog(@"%@",dic);
         if ([[dic objectForKey:@"info"] isEqualToString:@"评论成功"]) {

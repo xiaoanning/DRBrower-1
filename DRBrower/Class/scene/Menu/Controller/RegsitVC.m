@@ -9,6 +9,7 @@
 
 #import "RegsitVC.h"
 #import "LoginModel.h"
+#import "UserInfo.h"
 
 @interface RegsitVC ()<UITextFieldDelegate>
 @property (nonatomic,copy) NSString *phoneNum;//手机号
@@ -105,7 +106,7 @@
     [self.pwdAgainTextField resignFirstResponder];
     [self.codeTextField resignFirstResponder];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&tel=%@&dev_id=%@&pwd=%@&repwd=%@&code=%@&sex=%@",PHP_BASE_URL,URL_REGSIT,TOKEN,self.phoneNum,DEV_ID,self.password,self.passwordAgain,self.code,@"1"];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&tel=%@&dev_id=%@&pwd=%@&repwd=%@&code=%@&sex=%@",PHP_BASE_URL,URL_REGSIT,TOKEN,self.phoneNum,DEV_ID,self.password,self.passwordAgain,self.code,[[UserInfo getUserGender] isEqualToString:@"男"]?@"0":@"1"];
     [LoginModel userRegsitUrl:urlString parameters:@{} block:^(NSDictionary *dic, NSError *error) {
         NSLog(@"%@",dic);
         [Tools showView:[dic objectForKey:@"msg"]];

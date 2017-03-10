@@ -13,7 +13,6 @@
 #import "ShareVC.h"
 #import "RecordRootVC.h"
 #import "NewsListViewController.h"
-#import "RankingViewController.h"
 #import "MoreVC.h"
 #import "GenderVC.h"
 
@@ -30,11 +29,11 @@
 #import "HomeToolBar.h"
 
 #import "NewsListViewController.h"
-#import "RankingViewController.h"
 #import "SortRootVC.h"
 
 #import "AdviceVC.h"
 #import "LoginVC.h"
+#import "LoginModel.h"
 
 static NSString *const onePicCellIdentifier = @"OnePicCell";
 static NSString *const threePicCellIdentifier = @"ThreePicCell";
@@ -69,11 +68,11 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 @implementation DRHomeVC
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
     [self.homeTableView reloadData];
     [self userGenderVC];
 }
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -85,7 +84,8 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     self.homeToolBar.delegate = self;
     [self.homeToolBar setBarButton:HomeToolBarRootVCTypeHome];
     self.isHeight = YES;
-    
+    self.navigationController.navigationBarHidden = YES;
+
     [self getTagData];
     [self getNewsByTag:nil type:nil];
     [self getWebsiteData];
@@ -94,10 +94,9 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     [self location];
     
     self.newsListArray = [NSMutableArray arrayWithCapacity:5];
-    self.navigationController.navigationBarHidden = YES;
     [self fooderRereshing];
     [self headerRereshing];
-
+    
     
     [self.homeTableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
     // Do any additional setup after loading the view.
@@ -109,7 +108,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     [self.homeTableView registerNib:[UINib nibWithNibName:@"OnePicCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:onePicCellIdentifier];
     [self.homeTableView registerNib:[UINib nibWithNibName:@"ThreePicCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:threePicCellIdentifier];
     [self.homeTableView registerNib:[UINib nibWithNibName:@"ZeroPicCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:zeroPicCellIdentifier];
-
+    
 }
 
 - (void)location {
@@ -134,7 +133,6 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 #pragma mark - UIPageViewController
 -(void)createPageVCUI
 {
-    
     CGFloat topSpace = 52.0f ;
     
     _pageVC = [[UIPageViewController alloc]initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
@@ -158,7 +156,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     
     [self.tagsView changeButtonWhenPageViewScroll:[self.tagsView.tagsSV viewWithTag:1+vc.index]  withRefresh:NO];
     
-        
+    
 }
 
 #pragma mark <UIPageViewControllerDelegate,UIPageViewControllerDataSource>
@@ -229,16 +227,16 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     [NewsModel getNewsByTagUrl:[NSString stringWithFormat:@"%@%@%@",BASE_URL,URL_GETNEWS_CID,tagId]
                     parameters:@{}
                          block:^(NewsListModel *newsList, NSError *error) {
-                        
-                            if ([type isEqualToString:DOWN_LOAD]) {
-                                [self.newsListArray insertObjects:newsList.data
-                                                        atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [newsList.data count])]];
-                            }else {
-                                [self.newsListArray addObjectsFromArray:newsList.data];
-                            }
-                            
-                            [self.homeTableView reloadData];
-                    }];
+                             
+                             if ([type isEqualToString:DOWN_LOAD]) {
+                                 [self.newsListArray insertObjects:newsList.data
+                                                         atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [newsList.data count])]];
+                             }else {
+                                 [self.newsListArray addObjectsFromArray:newsList.data];
+                             }
+                             
+                             [self.homeTableView reloadData];
+                         }];
 }
 
 //获取网站
@@ -246,11 +244,11 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     [WebsiteModel getWebsiteUrl:[NSString stringWithFormat:@"%@%@",BASE_URL,URL_GETWEBSITE]
                      parameters:@{}
                           block:^(WebsiteListModel *websiteList, NSError *error) {
-
+                              
                               self.websiteArray = websiteList.data;
                               
                               if ([DRLocaldData achieveWebsiteData] == nil) {
-                                 
+                                  
                                   NSMutableArray *array = [NSMutableArray arrayWithArray:websiteList.data];
                                   if ([array count]>9) {
                                       [array removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(9, [array count]-9)]];
@@ -306,7 +304,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 
 - (void)loadNewData {
     // 1.请求数据\2.刷新表格\3.拿到当前的下拉刷新控件，结束刷新状态
-
+    
     [self getNewsByTag:self.newsTag type:DOWN_LOAD];
     [self.homeTableView.mj_header endRefreshing];
     NSLog(@"下拉刷新");
@@ -316,7 +314,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     //1.请求数据\2.刷新表格\3.拿到当前的下拉刷新控件，结束刷新状态
     [self getNewsByTag:self.newsTag type:UP_LOAD];
     [self.homeTableView.mj_footer endRefreshing];
-
+    
     NSLog(@"上拉刷新");
 }
 
@@ -385,7 +383,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
             break;
     }
     
-
+    
     return nil;
 }
 
@@ -395,7 +393,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     
     news.isSelected = YES;
     [self.homeTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
     SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
     searchVC.newsModel = news;
@@ -403,13 +401,13 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-
+    
     if (self.isHeight == YES) {
         
         if ([Tools isRemainder:[DRLocaldData achieveWebsiteData]] == YES) {
-
+            
             return 360;
-
+            
         }else {
             return 360-30;
         }
@@ -437,8 +435,8 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 #pragma mark - custom delegate
 //排行
 -(void)touchUpSortButtonAction {
-//    RankingViewController *rankingVC = [[RankingViewController alloc] init];
-//    [self.navigationController pushViewController:rankingVC animated:YES];
+    //    RankingViewController *rankingVC = [[RankingViewController alloc] init];
+    //    [self.navigationController pushViewController:rankingVC animated:YES];
     
     SortRootVC *sortRootVC = [[SortRootVC alloc] init];
     [self.navigationController pushViewController:sortRootVC animated:YES];
@@ -495,6 +493,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     self.homeTableView.bounces = NO;
     self.homeTableView.contentOffset =  CGPointMake(0, 0);
     [self.homeTableView reloadData];
+    
 }
 
 //菜单按钮
@@ -521,7 +520,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     shareFormSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height - 240;
     shareFormSheetController.presentationController.contentViewSize = [UIScreen mainScreen].bounds.size;
     shareFormSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideAndBounceFromBottom;
-
+    
     [self presentViewController:shareFormSheetController animated:YES completion:nil];
 }
 
@@ -569,10 +568,32 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
         LoginVC *loginVC = (LoginVC *)[stroyboard instantiateViewControllerWithIdentifier:@"LoginVC"];
         [self.navigationController pushViewController:loginVC animated:YES];
     }else {
-        [Tools showView:@"已登陆"];
+        [self cancleLoginAlert];
     }
 }
-
+-(void)cancleLoginAlert {
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"是否退出当前账户？" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self cancleLogin];
+    }];
+    [alertVC addAction:OKAction];
+    [alertVC addAction:cancleAction];
+    
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
+//退出登陆
+-(void)cancleLogin {
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&dev_id=%@&uid=%@",PHP_BASE_URL,URL_LOGOUT,TOKEN,DEV_ID,[[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_UID]];
+    [LoginModel cancleLoginUrl:urlString parameters:@{} block:^(NSDictionary *dic, NSError *error) {
+        NSLog(@"%@",dic);
+        [Tools showView:dic[@"msg"]];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:LOGIN_TOKEN];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:LOGIN_UID];
+    }];
+}
 - (void)touchUpQRcodeButtonAction {
     QRCodeReaderViewController *reader = [QRCodeReaderViewController new];
     reader.modalPresentationStyle = UIModalPresentationFormSheet;
@@ -595,7 +616,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 //搜索
 - (void)touchUpSearchButtonAction {
     // 1.创建热门搜索
-//    NSArray *hotSeaches = nil;
+    //    NSArray *hotSeaches = nil;
     // 2. 创建控制器
     PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:nil searchBarPlaceholder:@"搜索或输入网址" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
         // 开始搜索执行以下代码
@@ -607,7 +628,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     }];
     // 3. 设置风格
     searchViewController.searchHistoryStyle = PYHotSearchStyleDefault; // 搜索历史风格为default
-//    searchViewController.hotSearchStyle = PYHotSearchStyleDefault; // 热门搜索风格为默认
+    //    searchViewController.hotSearchStyle = PYHotSearchStyleDefault; // 热门搜索风格为默认
     // 4. 设置代理
     searchViewController.delegate = self;
     // 5. 跳转到搜索控制器
@@ -623,10 +644,10 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
         SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
         searchVC.searchText = website.url;
-
+        
         [self.navigationController pushViewController:searchVC animated:YES];
         NSLog(@"我被点击了 %@",website.name);
-
+        
     }else if([website.icon isEqualToString:@"add"]){
         
         WebsiteRootVC *websiteRootVC = [[WebsiteRootVC alloc] init];
@@ -634,11 +655,11 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
         [self.navigationController showViewController:websiteRootVC sender:nil];
         
         NSLog(@"添加网页");
-
+        
     }
 }
 
-//弹窗 
+//弹窗
 - (void)homeTopViewpresentView:(WebsiteModel *)model {
     
     
@@ -671,18 +692,19 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
         
         [alert addAction:confirmAction];
         [alert addAction:cancelAction];
-
+        
         [self presentViewController:alert animated:YES completion:nil];
     }
 }
 
 #pragma mark - 监听
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-   
+    
     if ([keyPath isEqualToString:@"contentOffset"]) {
         
         CGPoint offset = [change[NSKeyValueChangeNewKey] CGPointValue];
-        
+        NSLog(@"%@",NSStringFromCGPoint(offset));
+
         if (offset.y > 410) {
             NSLog(@"%@",NSStringFromCGPoint(offset));
             
@@ -694,11 +716,9 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
             if (_pageVC == nil) {
                 [self createPageVCUI];
             }
-
         }
-        
     }
-
+    
     
 }
 
@@ -706,16 +726,16 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 - (void)searchViewController:(PYSearchViewController *)searchViewController searchTextDidChange:(UISearchBar *)seachBar searchText:(NSString *)searchText {
     if (searchText.length) { // 与搜索条件再搜索
         // 根据条件发送查询（这里模拟搜索）
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ // 搜索完毕
-//            // 显示建议搜索结果
-//            NSMutableArray *searchSuggestionsM = [NSMutableArray array];
-//            for (int i = 0; i < arc4random_uniform(5) + 10; i++) {
-//                NSString *searchSuggestion = [NSString stringWithFormat:@"搜索建议 %d", i];
-//                [searchSuggestionsM addObject:searchSuggestion];
-//            }
-//            // 返回
-//            searchViewController.searchSuggestions = searchSuggestionsM;
-//        });
+        //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ // 搜索完毕
+        //            // 显示建议搜索结果
+        //            NSMutableArray *searchSuggestionsM = [NSMutableArray array];
+        //            for (int i = 0; i < arc4random_uniform(5) + 10; i++) {
+        //                NSString *searchSuggestion = [NSString stringWithFormat:@"搜索建议 %d", i];
+        //                [searchSuggestionsM addObject:searchSuggestion];
+        //            }
+        //            // 返回
+        //            searchViewController.searchSuggestions = searchSuggestionsM;
+        //        });
     }
 }
 
@@ -735,8 +755,8 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 - (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result
 {
     [self dismissViewControllerAnimated:YES completion:^{
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"QRCodeReader" message:result delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        [alert show];
+        //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"QRCodeReader" message:result delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        //        [alert show];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
         SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
         searchVC.searchText = result;
@@ -759,13 +779,14 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     
     __block DRGeocoder *geo = [[DRGeocoder alloc] init];
     [geo creatGeocoder:locations.lastObject
-                      block:^(DRGeocoder *geocoder, NSError *error) {
-                          
-                          [self getWeatherData:[geocoder.city stringByAppendingString:geocoder.subLocality]];
-                          
-                          [manager stopUpdatingLocation];
-
-                      }];
+                 block:^(DRGeocoder *geocoder, NSError *error) {
+                     
+                     [self getWeatherData:[geocoder.city stringByAppendingString:geocoder.subLocality]];
+                     
+                     [manager stopUpdatingLocation];
+                     
+                     [[NSUserDefaults standardUserDefaults] setObject:@{@"city":geocoder.city,@"subLocality":geocoder.subLocality} forKey:GET_LOCATION];
+                 }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -774,13 +795,13 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

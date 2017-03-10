@@ -32,11 +32,9 @@
 @property (strong, nonatomic) MZFormSheetPresentationViewController *formSheetController;
 @property (strong, nonatomic) MZFormSheetPresentationViewController *shareFormSheetController;
 
-
 @end
 
 @implementation SearchVC
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;
@@ -56,8 +54,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self.searchWV reload];
     self.navigationController.navigationBarHidden = YES;
+    [self.searchWV reload];
 }
 
 - (void)isFullScreen {
