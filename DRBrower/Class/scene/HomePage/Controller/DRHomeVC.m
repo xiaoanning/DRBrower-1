@@ -13,7 +13,6 @@
 #import "ShareVC.h"
 #import "RecordRootVC.h"
 #import "NewsListViewController.h"
-#import "RankingViewController.h"
 #import "MoreVC.h"
 #import "GenderVC.h"
 
@@ -30,7 +29,6 @@
 #import "HomeToolBar.h"
 
 #import "NewsListViewController.h"
-#import "RankingViewController.h"
 #import "SortRootVC.h"
 
 #import "AdviceVC.h"
@@ -705,7 +703,8 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     if ([keyPath isEqualToString:@"contentOffset"]) {
         
         CGPoint offset = [change[NSKeyValueChangeNewKey] CGPointValue];
-        
+        NSLog(@"%@",NSStringFromCGPoint(offset));
+
         if (offset.y > 410) {
             NSLog(@"%@",NSStringFromCGPoint(offset));
             
@@ -717,9 +716,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
             if (_pageVC == nil) {
                 [self createPageVCUI];
             }
-            
         }
-        
     }
     
     

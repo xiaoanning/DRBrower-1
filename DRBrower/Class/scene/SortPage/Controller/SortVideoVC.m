@@ -54,7 +54,6 @@
     if (self.page <1) {
         self.page = 1;
     }
-     //http://61.160.250.174:8080/dr/sort/getList?page_num=1&site_type=3&sort=visit_num
     [SortModel getSortListUrl:[NSString stringWithFormat:@"%@%@%@&site_type=%@&sort=%@",BASE_URL,URL_GETSORTLIST,[NSString stringWithFormat:@"%ld",(long)self.page],model.site_type,sort] parameters:@{} block:^(SortListModel *newsList, NSError *error) {
         if ([type isEqualToString:DOWN_LOAD]) {
             [self.sortListArray insertObjects:newsList.data

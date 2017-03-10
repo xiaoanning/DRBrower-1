@@ -32,7 +32,6 @@
 @property (strong, nonatomic) MZFormSheetPresentationViewController *formSheetController;
 @property (strong, nonatomic) MZFormSheetPresentationViewController *shareFormSheetController;
 
-
 @end
 
 @implementation SearchVC
