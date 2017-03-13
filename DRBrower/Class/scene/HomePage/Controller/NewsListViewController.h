@@ -18,8 +18,6 @@
 
 @property (retain, nonatomic)  UITableView *homeTableView;
 
-@property (retain , nonatomic ) UINavigationController * navigationController ;
-
 @property ( nonatomic , assign ) NSInteger index ;
 @property ( nonatomic , retain ) NewsTagModel * model ;
 

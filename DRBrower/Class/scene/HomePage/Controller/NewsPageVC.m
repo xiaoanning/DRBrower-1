@@ -21,14 +21,19 @@
 @end
 
 @implementation NewsPageVC
-
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBarHidden = NO;
     self.title = @"DR新闻";
-    [self.navigationItem setHidesBackButton:YES];
-    
+//    [self.navigationItem setHidesBackButton:YES];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_btn_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonAction:)];
+    self.navigationItem.leftBarButtonItem = backButton;
+
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.smallScrollView.showsHorizontalScrollIndicator = NO;
     self.smallScrollView.showsVerticalScrollIndicator = NO;
@@ -53,7 +58,9 @@
     self.bigScrollView.showsHorizontalScrollIndicator = NO;
 
 }
-
+-(void)backButtonAction:(UIButton *)button {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 - (void)addController{
     for (int i=0 ; i<self.tagListArray.count ;i++){
         NewsListViewController *vc1 = [[NewsListViewController alloc] init];

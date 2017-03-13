@@ -71,6 +71,10 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
     [self.homeTableView reloadData];
     [self userGenderVC];
 }
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -519,7 +523,6 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
         
     }
 }
-
 //website delete 弹窗
 - (void)homeTopViewPresentView:(WebsiteModel *)model {
     
