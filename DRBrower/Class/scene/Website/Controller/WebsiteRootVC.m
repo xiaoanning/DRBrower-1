@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"推荐";
     self.navigationController.navigationBarHidden = NO;
     [self setupSubVC];
     // Do any additional setup after loading the view.
@@ -34,10 +35,44 @@
     CollectVC *collectVC = (CollectVC *)[storyboard instantiateViewControllerWithIdentifier:@"CollectVC"];
     collectVC.rootVCType = CollectVCRootVCTypeWebsite;
     
-    WebsiteCustomVC *customVC = [[WebsiteCustomVC alloc] init];
+    WebsiteCustomVC *customVC = [[WebsiteCustomVC alloc] initWithNibName:@"WebsiteCustomVC" bundle:nil];
     
     NSArray *viewControllers = @[recommendVC, collectVC, customVC];
     self.viewControllers = viewControllers;
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_btn_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonAction:)];
+    self.navigationItem.leftBarButtonItem = backButton;
+}
+
+- (void)tabBar:(AXTabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+
+    [super tabBar:tabBar didSelectItem:item];
+    self.title = tabBar.selectedItem.title;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [super scrollViewDidScroll:scrollView];
+    
+    switch (self.selectedIndex) {
+        case 0:
+            self.title = @"推荐";
+            break;
+        case 1:
+            self.title = @"收藏";
+            break;
+        case 2:
+            self.title = @"自定义";
+            break;
+        default:
+            break;
+    }
+    
+    NSLog(@"%ld",self.selectedIndex);
+
+}
+
+- (void)backButtonAction:(UIBarButtonItem *)barButton {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

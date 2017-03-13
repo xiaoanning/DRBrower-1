@@ -17,6 +17,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "No"
+<<<<<<< HEAD
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DRBrower/Class/scene/HomePage/Controller/NewsPageVC.m"
@@ -25,24 +26,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
             endingLineNumber = "100"
-            landmarkName = "-scrollViewDidEndScrollingAnimation:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DRBrower/Class/scene/HomePage/View/HomeTopView.m"
-            timestampString = "511064216.094971"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "-collectionView:layout:sizeForItemAtIndexPath:"
-            landmarkType = "7">
+            landmarkName = "@implementation NewsPageVC"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -58,6 +43,17 @@
             startingLineNumber = "43"
             endingLineNumber = "43"
             landmarkName = "-handleLongPressGesture:"
+=======
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DRBrower/Class/scene/HomePage/Controller/NewsPageVC.m"
+            timestampString = "510980265.520758"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "-scrollViewDidEndScrollingAnimation:"
+>>>>>>> master
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -67,6 +63,68 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+<<<<<<< HEAD
+            filePath = "DRBrower/Class/scene/HomePage/View/WebsiteCell.m"
+            timestampString = "510979088.288489"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "-handleLongPressGesture:"
+=======
+            filePath = "DRBrower/Class/scene/HomePage/View/HomeTopView.m"
+            timestampString = "511064216.094971"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "-collectionView:layout:sizeForItemAtIndexPath:"
+>>>>>>> master
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+<<<<<<< HEAD
+            filePath = "DRBrower/Class/scene/Search/Controller/SearchVC.m"
+            timestampString = "511004905.077948"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "-viewDidLoad"
+=======
+            filePath = "DRBrower/Class/scene/HomePage/View/WebsiteCell.m"
+            timestampString = "510979025.699117"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "-handleLongPressGesture:"
+>>>>>>> master
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+<<<<<<< HEAD
+            filePath = "DRBrower/Class/scene/HomePage/Controller/DRHomeVC.m"
+            timestampString = "511066452.583949"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "686"
+            endingLineNumber = "686"
+            landmarkName = "@implementation DRHomeVC"
+            landmarkType = "3">
+=======
             filePath = "DRBrower/Class/scene/HomePage/View/WebsiteCell.m"
             timestampString = "510979088.288489"
             startingColumnNumber = "9223372036854775807"
@@ -91,14 +149,24 @@
             endingLineNumber = "61"
             landmarkName = "-addController"
             landmarkType = "7">
+>>>>>>> master
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+<<<<<<< HEAD
+            filePath = "DRBrower/Class/scene/HomePage/Controller/DRHomeVC.m"
+            timestampString = "511066299.326402"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "-createPageVCUI"
+=======
             filePath = "DRBrower/Class/scene/Search/Controller/SearchVC.m"
             timestampString = "511004905.077948"
             startingColumnNumber = "9223372036854775807"
@@ -106,6 +174,7 @@
             startingLineNumber = "47"
             endingLineNumber = "47"
             landmarkName = "-viewDidLoad"
+>>>>>>> master
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -116,12 +185,21 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DRBrower/Class/scene/HomePage/Controller/DRHomeVC.m"
+<<<<<<< HEAD
+            timestampString = "511066558.770013"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "-pageViewController:viewControllerBeforeViewController:"
+=======
             timestampString = "511064961.617053"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "689"
             endingLineNumber = "689"
             landmarkName = "-scrollViewDidScroll:"
+>>>>>>> master
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -131,6 +209,15 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+<<<<<<< HEAD
+            filePath = "DRBrower/Class/scene/Website/Controller/WebsiteCustomVC.m"
+            timestampString = "511080651.976051"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "-didClickSaveButtonAction:"
+=======
             filePath = "DRBrower/Class/scene/HomePage/Controller/DRHomeVC.m"
             timestampString = "511009080.730801"
             startingColumnNumber = "9223372036854775807"
@@ -138,6 +225,7 @@
             startingLineNumber = "71"
             endingLineNumber = "71"
             landmarkName = "-viewWillAppear:"
+>>>>>>> master
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
