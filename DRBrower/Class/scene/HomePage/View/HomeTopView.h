@@ -15,6 +15,7 @@
 @optional
 - (void)touchUpSearchButtonAction;
 - (void)touchUpQRcodeButtonAction;
+- (void)touchUpHotWordButtonAction:(NSInteger)tag;
 
 - (void)websiteViewSelectWithWebsite:(WebsiteModel *)website;
 - (void)homeTopViewPresentView:(WebsiteModel *)model;
@@ -35,10 +36,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *placeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *airQualityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pmLabel;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *hotWordButton;
+
 
 @property (nonatomic, strong) NSMutableArray *websiteArray;
 
 - (void)weatherHeader:(HomeTopView *)header model:(WeatherModel *)model;
-
+- (void)hotwordHeader:(HomeTopView *)header hotWordArray:(NSArray *)array;
 
 @end

@@ -42,6 +42,12 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
     }
 }
 
+- (void)hotwordHeader:(HomeTopView *)header hotWordArray:(NSArray *)array {
+    for (int i = 0; i<5; i++) {
+        [self.hotWordButton[i] setTitle:array[i] forState:UIControlStateNormal];
+    }
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     
@@ -73,7 +79,7 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
 
 - (void)reloadCollectViewHeight {
     if ([self.websiteArray count] > 10) {
-        self.websiteCollectionViewHeight.constant = 200;
+        self.websiteCollectionViewHeight.constant = 220;
     }else {
         self.websiteCollectionViewHeight.constant = 140;
     }
@@ -109,7 +115,7 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
 
 #pragma  mark UICollectionViewDelegateFlowLayout
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(SCREEN_WIDTH/5.0, self.websiteCollectionViewHeight.constant/2);
+    return CGSizeMake((SCREEN_WIDTH)/5.0, self.websiteCollectionViewHeight.constant/3);
 }
 
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
@@ -145,12 +151,18 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
 
 - (void)longPressGesture:(WebsiteModel *)model {
 
-        if(_delegate && [_delegate respondsToSelector:@selector(homeTopViewPresentView:)]){
-            [_delegate homeTopViewPresentView:model];
-        }
+    if(_delegate && [_delegate respondsToSelector:@selector(homeTopViewPresentView:)]){
+        [_delegate homeTopViewPresentView:model];
+    }
 
 }
 
+- (IBAction)didClickHotWordButtonAction:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    if(_delegate && [_delegate respondsToSelector:@selector(touchUpHotWordButtonAction:)]){
+        [_delegate touchUpHotWordButtonAction:button.tag];
+    }
+}
 
 
 

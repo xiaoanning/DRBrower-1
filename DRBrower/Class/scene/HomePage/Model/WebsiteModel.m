@@ -23,7 +23,7 @@
                                      completion:^(id response, NSError *error, NSDictionary *header) {
                                          WebsiteListModel *websiteList =
                                          [MTLJSONAdapter modelOfClass:[WebsiteListModel class]
-                                                   fromJSONDictionary:response
+                                                   fromJSONDictionary:response[@"data"]
                                                                 error:&error];
                                          completion(websiteList, error);
                                      }];

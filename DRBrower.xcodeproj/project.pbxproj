@@ -55,6 +55,9 @@
 		5510255B1E70F69100303E62 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5510255A1E70F69100303E62 /* UserInfo.m */; };
 		5510255F1E727A4600303E62 /* MoreNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5510255D1E727A4600303E62 /* MoreNewsCell.m */; };
 		551025601E727A4600303E62 /* MoreNewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5510255E1E727A4600303E62 /* MoreNewsCell.xib */; };
+		551025631E752C3200303E62 /* HotWordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 551025621E752C3200303E62 /* HotWordModel.m */; };
+		551025691E7551C500303E62 /* NavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 551025681E7551C500303E62 /* NavView.m */; };
+		5510256B1E7551D300303E62 /* NavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5510256A1E7551D300303E62 /* NavView.xib */; };
 		551661611E222CF900909A11 /* WebsiteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5516615F1E222CF900909A11 /* WebsiteCell.m */; };
 		551661621E222CF900909A11 /* WebsiteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551661601E222CF900909A11 /* WebsiteCell.xib */; };
 		551661691E236AEF00909A11 /* WebsiteRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 551661681E236AEF00909A11 /* WebsiteRootVC.m */; };
@@ -218,6 +221,11 @@
 		5510255C1E727A4600303E62 /* MoreNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreNewsCell.h; sourceTree = "<group>"; };
 		5510255D1E727A4600303E62 /* MoreNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreNewsCell.m; sourceTree = "<group>"; };
 		5510255E1E727A4600303E62 /* MoreNewsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreNewsCell.xib; sourceTree = "<group>"; };
+		551025611E752C3200303E62 /* HotWordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotWordModel.h; sourceTree = "<group>"; };
+		551025621E752C3200303E62 /* HotWordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotWordModel.m; sourceTree = "<group>"; };
+		551025671E7551C500303E62 /* NavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavView.h; sourceTree = "<group>"; };
+		551025681E7551C500303E62 /* NavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavView.m; sourceTree = "<group>"; };
+		5510256A1E7551D300303E62 /* NavView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavView.xib; sourceTree = "<group>"; };
 		5516615E1E222CF900909A11 /* WebsiteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebsiteCell.h; sourceTree = "<group>"; };
 		5516615F1E222CF900909A11 /* WebsiteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebsiteCell.m; sourceTree = "<group>"; };
 		551661601E222CF900909A11 /* WebsiteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebsiteCell.xib; sourceTree = "<group>"; };
@@ -741,6 +749,9 @@
 				5510255C1E727A4600303E62 /* MoreNewsCell.h */,
 				5510255D1E727A4600303E62 /* MoreNewsCell.m */,
 				5510255E1E727A4600303E62 /* MoreNewsCell.xib */,
+				551025671E7551C500303E62 /* NavView.h */,
+				551025681E7551C500303E62 /* NavView.m */,
+				5510256A1E7551D300303E62 /* NavView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -762,6 +773,8 @@
 				55075A4E1E20814A009A025A /* WebsiteModel.m */,
 				55075A501E2081E1009A025A /* WebsiteListModel.h */,
 				55075A511E2081E1009A025A /* WebsiteListModel.m */,
+				551025611E752C3200303E62 /* HotWordModel.h */,
+				551025621E752C3200303E62 /* HotWordModel.m */,
 				55DE44D11E6E9FBB00DCD1BE /* DRGeocoder.h */,
 				55DE44D21E6E9FBB00DCD1BE /* DRGeocoder.m */,
 				55DE44D31E6E9FBB00DCD1BE /* DRLocationManager.h */,
@@ -965,6 +978,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5510256B1E7551D300303E62 /* NavView.xib in Resources */,
 				55E5BC691E6918BC00A7CF9E /* Comment.storyboard in Resources */,
 				551025601E727A4600303E62 /* MoreNewsCell.xib in Resources */,
 				18FF715F1E6D5D2D00F7BAA3 /* ForgetPsd.storyboard in Resources */,
@@ -1053,6 +1067,7 @@
 				55BC1B0E1E49C8F300A64375 /* HistoryVC.m in Sources */,
 				5523758C1E1D03BF00214ECB /* Tools.m in Sources */,
 				557DC0A71E0A64D500ECFFDE /* NewsModel.m in Sources */,
+				551025631E752C3200303E62 /* HotWordModel.m in Sources */,
 				55F623811E2DB0B5003536CC /* MenuVC.m in Sources */,
 				557DC06D1E08DF8100ECFFDE /* ViewController.m in Sources */,
 				55075A4F1E20814A009A025A /* WebsiteModel.m in Sources */,
@@ -1062,6 +1077,7 @@
 				18D61F3A1E66B3EF0077BE5C /* CommentListCell.m in Sources */,
 				55BC1B001E4957CE00A64375 /* UIButton+ImageTitleSpacing.m in Sources */,
 				557DC0971E08E3A500ECFFDE /* DRHomeVC.m in Sources */,
+				551025691E7551C500303E62 /* NavView.m in Sources */,
 				557A94091E5EDD7D006A2466 /* RecordListModel.m in Sources */,
 				552ADBD11E249189007036CA /* WebsiteRecommendCell.m in Sources */,
 				557DC0AD1E0A685100ECFFDE /* ImgsModel.m in Sources */,

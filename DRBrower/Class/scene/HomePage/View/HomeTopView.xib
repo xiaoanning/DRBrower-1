@@ -73,17 +73,17 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VMy-OD-WTR">
-                                    <rect key="frame" x="20" y="71" width="335" height="50"/>
+                                    <rect key="frame" x="20" y="71" width="335" height="45"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_fangdajing" translatesAutoresizingMaskIntoConstraints="NO" id="q9D-NV-b8M">
-                                            <rect key="frame" x="0.0" y="5" width="40" height="40"/>
+                                            <rect key="frame" x="0.0" y="3" width="40" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="40" id="Er2-QR-cd2"/>
                                                 <constraint firstAttribute="height" constant="40" id="N1G-87-UK2"/>
                                             </constraints>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RF0-ug-Byn">
-                                            <rect key="frame" x="40" y="0.0" width="255" height="50"/>
+                                            <rect key="frame" x="40" y="0.0" width="255" height="45"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <state key="normal" title="搜索或输入网址">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -93,7 +93,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5h-IN-e0w">
-                                            <rect key="frame" x="295" y="5" width="40" height="40"/>
+                                            <rect key="frame" x="295" y="3" width="40" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="40" id="FUr-tQ-IqF"/>
                                                 <constraint firstAttribute="height" constant="40" id="an1-cq-F6D"/>
@@ -106,7 +106,7 @@
                                     </subviews>
                                     <color key="backgroundColor" red="0.79477272430000001" green="0.96125096759999995" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="50" id="CLc-Yq-alz"/>
+                                        <constraint firstAttribute="height" constant="45" id="CLc-Yq-alz"/>
                                         <constraint firstItem="q9D-NV-b8M" firstAttribute="leading" secondItem="VMy-OD-WTR" secondAttribute="leading" id="NWq-sG-Hxf"/>
                                         <constraint firstItem="P5h-IN-e0w" firstAttribute="leading" secondItem="RF0-ug-Byn" secondAttribute="trailing" id="atq-xq-5ln"/>
                                         <constraint firstItem="RF0-ug-Byn" firstAttribute="top" secondItem="VMy-OD-WTR" secondAttribute="top" id="e1h-zb-8Ai"/>
@@ -127,8 +127,8 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="60" verticalCompressionResistancePriority="60" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V3P-QE-9lr">
-                                    <rect key="frame" x="20" y="129" width="38" height="15"/>
+                                <button opaque="NO" tag="101" contentMode="scaleToFill" verticalHuggingPriority="60" verticalCompressionResistancePriority="60" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V3P-QE-9lr">
+                                    <rect key="frame" x="20" y="124" width="38" height="15"/>
                                     <constraints>
                                         <constraint firstAttribute="width" priority="60" constant="60" id="1G8-3b-W1w"/>
                                         <constraint firstAttribute="height" constant="15" id="HWT-xF-Es7"/>
@@ -137,9 +137,12 @@
                                     <state key="normal" title="Button">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="didClickHotWordButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="reE-4k-tZR"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="60" verticalCompressionResistancePriority="60" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0R-NW-1TW">
-                                    <rect key="frame" x="158" y="129" width="38" height="15"/>
+                                <button opaque="NO" tag="104" contentMode="scaleToFill" verticalHuggingPriority="60" verticalCompressionResistancePriority="60" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0R-NW-1TW">
+                                    <rect key="frame" x="158" y="124" width="38" height="15"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="15" id="MpI-VK-n4z"/>
                                         <constraint firstAttribute="width" priority="60" constant="60" id="TH4-PP-dG1"/>
@@ -148,9 +151,12 @@
                                     <state key="normal" title="Button">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="didClickHotWordButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="qWG-Se-Hm7"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="60" verticalCompressionResistancePriority="60" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAY-Fb-UOj">
-                                    <rect key="frame" x="66" y="129" width="38" height="15"/>
+                                <button opaque="NO" tag="102" contentMode="scaleToFill" verticalHuggingPriority="60" verticalCompressionResistancePriority="60" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAY-Fb-UOj">
+                                    <rect key="frame" x="66" y="124" width="38" height="15"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="15" id="C6h-D8-QWz"/>
                                         <constraint firstAttribute="width" priority="60" constant="60" id="yxU-Oa-XYk"/>
@@ -159,9 +165,12 @@
                                     <state key="normal" title="Button">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="didClickHotWordButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Hbs-7f-xVa"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="60" verticalCompressionResistancePriority="60" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ek7-vA-DfG">
-                                    <rect key="frame" x="112" y="129" width="38" height="15"/>
+                                <button opaque="NO" tag="103" contentMode="scaleToFill" verticalHuggingPriority="60" verticalCompressionResistancePriority="60" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ek7-vA-DfG">
+                                    <rect key="frame" x="112" y="124" width="38" height="15"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="15" id="9ky-FC-jHp"/>
                                         <constraint firstAttribute="width" priority="60" constant="60" id="liC-dq-oeo"/>
@@ -170,9 +179,12 @@
                                     <state key="normal" title="Button">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="didClickHotWordButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="z5x-al-lJv"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="60" verticalCompressionResistancePriority="60" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fJ-d6-oeI">
-                                    <rect key="frame" x="204" y="129" width="38" height="15"/>
+                                <button opaque="NO" tag="105" contentMode="scaleToFill" verticalHuggingPriority="60" verticalCompressionResistancePriority="60" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fJ-d6-oeI">
+                                    <rect key="frame" x="204" y="124" width="38" height="15"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="15" id="bKK-7O-FPx"/>
                                         <constraint firstAttribute="width" priority="60" constant="60" id="lKj-v4-tJG"/>
@@ -181,6 +193,9 @@
                                     <state key="normal" title="Button">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="didClickHotWordButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="OpR-L5-B5l"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -269,12 +284,17 @@
                 <outlet property="websiteCollectionViewHeight" destination="fIj-JG-Qg0" id="vy6-Ha-uL4"/>
                 <outlet property="websitePageControl" destination="NR9-VU-WlF" id="KwU-3l-pN8"/>
                 <outlet property="websitePageControlHeight" destination="LBx-oJ-Yta" id="CK4-sY-8Da"/>
+                <outletCollection property="hotWordButton" destination="V3P-QE-9lr" id="i5F-CK-iT8"/>
+                <outletCollection property="hotWordButton" destination="HAY-Fb-UOj" id="jVp-bu-wzz"/>
+                <outletCollection property="hotWordButton" destination="Ek7-vA-DfG" id="2sG-rQ-uFZ"/>
+                <outletCollection property="hotWordButton" destination="G0R-NW-1TW" id="SNA-Hy-Cpu"/>
+                <outletCollection property="hotWordButton" destination="1fJ-d6-oeI" id="BOs-qF-T1j"/>
             </connections>
             <point key="canvasLocation" x="103.5" y="-335"/>
         </view>
     </objects>
     <resources>
-        <image name="scan" width="30" height="30"/>
+        <image name="scan" width="20" height="20"/>
         <image name="search_fangdajing" width="20" height="20"/>
     </resources>
 </document>

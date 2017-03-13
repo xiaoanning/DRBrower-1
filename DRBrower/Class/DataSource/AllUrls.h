@@ -21,9 +21,13 @@
 ///获取新闻分类标签
 #define URL_GETTABS @"news/getTabs"
 ///根据标签ID获取新闻
-#define URL_GETNEWS_CID @"news/getNews?cid="
+#define URL_GETNEWS_CID @"news/getNews?cid="//		http://admin.drliulanqi.com/index.php?g=api&m=site&a=get_sort_list&token=brower*@forapi@*&page_num=1&site_type=1&sort=visit_num&devtype=1
+
 //获取网站
-#define URL_GETWEBSITE @"site&a=get_system_nav&token=brower*@forapi@*&devtype=2"
+#define URL_GETWEBSITE @"site&a=get_site_info&token=brower*@forapi@*&devtype=2"
+
+//获取热搜
+#define URL_GETHOTWORD @"search&a=get_hot_word&token=brower*@forapi@*&devtype=2"
 
 //百度搜索关键字
 #define URL_BAIDU_SEARCH @"https://m.baidu.com/from=2001a/s?word="
