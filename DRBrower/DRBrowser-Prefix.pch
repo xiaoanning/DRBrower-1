@@ -79,8 +79,8 @@
 #pragma mare - defaults
 #define kFullScreen @"isFullScreen"//是否全屏
 
-#define appBirghtness @"appBirghtness"
-#define sysBrightness @"sysBrightness"
+#define app_light @"appBirghtness"
+#define sys_light @"sysBrightness"
 
 #define LOGIN_TOKEN @"loginToken" //登陆成功
 #define LOGIN_UID @"loginUid"

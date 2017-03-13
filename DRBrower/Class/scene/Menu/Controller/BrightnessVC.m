@@ -18,11 +18,13 @@
     [super viewDidLoad];
     
     CGFloat sys = [UIScreen mainScreen].brightness;
+    //获取app亮度
+    CGFloat appLight = [[NSUserDefaults standardUserDefaults] floatForKey:app_light];
     
     self.brightnessSlider.minimumValue = 0;
     self.brightnessSlider.maximumValue = 1;
     self.brightnessSlider.continuous = YES;
-    self.brightnessSlider.value = sys;// 设置初始值
+    self.brightnessSlider.value = appLight?appLight:sys;// 设置初始值
     
     [self.brightnessSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
 }
@@ -30,9 +32,7 @@
     [[UIScreen mainScreen] setBrightness:slider.value];
     
     //保存app亮度
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setFloat:slider.value forKey:appBirghtness];
-    [userDefaults synchronize];
+    [[NSUserDefaults standardUserDefaults] setFloat:slider.value forKey:app_light];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

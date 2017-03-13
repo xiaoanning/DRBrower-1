@@ -83,8 +83,9 @@
 //}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    CGFloat sys = [[NSUserDefaults standardUserDefaults] floatForKey:sysBrightness];
-    [[UIScreen mainScreen] setBrightness:sys];
+    //恢复系统亮度
+    CGFloat sysLight = [[NSUserDefaults standardUserDefaults] floatForKey:sys_light];
+    [[UIScreen mainScreen] setBrightness:sysLight];
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
 }
@@ -102,10 +103,12 @@
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    CGFloat sys = [UIScreen mainScreen].brightness;
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setFloat:sys forKey:sysBrightness];
-    [userDefaults synchronize];
+    //保存系统亮度
+    CGFloat sysLight = [UIScreen mainScreen].brightness;
+    [[NSUserDefaults standardUserDefaults] setFloat:sysLight forKey:sys_light];
+    //设置app亮度
+    CGFloat appLight = [[NSUserDefaults standardUserDefaults] floatForKey:app_light];
+    [[UIScreen mainScreen] setBrightness:appLight?appLight:sysLight];
 
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
