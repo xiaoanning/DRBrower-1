@@ -127,9 +127,9 @@
     if ([array count] <= 10) {
         return 320 - 25;
     }else if ([array count] >10 && [array count] <= 15) {
-        return 320 - 25 + 60;
+        return 320 - 25 + 80;
     }else if ([array count] > 15) {
-        return 320 + 60;
+        return 320 + 80;
     }
     return 155;
 }

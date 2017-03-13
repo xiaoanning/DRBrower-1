@@ -20,6 +20,7 @@
 #import "WebsiteModel.h"
 #import "ShareModel.h"
 #import "WeatherModel.h"
+#import "HotWordModel.h"
 
 #import "ZeroPicCell.h"
 #import "OnePicCell.h"
@@ -34,6 +35,7 @@
 #import "LoginVC.h"
 #import "LoginModel.h"
 #import "NewsPageVC.h"
+#import "NavView.h"
 
 static NSString *const onePicCellIdentifier = @"OnePicCell";
 static NSString *const threePicCellIdentifier = @"ThreePicCell";
@@ -43,7 +45,7 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
 #define UP_LOAD @"上拉"
 #define DOWN_LOAD @"下拉"
 
-@interface DRHomeVC ()<MenuVCDelegate, QRCodeReaderDelegate, CLLocationManagerDelegate, NewsMenuDelegate>
+@interface DRHomeVC ()<MenuVCDelegate, QRCodeReaderDelegate, CLLocationManagerDelegate, NewsMenuDelegate, NavViewDelegate>
 
 @property (weak, nonatomic) IBOutlet HomeToolBar *homeToolBar;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *listTopConstraint;
@@ -52,9 +54,11 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
 @property (strong, nonatomic) NSArray *newsListArray;
 @property (strong, nonatomic) NSMutableArray *websiteArray;
 @property (strong, nonatomic) NSArray *tagListArray;
+@property (strong, nonatomic) NSArray *hotWordListArray;
 @property (strong, nonatomic) WeatherModel *weather;
 
 @property (nonatomic, strong) DRLocationManager *locationManger;
+@property (nonatomic ,strong) NavView *navView;
 @property (nonatomic,assign) BOOL loginSuccess;
 
 @end
@@ -84,6 +88,8 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
     [self setupTableView];
     [self location];
     [self getTagData];
+    [self getHotWordData];
+    [self nav];
 }
 
 - (void)setupTableView {
@@ -120,9 +126,7 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
                      parameters:@{}
                           block:^(NewsTagListModel *tagList, NSError *error) {
                               self.tagListArray = tagList.data;
-                              
-                              
-                          }];
+                        }];
 }
 //获取新闻
 - (void)getNews {
@@ -137,17 +141,27 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
                          }];
 }
 
+//获取热词
+- (void)getHotWordData {
+    [HotWordModel getHotWordUrl:[PHP_BASE_URL stringByAppendingString:URL_GETHOTWORD]
+                     parameters:@{}
+                          block:^(HotWordModel *newsList, NSError *error) {
+                              self.hotWordListArray = newsList.list;
+                              [self.homeTableView reloadData];
+                          }];
+}
+
 //获取网站
 - (void)getWebsiteData {
-    [WebsiteModel getWebsiteUrl:[NSString stringWithFormat:@"%@%@",BASE_URL,URL_GETWEBSITE]
+    [WebsiteModel getWebsiteUrl:[NSString stringWithFormat:@"%@%@",PHP_BASE_URL,URL_GETWEBSITE]
                      parameters:@{}
                           block:^(WebsiteListModel *websiteList, NSError *error) {
                               
-                              self.websiteArray = websiteList.data;
+                              self.websiteArray = websiteList.list;
                               
                               if ([DRLocaldData achieveWebsiteData] == nil) {
                                   
-                                  NSMutableArray *array = [NSMutableArray arrayWithArray:websiteList.data];
+                                  NSMutableArray *array = [NSMutableArray arrayWithArray:websiteList.list];
                                   if ([array count]>9) {
                                       [array removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(9, [array count]-9)]];
                                   }
@@ -196,15 +210,12 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
             case 0:
                 return 70;
                 break;
-            case 1:{
+            case 1:
                 return 100;
-            }
                 break;
-            case 3:{
+            case 3:
                 return 145;
-            }
                 break;
-                
             default:
                 break;
         }
@@ -291,6 +302,7 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
         HomeTopView *top = [views lastObject];
         top.delegate = self;
         [top weatherHeader:top model:self.weather];
+        [top hotwordHeader:top hotWordArray:self.hotWordListArray];
         return top;
     }
     return nil;
@@ -337,6 +349,34 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
     shareFormSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideAndBounceFromBottom;
     
     [self presentViewController:shareFormSheetController animated:YES completion:nil];
+}
+
+- (void)touchUpHotWordButtonAction:(NSInteger)tag {
+    NSString *hotWord = nil;
+    switch (tag) {
+        case 101:
+            hotWord = self.hotWordListArray[0];
+            break;
+        case 102:
+            hotWord = self.hotWordListArray[1];
+            break;
+        case 103:
+            hotWord = self.hotWordListArray[2];
+            break;
+        case 104:
+            hotWord = self.hotWordListArray[3];
+            break;
+        case 105:
+            hotWord = self.hotWordListArray[4];
+            break;
+        default:
+            break;
+    }
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
+    SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
+    searchVC.searchText = hotWord;
+    [self.navigationController showViewController:searchVC sender:nil];
 }
 
 #pragma mark - manu
@@ -481,7 +521,7 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
 }
 
 //website delete 弹窗
-- (void)homeTopViewpresentView:(WebsiteModel *)model {
+- (void)homeTopViewPresentView:(WebsiteModel *)model {
     
     
     if (model.name && model.url) {
@@ -518,6 +558,46 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
     }
 }
 
+- (void)touchUpNavSearchButtonAction {
+    // 1.创建热门搜索
+    //    NSArray *hotSeaches = nil;
+    // 2. 创建控制器
+    PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:nil searchBarPlaceholder:@"搜索或输入网址" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
+        // 开始搜索执行以下代码
+        // 如：跳转到指定控制器
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
+        SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
+        
+        [searchViewController.navigationController pushViewController:searchVC animated:YES];
+    }];
+    // 3. 设置风格
+    searchViewController.searchHistoryStyle = PYHotSearchStyleDefault; // 搜索历史风格为default
+    //    searchViewController.hotSearchStyle = PYHotSearchStyleDefault; // 热门搜索风格为默认
+    // 4. 设置代理
+    searchViewController.delegate = self;
+    // 5. 跳转到搜索控制器
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchViewController];
+    [self presentViewController:nav  animated:NO completion:nil];
+}
+
+- (void)touchUpNavQRcodeButtonAction {
+    QRCodeReaderViewController *reader = [QRCodeReaderViewController new];
+    reader.modalPresentationStyle = UIModalPresentationFormSheet;
+    reader.delegate = self;
+    
+    __weak typeof (self) wSelf = self;
+    [reader setCompletionWithBlock:^(NSString *resultAsString) {
+        [wSelf.navigationController popViewControllerAnimated:YES];
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
+        SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
+        searchVC.searchText = resultAsString;
+        
+        [self.navigationController pushViewController:searchVC animated:YES];
+    }];
+    
+    [self.navigationController pushViewController:reader animated:YES];
+}
 
 #pragma mark - search delegate
 - (void)searchViewController:(PYSearchViewController *)searchViewController searchTextDidChange:(UISearchBar *)seachBar searchText:(NSString *)searchText {
@@ -589,6 +669,34 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)nav{
+    if (self.navView) {
+        return;
+    }
+    
+    self.navView = (NavView *)[[NSBundle mainBundle] loadNibNamed:@"NavView" owner:self options:nil].lastObject;
+    self.navView.alpha = 0.0;
+    self.navView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 64);
+    self.navView.delegate = self;
+    [self.view addSubview:self.navView];
+
+}
+
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    self.navView.alpha = [self navAlphaY:scrollView.contentOffset.y];
+//   [self.navView navAlphaY:scrollView.contentOffset.y];
+
+}
+- (CGFloat)navAlphaY:(CGFloat)y{
+    if (y > 100) {
+        return 1.0;
+
+    }else{
+        return y/64;
+    }
 }
 
 /*
