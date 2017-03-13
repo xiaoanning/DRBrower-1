@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MenuVC.h"
 
-@interface MoreVC : UIViewController<UITableViewDelegate,UITableViewDataSource,MenuVCDelegate>
+@interface MoreVC : UIViewController<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *moreTableView;
 
 @end

@@ -50,20 +50,20 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 @property (assign, nonatomic) BOOL isHeight;
 
 @property ( nonatomic , strong ) UIPageViewController * pageVC ;
-
+@property (nonatomic,strong) NSMutableArray *selectedArray;
 
 @end
 
 @implementation NewsListViewController
 
 - (void)viewWillAppear:(BOOL)animated {
-    self.navigationController.navigationBarHidden = YES;
+    [super viewWillAppear:animated];
+//    self.navigationController.navigationBarHidden = YES;
 }
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     self.newsListArray = [NSMutableArray array];
     
     self.homeTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
@@ -75,7 +75,6 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
     
     [self setupTableView];
     
-    self.navigationController.navigationBarHidden = YES;
     [self fooderRereshing];
     [self headerRereshing];
     
@@ -97,6 +96,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 
 //获取新闻
 - (void)getNewsByTag:(NewsTagModel *)tag type:(NSString *)type {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     NSString *tagId = tag.tagId;
     if (tag == nil) {
         tagId = TAG_ID_RECOMMEND;
@@ -111,6 +111,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
                              }else {
                                  [self.newsListArray addObjectsFromArray:newsList.data];
                              }
+                             [MBProgressHUD hideHUDForView:self.view animated:YES];
                              [self.homeTableView reloadData];
                          }];
     
@@ -120,7 +121,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 #pragma mark - 上下拉刷新
 //下拉
 - (void)headerRereshing {
-//
+    //
     __unsafe_unretained __typeof(self) weakSelf = self;
     // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
     self.homeTableView.mj_header =
@@ -225,26 +226,23 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
             break;
     }
     
-    
     return nil;
 }
 
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-//    NewsModel *news = self.newsListArray[indexPath.row];
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"NewsDetail" bundle:[NSBundle mainBundle]];
-//    NewsDetailVC *newsDetailVC = (NewsDetailVC *)[storyboard instantiateViewControllerWithIdentifier:@"NewsDetailVC"];
-//    newsDetailVC.newsModel = news;
-//    [_navigationController showViewController:newsDetailVC sender:nil];
-    
     NewsModel *newsModel = self.newsListArray[indexPath.row];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
-    SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
+    
+    newsModel.isSelected = YES;
+    [self.homeTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    UIStoryboard *storyboards = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
+    SearchVC *searchVC = (SearchVC *)[storyboards instantiateViewControllerWithIdentifier:@"SearchVC"];
     searchVC.newsModel = newsModel;
-    [self.navigationController pushViewController:searchVC animated:YES];
-
+//    [self.navigationController pushViewController:searchVC animated:YES];
+    [self.navigationController showViewController:searchVC sender:nil];
+    
 }
-
-
 
 @end

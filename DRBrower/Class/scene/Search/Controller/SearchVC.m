@@ -32,11 +32,9 @@
 @property (strong, nonatomic) MZFormSheetPresentationViewController *formSheetController;
 @property (strong, nonatomic) MZFormSheetPresentationViewController *shareFormSheetController;
 
-
 @end
 
 @implementation SearchVC
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;
@@ -57,13 +55,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-//    self.navigationController.navigationBarHidden = NO;
-    NSLog(@"historyArray = %@",self.historyArray);
-    
+    [self.searchWV reload];
 }
 
 - (void)isFullScreen {
@@ -80,7 +72,7 @@
 
 - (void)setupSubviews {
     self.homeToolBar.delegate = self;
-
+    [self.homeToolBar setBarButton:HomeToolBarRootVCTypeSearch];
     self.searchWV = [WKWebView new];
     self.searchWV.backgroundColor = [UIColor whiteColor];
     self.searchWV.navigationDelegate = self;
@@ -138,6 +130,17 @@
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    
+    NSString *fontStr = [[NSUserDefaults standardUserDefaults] objectForKey:WEBVIEW_FONT];
+    if (fontStr == nil) {
+        fontStr = @"100%";
+    }
+    
+    NSString *jsStr = [NSString stringWithFormat:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust = '%@'",fontStr];
+    
+    [webView evaluateJavaScript:jsStr
+              completionHandler:nil];
+    
     NSString *title = webView.title;
     NSString *url = webView.URL.absoluteString;
     [self.titleBtn setTitle:title forState:UIControlStateNormal];
@@ -145,23 +148,11 @@
         [self newOneRecordWithUrl:url title:title];
     }
     
-//    [webView evaluateJavaScript:@"var script = document.createElement('script');"
-//     "script.type = 'text/javascript';"
-//     "script.text = \"function ResizeImages() { "
-//     "var myimg,oldwidth;"
-//     "var maxwidth = 50.0;" // UIWebView中显示的图片宽度
-//     "for(i=0;i <document.images.length;i++){"
-//     "myimg = document.images[i];"
-//     "oldwidth = myimg.width;"
-//     "myimg.width = maxwidth;"
-//     "}"
-//     "}\";"
-//     "document.getElementsByTagName('head')[0].appendChild(script);ResizeImages();" completionHandler:nil];
-    
+    if (![self.searchWV canGoForward]) {
+        [self.homeToolBar setBarButton:HomeToolBarRootVCTypeSearch];
+    }
 }
-//- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler{
-//    NSLog(@"%@",navigationResponse.response);
-//}
+
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
     NSLog(@"%@",message);
 }
@@ -184,9 +175,13 @@
 - (void)touchUpBackButtonAction {
     if ([self.searchWV canGoBack]) {
         [self.searchWV goBack];
+        [self.homeToolBar setBarButton:HomeToolBarRootVCTypeUnknown];
+        
     }else if(self.sortModel.url != nil) {
         [self.navigationController popViewControllerAnimated:YES];
     }else if (self.urlString != nil){
+        [self.navigationController popViewControllerAnimated:YES];
+    }else if (self.newsModel.url != nil){
         [self.navigationController popViewControllerAnimated:YES];
     }else{
         [self.searchViewController dismissViewControllerAnimated:NO completion:nil];
@@ -208,13 +203,11 @@
     self.formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
     
     self.formSheetController.presentationController.portraitTopInset = [UIScreen mainScreen].bounds.size.height - 20 - MENU_HEIGHT;
-    
     self.formSheetController.presentationController.contentViewSize = [UIScreen mainScreen].bounds.size;
-    
-    
     self.formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideAndBounceFromBottom;
     
     menuVC.delegate = self;
+    menuVC.rootVCType = MenuVCRootVCTypeSearch;
     
     [self presentViewController:self.formSheetController animated:YES completion:nil];
     

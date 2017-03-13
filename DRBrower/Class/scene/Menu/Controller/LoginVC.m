@@ -11,10 +11,9 @@
 #import "ForgetPsdVC.h"
 #import "LoginModel.h"
 
-@interface LoginVC ()<UITextViewDelegate>
-@property (nonatomic,strong) NSMutableArray *accountArray;
-@property (nonatomic,strong) NSMutableArray *passwordArray;
-@property (nonatomic,assign) BOOL isPhoneNum;
+@interface LoginVC ()<UITextFieldDelegate>
+@property (nonatomic,copy) NSString *phoneNum;
+@property (nonatomic,copy) NSString *pwd;
 @end
 
 @implementation LoginVC
@@ -26,12 +25,8 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"登录";
-        
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_btn_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonAction:)];
     self.navigationItem.leftBarButtonItem = backButton;
-    
-    self.accountArray = [NSMutableArray arrayWithCapacity:5];
-    self.passwordArray = [NSMutableArray arrayWithCapacity:5];
 }
 - (void)backButtonAction:(UIBarButtonItem *)barButton {
     [self.navigationController popViewControllerAnimated:YES];
@@ -52,80 +47,30 @@
     RegsitVC *regsitVC = (RegsitVC *)[stroyboard instantiateViewControllerWithIdentifier:@"RegsitVC"];
     [self.navigationController pushViewController:regsitVC animated:YES];
 }
-#pragma mark - -------------TextView--------
-#pragma mark - -------------TextView--------
--(void)textViewDidBeginEditing:(UITextView *)textView {
-}
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    switch (textView.tag) {
-        case 100:
-            if ([textView.text length] >= 11) {//判断字符个数
-                if (self.isPhoneNum) {
-                    NSLog(@"%@",[self.accountArray lastObject]);
-                }else {
-                    [Tools showView:@"手机号输入有误"];
-                    textView.text = @"";
-                    [self.accountArray removeAllObjects];
-                    [self.accountLabel setHidden:NO];
-                }
-            }
-            return YES;
-            break;
-        case 101:
-            if (1 == range.length) {//按下回格键
-                return YES;
-            }
-            if ([text isEqualToString:@"\n"]) {//按下return键
-                [textView resignFirstResponder];
-                return NO;
-            }else {
-                if ([textView.text length] < 250) {//判断字符个数
-                    NSLog(@"%@",text);
-                    return YES;
-                }
-            }
-            break;
-        default:
-            break;
-    }
-    return NO;
-}
-- (void)textViewDidChange:(UITextView *)textView{
-    switch (textView.tag) {
-        case 100:
-            if ([textView.text length] == 0) {
-                [self.accountLabel setHidden:NO];
-            }else if ([textView.text length] >= 11){
-                [textView resignFirstResponder];
-                [self.accountArray addObject:textView.text];
-                self.isPhoneNum = [Tools phoneNumberValidation:[self.accountArray lastObject]];
-            }else {
-                [self.accountLabel setHidden:YES];
-                [self.accountArray addObject:textView.text];
-            }
-            break;
-        case 101:
-            if ([textView.text length] == 0) {
-                [self.passwordLabel setHidden:NO];
-            }else {
-                [self.passwordLabel setHidden:YES];
-                [self.passwordArray addObject:textView.text];
-            }
-            break;
-        default:
-            break;
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    if (textField.tag == 100) {
+        self.phoneNum = textField.text;
+    }else if (textField.tag == 101){
+        self.pwd = textField.text;
     }
 }
+
 //登录
 -(void)userLogin{
-    NSString *urlString = [NSString stringWithFormat:@"%@%@&tel=%@&dev_id=%@&pwd=%@",PHP_BASE_URL,URL_LOGIN,[self.accountArray lastObject],DEV_ID,[self.passwordArray lastObject]];
+    [self.pwdTextField resignFirstResponder];
+    [self.phoneNumTextField resignFirstResponder];
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&tel=%@&dev_id=%@&pwd=%@",PHP_BASE_URL,URL_LOGIN,TOKEN,self.phoneNum,DEV_ID,self.pwd];
     [LoginModel userLoginUrl:urlString parameters:@{} block:^(NSDictionary *dic, NSError *error) {
         NSLog(@"%@",dic);
         [Tools showView:[dic objectForKey:@"msg"]];
         if ([[dic objectForKey:@"msg"] isEqualToString:@"登录成功"]) {
             [self.navigationController popViewControllerAnimated:YES];
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLogin"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
+            //登陆成功,保存token到本地
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            [userDefaults setObject:[dic[@"data"] objectForKey:@"token"] forKey:LOGIN_TOKEN];
+            [userDefaults setObject:[[dic[@"data"] objectForKey:@"userinfo"] objectForKey:@"uid"] forKey:LOGIN_UID];
+            [userDefaults synchronize];
         }
     }];
 }

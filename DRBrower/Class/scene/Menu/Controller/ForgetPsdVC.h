@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ForgetPsdVC : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *phoneNumLabel;
-@property (weak, nonatomic) IBOutlet UILabel *codeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *nPasswordLabel;
 @property (weak, nonatomic) IBOutlet UIButton *getCodeButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *resetPsdButton;
+@property (weak, nonatomic) IBOutlet UITextField *phoneNumTextField;
+@property (weak, nonatomic) IBOutlet UITextField *codeTextField;
+@property (weak, nonatomic) IBOutlet UITextField *nPwdTextField;
 @end

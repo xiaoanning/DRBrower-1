@@ -9,12 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface RegsitVC : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *phoneNumLabel;
-@property (weak, nonatomic) IBOutlet UILabel *passwordLabel;
-@property (weak, nonatomic) IBOutlet UILabel *passwordAgainLabel;
-@property (weak, nonatomic) IBOutlet UILabel *codeLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *getCodeButton;
-@property (weak, nonatomic) IBOutlet UITextView *passwordTextView;
-@property (weak, nonatomic) IBOutlet UITextView *passwordArginTV;
+@property (weak, nonatomic) IBOutlet UITextField *phoneNumTextField;
+@property (weak, nonatomic) IBOutlet UITextField *pwdTextField;
+@property (weak, nonatomic) IBOutlet UITextField *pwdAgainTextField;
+@property (weak, nonatomic) IBOutlet UITextField *codeTextField;
 
 @end

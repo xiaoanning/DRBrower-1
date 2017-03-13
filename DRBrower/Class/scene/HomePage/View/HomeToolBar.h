@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, HomeToolBarRootVCType) {
+    HomeToolBarRootVCTypeUnknown = 0,
+    HomeToolBarRootVCTypeHome,
+    HomeToolBarRootVCTypeSearch
+};
+
 @protocol HomeToolBarDelegate <NSObject>
 @optional
 - (void)touchUpHomeButtonAction;
@@ -27,5 +33,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *pageBtn;
 
 @property (assign, nonatomic)id<HomeToolBarDelegate>delegate;
+- (void)setBarButton:(HomeToolBarRootVCType)rootVCType;
 
 @end

@@ -14,8 +14,10 @@
 + (NSString *)urlValidation:(NSString *)string;
 #pragma mark - 正则表达式判断手机号合法性
 + (BOOL)phoneNumberValidation:(NSString *)phoneNum;
-#pragma mark - 判断数组元素个数 决定pageControl的高度个页数
-+ (BOOL)isRemainder:(NSArray *)array;
+#pragma mark - pageControl页数
++ (NSInteger)pageCount:(NSArray *)array;
+#pragma mark - head高度
++ (NSInteger)headHeight:(NSArray *)array;
 #pragma 将时间戳转换为北京时间
 +(NSString *)getDateString:(NSString *)spString;
 #pragma mark - 当前时间戳

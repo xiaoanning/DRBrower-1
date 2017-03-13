@@ -54,9 +54,8 @@
     [self addAdvice:[self.inputArray lastObject]];
 }
 -(void)addAdvice:(NSString *)content {
-    //http://admin.drliulanqi.com/index.php?g=api&m=suggest&a=add&token=brower*@forapi@*&dev_id=11&content=5&platform=0
     NSString *contentStr = [content stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@%@&content=%@&platform=%@",PHP_BASE_URL,URL_ADVICE,DEV_ID,contentStr,Platform];
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@%@&content=%@&platform=1&token=%@",PHP_BASE_URL,URL_ADVICE,DEV_ID,contentStr,TOKEN];
     [AdviceModel addAdviceUrl:urlStr parameters:@{} block:^(NSDictionary *dic, NSError *error) {
         if (dic.allKeys.count>0) {
             [Tools showView:[dic objectForKey:@"msg"]];
@@ -72,14 +71,13 @@
 -(void)textViewDidBeginEditing:(UITextView *)textView {
 }
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    if (1 == range.length) {//按下回格键
-        return YES;
-    }
-    if ([text isEqualToString:@"\n"]) {//按下return键
+    if ([text isEqualToString:@" "]) { //按下空格
+        return NO;
+    }else if ([text isEqualToString:@"\n"]) {//按下return键
         [textView resignFirstResponder];
         return NO;
     }else {
-        if ([textView.text length] < 250) {//判断字符个数
+        if ([textView.text length] < 200) {//判断字符个数
             NSLog(@"%@",text);
             return YES;
         }

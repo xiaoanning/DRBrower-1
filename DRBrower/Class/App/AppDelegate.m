@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 
 
-
 #define APPKEY @"1b734ca46d7e8"
 @interface AppDelegate ()
 
@@ -22,7 +21,6 @@
     // Override point for customization after application launch.
     
     [self shareRegist];
-    
     
     return YES;
 }

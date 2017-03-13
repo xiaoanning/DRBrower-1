@@ -42,11 +42,10 @@
     long count  = (indexPath.row)/5 ;
     
     
-    _width =( count/2+1) * SCREEN_WIDTH ;
+    _width =( count/3+1) * SCREEN_WIDTH ;
     
     
-    attribute.center = CGPointMake(count/2 * SCREEN_WIDTH + 10+(itemWidth+5)*(indexPath.row%5) + itemWidth/2.0 ,  count%2*itemHeight + itemHeight /2.0) ;
-
+    attribute.center = CGPointMake(count/3 * SCREEN_WIDTH + 10+(itemWidth+5)*(indexPath.row%5) + itemWidth/2.0 ,  count%3*itemHeight + itemHeight/2.0 + 10) ;
 
     
     return attribute ;

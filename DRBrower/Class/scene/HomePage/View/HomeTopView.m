@@ -11,6 +11,7 @@
 #import "WebsiteCell.h"
 #import "WebsiteModel.h"
 #import "HomeTopViewLayout.h"
+#import "WeatherModel.h"
 
 static NSString *const websiteCellIdentifier = @"WebsiteCell";
 @interface HomeTopView()<UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate>{
@@ -27,6 +28,26 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
 }
 */
 
+- (void)weatherHeader:(HomeTopView *)header model:(WeatherModel *)model {
+    self.weatherLabel.text = model.weather;
+    self.temperatureLabel.text = model.temperature;
+    self.pmLabel.text = model.pm25;
+    self.placeLabel.text = model.currentCity;
+    self.airQualityLabel.text = model.airQuality;
+    self.pmLabel.backgroundColor = colorWithvalue(model.colorValue);
+    self.weatherImage.image = [UIImage imageNamed:model.weatherImage];
+    
+    if (model.pm25 == nil) {
+        self.airQualityLabel.text = @"";
+    }
+}
+
+- (void)hotwordHeader:(HomeTopView *)header hotWordArray:(NSArray *)array {
+    for (int i = 0; i<5; i++) {
+        [self.hotWordButton[i] setTitle:array[i] forState:UIControlStateNormal];
+    }
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     
@@ -36,35 +57,31 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
     [self.websiteCollectionView registerNib:[UINib nibWithNibName:@"WebsiteCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:websiteCellIdentifier];
     [self data];
     [self reloadPageControl];
+    [self reloadCollectViewHeight];
 }
 - (void)data {
     self.websiteArray = [DRLocaldData achieveWebsiteData];
     [(HomeTopViewLayout *)self.websiteCollectionView.collectionViewLayout setDefectListModel:self.websiteArray] ;
     [self reloadPageControl];
-
-//    if ([self.websiteArray count]>10) {
-//        NSInteger num = 10 - [self.websiteArray count]%10;
-//        for (int i = 0; i < num; i++) {
-//            WebsiteModel *model = [[WebsiteModel alloc] init];
-//            [self.websiteArray addObject:model];
-//        }
-//        [self reloadPageControl];
-//    }
     
 }
 
 - (void)reloadPageControl {
-    if ([Tools isRemainder:self.websiteArray] == YES) {
-        NSInteger num = [self.websiteArray count]/10;
-        if([self.websiteArray count]%10 > 0) {
-            self.websitePageControl.numberOfPages = num + 1;
-        }
-        else{
-            self.websitePageControl.numberOfPages = num;
-        }
-        
-    }else {
+    
+    NSInteger pageCount = [Tools pageCount:self.websiteArray];
+    
+    if ([self.websiteArray count] < 15 || pageCount == 0) {
         self.websitePageControlHeight.constant = 0;
+    }else {
+        self.websitePageControl.numberOfPages = pageCount;
+    }
+}
+
+- (void)reloadCollectViewHeight {
+    if ([self.websiteArray count] > 10) {
+        self.websiteCollectionViewHeight.constant = 220;
+    }else {
+        self.websiteCollectionViewHeight.constant = 140;
     }
 }
 
@@ -98,7 +115,7 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
 
 #pragma  mark UICollectionViewDelegateFlowLayout
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(SCREEN_WIDTH/5.0, self.websiteCollectionViewHeight.constant/2);
+    return CGSizeMake((SCREEN_WIDTH)/5.0, self.websiteCollectionViewHeight.constant/3);
 }
 
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
@@ -134,14 +151,16 @@ static NSString *const websiteCellIdentifier = @"WebsiteCell";
 
 - (void)longPressGesture:(WebsiteModel *)model {
 
-        if(_delegate && [_delegate respondsToSelector:@selector(homeTopViewpresentView:)]){
-            [_delegate homeTopViewpresentView:model];
-        }
+    if(_delegate && [_delegate respondsToSelector:@selector(homeTopViewPresentView:)]){
+        [_delegate homeTopViewPresentView:model];
+    }
 
 }
-- (IBAction)touchUpSortButton:(id)sender {
-    if (_delegate && [_delegate respondsToSelector:@selector(touchUpSortButtonAction)]) {
-        [_delegate touchUpSortButtonAction];
+
+- (IBAction)didClickHotWordButtonAction:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    if(_delegate && [_delegate respondsToSelector:@selector(touchUpHotWordButtonAction:)]){
+        [_delegate touchUpHotWordButtonAction:button.tag];
     }
 }
 

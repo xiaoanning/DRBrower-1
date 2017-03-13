@@ -20,6 +20,11 @@ PODS:
   - Colours/ObjC (5.13.0)
   - CSStickyHeaderFlowLayout (0.2.11)
   - DZNEmptyDataSet (1.8.1)
+  - IGListKit (2.1.0):
+    - IGListKit/Default (= 2.1.0)
+  - IGListKit/Default (2.1.0):
+    - IGListKit/Diffing
+  - IGListKit/Diffing (2.1.0)
   - Mantle (1.5.8):
     - Mantle/extobjc (= 1.5.8)
   - Mantle/extobjc (1.5.8)
@@ -50,6 +55,7 @@ DEPENDENCIES:
   - Colours (~> 5.13.0)
   - CSStickyHeaderFlowLayout (~> 0.2.11)
   - DZNEmptyDataSet (~> 1.8.1)
+  - IGListKit (from `https://github.com/Instagram/IGListKit.git`, branch `master`)
   - Mantle (~> 1.5.4)
   - Masonry (~> 1.0.2)
   - MBProgressHUD (~> 1.0.0)
@@ -64,12 +70,23 @@ DEPENDENCIES:
   - ShareSDK3/ShareSDKPlatforms/WeChat
   - SWTableViewCell (~> 0.3.7)
 
+EXTERNAL SOURCES:
+  IGListKit:
+    :branch: master
+    :git: https://github.com/Instagram/IGListKit.git
+
+CHECKOUT OPTIONS:
+  IGListKit:
+    :commit: 139507325c9e86311a4f71bc412ee16b23255d38
+    :git: https://github.com/Instagram/IGListKit.git
+
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AXStretchableHeaderTabViewController: 37c56211c98d3e823ecf7493d68f5ee8fa7028e1
   Colours: f24220c38f13deac88612667e9b4a7fb96b871d4
   CSStickyHeaderFlowLayout: e9bcb1762413f49d7d09e5bd0ae5efd1100116b7
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  IGListKit: b826c68ef7a4ae1626c09d4d3e1ea7a169e6c36e
   Mantle: f03b2b606c3f0cabd80214ad8a2fed6b464a7359
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
@@ -83,6 +100,6 @@ SPEC CHECKSUMS:
   ShareSDK3: 08ed714e2bbdcd97ab60f58cb398227341dfc20a
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
 
-PODFILE CHECKSUM: 637549ecacf7d5aa74507f349621cb0b3fff3dcb
+PODFILE CHECKSUM: d5833987a603db63b644dd6bc603e885bdaff76e
 
 COCOAPODS: 1.1.1

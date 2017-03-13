@@ -32,15 +32,21 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 //微信SDK头文件
 #import "WXApi.h"
+#import <CoreLocation/CoreLocation.h>
 
 #import "DRDataService.h"
 #import "DRLocaldData.h"
 #import "DRImageView.h"
 #import "UIImage+DRImageClip.h"
 #import "Tools.h"
+#import "Define.h"
 #import "AllUrls.h"
+#import "Define.h"
 #import "DRRealmPublic.h"
+#import "DRLocationManager.h"
+#import "DRGeocoder.h"
 
+#import "UserInfo.h"
 
 #pragma mark - 常量
 #define TAG_ID_RECOMMEND @"100"
@@ -50,6 +56,9 @@
 #define UP_LOAD @"上拉"
 #define DOWN_LOAD @"下拉"
 
+#define WEBVIEW_FONT @"webViewFont"
+#define WEBVIEW_FONT_KEY @"webViewFontKey"
+#define USERINFO_GENDER @"gender"
 
 #define COLLECT_SUCCESS @"收藏成功"
 #define COLLECT_FAILED @"已收藏"
@@ -62,7 +71,7 @@
 #define QQ_APPID @"1105997278"
 #define QQ_APPKEY @"0IpJBDsSAVxLXHC0"
 
-#define MENU_HEIGHT 280
+#define MENU_HEIGHT 260
 
 #pragma mark - 通知
 #define DISMISS_VIEW @"dissmissView"
@@ -73,10 +82,13 @@
 #define appBirghtness @"appBirghtness"
 #define sysBrightness @"sysBrightness"
 
-#define Platform @"1"  //平台区分
+#define LOGIN_TOKEN @"loginToken" //登陆成功
+#define LOGIN_UID @"loginUid"
 
 #define DEV_ID [[UIDevice currentDevice].identifierForVendor UUIDString]
+#define TOKEN [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_TOKEN]?[[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_TOKEN]:@"brower*@forapi@*"
 
+#define GET_LOCATION @"getLocation" 
 
 #endif /* DRBrowser_Prefix_pch */
 

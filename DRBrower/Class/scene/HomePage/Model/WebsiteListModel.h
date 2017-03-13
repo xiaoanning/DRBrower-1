@@ -10,6 +10,6 @@
 
 @interface WebsiteListModel : MTLModel<MTLJSONSerializing>
 
-@property(nonatomic, strong) NSMutableArray *data;
+@property(nonatomic, strong) NSMutableArray *list;
 
 @end

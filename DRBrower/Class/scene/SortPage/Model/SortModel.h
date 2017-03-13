@@ -44,4 +44,11 @@
                                                NSError *error))completion;
 
 
+//保存记录
+- (void)addSortToRealm:(NSString *)realmName;
+//清空记录
++ (void)deleteAllSortFromRealm:(NSString *)realmName;
+//获取全部记录
++ (NSMutableArray *)realmSelectAllSortFromRealm:(NSString *)realmName;
+
 @end
