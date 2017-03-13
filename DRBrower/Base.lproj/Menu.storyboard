@@ -287,10 +287,21 @@
                                             <constraint firstAttribute="height" constant="90" id="mBZ-D2-1ul"/>
                                         </constraints>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roJ-La-Ntu">
+                                        <rect key="frame" x="125" y="5" width="120" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="Wed-7f-mXg"/>
+                                            <constraint firstAttribute="height" constant="20" id="o3W-lM-dbg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="MpS-Ue-Dys" firstAttribute="leading" secondItem="ez7-Fj-wtx" secondAttribute="leading" id="8Lz-HZ-XXv"/>
+                                    <constraint firstItem="roJ-La-Ntu" firstAttribute="top" secondItem="ez7-Fj-wtx" secondAttribute="top" constant="5" id="KSe-vm-tIC"/>
                                     <constraint firstItem="QgA-SP-Lu8" firstAttribute="leading" secondItem="ez7-Fj-wtx" secondAttribute="leading" id="OnH-Si-YGT"/>
                                     <constraint firstAttribute="trailing" secondItem="QgA-SP-Lu8" secondAttribute="trailing" id="Rhr-MG-X1r"/>
                                     <constraint firstItem="QgA-SP-Lu8" firstAttribute="top" secondItem="MpS-Ue-Dys" secondAttribute="bottom" id="agC-EQ-W8L"/>
@@ -313,6 +324,7 @@
                             <constraint firstItem="Fh8-b2-LTa" firstAttribute="top" secondItem="5Tu-NA-Ah2" secondAttribute="top" constant="10" id="b2c-ha-pK7"/>
                             <constraint firstItem="ez7-Fj-wtx" firstAttribute="leading" secondItem="5Tu-NA-Ah2" secondAttribute="leading" id="fHG-oK-Oje"/>
                             <constraint firstItem="Fh8-b2-LTa" firstAttribute="leading" secondItem="5Tu-NA-Ah2" secondAttribute="leading" constant="50" id="fjY-db-jJ2"/>
+                            <constraint firstItem="roJ-La-Ntu" firstAttribute="leading" secondItem="Fh8-b2-LTa" secondAttribute="trailing" constant="15" id="gWJ-V1-tYj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ogp-H1-buG"/>
@@ -329,11 +341,12 @@
                         <outlet property="reloadBtn" destination="i46-DH-IC6" id="Lxv-Y0-X3a"/>
                         <outlet property="serviceBtn" destination="jVw-El-a2E" id="dxN-K6-gl6"/>
                         <outlet property="teasingBtn" destination="tYN-aE-HH9" id="a7m-HY-836"/>
+                        <outlet property="wecomeLabel" destination="roJ-La-Ntu" id="4KE-28-8Mj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6aI-55-Hsy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1337" y="-13"/>
+            <point key="canvasLocation" x="1336.8" y="-13.493253373313344"/>
         </scene>
         <!--历史-->
         <scene sceneID="m2N-Sm-KJ8">

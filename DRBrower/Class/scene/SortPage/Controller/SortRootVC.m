@@ -41,7 +41,7 @@
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_btn_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonAction:)];
     self.navigationItem.leftBarButtonItem = backButton;
     
-    self.title = NSLocalizedString(@"热度排行", nil);
+    self.title = NSLocalizedString(@"宅男福利", nil);
     
     
 }

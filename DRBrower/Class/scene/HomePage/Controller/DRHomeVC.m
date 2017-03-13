@@ -123,7 +123,13 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
 }
 
 #pragma mark - 数据请求
-
+//获取用户信息
+-(void)getUserInfo {
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&uid=%@",PHP_BASE_URL,URL_GETUSERINFO,TOKEN,UID];
+    [LoginModel getUserInfo:urlString parameters:@{} block:^(NSDictionary *dic, NSError *error) {
+        NSLog(@"%@",dic);
+    }];
+}
 //请求新闻分类标签
 - (void)getTagData {
     [NewsTagModel getNewsTagUrl:[NSString stringWithFormat:@"%@%@",BASE_URL,URL_GETTABS]
@@ -138,8 +144,10 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
                     parameters:@{}
                          block:^(NewsListModel *newsList, NSError *error) {
                              if (!error) {
-                                 self.newsListArray = [newsList.data subarrayWithRange:NSMakeRange(0, 5)];
-                                 [self.homeTableView reloadData];
+                                 if (newsList.data.count>0) {
+                                     self.newsListArray = [newsList.data subarrayWithRange:NSMakeRange(0, 5)];
+                                     [self.homeTableView reloadData];
+                                 }
                              }
                              
                          }];
@@ -162,14 +170,13 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
                           block:^(WebsiteListModel *websiteList, NSError *error) {
                               
                               self.websiteArray = websiteList.list;
-                              
+                              NSLog(@"%@",[DRLocaldData achieveWebsiteData]);
                               if ([DRLocaldData achieveWebsiteData] == nil) {
                                   
                                   NSMutableArray *array = [NSMutableArray arrayWithArray:websiteList.list];
                                   if ([array count]>9) {
                                       [array removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(9, [array count]-9)]];
                                   }
-                                  
                                   
                                   WebsiteModel *addWebsite = [[WebsiteModel alloc] init];
                                   addWebsite.name = NSLocalizedString(@"添加", nil);
@@ -449,12 +456,12 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
 
 //退出登陆
 -(void)cancleLogin {
-    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&dev_id=%@&uid=%@",PHP_BASE_URL,URL_LOGOUT,TOKEN,DEV_ID,[[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_UID]];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%@&dev_id=%@&uid=%@",PHP_BASE_URL,URL_LOGOUT,TOKEN,DEV_ID,UID];
     [LoginModel cancleLoginUrl:urlString parameters:@{} block:^(NSDictionary *dic, NSError *error) {
         NSLog(@"%@",dic);
         [Tools showView:dic[@"msg"]];
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:LOGIN_TOKEN];
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:LOGIN_UID];
+        [KeychainTool deleteKeychainValue:LOGIN_TOKEN];
+        [KeychainTool deleteKeychainValue:LOGIN_UID];
     }];
 }
 
@@ -505,13 +512,17 @@ static NSString *const moreNewsCellIdentifier = @"MoreNewsCell";
 - (void)websiteViewSelectWithWebsite:(WebsiteModel *)website {
     
     if (website.icon&&website.url) {
-        
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
-        SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
-        searchVC.searchText = website.url;
-        
-        [self.navigationController pushViewController:searchVC animated:YES];
-        NSLog(@"我被点击了 %@",website.name);
+        if ([website.name isEqualToString:@"宅男福利"]) {
+            SortRootVC *sortRootVC = [[SortRootVC alloc] init];
+            [self.navigationController pushViewController:sortRootVC animated:YES];
+        }else {
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
+            SearchVC *searchVC = (SearchVC *)[storyboard instantiateViewControllerWithIdentifier:@"SearchVC"];
+            searchVC.searchText = website.url;
+            
+            [self.navigationController pushViewController:searchVC animated:YES];
+            NSLog(@"我被点击了 %@",website.name);
+        }
         
     }else if([website.icon isEqualToString:@"add"]){
         

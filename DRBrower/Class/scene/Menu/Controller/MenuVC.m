@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *teasingBtn;
 @property (weak, nonatomic) IBOutlet UIButton *serviceBtn;
 
+@property (weak, nonatomic) IBOutlet UILabel *wecomeLabel;
 
 
 @end
@@ -36,6 +37,12 @@
     [self setupSubviews];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dismissView) name:DISMISS_VIEW object:nil];
+
+    if ([TOKEN isEqualToString:@"brower*@forapi@*"]) {
+        self.wecomeLabel.text = @"点击图像登陆";
+    }else {
+        self.wecomeLabel.text = @"欢迎回来";
+    }
 }
 
 - (void)setupSubviews {

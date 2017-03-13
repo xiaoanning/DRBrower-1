@@ -18,8 +18,7 @@ static NSString *const settingCellIdentifier = @"SettingCell";
 @property (nonatomic,strong) NSArray *titleArray;
 @property (nonatomic,strong) UILabel *cacheLabel;
 @property (nonatomic,strong) NSMutableArray *switchStatusArray;
-
-
+@property (nonatomic,assign) double cacheSize;
 @end
 
 @implementation MoreVC
@@ -34,6 +33,16 @@ static NSString *const settingCellIdentifier = @"SettingCell";
     self.title = @"更多";
     self.switchStatusArray = [NSMutableArray array];
     self.titleArray = @[@"清理缓存",@"字体大小",@"调整亮度"];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        self.cacheSize = [self getCacheSize];
+        if (self.cacheSize >= 0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.moreTableView reloadData];
+            });
+        }
+    });
+    
     [self setupTableView];
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_btn_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonAction:)];
@@ -70,7 +79,7 @@ static NSString *const settingCellIdentifier = @"SettingCell";
     
     switch (indexPath.row) {
         case 0:
-            cell.desLabel.text = [NSString stringWithFormat:@"%.2f M",[self getCacheSize]];
+            cell.desLabel.text = [NSString stringWithFormat:@"%.2f M",self.cacheSize];
             break;
         case 1:
             cell.desLabel.text = [self getWebViewFont];
@@ -87,7 +96,7 @@ static NSString *const settingCellIdentifier = @"SettingCell";
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     switch (indexPath.row) {
         case 0: //清理缓存
-            if ([self getCacheSize] == 0) {
+            if (self.cacheSize == 0) {
                 [Tools showView:@"无需清理"];
             }else {
                 [self cleanCacheAlert];
@@ -163,19 +172,19 @@ static NSString *const settingCellIdentifier = @"SettingCell";
 }
 
 //创建右侧Label
--(void)createLabelOnCell:(UITableViewCell *)cell {
-    self.cacheLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.cacheLabel.textAlignment = NSTextAlignmentRight;
-    self.cacheLabel.font = [UIFont boldSystemFontOfSize:15];
-    self.cacheLabel.adjustsFontSizeToFitWidth = YES;
-    self.cacheLabel.text = [NSString stringWithFormat:@"%.2f M",[self getCacheSize]];
-    [cell addSubview:self.cacheLabel];
-    [self.cacheLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(100, 50));
-        make.top.equalTo(cell.mas_top).with.offset(0);
-        make.right.equalTo(cell.mas_right).with.offset(-30);
-    }];
-}
+//-(void)createLabelOnCell:(UITableViewCell *)cell {
+//    self.cacheLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+//    self.cacheLabel.textAlignment = NSTextAlignmentRight;
+//    self.cacheLabel.font = [UIFont boldSystemFontOfSize:15];
+//    self.cacheLabel.adjustsFontSizeToFitWidth = YES;
+//    self.cacheLabel.text = [NSString stringWithFormat:@"%.2f M",self.cacheSize];
+//    [cell addSubview:self.cacheLabel];
+//    [self.cacheLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.size.mas_equalTo(CGSizeMake(100, 50));
+//        make.top.equalTo(cell.mas_top).with.offset(0);
+//        make.right.equalTo(cell.mas_right).with.offset(-30);
+//    }];
+//}
 ////创建右侧switch
 //-(void)createSwitchOnCell:(UITableViewCell *)cell index:(NSInteger)index{
 //    cell.accessoryType = UITableViewCellAccessoryNone;
