@@ -34,7 +34,7 @@
     CollectVC *collectVC = (CollectVC *)[storyboard instantiateViewControllerWithIdentifier:@"CollectVC"];
     collectVC.rootVCType = CollectVCRootVCTypeWebsite;
     
-    WebsiteCustomVC *customVC = [[WebsiteCustomVC alloc] init];
+    WebsiteCustomVC *customVC = [[WebsiteCustomVC alloc] initWithNibName:@"WebsiteCustomVC" bundle:nil];
     
     NSArray *viewControllers = @[recommendVC, collectVC, customVC];
     self.viewControllers = viewControllers;

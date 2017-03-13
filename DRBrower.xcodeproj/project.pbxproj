@@ -49,7 +49,6 @@
 		551661611E222CF900909A11 /* WebsiteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5516615F1E222CF900909A11 /* WebsiteCell.m */; };
 		551661621E222CF900909A11 /* WebsiteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551661601E222CF900909A11 /* WebsiteCell.xib */; };
 		551661691E236AEF00909A11 /* WebsiteRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 551661681E236AEF00909A11 /* WebsiteRootVC.m */; };
-		551661721E23701D00909A11 /* WebsiteCustomVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 551661711E23701D00909A11 /* WebsiteCustomVC.m */; };
 		5517EAB91E1C8AE1008B3853 /* HomeTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5517EAB81E1C8AE1008B3853 /* HomeTopView.xib */; };
 		552375891E1CEAF000214ECB /* SearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 552375881E1CEAF000214ECB /* SearchVC.m */; };
 		5523758C1E1D03BF00214ECB /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 5523758B1E1D03BF00214ECB /* Tools.m */; };
@@ -68,6 +67,8 @@
 		55421AC31E5ACE8B00389B86 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55421AC21E5ACE8B00389B86 /* JavaScriptCore.framework */; };
 		55421AC61E5AD45800389B86 /* ShareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55421AC51E5AD45800389B86 /* ShareModel.m */; };
 		55421AE01E5D22D400389B86 /* UIImage+DRImageClip.m in Sources */ = {isa = PBXBuildFile; fileRef = 55421ADF1E5D22D400389B86 /* UIImage+DRImageClip.m */; };
+		55424D141E764B22001FF75F /* WebsiteCustomVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55424D121E764B22001FF75F /* WebsiteCustomVC.m */; };
+		55424D151E764B22001FF75F /* WebsiteCustomVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55424D131E764B22001FF75F /* WebsiteCustomVC.xib */; };
 		557A94091E5EDD7D006A2466 /* RecordListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 557A94041E5EDD7D006A2466 /* RecordListModel.m */; };
 		557A940A1E5EDD7D006A2466 /* RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 557A94061E5EDD7D006A2466 /* RecordModel.m */; };
 		557A940B1E5EDD7D006A2466 /* RecordRealm.m in Sources */ = {isa = PBXBuildFile; fileRef = 557A94081E5EDD7D006A2466 /* RecordRealm.m */; };
@@ -195,8 +196,6 @@
 		551661601E222CF900909A11 /* WebsiteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebsiteCell.xib; sourceTree = "<group>"; };
 		551661671E236AEF00909A11 /* WebsiteRootVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebsiteRootVC.h; sourceTree = "<group>"; };
 		551661681E236AEF00909A11 /* WebsiteRootVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebsiteRootVC.m; sourceTree = "<group>"; };
-		551661701E23701D00909A11 /* WebsiteCustomVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebsiteCustomVC.h; sourceTree = "<group>"; };
-		551661711E23701D00909A11 /* WebsiteCustomVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebsiteCustomVC.m; sourceTree = "<group>"; };
 		5517EAB81E1C8AE1008B3853 /* HomeTopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTopView.xib; sourceTree = "<group>"; };
 		552375871E1CEAF000214ECB /* SearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchVC.h; sourceTree = "<group>"; };
 		552375881E1CEAF000214ECB /* SearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchVC.m; sourceTree = "<group>"; };
@@ -229,6 +228,9 @@
 		55421AC51E5AD45800389B86 /* ShareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareModel.m; sourceTree = "<group>"; };
 		55421ADE1E5D22D400389B86 /* UIImage+DRImageClip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+DRImageClip.h"; sourceTree = "<group>"; };
 		55421ADF1E5D22D400389B86 /* UIImage+DRImageClip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+DRImageClip.m"; sourceTree = "<group>"; };
+		55424D111E764B22001FF75F /* WebsiteCustomVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebsiteCustomVC.h; sourceTree = "<group>"; };
+		55424D121E764B22001FF75F /* WebsiteCustomVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebsiteCustomVC.m; sourceTree = "<group>"; };
+		55424D131E764B22001FF75F /* WebsiteCustomVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebsiteCustomVC.xib; sourceTree = "<group>"; };
 		557A94031E5EDD7D006A2466 /* RecordListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordListModel.h; path = DRBrower/Class/scene/Search/Model/RecordListModel.h; sourceTree = SOURCE_ROOT; };
 		557A94041E5EDD7D006A2466 /* RecordListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecordListModel.m; path = DRBrower/Class/scene/Search/Model/RecordListModel.m; sourceTree = SOURCE_ROOT; };
 		557A94051E5EDD7D006A2466 /* RecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordModel.h; path = DRBrower/Class/scene/Search/Model/RecordModel.h; sourceTree = SOURCE_ROOT; };
@@ -436,8 +438,9 @@
 				552ADBD81E25E579007036CA /* WebsiteRecommendVC.h */,
 				552ADBD91E25E579007036CA /* WebsiteRecommendVC.m */,
 				552ADBDA1E25E579007036CA /* WebsiteRecommendVC.xib */,
-				551661701E23701D00909A11 /* WebsiteCustomVC.h */,
-				551661711E23701D00909A11 /* WebsiteCustomVC.m */,
+				55424D111E764B22001FF75F /* WebsiteCustomVC.h */,
+				55424D121E764B22001FF75F /* WebsiteCustomVC.m */,
+				55424D131E764B22001FF75F /* WebsiteCustomVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -848,7 +851,7 @@
 				TargetAttributes = {
 					557DC0611E08DF8100ECFFDE = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 5PQN62M948;
+						DevelopmentTeam = J7LGQHZ8DG;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -880,6 +883,7 @@
 				18FF715F1E6D5D2D00F7BAA3 /* ForgetPsd.storyboard in Resources */,
 				55E5BC681E69185F00A7CF9E /* Menu.storyboard in Resources */,
 				55E5BC671E69182C00A7CF9E /* Search.storyboard in Resources */,
+				55424D151E764B22001FF75F /* WebsiteCustomVC.xib in Resources */,
 				55E5BC661E69175100A7CF9E /* Main.storyboard in Resources */,
 				552ADBDC1E25E579007036CA /* WebsiteRecommendVC.xib in Resources */,
 				18FF71111E68264500F7BAA3 /* Inform.storyboard in Resources */,
@@ -1001,6 +1005,7 @@
 				557DC08B1E08E08400ECFFDE /* AppDelegate.m in Sources */,
 				55075A521E2081E1009A025A /* WebsiteListModel.m in Sources */,
 				557A940E1E5EE118006A2466 /* RecordRootVC.m in Sources */,
+				55424D141E764B22001FF75F /* WebsiteCustomVC.m in Sources */,
 				55E5BC5B1E68252200A7CF9E /* QRCodeReaderViewController.m in Sources */,
 				557DC0911E08E0B700ECFFDE /* DRDataService.m in Sources */,
 				18FF71531E6D3AAF00F7BAA3 /* LoginVC.m in Sources */,
@@ -1012,7 +1017,6 @@
 				18FF715D1E6D5D1600F7BAA3 /* ForgetPsdVC.m in Sources */,
 				55421AA41E59979900389B86 /* ShareVC.m in Sources */,
 				552ADBD51E24EEB5007036CA /* DRLocaldData.m in Sources */,
-				551661721E23701D00909A11 /* WebsiteCustomVC.m in Sources */,
 				557A940A1E5EDD7D006A2466 /* RecordModel.m in Sources */,
 				18D61F3C1E66B3EF0077BE5C /* RankingCell.m in Sources */,
 				1866D49F1E5BD11700BDB5DB /* HomeTopViewLayout.m in Sources */,
@@ -1188,7 +1192,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5PQN62M948;
+				DEVELOPMENT_TEAM = J7LGQHZ8DG;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DRBrower/DRBrowser-Prefix.pch";
 				INFOPLIST_FILE = DRBrower/Info.plist;
@@ -1196,7 +1200,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.DRBrower1.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.DRBrower.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "arm64 armv7";
 			};
@@ -1208,7 +1212,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5PQN62M948;
+				DEVELOPMENT_TEAM = J7LGQHZ8DG;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DRBrower/DRBrowser-Prefix.pch";
 				INFOPLIST_FILE = DRBrower/Info.plist;
@@ -1216,7 +1220,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.DRBrower1.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.DRBrower.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "arm64 armv7";
 			};
