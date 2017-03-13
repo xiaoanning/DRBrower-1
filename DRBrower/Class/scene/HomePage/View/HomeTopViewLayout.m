@@ -47,7 +47,6 @@
     
     attribute.center = CGPointMake(count/3 * SCREEN_WIDTH + 10+(itemWidth+5)*(indexPath.row%5) + itemWidth/2.0 ,  count%3*itemHeight + itemHeight/2.0 + 10) ;
 
-
     
     return attribute ;
 }

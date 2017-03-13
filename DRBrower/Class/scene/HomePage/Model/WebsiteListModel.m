@@ -14,7 +14,7 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{};
 }
-+ (NSValueTransformer *)dataJSONTransformer {
++ (NSValueTransformer *)listJSONTransformer {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[WebsiteModel class]];
 }
 
