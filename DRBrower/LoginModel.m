@@ -39,5 +39,9 @@
         completion(response,error);
     }];
 }
-
++(NSURLSessionDataTask *)getUserInfo:(NSString *)url parameters:(NSDictionary *)parameters block:(void (^)(NSDictionary *, NSError *))completion {
+    return [[DRDataService sharedClient] DR_get:url parameters:parameters completion:^(id response, NSError *error, NSDictionary *header) {
+        completion(response,error);
+    }];
+}
 @end

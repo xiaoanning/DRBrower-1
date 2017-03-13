@@ -47,6 +47,7 @@
 #import "DRGeocoder.h"
 
 #import "UserInfo.h"
+#import "KeychainTool.h"
 
 #pragma mark - 常量
 #define TAG_ID_RECOMMEND @"100"
@@ -86,7 +87,9 @@
 #define LOGIN_UID @"loginUid"
 
 #define DEV_ID [[UIDevice currentDevice].identifierForVendor UUIDString]
-#define TOKEN [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_TOKEN]?[[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_TOKEN]:@"brower*@forapi@*"
+
+#define TOKEN [KeychainTool getKeychainValue:LOGIN_TOKEN]?[KeychainTool getKeychainValue:LOGIN_TOKEN]:@"brower*@forapi@*"
+#define UID [KeychainTool getKeychainValue:LOGIN_UID]
 
 #define GET_LOCATION @"getLocation" 
 

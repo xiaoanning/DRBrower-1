@@ -10,6 +10,7 @@
 #import "RegsitVC.h"
 #import "ForgetPsdVC.h"
 #import "LoginModel.h"
+#import "KeychainTool.h"
 
 @interface LoginVC ()<UITextFieldDelegate>
 @property (nonatomic,copy) NSString *phoneNum;
@@ -65,12 +66,10 @@
         NSLog(@"%@",dic);
         [Tools showView:[dic objectForKey:@"msg"]];
         if ([[dic objectForKey:@"msg"] isEqualToString:@"登录成功"]) {
+            //登录成功，保存到钥匙串
+            [KeychainTool saveKeychainValue:[dic[@"data"] objectForKey:@"token"] key:LOGIN_TOKEN];
+            [KeychainTool saveKeychainValue:[[dic[@"data"] objectForKey:@"userinfo"] objectForKey:@"uid"] key:LOGIN_UID];
             [self.navigationController popViewControllerAnimated:YES];
-            //登陆成功,保存token到本地
-            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-            [userDefaults setObject:[dic[@"data"] objectForKey:@"token"] forKey:LOGIN_TOKEN];
-            [userDefaults setObject:[[dic[@"data"] objectForKey:@"userinfo"] objectForKey:@"uid"] forKey:LOGIN_UID];
-            [userDefaults synchronize];
         }
     }];
 }

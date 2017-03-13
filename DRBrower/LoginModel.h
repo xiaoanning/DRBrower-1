@@ -36,6 +36,11 @@
                             parameters:(NSDictionary *)parameters
                                  block:(void (^)(NSDictionary *dic,
                                                  NSError *error))completion;
+//获取用户信息
++ (NSURLSessionDataTask *)getUserInfo:(NSString *)url
+                              parameters:(NSDictionary *)parameters
+                                   block:(void (^)(NSDictionary *dic,
+                                                   NSError *error))completion;
 
 
 @end

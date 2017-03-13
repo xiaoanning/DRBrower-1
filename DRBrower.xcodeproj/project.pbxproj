@@ -17,6 +17,7 @@
 		18C7A3611E727182003F6BD2 /* NewsPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C7A3601E727182003F6BD2 /* NewsPageVC.m */; };
 		18C7A3631E72719F003F6BD2 /* NewsPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18C7A3621E72719F003F6BD2 /* NewsPage.storyboard */; };
 		18C7A3661E727CBE003F6BD2 /* TitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C7A3651E727CBE003F6BD2 /* TitleLabel.m */; };
+		18C7A3691E76556F003F6BD2 /* KeychainTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C7A3681E76556F003F6BD2 /* KeychainTool.m */; };
 		18D61F191E66B3CC0077BE5C /* CommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D61F081E66B3CC0077BE5C /* CommentVC.m */; };
 		18D61F1A1E66B3CC0077BE5C /* ComplainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D61F0A1E66B3CC0077BE5C /* ComplainVC.m */; };
 		18D61F1D1E66B3CC0077BE5C /* SortCommonVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D61F101E66B3CC0077BE5C /* SortCommonVC.m */; };
@@ -151,6 +152,8 @@
 		18C7A3621E72719F003F6BD2 /* NewsPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewsPage.storyboard; sourceTree = "<group>"; };
 		18C7A3641E727CBE003F6BD2 /* TitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleLabel.h; sourceTree = "<group>"; };
 		18C7A3651E727CBE003F6BD2 /* TitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleLabel.m; sourceTree = "<group>"; };
+		18C7A3671E76556F003F6BD2 /* KeychainTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainTool.h; sourceTree = "<group>"; };
+		18C7A3681E76556F003F6BD2 /* KeychainTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainTool.m; sourceTree = "<group>"; };
 		18D61F071E66B3CC0077BE5C /* CommentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentVC.h; path = SortPage/Controller/CommentVC.h; sourceTree = "<group>"; };
 		18D61F081E66B3CC0077BE5C /* CommentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentVC.m; path = SortPage/Controller/CommentVC.m; sourceTree = "<group>"; };
 		18D61F091E66B3CC0077BE5C /* ComplainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComplainVC.h; path = SortPage/Controller/ComplainVC.h; sourceTree = "<group>"; };
@@ -665,6 +668,8 @@
 				5523758B1E1D03BF00214ECB /* Tools.m */,
 				55BC1AFE1E4957CE00A64375 /* UIButton+ImageTitleSpacing.h */,
 				55BC1AFF1E4957CE00A64375 /* UIButton+ImageTitleSpacing.m */,
+				18C7A3671E76556F003F6BD2 /* KeychainTool.h */,
+				18C7A3681E76556F003F6BD2 /* KeychainTool.m */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -1080,6 +1085,7 @@
 				55E5BC591E68252200A7CF9E /* QRCameraSwitchButton.m in Sources */,
 				18D61F301E66B3DF0077BE5C /* SortListModel.m in Sources */,
 				18D61F1D1E66B3CC0077BE5C /* SortCommonVC.m in Sources */,
+				18C7A3691E76556F003F6BD2 /* KeychainTool.m in Sources */,
 				18D61F431E66C7680077BE5C /* AdviceVC.m in Sources */,
 				557A94111E5FD445006A2466 /* DRRealmPublic.m in Sources */,
 				552375891E1CEAF000214ECB /* SearchVC.m in Sources */,

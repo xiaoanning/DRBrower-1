@@ -65,7 +65,8 @@
 #define URL_LOGIN @"user&a=login&devtype=2&token="
 //退出登陆
 #define URL_LOGOUT @"user&a=logout&devtype=2&token="
-
+//获取用户信息 
+#define URL_GETUSERINFO @"user&a=getuserinfo&token="
 
 #endif /* AllUrls_h */
 

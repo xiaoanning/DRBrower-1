@@ -87,7 +87,11 @@ static NSString *const settingCellIdentifier = @"SettingCell";
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     switch (indexPath.row) {
         case 0: //清理缓存
-            [self cleanCacheAlert];
+            if ([self getCacheSize] == 0) {
+                [Tools showView:@"无需清理"];
+            }else {
+                [self cleanCacheAlert];
+            }
             break;
         case 1: //字体大小
             [self changeWebViewFontSize];
