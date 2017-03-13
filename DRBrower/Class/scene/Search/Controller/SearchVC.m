@@ -181,6 +181,8 @@
         [self.navigationController popViewControllerAnimated:YES];
     }else if (self.urlString != nil){
         [self.navigationController popViewControllerAnimated:YES];
+    }else if (self.newsModel.url != nil){
+        [self.navigationController popViewControllerAnimated:YES];
     }else{
         [self.searchViewController dismissViewControllerAnimated:NO completion:nil];
         [self.navigationController popToRootViewControllerAnimated:YES];

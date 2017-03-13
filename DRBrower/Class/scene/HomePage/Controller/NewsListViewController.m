@@ -58,7 +58,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
+//    self.navigationController.navigationBarHidden = YES;
 }
 - (void)viewDidLoad
 {
@@ -96,6 +96,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
 
 //获取新闻
 - (void)getNewsByTag:(NewsTagModel *)tag type:(NSString *)type {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     NSString *tagId = tag.tagId;
     if (tag == nil) {
         tagId = TAG_ID_RECOMMEND;
@@ -110,6 +111,7 @@ static NSString *const zeroPicCellIdentifier = @"ZeroPicCell";
                              }else {
                                  [self.newsListArray addObjectsFromArray:newsList.data];
                              }
+                             [MBProgressHUD hideHUDForView:self.view animated:YES];
                              [self.homeTableView reloadData];
                          }];
     
